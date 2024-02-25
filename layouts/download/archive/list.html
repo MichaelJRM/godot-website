@@ -1,0 +1,61 @@
+{{ define "main" }}
+
+{{ partialCached "header.html" . }}
+
+<link rel="stylesheet" href="/assets/css/download-archive.css?2">
+
+<div class="hero">
+    <h1>Godot archive</h1>
+
+    <div class="hero-blurb">
+        <p>
+            Download any officially published release of the engine.
+        </p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="padded" style="padding-top:0;margin-top:32px">
+        <h2>Official releases</h2>
+
+        <div class="archive-list">
+            {{ $versions := where .Site.RegularPages "Type" "download/archive" }}
+
+            {{ range ($versions.GroupByParam "name").Reverse }}
+                {{ $pages := (.Pages.ByParam "release_date").Reverse }}
+                {{ $version := (index $pages 0).Params }}
+
+                <div class="archive-group">
+                    <div>
+                        <h3 id="{{ .Key }}">
+                            Godot {{ .Key }}
+                        </h3>
+
+                        <span>Current state:</span> <span class="archive-version-flavor">{{ $version.flavor }}</span>
+                    </div>
+                </div>
+
+
+                <div class="card base-padding archive-releases">
+                    {{ partial "download/archive-list-item.html" (dict "gCtx" $ "version" $version) }}
+
+                    {{ $flavorHint := slicestr $version.flavor 0 2 }}
+
+                    {{ range $index, $page := after 1 $pages }}
+                        {{ $release := $page.Params }}
+                        {{ $nextHint := slicestr $release.flavor 0 2 }}
+                        {{ if ne $flavorHint $nextHint }}
+                            <hr>
+                            {{ $flavorHint = $nextHint }}
+                        {{ end }}
+                        {{ partial "download/archive-list-item.html" (dict "gCtx" $ "version" $release ) }}
+                    {{ end }}
+                </div>
+            {{ end }}
+
+        </div>
+    </div>
+</div>
+
+{{ partialCached "footer.html" . }}
+{{ end }}

@@ -1,0 +1,38 @@
+{{ define "main" }}
+
+{{ partialCached "header.html" . }}
+<div class="head">
+    <div class="container flex eqsize" style="flex-direction: column">
+        <div class="main">
+            <h1 class="intro-title">{{ .Params.header_text }}</h1>
+
+        </div>
+
+        <div class="tabs">
+            <a href="/contact" class="title-font {{ if eq .Params.current_tab "contact" }} active {{ end }}">
+                Contact
+            </a>
+            <a href="/code-of-conduct" class="title-font {{ if eq .Params.current_tab "code-of-conduct" }} active {{ end }}">
+                Code of Conduct
+            </a>
+            <a href="/privacy-policy" class="title-font {{ if eq .Params.current_tab "privacy-policy" }} active {{ end }}">
+                Privacy
+            </a>
+            <a href="/governance" class="title-font {{ if eq .Params.current_tab "governance" }} active {{ end }}">
+                Governance
+            </a>
+            <a href="/teams" class="title-font {{ if eq .Params.current_tab "teams" }} active {{ end }}">
+                Teams
+            </a>
+            <a href="/license" class="title-font {{ if eq .Params.current_tab "license" }} active {{ end }}">
+                License
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    {{ .Content }}
+</div>
+{{ partialCached "footer.html" . }}
+{{ end }}

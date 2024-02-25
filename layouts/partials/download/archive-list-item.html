@@ -1,0 +1,31 @@
+{{ $version := .version }}
+
+
+<div class="archive-list-item">
+    <div class="archive-release">
+        <a class="archive-version" href="/download/archive/{{ $version.name }}-{{ $version.flavor }}" title="Open downloads page">
+            <h4 id="{{ $version.name }}-{{ $version.flavor }}">
+                {{ $version.name }}-{{ $version.flavor }}
+            </h4>
+
+            <p class="archive-download-meta">
+                {{ with $version.release_date }}
+                <span>{{ time.Format ":date_long" . }}</span>
+                {{ end }}
+            </p>
+        </a>
+    </div>
+
+    <a class="btn btn-release-download" href="/download/archive/{{ $version.name }}-{{ $version.flavor }}">Download</a>
+
+    {{ with $version.release_notes }}
+        {{ $releaseArticle := index (where (where $.gCtx.Site.RegularPages "Section" "article") "RelPermalink" . | first 1) 0 }}
+
+        {{ with $releaseArticle }}
+        <a class="btn btn-release-notes" href="{{ $releaseArticle.Permalink }}" title="Read release announcement">News</a>
+        {{ end }}
+    {{ end }}
+
+    <a class="btn btn-release-changelog" href="https://godotengine.github.io/godot-interactive-changelog/#{{ $version.name }}-{{ $version.flavor }}" title="View complete changelog">Changelog</a>
+
+</div>

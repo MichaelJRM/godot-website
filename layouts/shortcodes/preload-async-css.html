@@ -1,0 +1,5 @@
+{{ $href := .Get "href" }}
+{{ $priority := default "low" (.Get "priority") }}
+
+<link rel="preload" href="{{ $href }}" as="style" fetchpriority="{{ $priority }}" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="{{ $href }}"></noscript>

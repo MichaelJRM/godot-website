@@ -1,0 +1,171 @@
+import yaml from 'js-yaml';
+import fs from 'fs';
+import {generateLink, getDownloadSlugs} from './url_util.js';
+
+const HOSTS = ['github_builds', 'github'];
+const TEMPLATES_PLATFORM = 'templates';
+const exportPath = 'content/download/archive';
+
+/**
+ * @typedef {Object} Version
+ * @property {string} name
+ * @property {string} flavor
+ * @property {string} release_version
+ */
+
+
+(function main() {
+    const fileContents = fs.readFileSync('data/versions.yml', 'utf8');
+    const versions = yaml.load(fileContents);
+
+    const downloadPlatforms = loadDownloadPlatforms();
+
+    for (let i = 0; i < versions.length; i ++) {
+        const version = versions[i];
+
+        const frontmatter = {
+            title: `Download Godot ${version.name} (${version.flavor}) - Godot Engine`,
+            type: 'download/archive',
+            name: version.name,
+            flavor: version.flavor,
+            featured: version.featured,
+            release_date: convertDateFormat(version.release_date) ?? "",
+            release_notes: version.release_notes ?? "",
+        };
+
+        const links = generateVersionDownloadLinks(version, downloadPlatforms);
+        frontmatter.links = links.links;
+        frontmatter.primaryPlatforms = links.primary;
+
+        if (!frontmatter.featured) {
+            delete frontmatter.featured
+        }
+
+        writeArchiveVersion(version.name, version.flavor, frontmatter);
+
+        if (version.releases) {
+            for (let j = 0; j < version.releases.length; j++) {
+                const release = version.releases[j];
+
+                frontmatter.title = `Download Godot ${version.name} (${release.name}) - Godot Engine`;
+                frontmatter.flavor = release.name;
+                frontmatter.featured = release.featured;
+                frontmatter.release_date = convertDateFormat(release.release_date) ?? "";
+                frontmatter.release_notes = release.release_notes ?? "";
+                const links = generateVersionDownloadLinks({name: version.name, flavor: release.name}, downloadPlatforms);
+                frontmatter.links = links.links;
+                frontmatter.primaryPlatforms = links.primary;
+
+                if (!frontmatter.featured) {
+                    delete frontmatter.featured
+                }
+
+                writeArchiveVersion(version.name, release.name, frontmatter);
+            }
+        }
+    }
+})();
+
+/**
+ * @param {Version} version
+ * @param {DownloadPlatform[]} downloadPlatforms
+ * @return {Object}
+ */
+function generateVersionDownloadLinks(version, downloadPlatforms) {
+    const downloadPlatformsMap = {};
+    for (let i = 0; i < downloadPlatforms.length; i++) {
+        const platform = downloadPlatforms[i];
+        downloadPlatformsMap[platform.name] = platform;
+    }
+
+    const downloadSlugs = getDownloadSlugs(version);
+    const links = {};
+    const primary = [];
+
+    function generateLinksForHosts(version, platform, data) {
+        data[platform].hosts = {};
+
+        for (let i = 0; i < HOSTS.length; i++) {
+            const host = HOSTS[i];
+            data[platform].hosts[host] = {};
+            data[platform].hosts[host].regular = generateLink(version, platform, false, host);
+            data[platform].hosts[host].mono = generateLink(version, platform, true, host);
+        }
+    }
+
+    if (downloadSlugs.editor.primary) {
+        const primaryPlatforms = Object.keys(downloadSlugs.editor.primary);
+        for (let i = 0; i < primaryPlatforms.length; i++) {
+            const platform = primaryPlatforms[i];
+            links[platform] = {
+                ...downloadPlatformsMap[platform],
+            }
+            primary.push(platform);
+            generateLinksForHosts(version, platform, links);
+        }
+    }
+
+    if (downloadSlugs.editor.secondary) {
+        const secondaryPlatforms = Object.keys(downloadSlugs.editor.secondary);
+        for (let i = 0; i < secondaryPlatforms.length; i++) {
+            const platform = secondaryPlatforms[i];
+            links[platform] = {
+                ...downloadPlatformsMap[platform],
+            }
+            generateLinksForHosts(version, platform, links);
+        }
+    }
+
+    if (downloadSlugs.extras) {
+        const extras = Object.keys(downloadSlugs.extras);
+        for (let i = 0; i < extras.length; i++) {
+            const extra = extras[i];
+            links[extra] = {
+                ...downloadPlatformsMap[extra],
+            }
+            generateLinksForHosts(version, extra, links);
+        }
+    }
+
+    links[TEMPLATES_PLATFORM] = {
+        ...downloadPlatformsMap[TEMPLATES_PLATFORM],
+    }
+    generateLinksForHosts(version, TEMPLATES_PLATFORM, links);
+
+    // Templates always appear at the bottom
+    primary.push(TEMPLATES_PLATFORM);
+
+    return {
+        links,
+        primary,
+    };
+}
+
+function writeArchiveVersion(name, flavor, data) {
+    const frontmatter = `---\n# Generated by /scripts/js/download_archive_generator !!! do not edit by hand !!!\n${yaml.dump(data, {forceQuotes: true})}---`;
+    fs.writeFile(`${exportPath}/${name}-${flavor}.md`, frontmatter, (err) => {
+        if (err) throw err;
+    });
+}
+
+function convertDateFormat(input) {
+    const date = new Date(input);
+    return date.toISOString().slice(0, 19) + "-00:00";
+}
+
+/**
+ * @typedef {Object} DownloadPlatform
+ * @property {string} name
+ * @property {string} title
+ * @property {string} caption
+ * @property {string[]} tags
+ */
+
+/**
+ * @returns {DownloadPlatform[]}
+ */
+function loadDownloadPlatforms() {
+    const fileContents = fs.readFileSync('data/download_platforms.yml', 'utf8');
+    return yaml.load(fileContents);
+}
+

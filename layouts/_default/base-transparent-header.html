@@ -1,0 +1,5 @@
+{{ define "main" }}
+{{ partialCached "transparent-header.html" . }}
+{{ .Content }}
+{{ partialCached "footer.html" . }}
+{{ end }}

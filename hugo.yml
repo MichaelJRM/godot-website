@@ -1,0 +1,19 @@
+baseURL:  'https://example.org/'
+languageCode:  'en-us'
+title:  'My New Hugo Site'
+ignorefiles: [ "static/storage" ]
+paginate:  24
+security:
+  enableInlineShortcodes: true
+markup:
+  goldmark:
+    renderer:
+      unsafe: true # Allow html, css, js inside .md files
+  highlight:
+    noClasses: false
+    linenos: true
+    guessSyntax: true
+params:
+  articleOutdatedWarning:
+    thresholdInMonths: 18 # Any relevant article older than 18 months will have a warning in it
+    relevantCategories: ["progress-report", "news", "events"]

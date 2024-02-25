@@ -1,0 +1,19 @@
+{{ $shouldShowOutdatedNotice := ne .Params.no_outdated_notice true }}
+
+{{ if $shouldShowOutdatedNotice }}
+    {{ $isValidCategory := gt (len (.Params.categories | intersect .Site.Params.articleOutdatedWarning.relevantCategories)) 0 }}
+    {{ $isOutdated := lt .Params.date (partial "_funcs/get-outdated-article-treshold.html" .) }}
+
+    {{ if and $isValidCategory $isOutdated }}
+        <div class="card card-warning">
+            <p>
+                {{ with .Params.outdated_notice_text }}
+                {{ . }}
+                {{ else }}
+                This article is from <strong>{{ time.Format ":date_long" .Params.date }}</strong>, some of its contents might be outdated and no longer accurate.<br>
+                You can find up-to-date information about the engine in the <a href="https://docs.godotengine.org/en/stable/">official documentation</a>.
+                {{ end }}
+            </p>
+        </div>
+    {{ end }}
+{{ end }}

@@ -1,0 +1,30 @@
+<section class="events">
+    {{ $events := . }}
+    {{ $year := "" }}
+    {{ $currentEvents := slice }}
+
+    {{ range $event := $events }}
+        {{ $params := $event.Params }}
+
+        {{ if eq $year "" }}
+            {{ $year = time.Format "2006" $params.date }}
+        {{ end }}
+
+        {{/* Check if we have reached another year, this means we must print out and reset. */}}
+
+        {{ $current_year := time.Format "2006" $params.date }}
+        {{ if ne $year $current_year }}
+            {{ partial "events/events-year.html" (dict "year" $year "events" $currentEvents) }}
+            {{ $year = $current_year }}
+            {{ $currentEvents = slice }}
+        {{ end }}
+
+        {{ $currentEvents = $currentEvents | append $event }}
+    {{ end }}
+
+    {{/* Print the final year. There is always one after the loop, if there is any at all. */}}
+
+    {{ if ne $year "" }}
+        {{ partial "events/events-year.html" (dict "year" $year "events" $currentEvents) }}
+    {{ end }}
+</section>

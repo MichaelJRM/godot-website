@@ -1,0 +1,240 @@
+{{ define "main" }}
+
+{{ partialCached "header.html" . }}
+
+<link rel="stylesheet" href="/assets/css/anchor-link.css?1">
+<link rel="stylesheet" href="/assets/css/article-cards.css?2">
+
+<script defer src="/assets/js/tobii.min.js"></script>
+<script defer src="/assets/js/anchor-link.js"></script>
+
+
+<style>
+    body {
+        background-color: var(--background-color);
+    }
+
+    h1 {
+        margin-bottom: 8px;
+        margin-top: 32px;
+    }
+
+    :not(pre)>code {
+        background: var(--code-background-color);
+        padding: 1px 4px;
+        font-size: 0.95em;
+        border-radius: 3px;
+    }
+
+    pre {
+        background: var(--codeblock-background-color);
+        color: var(--codeblock-color);
+    }
+
+    pre code {
+        display: block;
+        overflow-x: auto;
+        padding: .5em;
+    }
+
+    .date-big {
+        line-height: 2;
+        margin-left: 32px;
+    }
+
+    article {
+        background-color: var(--base-color);
+        box-shadow: 0px 3px 2px 0px rgba(0, 0, 0, 0.15);
+    }
+
+    figure {
+        margin: 0;
+    }
+
+    figure img {
+        margin: 0;
+    }
+
+    article img,
+    article video {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 16px auto;
+    }
+
+    article h1 {
+        margin-top: 64px;
+    }
+
+    article h2,
+    article h3,
+    article h4 {
+        margin-top: 42px;
+    }
+
+    .article-info {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .article-metadata {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+        font-family: var(--header-font-family);
+        margin-bottom: 12px;
+    }
+
+    @media (max-width: 900px) {
+        .article-metadata {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 16px;
+        }
+    }
+
+    .article-author {
+        color: var(--base-color-text-subtitle-date);
+        font-weight: 700;
+        font-size: 18px;
+        flex-grow: 1;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+    }
+
+    .article-author .avatar {
+        border-radius: 100%;
+        margin: 0;
+    }
+
+    .article-author .by {
+        color: var(--base-color-text-subtitle);
+    }
+
+    .article-metadata .date {
+        color: var(--base-color-text-subtitle-date);
+    }
+
+    .article-metadata .date.post-recent-highlight {
+        color: var(--post-recent-highlight-color);
+        opacity: 0.8;
+    }
+
+    .article-metadata .date.post-recent-highlight::after {
+        font-size: 80%;
+        content: "NEW";
+        border: 2px solid var(--post-recent-highlight-color);
+        padding: 2px 3px;
+        margin-left: 8px;
+    }
+
+    .tag.active {
+        filter: saturate(0.75);
+    }
+
+    @media screen and (min-width: 900px) {
+        article .content {
+            width: 70%;
+            margin: auto;
+        }
+    }
+
+    @media (max-width: 900px) {
+        body {
+            background-color: var(--base-color);
+        }
+
+        article {
+            background-color: transparent;
+            box-shadow: none;
+        }
+
+        article img:first-child,
+        article video:first-child {
+            max-width: 100%;
+        }
+    }
+</style>
+
+<link rel="stylesheet" href="/assets/css/highlight.css">
+
+<div class="container">
+    <article class="padded">
+        <div class="content article-container">
+            <figure class="article-cover">
+                {{ if or .Params.image_caption_title .Params.image_caption_description }}
+                <figcaption>
+                    <strong>{{ .Params.image_caption_title }}</strong>
+                    <span style="margin-left: 0.75rem; font-size: 90%">{{ .Params.image_caption_description }}</span>
+                </figcaption>
+                {{ end }}
+
+                <img src="{{ .Params.image }}" title="{{ .Params.image_caption_title }}"
+                     alt="{{ .Params.image_caption_title }} {{ .Params.image_caption_description }}" class="rounded-lg"
+                     style="width: 100%; height: auto; background-color: transparent;" />
+            </figure>
+
+            <div class="article-info">
+                <h1>
+                    {{ .Params.title }}
+                </h1>
+                <div class="article-metadata">
+                    <div class="article-author">
+                        <span>By: </span>
+                        {{ $post_author := index (where .Site.Data.authors "name" .Params.author | first 1) 0 }}
+                        {{ if $post_author }}
+                        <img class="avatar" width="25" height="25" src="{{ $post_author.image }}" alt="{{ .Params.author }}" loading="lazy">
+                        {{ else }}
+                        <img class="avatar" width="25" height="25" src="/assets/images/authors/default_avatar.svg" alt="{{ .Params.author }}" loading="lazy">
+                        {{ end }}
+                        <span class="by">{{ .Params.author }}</span>
+                    </div>
+                    <span class="date" data-post-date="{{ .Params.date }}"> {{ time.Format ":date_medium" .Params.date }}</span>
+                </div>
+
+                <div class="tags">
+                    {{ range $category := .Params.categories }}
+                    <a href="/blog/{{ $category }}">
+                        <div class="tag active">{{ (index (index ($.Site.Data.categories) $category) 0).name }}</div>
+                    </a>
+                    {{ end }}
+                </div>
+            </div>
+
+            <div style="margin-top: 1rem;">
+                {{ partial "articles/outdated-notice.html" . }}
+            </div>
+
+            <div class="article-body">
+                {{ .Content }}
+            </div>
+        </div>
+    </article>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Add icons to easily copy section links.
+        window.applyAnchorLinks('.article-body');
+
+        // Add lightbox elements in blog articles for Tobii.
+        document.querySelectorAll('.article-cover img:not(.lightbox-ignore), .article-body img:not(.lightbox-ignore)').forEach((articleImg) => {
+            const template = document.createElement('template');
+            template.innerHTML = `<a href="${articleImg.src}" class="lightbox" data-group="article"/>`
+            const a = template.content.firstChild
+            articleImg.parentNode.appendChild(a);
+            a.appendChild(articleImg);
+        });
+
+        // Initialize lightbox.
+        new Tobii({
+            zoom: false,
+        })
+    });
+</script>
+
+{{ partialCached "footer.html" . }}
+{{ end }}

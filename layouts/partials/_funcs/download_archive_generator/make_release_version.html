@@ -1,0 +1,21 @@
+{{ $release := .release }}
+{{ $result := .version }}
+
+{{ if $release }}
+    {{ $scratch := newScratch }}
+    {{ $scratch.Set "newVersion" $result }}
+
+    {{ $scratch.SetInMap "newVersion" "flavor" $release.flavor }}
+
+    {{ with .release.release_version }}
+        {{ $scratch.SetInMap "newVersion" "release_version" . }}
+    {{ else }}
+        {{ $scratch.SetInMap "newVersion" "release_version" .version.name }}
+    {{ end }}
+    {{ $scratch.SetInMap "newVersion" "release_date" .release.release_date }}
+    {{ $scratch.SetInMap "newVersion" "release_notes" .release.release_notes }}
+
+    {{ $result = $scratch.Get "newVersion" }}
+{{ end }}
+
+{{ return $result }}

@@ -1,0 +1,129 @@
+{{ $version := .version }}
+{{ $gCtx := .gCtx }}
+
+<div class="card base-padding preview-download">
+    <h3 id="{{ $version.name }}-{{ $version.flavor }}">
+        Godot {{ $version.name }}-{{ $version.flavor }}
+    </h3>
+
+    <div class="preview-download-primary">
+        <div class="preview-notes">
+            <p class="preview-download-meta">
+                {{ with $version.release_date }}
+                <span>{{ time.Format ":date_long" . }}</span>
+                {{ end }}
+            </p>
+
+            {{ $releaseArticle := "" }}
+
+            {{ with $version.release_notes }}
+                {{ $releaseArticle = $gCtx.Site.GetPage . }}
+                {{ with $releaseArticle }}
+                    <div class="notes-summary">
+                        <div class="notes-thumbnail" style="background-image: url('{{ .Params.image }}');"></div>
+                        <div class="notes-excerpt">
+                            {{ .Params.excerpt }}
+                        </div>
+                    </div>
+                {{ end }}
+            {{ else }}
+                <div class="notes-excerpt">
+                    Release notes are not ready yet. You can check the complete list of changes using our interactive changelog.
+                </div>
+            {{ end }}
+
+            <div class="notes-buttons">
+                {{ with $releaseArticle }}
+                <a class="btn btn-release-notes" href="{{ .Permalink }}" title="Read full release announcement">Read more</a>
+                {{ end }}
+
+                <a class="btn btn-release-changelog" href="https://godotengine.github.io/godot-interactive-changelog/#{{ $version.name }}-{{ $version.flavor }}" title="View complete changelog">View changelog</a>
+            </div>
+
+        </div>
+
+        <div>
+            <h4>Supported platforms</h4>
+            {{ $hasMono := false }}
+
+            <div class="download-primaries">
+                {{ $platforms := partial "_funcs/get-primary-download-platforms.html" (dict "gCtx" $gCtx "version" $version "host" "github_builds") }}
+
+                {{ $platforms = $platforms }}
+                {{ $hasMono := false }}
+
+                {{ range $platform := $platforms }}
+                    {{ if eq $platform.name "templates" }}<hr>{{ end }}
+
+                    <div class="download-platform">
+                        <img width="24" height="24" src="/assets/images/platforms/{{ replace $platform.name "_" "-" }}.svg" alt="{{ $platform.title }}" class="dark-invert" />
+                        {{ $platform.title }}
+                    </div>
+
+                    <a href="{{ $platform.regularLink }}" class="btn btn-download btn-download-primary">
+                        <div class="download-title">
+                            Standard
+                        </div>
+                    </a>
+
+                    {{ if eq $platform.monoLink "#" }}
+                        <div></div>
+                    {{ else }}
+                        {{ $hasMono = true }}
+                        <a href="{{ $platform.monoLink }}" class="btn btn-download btn-download-primary btn-download-primary--mono">
+                            <div class="download-title">
+                                .NET
+                            </div>
+                        </a>
+                    {{ end }}
+                {{ end }}
+
+                {{ if $hasMono }}
+                    <div class="download-mono-note">
+                        .NET builds offer support for C# as a scripting language.
+                    </div>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+
+    <div class="preview-download-toggle">
+        <h4>Show all downloads</h4>
+    </div>
+
+    <div class="preview-download-links">
+        {{ $allPlatforms := partial "_funcs/get-download-platforms.html" (dict "gCtx" $gCtx "version" $version "host" "github_builds") }}
+
+        {{ range $platform := $allPlatforms }}
+            <div class="download">
+                <span>
+                <a href="{{ $platform.regularLink }}">
+                    {{ $platform.title }}
+                    {{ with $platform.caption }} - {{ . }}{{ end }}
+                </a>
+                </span>
+                <span class="download-details">
+                    {{ range $index, $tag := $platform.tags }}
+                        {{ if gt $index 0 }} · {{ end }}
+                        {{ $tag }}
+                    {{ end }}
+                </span>
+            </div>
+
+            {{ if ne $platform.monoLink "#" }}
+                <div class="download">
+                    <a href="{{ $platform.monoLink }}">
+                        {{ $platform.title }} - .NET
+                        {{ with $platform.caption }} - {{ . }}{{ end }}
+                    </a>
+                    <span class="download-details">
+                        {{ range $index, $tag := $platform.tags }}
+                            {{ if gt $index 0 }} · {{ end }}
+                            {{ $tag }}
+                        {{ end }} C# support
+                    </span>
+                </div>
+            {{ end }}
+        {{ end }}
+    </div>
+</div>
