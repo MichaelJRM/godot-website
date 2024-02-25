@@ -11,7 +11,7 @@ install-tools:
 	cd ./tools/generators && npm install
 
 update-mirrorList:
-	node ./scripts/generators/src/mirror_list_generator.js
+	node ./tools/generators/src/mirror_list_generator.js
 
 update-download-archive:
-	node ./scripts/generators/src/download_archive_generator.js
+	node ./tools/generators/src/download_archive_generator.js
