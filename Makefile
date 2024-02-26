@@ -1,4 +1,4 @@
-build:
+build: install-tools update-mirrorList update-download-archive
 	hugo --gc --minify
 
 serve:
