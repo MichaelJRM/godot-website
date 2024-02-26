@@ -176,7 +176,7 @@ multiplayer.replicator.sync_config(id, 16, [&"sync_state"])
 
 And then in your player script:
 
-```
+{{< highlight gdscript >}}
 # player.gd
 
 # In this example, health and mana must be set between 0 and 255
@@ -201,7 +201,7 @@ var sync_state:
 		position = Vector2(value.decode_half(0), value.decode_half(2))
 		health = value.decode_u8(4)
 		mana = value.decode_u8(5)
-```
+{{< /highlight >}}
 
 In the same way, properties of child nodes could be set, and custom interpolation techniques implemented.
 

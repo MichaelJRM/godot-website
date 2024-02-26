@@ -233,7 +233,7 @@ Godot Web projects can now optionally include support for being [installed as Pr
 
 A new `JavaScriptObject` was exposed to provide an [interface between Godot and JavaScript](https://godotengine.org/article/godot-web-progress-report-9), enabling you to call JavaScript methods directly from your Godot scripts. This makes it much easier to use JavaScript APIs in your Web projects.
 
-```gdscript
+{{< highlight gdscript >}}
 extends Node
 
 func _ready():
@@ -241,7 +241,7 @@ func _ready():
     var console = JavaScript.get_interface("console")
     # Call the `window.console.log()` method.
     console.log("test")
-```
+{{< /highlight >}}
 
 AudioWorklet was implemented for multi-threaded builds in Godot 3.3, solving issues with audio playback. But not all browsers or Web games platforms provide support for the necessary multi-threading APIs yet, so for single-threaded exports, [AudioWorklet was also implemented as a non-threaded option](https://github.com/godotengine/godot/pull/52650). Performance is not the best, but it's better than stuttering audio as users might experience on Chrome due to their deprecation of the previous standard `ScriptProcessorNode` approach.
 

@@ -48,12 +48,12 @@ if not file.file_exists("user://save_game.dat"):
 {{< /highlight >}}
 
 With this, using the new static method and class name:
-```gdscript
+{{< highlight gdscript >}}
 if not FileAccess.file_exists("user://save_game.dat"):
     var file = FileAccess.open("user://save_game.dat", FileAccess.WRITE)
     file.store_var(user_data)
     # No need for close(), `file` is reference counted and will be closed when going out of scope.
-```
+{{< /highlight >}}
 
 ### XR improvements all around
 

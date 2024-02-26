@@ -167,8 +167,8 @@
             <figure class="article-cover">
                 {{ if or .Params.image_caption_title .Params.image_caption_description }}
                 <figcaption>
-                    <strong>{{ .Params.image_caption_title }}</strong>
-                    <span style="margin-left: 0.75rem; font-size: 90%">{{ .Params.image_caption_description }}</span>
+                    <strong>{{ .Params.image_caption_title | safeHTML }}</strong>
+                    <span style="margin-left: 0.75rem; font-size: 90%">{{ .Params.image_caption_description | safeHTML }}</span>
                 </figcaption>
                 {{ end }}
 
@@ -192,7 +192,7 @@
                         {{ end }}
                         <span class="by">{{ .Params.author }}</span>
                     </div>
-                    <span class="date" data-post-date="{{ .Params.date }}"> {{ time.Format ":date_medium" .Params.date }}</span>
+                    <span class="date" data-post-date="{{ .Params.date }}"> {{ time.Format ":date_long" .Params.date }}</span>
                 </div>
 
                 <div class="tags">

@@ -156,7 +156,7 @@ The solution we settled on rests on one key behaviour of GLSL's `atomicAdd()` fu
 
 In practice, here's how that might look:
 
-```
+{{< highlight glsl >}}
 // Albedo from the current Fog Volume.
 new_albedo = 0000 0000 000 0 0000 0010 00 00 1000 0101  // R = 0.0, G = 0.0039, B = 0.13
 
@@ -172,8 +172,7 @@ overflow_factor = 0000 0000 000 1 1111 1111 11 00 0000 0000  // R = 0.0; G = 1.0
 
 // We then call `atomicOr()` with the albedo and overflow factor to obtain a final result.
 final_albedo = 0011 1111 011 1 111 1111 11 01 1011 1111  // R = 0.248; G = 1.0; B = 0.437
-
-```
+{{< /highlight >}}
 
 While the results aren't perfect (we added too much red), the results are close enough and we are able to do this validation very quickly. On top of that, this avoids any memory synchronization issues as all the writes to albedo are done with atomic operations. There's a gap between the two atomic calls where other `atomicAdd()`s may modify the memory, but since we're essentially clamping the value with the overflow factor, we can trust that the other `atomicAdd()`s won't hurt anything.
 

@@ -27,7 +27,7 @@ You can access a JavaScript object via two new methods in the [`JavaScript`](htt
 
 * `JavaScript.get_interface()`: Retrieves and wraps around an object in the global scope by calling a new method.
 
-```gdscript
+{{< highlight gdscript >}}
 extends Node
 
 func _ready():
@@ -35,12 +35,11 @@ func _ready():
     var console = JavaScript.get_interface("console")
     # Call the `window.console.log()` method.
     console.log("test")
-```
+{{< /highlight >}}
 
 * `JavaScript.create_object()`: Create an object via the JavaScript `new` constructor.
 
-
-```gdscript
+{{< highlight gdscript >}}
 extends Node
 
 func _ready():
@@ -54,7 +53,7 @@ func _ready():
     arr.pop()
     # Print the value of the `length` property of the array (9 after the pop).
     print(arr.length)
-```
+{{< /highlight >}}
 
 As you can see, thanks to Godot's internal [Object](https://docs.godotengine.org/en/stable/classes/class_object.html) design, you can interact with JavaScript objects obtained that way like they were native Godot objects, calling their methods, and retrieving (or even setting) their properties.
 
@@ -150,7 +149,7 @@ function myFunc() {
 
 We can then access both the library and the function from Godot, like we did in previous examples:
 
-```gdscript
+{{< highlight gdscript >}}
 extends Node
 
 # Here create a reference to the `_on_get` function (below).
@@ -169,7 +168,7 @@ func _ready():
 
 func _on_get(args):
 	OS.alert("On Get")
-```
+{{< /highlight >}}
 
 And one last treat...
 

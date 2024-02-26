@@ -97,7 +97,7 @@ The `NavigationAgent` node is a new addition: it's a handy utility used to navig
 
 This is the character code:
 
-```gdscript
+{{< highlight gdscript >}}
 extends RigidBody
 
 export(float) var velocity
@@ -122,7 +122,7 @@ func _physics_process(_delta):
 	# Calculate the velocity.
 	var vel = (target - pos).slide(n).normalized() * velocity
 	set_linear_velocity(vel)
-```
+{{< /highlight >}}
 
 > **For the curious:**
 >
@@ -229,7 +229,7 @@ Once you set the agent velocity, the agent starts to compute the safe velocity t
 You have to connect a function to this signal, and use the given `safe_velocity` to move the character.
 
 The final code looks like:
-```gdscript
+{{< highlight gdscript >}}
 [...]
 
 func _physics_process(_delta):
@@ -253,7 +253,7 @@ func _physics_process(_delta):
 func _on_NavigationAgent_velocity_computed(safe_velocity):
     # Move the character using the computed `safe_velocity` and avoid dynamic obstacles.
 	set_linear_velocity(safe_velocity)
-```
+{{< /highlight >}}
 
 Now you can play the scene, and voilà:
 

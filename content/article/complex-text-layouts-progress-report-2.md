@@ -94,17 +94,15 @@ For example, the path for the directory structure in the above screenshot will b
 Custom callbacks provide a way to override BiDi for the other types of structured text. For example, the following code splits a text using `:` as separator, applies BiDi to each part, and displays them in reversed order. The BiDi override can be used with any control, including input fields (`LineEdit`, `TextEdit`).
 
 {{< highlight gdscript >}}
-gdscript
 func _structured_text_parser(args, text):
-    var ranges = []
-    var offset = 0
-    for t in text.split(":"):
-        var text_offset = offset + t.length()
-        ranges.push_front(Vector2i(offset, text_offset) # Add text
-        ranges.push_front(Vector2i(text_offset, text_offset + 1)) # Add ":"
-        offset = text_offset + 1
-    return ranges
-
+    var ranges = []
+    var offset = 0
+    for t in text.split(":"):
+        var text_offset = offset + t.length()
+        ranges.push_front(Vector2i(offset, text_offset) # Add text
+        ranges.push_front(Vector2i(text_offset, text_offset + 1)) # Add ":"
+        offset = text_offset + 1
+    return ranges
 {{< /highlight >}}
 
 # Other changes to the Godot controls
