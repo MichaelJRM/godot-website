@@ -1,19 +1,40 @@
-baseURL:  'https://example.org/'
+# Base
+baseURL:  'https://godotengine.org/'
 languageCode:  'en-us'
-title:  'My New Hugo Site'
-ignorefiles: [ "static/storage" ]
+title:  'Godot Engine'
+
+# Ignored when building
+ignorefiles: [
+  "static/storage",
+  "tools",
+  ".editorconfig",
+  ".gitattributes",
+  ".gitignore",
+  ".github",
+  "makefile",
+  "LICENSE.txt",
+  "README.md",
+]
+
+# Pagination
 paginate:  24
 paginatePath: ''
+
+# Security
 security:
-  enableInlineShortcodes: true
+  enableInlineShortcodes: true # https://gohugo.io/templates/shortcode-templates/#inline-shortcodes
+
+# Markup
 markup:
   goldmark:
     renderer:
-      unsafe: true # Allow html, css, js inside .md files
+      unsafe: true # https://gohugo.io/getting-started/configuration-markup/#rendererunsafe
   highlight:
     noClasses: false
     linenos: true
     guessSyntax: true
+
+# Global Params
 params:
   articleOutdatedWarning:
     thresholdInMonths: 18 # Any relevant article older than 18 months will have a warning in it
