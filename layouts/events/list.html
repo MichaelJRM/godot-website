@@ -23,10 +23,9 @@
 </div>
 
 <div class="container">
-
     <h2 id="upcoming">Upcoming events</h2>
 
-    {{ $upcomingEvents := (where .Pages "Params.date_passed" "!=" true).ByDate }}
+    {{ $upcomingEvents := (where .Pages "Params.date_passed" "!=" true).ByDate.Reverse }}
     {{ with $upcomingEvents }}
         {{ partial "events/events-list.html" . }}
     {{ else }}

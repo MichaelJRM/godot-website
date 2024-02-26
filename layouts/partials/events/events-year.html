@@ -7,14 +7,14 @@
 
         <ul>
             {{ range $event := $events }}
-            {{ $params := $event.Params }}
-            <li>
-                <span>{{ $params.dates_short }}</span>
-                <a href="#{{ $event.Name }}">
-                    <em>{{ $params.name_short }}</em>
-                </a>
-                <span>{{ $params.location_short }}</span>
-            </li>
+            	{{ $params := $event.Params }}
+				<li>
+					<span>{{ $params.dates_short }}</span>
+					<a href="#{{ $params.name }}">
+						<em>{{ $params.name_short }}</em>
+					</a>
+					<span>{{ $params.location_short }}</span>
+				</li>
             {{ end }}
         </ul>
     </div>
@@ -22,32 +22,32 @@
 
 <div class="events-fulllist">
     {{ range $event := $events }}
-    {{ $params := $event.Params }}
-    <a id="{{ $event.Name }}"></a>
-    <div class="card base-padding event-card">
-        <h3>{{ $params.name }}</h3>
+		{{ $params := $event.Params }}
+		<a id="{{ $params.name }}"></a>
+		<div class="card base-padding event-card">
+			<h3>{{ $params.name }}</h3>
 
-        {{ with $params.cover_image }}
-        <img src="{{ . }}" alt="{{ $params.name }} event banner">
-        {{ end }}
+			{{ with $params.cover_image }}
+			<img src="{{ . }}" alt="{{ $params.name }} event banner">
+			{{ end }}
 
-        {{ $event.Content }}
+			{{ $event.Content }}
 
-        <h4>Event details</h4>
+			<h4>Event details</h4>
 
-        <ul class="event-details">
-            <li><strong>Date:</strong> {{ $params.dates }}</li>
-            <li><strong>Location:</strong> {{ $params.location | markdownify }}{{ with $params.location_map }} (<a href="{{ . }}">Show on map</a>){{ end }}</li>
-            {{ if $params.entrance_fee }}
-                <li><strong>Entrance fee:</strong> {{ $params.entrance_fee | markdownify }}</li>
-            {{ end }}
-            {{ if $params.registration }}
-                <li><strong>Registration:</strong> {{ $params.registration | markdownify }}</li>
-            {{ end }}
-            {{ if $params.website }}
-                <li><strong>Website:</strong> <a href="{{ $params.website }}">{{ $params.website }}</a></li>
-            {{ end }}
-        </ul>
-    </div>
+			<ul class="event-details">
+				<li><strong>Date:</strong> {{ $params.dates }}</li>
+				<li><strong>Location:</strong> {{ $params.location | markdownify }}{{ with $params.location_map }} (<a href="{{ . }}">Show on map</a>){{ end }}</li>
+				{{ if $params.entrance_fee }}
+					<li><strong>Entrance fee:</strong> {{ $params.entrance_fee | markdownify }}</li>
+				{{ end }}
+				{{ if $params.registration }}
+					<li><strong>Registration:</strong> {{ $params.registration | markdownify }}</li>
+				{{ end }}
+				{{ if $params.website }}
+					<li><strong>Website:</strong> <a href="{{ $params.website }}">{{ $params.website }}</a></li>
+				{{ end }}
+			</ul>
+		</div>
     {{ end }}
 </div>
