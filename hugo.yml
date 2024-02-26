@@ -12,7 +12,6 @@ ignorefiles: [
   ".gitignore",
   ".github",
   "makefile",
-  "LICENSE.txt",
   "README.md",
 ]
 
@@ -39,3 +38,8 @@ params:
   articleOutdatedWarning:
     thresholdInMonths: 18 # Any relevant article older than 18 months will have a warning in it
     relevantCategories: ["progress-report", "news", "events"]
+
+
+outputFormats:
+  rss:
+    baseName: rss

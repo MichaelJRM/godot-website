@@ -7,6 +7,9 @@ serve:
 serve-minify:
 	hugo server -D --minify
 
+serve-nocache:
+	hugo server -D --ignoreCache --disableFastRender
+
 install-tools:
 	cd ./tools/generators && npm install
 

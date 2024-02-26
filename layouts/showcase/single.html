@@ -255,4 +255,7 @@
 </div>
 
 {{ partialCached "footer.html" . }}
+
+{{ partial "preload-async-css.html" (dict "href" "/assets/css/tobii.min.css") }}
+
 {{ end }}

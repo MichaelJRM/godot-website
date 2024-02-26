@@ -10,6 +10,38 @@
     {{ else }}
         {{ $description = "Free and open source 2D and 3D game engine" }}
     {{ end }}
+
+	{{ if eq .Path "/" }}
+	<script>
+		/**
+		 * @typedef Author
+		 * @type {object}
+		 * @property {string} game
+		 * @property {string} by
+		 * @property {string} url
+		 * @property {string} image
+		 */
+
+		/** Author[] */
+		const authors = [
+			{{ range partialCached "_funcs/featured-showcase-pages.html" . }}
+		{
+			game: '{{ .Params.title }}',
+				by: '{{ .Params.author }}',
+			url: '{{ .Params.url }}',
+			image: '{{ index .Params.gallery 0 }}',
+		},
+		{{ end }}
+		];
+
+		// Preload hero image
+		const author = authors[Math.floor(Math.random() * authors.length)];
+		const template = document.createElement('template');
+		template.innerHTML = `<link rel="preload" as="image" href="${author.image}" fetchpriority="high"/>`
+		document.head.appendChild(template.content.firstChild);
+	</script>
+	{{ end }}
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Godot Engine">
