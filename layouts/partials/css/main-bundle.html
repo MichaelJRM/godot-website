@@ -9,8 +9,9 @@
 {{ $articleCSS := resources.Get "css/layouts/article.css" }}
 {{ $communityCSS := resources.Get "css/layouts/community.css" }}
 {{ $eventsCSS := resources.Get "css/layouts/events.css" }}
+{{ $aboutCSS := resources.Get "css/layouts/about.css" }}
 
-{{ $allCSS := slice $mainCSS $sponsorsCSS $footerCSS $indexCSS $featuresCSS $blogCSS $articleCSS $communityCSS $eventsCSS }}
+{{ $allCSS := slice $mainCSS $sponsorsCSS $footerCSS $indexCSS $featuresCSS $blogCSS $articleCSS $communityCSS $eventsCSS $aboutCSS }}
 {{ $cssBundle := $allCSS | resources.Concat "css/bundle.css" | resources.Minify | resources.Fingerprint }}
 
 <link rel="stylesheet" href="{{ $cssBundle.RelPermalink }}" integrity="{{ $cssBundle.Data.Integrity }}">

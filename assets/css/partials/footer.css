@@ -86,7 +86,7 @@ footer a {
     margin: 32px auto auto;
   }
 
-  #social > h1 {
+  #social > h4 {
     text-align: center;
   }
 
@@ -110,4 +110,3 @@ footer a {
     margin-left: 0;
   }
 }
-
