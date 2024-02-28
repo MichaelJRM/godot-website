@@ -10,6 +10,9 @@ serve-minify:
 serve-nocache:
 	hugo server -D --ignoreCache --disableFastRender
 
+serve-profile:
+	hugo server --templateMetrics --templateMetricsHints
+
 install-tools:
 	cd ./tools/generators && npm install
 

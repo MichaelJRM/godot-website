@@ -2,7 +2,7 @@
 
 <div class="flex pagination">
     {{ if $paginator.HasPrev }}
-        <a class="pagination-previous" href="{{ $paginator.Prev.URL }}">← Previous</a>
+        <a class="pagination-previous" href="{{ $paginator.Prev.URL }}">← {{ T "partials.paginator.previous" }}</a>
     {{ end }}
 
     {{ $trailsPerSide := 2 }}
@@ -21,6 +21,6 @@
     {{ end }}
 
     {{ if $paginator.HasNext }}
-        <a class="pagination-next" href="{{ $paginator.Next.URL }}">Next →</a>
+        <a class="pagination-next" href="{{ $paginator.Next.URL }}">{{ T "partials.paginator.next" }} →</a>
     {{ end }}
 </div>

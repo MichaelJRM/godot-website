@@ -1,8 +1,5 @@
 {{ define "main" }}
 
-{{ partialCached "header.html" . }}
-
-
 <style>
     .showcase-card {
         display: flex;
@@ -71,27 +68,25 @@
 <div class="head">
     <div class="container flex eqsize">
         <div class="main">
-            <h1 class="intro-title">Showcase</h1>
+            <h1 class="intro-title">{{ T "page.showcase.header.titleText" }}</h1>
         </div>
         <div class="tabs">
-            <a href="/features" class="title-font ">Features</a>
-            <a href="/showcase" class="title-font  active ">Showcase</a>
+            <a href="/features" class="title-font ">{{ T "page.showcase.header.tab.features" }}</a>
+            <a href="/showcase" class="title-font  active ">{{ T "page.showcase.header.tab.showcase" }}</a>
         </div>
     </div>
 </div>
 
 <div class="container">
-    <h2 class="title">Showreel videos</h2>
+    <h2 class="title">{{ T "page.showcase.showreelVideos.titleText" }}</h2>
 
-    <p>
-        Every year, we make a series of videos highlighting the best games made with Godot. Here are the latest ones:
-    </p>
+    <p>{{ T "page.showcase.showreelVideos.subtitleText" }}</p>
 
     {{ partialCached "showcase/showreel-shelf.html" . }}
 
     <!-- Filter will go here -->
 
-    <h2 class="title">Made with Godot</h2>
+    <h2 class="title">{{ T "page.showcase.madeWithGodot" }}</h2>
 
     {{ $projects := (where .Site.RegularPages "Section" "showcase").ByDate.Reverse }}
 
@@ -99,67 +94,67 @@
         {{ range $index, $project := where (where $projects "Params.release_date" "!=" "TBD") "Params.tool" "!=" true }}
         {{ $params := $project.Params }}
         <a href="{{ $project.Permalink }}" style="text-decoration: none;">
-                <article class="showcase-card">
-                    {{ if $params.image }}
-                        <img class="thumbnail" src="{{ $params.image }}" alt="{{ $params.title }}" {{ if le $index 9 }} fetchpriority="high" {{ else }} loading="lazy" {{ end }}>
-                    {{ else }}
-                    <div style="position: relative">
-                        <h3>{{ $params.title }}</h3>
-                        <img src="{{ index $params.gallery 0 }}" class="thumbnail" alt="{{ $params.title }}" loading="lazy">
-                    </div>
-                    {{ end }}
-                    <div class="showcase-card-caption">
-                        <div class="showcase-card-icons">
-                            {{ if $params.windows }}
-                            <img src="/assets/images/platforms/windows.svg" alt="Windows" title="Windows" width="24"
-                                 height="24">
-                            {{ end }}
-    
-                            {{ if $params.macos }}
-                            <img src="/assets/images/platforms/macos.svg" alt="Mac" title="Mac" width="24" height="24">
-                            {{ end }}
-    
-                            {{ if $params.linux }}
-                            <img src="/assets/images/platforms/linux.svg" alt="Linux" title="Linux" width="24"
-                                 height="24">
-                            {{ end }}
-    
-                            {{ if $params.switch }}
-                            <img src="/assets/images/platforms/switch.svg" alt="Nintendo Switch" title="Switch" width="24" height="24">
-                            {{ end }}
-    
-                            {{ if $params.html5 }}
-                            <img src="/assets/images/platforms/web.svg" alt="HTML5" title="HTML5" width="24"
-                                 height="24">
-                            {{ end }}
-    
-                            {{ if $params.android }}
-                            <img src="/assets/images/platforms/android.svg" alt="Android" title="Android" width="24"
-                                 height="24">
-                            {{ end }}
-    
-                            {{ if $params.ios }}
-                            <img src="/assets/images/platforms/ios.svg" alt="iOS" title="iOS" width="24" height="24">
-                            {{ end }}
-    
-                            {{ if $params.playstation }}
-                            <img src="/assets/images/platforms/playstation.svg" alt="PlayStation" title="PlayStation" width="24" height="24">
-                            {{ end }}
-    
-                            {{ if $params.xbox }}
-                            <img src="/assets/images/platforms/xbox.svg" alt="Xbox" title="Xbox" width="24" height="24">
-                            {{ end }}
-                        </div>
-                        <div class="showcase-card-authors">
-                            <p>{{ $params.author }}</p>
-                        </div>
-                    </div>
-                </article>
-            </a>
+			<article class="showcase-card">
+				{{ if $params.image }}
+					<img class="thumbnail" src="{{ $params.image }}" alt="{{ $params.title }}" {{ if le $index 9 }} fetchpriority="high" {{ else }} loading="lazy" {{ end }}>
+				{{ else }}
+				<div style="position: relative">
+					<h3>{{ $params.title }}</h3>
+					<img src="{{ index $params.gallery 0 }}" class="thumbnail" alt="{{ $params.title }}" loading="lazy">
+				</div>
+				{{ end }}
+				<div class="showcase-card-caption">
+					<div class="showcase-card-icons">
+						{{ if $params.windows }}
+						<img src="/assets/images/platforms/windows.svg" alt="Windows" title="Windows" width="24"
+							 height="24">
+						{{ end }}
+
+						{{ if $params.macos }}
+						<img src="/assets/images/platforms/macos.svg" alt="Mac" title="Mac" width="24" height="24">
+						{{ end }}
+
+						{{ if $params.linux }}
+						<img src="/assets/images/platforms/linux.svg" alt="Linux" title="Linux" width="24"
+							 height="24">
+						{{ end }}
+
+						{{ if $params.switch }}
+						<img src="/assets/images/platforms/switch.svg" alt="Nintendo Switch" title="Switch" width="24" height="24">
+						{{ end }}
+
+						{{ if $params.html5 }}
+						<img src="/assets/images/platforms/web.svg" alt="HTML5" title="HTML5" width="24"
+							 height="24">
+						{{ end }}
+
+						{{ if $params.android }}
+						<img src="/assets/images/platforms/android.svg" alt="Android" title="Android" width="24"
+							 height="24">
+						{{ end }}
+
+						{{ if $params.ios }}
+						<img src="/assets/images/platforms/ios.svg" alt="iOS" title="iOS" width="24" height="24">
+						{{ end }}
+
+						{{ if $params.playstation }}
+						<img src="/assets/images/platforms/playstation.svg" alt="PlayStation" title="PlayStation" width="24" height="24">
+						{{ end }}
+
+						{{ if $params.xbox }}
+						<img src="/assets/images/platforms/xbox.svg" alt="Xbox" title="Xbox" width="24" height="24">
+						{{ end }}
+					</div>
+					<div class="showcase-card-authors">
+						<p>{{ $params.author }}</p>
+					</div>
+				</div>
+			</article>
+		</a>
         {{ end }}
     </section>
 
-    <h2 class="title">Apps & Tools</h2>
+    <h2 class="title">{{ T "page.showcase.appsAndTools" }}</h2>
 
     <section class="flex grid showcase-cards" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr))">
         {{ range $project := where $projects "Params.tool" true }}
@@ -225,7 +220,7 @@
         {{ end }}
     </section>
 
-    <h2 class="title">Coming soon</h2>
+    <h2 class="title">{{ T "page.showcase.comingSoon" }}</h2>
     <section class="flex grid showcase-cards" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr))">
         {{ range $project := where $projects "Params.release_date" "TBD" }}
         {{ $params := $project.Params }}
@@ -251,12 +246,9 @@
     </section>
 
     <p style="margin-top: 3rem" id="submit-project">
-        <strong>Interested in showcasing your published game on this page?</strong>
-        Use <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSdhNEywWfk7tm4ABSxmPfnJrKwGPAoYbzRfZlHmu9iZ5CJ5Pw/viewform?usp=sf_link">this
-        form</a>.
+		{{ $link := "https://docs.google.com/forms/d/e/1FAIpQLSdhNEywWfk7tm4ABSxmPfnJrKwGPAoYbzRfZlHmu9iZ5CJ5Pw/viewform?usp=sf_link" }}
+		{{ T "page.showcase.submitYourGameText" (dict "linkOpen" "<a href=$link>" "linkClose" "</a>") | safeHTML }}
     </p>
 </div>
 
-{{ partialCached "footer.html" . }}
 {{ end }}

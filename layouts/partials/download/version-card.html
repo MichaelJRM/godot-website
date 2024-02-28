@@ -15,9 +15,9 @@
             </p>
 
             {{ $releaseArticle := "" }}
-
             {{ with $version.release_notes }}
                 {{ $releaseArticle = $gCtx.Site.GetPage . }}
+
                 {{ with $releaseArticle }}
                     <div class="notes-summary">
                         <div class="notes-thumbnail" style="background-image: url('{{ .Params.image }}');"></div>
@@ -34,7 +34,7 @@
 
             <div class="notes-buttons">
                 {{ with $releaseArticle }}
-                <a class="btn btn-release-notes" href="{{ .Permalink }}" title="Read full release announcement">Read more</a>
+                <a class="btn btn-release-notes" href="{{ relLangURL .RelPermalink }}" title="Read full release announcement">Read more</a>
                 {{ end }}
 
                 <a class="btn btn-release-changelog" href="https://godotengine.github.io/godot-interactive-changelog/#{{ $version.name }}-{{ $version.flavor }}" title="View complete changelog">View changelog</a>
@@ -56,7 +56,7 @@
                     {{ if eq $platform.name "templates" }}<hr>{{ end }}
 
                     <div class="download-platform">
-                        <img width="24" height="24" src="/assets/images/platforms/{{ replace $platform.name "_" "-" }}.svg" alt="{{ $platform.title }}" class="dark-invert" />
+                        <img width="24" height="24" src="/assets/images/platforms/{{ $platform.name | urlize }}.svg" alt="{{ $platform.title }}" class="dark-invert" />
                         {{ $platform.title }}
                     </div>
 
@@ -117,10 +117,9 @@
                         {{ with $platform.caption }} - {{ . }}{{ end }}
                     </a>
                     <span class="download-details">
-                        {{ range $index, $tag := $platform.tags }}
-                            {{ if gt $index 0 }} · {{ end }}
-                            {{ $tag }}
-                        {{ end }} C# support
+                        {{- range $index, $tag := $platform.tags }}
+                            {{ $tag }} ·
+                        {{ end -}}{{- T "page.download.c#Support" -}}
                     </span>
                 </div>
             {{ end }}

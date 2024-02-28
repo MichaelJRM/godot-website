@@ -44,7 +44,7 @@ export function generateLink(version, platform, isMono = false, host = "github")
     }
 
     let downloadSlug = '';
-    if (platform === 'templates' && slugsDefaults[platform]) {
+    if (platform === 'templates' && slugsDefaults.templates) {
         downloadSlug = slugsDefaults[platform];
     } else if (slugsDefaults.editor.primary[platform]) {
         downloadSlug = slugsDefaults.editor.primary[platform];

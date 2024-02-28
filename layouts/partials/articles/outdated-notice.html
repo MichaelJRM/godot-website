@@ -8,10 +8,12 @@
         <div class="card card-warning">
             <p>
                 {{ with .Params.outdated_notice_text }}
-                {{ . }}
+                	{{ . }}
                 {{ else }}
-                This article is from <strong>{{ time.Format ":date_long" .Params.date }}</strong>, some of its contents might be outdated and no longer accurate.<br>
-                You can find up-to-date information about the engine in the <a href="https://docs.godotengine.org/en/stable/">official documentation</a>.
+					{{ $date := time.Format ":date_long" .Params.date }}
+					{{ T "partials.outdatedNotice.bodyText"
+						(dict "date" $date "linkOpen" "<a href='https://docs.godotengine.org/en/stable/'>" "linkClose" "</a>") | safeHTML
+					}}
                 {{ end }}
             </p>
         </div>

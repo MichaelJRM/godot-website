@@ -1,8 +1,6 @@
 {{ define "main" }}
 
-<link rel="stylesheet" href="/assets/css/events.css">
-
-{{ partialCached "header.html" . }}
+<link rel="stylesheet" href="{{ (resources.Get "css/events.css" | resources.Minify | resources.Fingerprint).RelPermalink }}">
 
 <style>
     #past {
@@ -27,7 +25,7 @@
 
     {{ $upcomingEvents := (where .Pages "Params.date_passed" "!=" true).ByDate.Reverse }}
     {{ with $upcomingEvents }}
-        {{ partial "events/events-list.html" . }}
+        {{ partialCached "events/events-list.html" . }}
     {{ else }}
         <p>There are currently no future events planned.</p>
     {{ end }}
@@ -37,11 +35,10 @@
     {{ $pastEvents := (where .Pages "Params.date_passed" true).ByDate.Reverse }}
 
     {{ with $pastEvents }}
-        {{ partial "events/events-list.html" . }}
+        {{ partialCached "events/events-list.html" . }}
     {{ else }}
         <p>There are currently no past events.</p>
     {{ end }}
 </div>
 
-{{ partialCached "footer.html" . }}
 {{ end }}

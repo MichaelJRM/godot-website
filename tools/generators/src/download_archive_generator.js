@@ -4,7 +4,7 @@ import {generateLink, getDownloadSlugs} from './url_util.js';
 
 const HOSTS = ['github_builds', 'github'];
 const TEMPLATES_PLATFORM = 'templates';
-const exportPath = 'content/download/archive';
+const exportPath = 'download/archive';
 
 /**
  * @typedef {Object} Version
@@ -15,10 +15,14 @@ const exportPath = 'content/download/archive';
 
 
 (function main() {
-    const fileContents = fs.readFileSync('data/versions.yml', 'utf8');
-    const versions = yaml.load(fileContents);
-
-    const downloadPlatforms = loadDownloadPlatforms();
+	const hugoConfigFile = loadHugoConfigFile();
+	const supportedLanguages = hugoConfigFile.languages;
+    const versions = loadVersions();
+    const downloadPlatforms = {}
+	const supportedLanguagesISO = Object.keys(supportedLanguages);
+	for (const iso of supportedLanguagesISO) {
+		downloadPlatforms[iso] = loadDownloadPlatforms(iso);
+	}
 
     for (let i = 0; i < versions.length; i ++) {
         const version = versions[i];
@@ -33,15 +37,20 @@ const exportPath = 'content/download/archive';
             release_notes: version.release_notes ?? "",
         };
 
-        const links = generateVersionDownloadLinks(version, downloadPlatforms);
-        frontmatter.links = links.links;
-        frontmatter.primaryPlatforms = links.primary;
+		if (!frontmatter.featured) {
+			delete frontmatter.featured
+		}
 
-        if (!frontmatter.featured) {
-            delete frontmatter.featured
-        }
+		const links = generateVersionDownloadLinks(version, downloadPlatforms);
+		frontmatter.primaryPlatforms = links.primary;
 
-        writeArchiveVersion(version.name, version.flavor, frontmatter);
+		for (const iso of supportedLanguagesISO) {
+			const config = supportedLanguages[iso];
+			if (config.disabled) continue;
+
+			frontmatter.links = links.linksPerLanguage[iso];
+			writeArchiveVersion(config.contentDir, version.name, version.flavor, frontmatter);
+		}
 
         if (version.releases) {
             for (let j = 0; j < version.releases.length; j++) {
@@ -52,56 +61,83 @@ const exportPath = 'content/download/archive';
                 frontmatter.featured = release.featured;
                 frontmatter.release_date = convertDateFormat(release.release_date) ?? "";
                 frontmatter.release_notes = release.release_notes ?? "";
-                const links = generateVersionDownloadLinks({name: version.name, flavor: release.name}, downloadPlatforms);
-                frontmatter.links = links.links;
-                frontmatter.primaryPlatforms = links.primary;
+				if (!frontmatter.featured) {
+					delete frontmatter.featured
+				}
 
-                if (!frontmatter.featured) {
-                    delete frontmatter.featured
-                }
+				const links = generateVersionDownloadLinks({name: version.name, flavor: release.name}, downloadPlatforms);
+				frontmatter.primaryPlatforms = links.primary;
 
-                writeArchiveVersion(version.name, release.name, frontmatter);
+				for (const iso of supportedLanguagesISO) {
+					const config = supportedLanguages[iso];
+					if (config.disabled) continue;
+
+					frontmatter.links = links.linksPerLanguage[iso];
+					writeArchiveVersion(config.contentDir, version.name, release.name, frontmatter);
+				}
             }
         }
     }
 })();
 
 /**
+ * @typedef {Object} DownloadPlatforms
+ * @property {string} iso
+ * @property {DownloadPlatform[]} downloadPlatforms
+ */
+
+/**
  * @param {Version} version
- * @param {DownloadPlatform[]} downloadPlatforms
+ * @param {DownloadPlatforms} downloadPlatformsByIso
  * @return {Object}
  */
-function generateVersionDownloadLinks(version, downloadPlatforms) {
+function generateVersionDownloadLinks(version, downloadPlatformsByIso) {
+	const downloadPlatformsIsos = Object.keys(downloadPlatformsByIso);
     const downloadPlatformsMap = {};
-    for (let i = 0; i < downloadPlatforms.length; i++) {
-        const platform = downloadPlatforms[i];
-        downloadPlatformsMap[platform.name] = platform;
+	const linksPerLanguage = {};
+
+    for (let i = 0; i < downloadPlatformsIsos.length; i++) {
+		const iso = downloadPlatformsIsos[i];
+		linksPerLanguage[iso] = {}
+		const downloadPlatforms = downloadPlatformsByIso[iso];
+		downloadPlatformsMap[iso] = {};
+
+		for (let j = 0; j < downloadPlatforms.length; j++) {
+			const platform = downloadPlatforms[j];
+			downloadPlatformsMap[iso][platform.name] = platform;
+		}
     }
 
     const downloadSlugs = getDownloadSlugs(version);
-    const links = {};
     const primary = [];
 
-    function generateLinksForHosts(version, platform, data) {
-        data[platform].hosts = {};
+    function generateHosts(version, platform) {
+		const hosts = {}
 
-        for (let i = 0; i < HOSTS.length; i++) {
+		for (let i = 0; i < HOSTS.length; i++) {
             const host = HOSTS[i];
-            data[platform].hosts[host] = {};
-            data[platform].hosts[host].regular = generateLink(version, platform, false, host);
-            data[platform].hosts[host].mono = generateLink(version, platform, true, host);
+			hosts[host] = {};
+			hosts[host].regular = generateLink(version, platform, false, host);
+			hosts[host].mono = generateLink(version, platform, true, host);
         }
+
+		return hosts;
     }
 
     if (downloadSlugs.editor.primary) {
         const primaryPlatforms = Object.keys(downloadSlugs.editor.primary);
         for (let i = 0; i < primaryPlatforms.length; i++) {
             const platform = primaryPlatforms[i];
-            links[platform] = {
-                ...downloadPlatformsMap[platform],
-            }
             primary.push(platform);
-            generateLinksForHosts(version, platform, links);
+            const hosts = generateHosts(version, platform);
+
+			for (let j = 0; j < downloadPlatformsIsos.length; j++) {
+				const iso = downloadPlatformsIsos[j];
+				linksPerLanguage[iso][platform] = {
+					...downloadPlatformsMap[iso][platform],
+				}
+				linksPerLanguage[iso][platform].hosts = hosts;
+			}
         }
     }
 
@@ -109,10 +145,15 @@ function generateVersionDownloadLinks(version, downloadPlatforms) {
         const secondaryPlatforms = Object.keys(downloadSlugs.editor.secondary);
         for (let i = 0; i < secondaryPlatforms.length; i++) {
             const platform = secondaryPlatforms[i];
-            links[platform] = {
-                ...downloadPlatformsMap[platform],
-            }
-            generateLinksForHosts(version, platform, links);
+			const hosts = generateHosts(version, platform);
+
+			for (let j = 0; j < downloadPlatformsIsos.length; j++) {
+				const iso = downloadPlatformsIsos[j];
+				linksPerLanguage[iso][platform] = {
+					...downloadPlatformsMap[iso][platform],
+				}
+				linksPerLanguage[iso][platform].hosts = hosts;
+			}
         }
     }
 
@@ -120,30 +161,40 @@ function generateVersionDownloadLinks(version, downloadPlatforms) {
         const extras = Object.keys(downloadSlugs.extras);
         for (let i = 0; i < extras.length; i++) {
             const extra = extras[i];
-            links[extra] = {
-                ...downloadPlatformsMap[extra],
-            }
-            generateLinksForHosts(version, extra, links);
+			const hosts = generateHosts(version, extra);
+
+			for (let j = 0; j < downloadPlatformsIsos.length; j++) {
+				const iso = downloadPlatformsIsos[j];
+				linksPerLanguage[iso][extra] = {
+					...downloadPlatformsMap[iso][extra],
+				}
+				linksPerLanguage[iso][extra].hosts = hosts;
+			}
         }
     }
 
-    links[TEMPLATES_PLATFORM] = {
-        ...downloadPlatformsMap[TEMPLATES_PLATFORM],
-    }
-    generateLinksForHosts(version, TEMPLATES_PLATFORM, links);
+	const templateHosts = generateHosts(version, TEMPLATES_PLATFORM);
+
+	for (let j = 0; j < downloadPlatformsIsos.length; j++) {
+		const iso = downloadPlatformsIsos[j];
+		linksPerLanguage[iso][TEMPLATES_PLATFORM] = {
+			...downloadPlatformsMap[iso][TEMPLATES_PLATFORM],
+		}
+		linksPerLanguage[iso][TEMPLATES_PLATFORM].hosts = templateHosts;
+	}
 
     // Templates always appear at the bottom
     primary.push(TEMPLATES_PLATFORM);
 
     return {
-        links,
+		linksPerLanguage,
         primary,
     };
 }
 
-function writeArchiveVersion(name, flavor, data) {
-    const frontmatter = `---\n# Generated by /scripts/js/download_archive_generator !!! do not edit by hand !!!\n${yaml.dump(data, {forceQuotes: true})}---`;
-    fs.writeFile(`${exportPath}/${name}-${flavor}.md`, frontmatter, (err) => {
+function writeArchiveVersion(contentDir, name, flavor, data) {
+    const frontmatter = `---\n# Generated by /tools/generators/src/download_archive_generator !!! do not edit by hand !!!\n${yaml.dump(data, {forceQuotes: true})}---`;
+    fs.writeFile(`${contentDir}/${exportPath}/${name}-${flavor}.md`, frontmatter, (err) => {
         if (err) throw err;
     });
 }
@@ -164,8 +215,18 @@ function convertDateFormat(input) {
 /**
  * @returns {DownloadPlatform[]}
  */
-function loadDownloadPlatforms() {
-    const fileContents = fs.readFileSync('data/download_platforms.yml', 'utf8');
+function loadDownloadPlatforms(iso) {
+    const fileContents = fs.readFileSync(`data/${iso}/download_platforms.yml`, 'utf8');
     return yaml.load(fileContents);
+}
+
+function loadVersions() {
+	const fileContents = fs.readFileSync('data/versions.yml', 'utf8');
+	return yaml.load(fileContents);
+}
+
+function loadHugoConfigFile() {
+	const fileContents = fs.readFileSync('hugo.yml', 'utf8');
+	return yaml.load(fileContents);
 }
 

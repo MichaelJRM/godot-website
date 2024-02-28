@@ -1,22 +1,22 @@
 # Base
 baseURL:  'https://godotengine.org/'
-languageCode:  'en-us'
+languageCode:  'en'
 title:  'Godot Engine'
 
 # Ignored when building
 ignorefiles: [
-  "static/storage",
-  "tools",
-  ".editorconfig",
-  ".gitattributes",
-  ".gitignore",
-  ".github",
-  "makefile",
-  "README.md",
+  'static/storage',
+  'tools',
+  '.editorconfig',
+  '.gitattributes',
+  '.gitignore',
+  '.github',
+  'makefile',
+  'README.md',
 ]
 
 # Pagination
-paginate:  24
+paginate: 24
 paginatePath: ''
 
 # Security
@@ -37,9 +37,27 @@ markup:
 params:
   articleOutdatedWarning:
     thresholdInMonths: 18 # Any relevant article older than 18 months will have a warning in it
-    relevantCategories: ["progress-report", "news", "events"]
+    relevantCategories: ['progress-report', 'news', 'events']
 
-
+# Formats
 outputFormats:
   rss:
     baseName: rss
+
+# Language
+defaultContentLanguage: en
+defaultContentLanguageInSubdir: false
+enableMissingTranslationPlaceholders: true
+languages:
+  en:
+    contentDir: content/en
+    title: Godot Engine
+    languageCode: en
+    languageName: English
+    weight: 1
+  pt:
+    title: Godot Engine
+    contentDir: content/pt
+    languageCode: pt
+    languageName: Portugal Portuguese
+    weight: 10

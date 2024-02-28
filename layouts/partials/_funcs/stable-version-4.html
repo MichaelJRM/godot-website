@@ -1,3 +1,3 @@
-{{ $versions := where .Site.RegularPages "Type" "download/archive" }}
+{{ $versions := where .Site.Sites.First.RegularPages "Type" "download/archive" }}
 {{ $stableVersion4 := index (where $versions "Params.featured" "4" | first 1) 0 }}
 {{ return $stableVersion4.Params }}

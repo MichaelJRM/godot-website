@@ -1,8 +1,6 @@
 {{ define "main" }}
 
-{{ partialCached "header.html" . }}
-
-<link rel="stylesheet" href="/assets/css/download-archive.css?2">
+<link rel="stylesheet" href="{{ (resources.Get "css/download-archive.css" | resources.Minify | resources.Fingerprint).RelPermalink }}">
 
 <div class="hero">
     <h1>Godot archive</h1>
@@ -57,5 +55,4 @@
     </div>
 </div>
 
-{{ partialCached "footer.html" . }}
 {{ end }}

@@ -1,13 +1,12 @@
 {{ define "main" }}
 
-{{ partialCached "header.html" . }}
+<link rel="stylesheet" href="{{ (resources.Get "css/anchor-link.css" | resources.Minify | resources.Fingerprint).RelPermalink }}">
+<link rel="stylesheet" href="{{ (resources.Get "css/article-cards.css" | resources.Minify | resources.Fingerprint).RelPermalink }}">
 
-<link rel="stylesheet" href="/assets/css/anchor-link.css?1">
-<link rel="stylesheet" href="/assets/css/article-cards.css?2">
-
-<script defer src="/assets/js/tobii.min.js"></script>
-<script defer src="/assets/js/anchor-link.js"></script>
-
+{{ $tobiiJS := resources.Get "js/tobii.min.js" | resources.Fingerprint }}
+<script defer src="{{ $tobiiJS.RelPermalink }}" integrity="{{ $tobiiJS.Data.Integrity }}"></script>
+{{ $anchorLinkJS := resources.Get "js/anchor-link.js" | resources.Minify | resources.Fingerprint }}
+<script defer src="{{ $anchorLinkJS.RelPermalink }}" integrity="{{ $anchorLinkJS.Data.Integrity }}"></script>
 
 <style>
     body {
@@ -159,7 +158,7 @@
     }
 </style>
 
-<link rel="stylesheet" href="/assets/css/highlight.css">
+<link rel="stylesheet" href="{{ (resources.Get "css/highlight.css" | resources.Minify | resources.Fingerprint).RelPermalink }}">
 
 <div class="container">
     <article class="padded">
@@ -184,9 +183,9 @@
                 <div class="article-metadata">
                     <div class="article-author">
                         <span>By: </span>
-                        {{ $post_author := index (where .Site.Data.authors "name" .Params.author | first 1) 0 }}
-                        {{ if $post_author }}
-                        <img class="avatar" width="25" height="25" src="{{ $post_author.image }}" alt="{{ .Params.author }}" loading="lazy">
+						{{ $postAuthor := index (where .Site.Data.authors "name" .Params.author | first 1) 0 }}
+						{{ if $postAuthor }}
+                        <img class="avatar" width="25" height="25" src="{{ $postAuthor.image }}" alt="{{ .Params.author }}" loading="lazy">
                         {{ else }}
                         <img class="avatar" width="25" height="25" src="/assets/images/authors/default_avatar.svg" alt="{{ .Params.author }}" loading="lazy">
                         {{ end }}
@@ -198,7 +197,8 @@
                 <div class="tags">
                     {{ range $category := .Params.categories }}
                     <a href="/blog/{{ $category }}">
-                        <div class="tag active">{{ (index (index ($.Site.Data.categories) $category) 0).name }}</div>
+						{{ $categoryName := (index (index ($.Site.Data.categories) $category) 0).name}}
+                        <div class="tag active">{{ T (printf "%s.%s" "page.blog.category" $categoryName) }}</div>
                     </a>
                     {{ end }}
                 </div>
@@ -236,5 +236,6 @@
     });
 </script>
 
-{{ partialCached "footer.html" . }}
+{{ partialCached "preload-async-css.html" (dict "href" (resources.Get "css/tobii.min.css" | resources.Fingerprint).RelPermalink) }}
+
 {{ end }}

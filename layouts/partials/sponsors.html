@@ -1,7 +1,7 @@
 <section class="sponsors padded" id="sponsors">
 	<div class="container">
-		<h2>Godot is sponsored by:</h2>
-		<h3>Patron</h3>
+		<h2>{{ i18n "partials.sponsors.titleText" }}</h2>
+		<h3>{{ i18n "partials.sponsors.patron" }}</h3>
 		<div class="grid patron">
 			{{ range $sponsor := .Site.Data.sponsors.patron }}
 			<a class="sponsor-card patron" href="{{ $sponsor.link }}" target="_blank" rel="noopener">
@@ -9,7 +9,7 @@
 			</a>
 			{{ end }}
 		</div>
-		<h3>Sponsor Platinum</h3>
+		<h3>{{ i18n "partials.sponsors.sponsorPlatinum" }}</h3>
 		<div class="grid platinum">
 			{{ range $sponsor := .Site.Data.sponsors.platinum }}
 			<a class="sponsor-card platinum" href="{{ $sponsor.link }}" target="_blank" rel="noopener">
@@ -17,7 +17,7 @@
 			</a>
 			{{ end }}
 		</div>
-		<h3>Sponsor Gold</h3>
+		<h3>{{ i18n "partials.sponsors.sponsorGold" }}</h3>
 		<div class="grid gold">
 			{{ range $sponsor := .Site.Data.sponsors.gold }}
 			<a class="sponsor-card gold" href="{{ $sponsor.link }}" target="_blank" rel="noopener">
@@ -25,7 +25,7 @@
 			</a>
 			{{ end }}
 		</div>
-		<h3>Sponsor Silver</h3>
+		<h3>{{ i18n "partials.sponsors.sponsorSilver" }}</h3>
 		<div class="grid silver">
 			{{ range $sponsor := .Site.Data.sponsors.silver }}
 			<a class="sponsor-card silver" href="{{ $sponsor.link }}" target="_blank" rel="noopener">
@@ -33,6 +33,6 @@
 			</a>
 			{{ end }}
 		</div>
-		<p class="range-more" style="margin-top: 50px; text-align: left; opacity: 0.8;">If you want to sponsor the project, please write to <a href="mailto:contact@godot.foundation">contact@godot.foundation</a>.</p>
+		<p class="range-more" style="margin-top: 50px; text-align: left; opacity: 0.8;">{{ i18n "partials.sponsors.sponsorProjectText" (dict "email" "<a href='mailto:contact@godot.foundation'>contact@godot.foundation</a>") | safeHTML }}</p>
 	</div>
 </section>

@@ -1,9 +1,7 @@
 {{ define "main" }}
 
-<link rel="stylesheet" href="/assets/css/download.css?2">
-<link rel="stylesheet" href="/assets/css/download-version.css?2">
-
-{{ partialCached "header.html" . }}
+<link rel="stylesheet" href="{{ (resources.Get "css/download.css" | resources.Minify | resources.Fingerprint).RelPermalink }}">
+<link rel="stylesheet" href="{{ (resources.Get "css/download-version.css" | resources.Minify | resources.Fingerprint).RelPermalink }}">
 
 <style>
     .hero {
@@ -50,7 +48,7 @@
 
     <div class="other-platforms">
         <div class="other-platforms-wrapper">
-            Looking for another version? <a href="/download/archive">Open the archive index!</a>
+            Looking for another version? <a href="{{ relLangURL "download/archive" }}">Open the archive index!</a>
         </div>
     </div>
 </div>
@@ -63,7 +61,7 @@
     </div>
 </div>
 
-<script defer src="/assets/js/download-version.js"></script>
+{{ $downloadVersionJS := resources.Get "js/download-version.js" | resources.Minify | resources.Fingerprint }}
+<script defer src="{{ $downloadVersionJS.RelPermalink }}" integrity="{{ $downloadVersionJS.Data.Integrity }}"></script>
 
-{{ partialCached "footer.html" . }}
 {{ end }}

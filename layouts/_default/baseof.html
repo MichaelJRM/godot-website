@@ -24,7 +24,7 @@
 
 		/** Author[] */
 		const authors = [
-			{{ range partialCached "_funcs/featured-showcase-pages.html" . }}
+			{{ range partialCached "_funcs/featured-showcase-pages.html" $ }}
 		{
 			game: '{{ .Params.title }}',
 				by: '{{ .Params.author }}',
@@ -60,15 +60,24 @@
 
     <link rel="icon" href="/assets/favicon.png" sizes="any">
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="/assets/css/main.css?111">
+    <link rel="stylesheet" href="{{ (resources.Get "css/main.css" | resources.Minify | resources.Fingerprint).RelPermalink }}">
     <link rel="preload" as="font" href="/assets/fonts/Montserrat-Bold.woff2" crossorigin>
     <link rel="preload" as="font" href="/assets/fonts/Montserrat-ExtraBold.woff2" crossorigin>
     <link rel="me" href="https://mastodon.gamedev.place/@godotengine">
 </head>
 
 <body>
+{{ block "header" . }}
+{{ partialCached "header.html" . }}
+{{ end }}
+
 {{ block "main" . }}
 {{ .Content }}
 {{ end }}
+
+{{ block "footer" . }}
+{{ partialCached "footer.html" . }}
+{{ end }}
 </body>
 </html>
+

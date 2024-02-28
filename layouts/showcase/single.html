@@ -18,9 +18,8 @@
         el.style.backgroundColor = 'unset';
     }
 </script>
-<script defer src="/assets/js/tobii.min.js" onload="initTobbi()"></script>
-
-{{ partialCached "header.html" . }}
+{{ $tobiiJS := resources.Get "js/tobii.min.js" | resources.Fingerprint }}
+<script defer src="{{ $tobiiJS.RelPermalink }}" integrity="{{ $tobiiJS.Data.Integrity }}" onload="initTobbi()"></script>
 
 <style>
     .showcase-video-image {
@@ -254,8 +253,5 @@
     {{ end }}
 </div>
 
-{{ partialCached "footer.html" . }}
-
-{{ partial "preload-async-css.html" (dict "href" "/assets/css/tobii.min.css") }}
-
+{{ partialCached "preload-async-css.html" (dict "href" (resources.Get "css/tobii.min.css" | resources.Fingerprint).RelPermalink) }}
 {{ end }}

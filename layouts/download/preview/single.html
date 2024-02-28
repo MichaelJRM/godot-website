@@ -1,9 +1,11 @@
+{{ define "header" }}
+{{ partialCached "transparent-header.html" . }}
+{{ end }}
+
 {{ define "main" }}
 
-<link rel="stylesheet" href="/assets/css/download.css?2">
-<link rel="stylesheet" href="/assets/css/download-version.css?2">
-
-{{ partialCached "transparent-header.html" . }}
+<link rel="stylesheet" href="{{ (resources.Get "css/download.css" | resources.Minify | resources.Fingerprint).RelPermalink }}">
+<link rel="stylesheet" href="{{ (resources.Get "css/download-version.css" | resources.Minify | resources.Fingerprint).RelPermalink }}">
 
 <style>
     .hero {
@@ -126,27 +128,14 @@
     <h2>Need a stable version?</h2>
 
     <div class="stable-download-ready">
-        {{ $stableVersion4 := partialCached "_funcs/stable-version-4.html" . }}
-        {{ $stableVersion3 := partialCached "_funcs/stable-version-3.html" . }}
-
-        <p>Download the <strong>latest version of Godot 4</strong> right now and begin your creative journey!</p>
-        <a href="/download/windows" class="btn btn-download set-os-download-url" data-version="4"
-           title="Download the latest version of Godot 4">
-            <div class="download-title">Download Latest</div>
-            <div class="download-hint">{{ $stableVersion4.name }}</div>
-        </a>
-
-        <p>Want to stick to the <strong>true and trusted Godot 3</strong>? Download the long-term support version!</p>
-        <a href="/download/windows" class="btn btn-download set-os-download-url" data-version="3"
-           title="Download the long-term support version of Godot 3">
-            <div class="download-title">Download LTS</div>
-            <div class="download-hint">{{ $stableVersion3.name }}</div>
-        </a>
+		<p> {{ T "page.features.readyToStart.downloadGodot4Text" | safeHTML }} </p>
+		{{ partialCached "common/download-latest-button.html" . }}
+		<p> {{ T "page.features.readyToStart.downloadGodot3Text" | safeHTML }} </p>
+		{{ partialCached "common/download-lts-button.html" . }}
     </div>
 </div>
 
-{{ partialCached "footer.html" . }}
-
-<script defer src="/assets/js/download-version.js"></script>
+{{ $downloadVersionJS := resources.Get "js/download-version.js" | resources.Minify | resources.Fingerprint }}
+<script defer src="{{ $downloadVersionJS.RelPermalink }}" integrity="{{ $downloadVersionJS.Data.Integrity }}"></script>
 
 {{ end }}

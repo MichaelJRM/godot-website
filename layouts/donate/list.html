@@ -1,0 +1,204 @@
+{{ define "main" }}
+<style>
+    .col-2 {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    @media (min-width: 768px) {
+        .col-2 {
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+    }
+
+    .donate-button {
+        text-decoration: none;
+        color: white;
+        background: var(--big-button-color);
+        padding: 12px 24px;
+        box-shadow: var(--base-shadow);
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        display: inline-block;
+    }
+
+    .container .options {
+        display: grid;
+        grid-template-columns: 1fr;
+        padding-top: 50px;
+        text-align: center;
+        max-width: 960px;
+        gap: 30px;
+        margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+        .container .options {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    .card-transfer {
+		background: #2f2f2f;
+		margin-top: 50px;
+        padding: 43px 50px;
+        border-radius: 11px;
+        box-shadow: 0 11px 10px -10px #00000042;
+    }
+
+    @media (prefers-color-scheme: light) {
+        .card-transfer {
+            background-color: rgba(160, 160, 160, 0.15);
+        }
+    }
+
+    .development-fund {
+        background: #363a4f;
+    }
+    @media (prefers-color-scheme: light) {
+        .development-fund {
+            background: #dae0ff;
+        }
+    }
+
+    .card-transfer .details {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    @media (min-width: 768px) {
+        .card-transfer .details {
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        .bank-transfer .details {
+            padding: 0 30px;
+        }
+        .development-fund .details p{
+            margin-top: 0;
+        }
+    }
+
+    p.for-more {
+        text-align: center;
+        opacity: 0.8;
+    }
+
+    .about-support {
+        padding: 30px;
+    }
+    @media (min-width: 768px) {
+        .about-support {
+            padding: 70px;
+        }
+    }
+
+    .foundation {
+        text-align: center;
+        margin-bottom: 50px;
+        margin-top: 50px;
+    }
+    .foundation .image {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    .foundation .image img{
+        max-width: 100%;
+    }
+    .foundation p {
+        max-width: 772px;
+        margin-bottom: 40px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    @media (prefers-color-scheme: dark) {
+        .if-light {
+            display: none;
+        }
+
+        .if-dark {
+            display: block;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        .if-light {
+            display: block;
+        }
+
+        .if-dark {
+            display: none;
+        }
+    }
+</style>
+
+
+<div class="container">
+    <div class="col-2">
+        <div class="paypal-transfer card-transfer" id="paypal">
+            <h2>{{ T "page.donate.paypal.titleText" }}</h2>
+            <p>{{ T "page.donate.paypal.bodyText" (dict "paypal" "paypal@godot.foundation") | safeHTML }}</p>
+            <a class="donate-button" target="_blank" href="https://www.paypal.com/donate/?hosted_button_id=H3V5K8J3QYZBU">
+				{{- T "page.donate.paypal.button.oneTimeDonation" -}}
+			</a>
+        </div>
+
+        <div class="development-fund card-transfer" id="patreon">
+			<h2>{{ T "page.donate.developmentFund.titleText" }}</h2>
+			<p>{{ T "page.donate.developmentFund.bodyText" }}</p>
+            <a class="donate-button"
+               href="https://fund.godotengine.org">{{ T "page.donate.developmentFund.button.recurringDonation" }}</a>
+        </div>
+    </div>
+
+    <div class="bank-transfer card-transfer" id="bank">
+        <h2>{{T "page.donate.bankTransfer.titleText" }}</h2>
+
+        <p>
+			{{- T "page.donate.bankTransfer.bodyText"
+				(dict "email" "<a href='mailto:contact@godot.foundation' target='_blank'>contact@godot.foundation</a>") | safeHTML
+			-}}
+		</p>
+
+        <h3>Send payments to:</h3>
+
+        <div class="details">
+            <div>
+                <strong>Stichting Godot</strong><br>
+                Spoorlaan 5</br>
+                1911HA Uitgeest<br>
+                The Netherlands<br>
+                <br>
+				{{T "page.donate.bankTransfer.bicSwiftCode" }} <strong>TRIONL2U</strong><br>
+                IBAN: <strong>NL12 TRIO 0320 5613 48</strong><br>
+            </div>
+            <div>
+				{{T "page.donate.bankTransfer.bank" }} <strong>Triodos Bank</strong><br>
+                <strong>Postbus 55</strong><br>
+                <strong>3700 AB Zeist</strong><br>
+                <strong>The Netherlands</strong><br>
+            </div>
+        </div>
+    </div>
+
+    <div class="foundation">
+        <div class="image">
+            <a href="https://godot.foundation" target="_blank">
+                <img class="if-dark" src="https://godot.foundation/assets/godot-foundation-logo.svg" alt="The Godot Foundation">
+                <img class="if-light" src="https://godot.foundation/assets/godot-foundation-logo-light.svg" alt="The Godot Foundation">
+            </a>
+        </div>
+		<p>
+			{{- T "page.donate.foundation.bodyText"
+			(dict "godotFoundation" "<a href='https://godot.foundation' target='_blank'>Godot Foundation</a>") | safeHTML
+			-}}
+		</p>
+    </div>
+
+</div>
+
+{{ partial "sponsors.html" . }}
+{{ end }}

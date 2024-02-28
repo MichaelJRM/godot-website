@@ -2,7 +2,7 @@ import yaml from 'js-yaml';
 import fs from 'fs';
 import {generateLink} from './url_util.js';
 
-const exportPath = 'content/mirrorlist';
+const exportPath = 'content/en/mirrorlist';
 
 (function main() {
     const fileContents = fs.readFileSync(`data/versions.yml`, 'utf8');

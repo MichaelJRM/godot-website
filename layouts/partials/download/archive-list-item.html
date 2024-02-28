@@ -1,4 +1,5 @@
 {{ $version := .version }}
+{{ $gCtx := .gCtx }}
 
 
 <div class="archive-list-item">
@@ -16,13 +17,11 @@
         </a>
     </div>
 
-    <a class="btn btn-release-download" href="/download/archive/{{ $version.name }}-{{ $version.flavor }}">Download</a>
-
+    <a class="btn btn-release-download" href="{{ relLangURL (printf "download/archive/%s-%s" $version.name $version.flavor) }}">Download</a>
     {{ with $version.release_notes }}
-        {{ $releaseArticle := index (where (where $.gCtx.Site.RegularPages "Section" "article") "RelPermalink" . | first 1) 0 }}
-
+		{{ $releaseArticle := $gCtx.Site.GetPage . }}
         {{ with $releaseArticle }}
-        <a class="btn btn-release-notes" href="{{ $releaseArticle.Permalink }}" title="Read release announcement">News</a>
+        	<a class="btn btn-release-notes" href="{{ relLangURL $releaseArticle.RelPermalink }}" title="Read release announcement">News</a>
         {{ end }}
     {{ end }}
 

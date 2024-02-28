@@ -4,47 +4,54 @@
     <div class="container flex footer-container">
         <div id="copyright">
             <p>
-                © 2007-{{ time.Now.Year }} Juan Linietsky, Ariel Manzur and <a
-                    href="https://github.com/godotengine/godot/blob/master/AUTHORS.md" target="_blank"
-                    rel="noopener">contributors</a>.<br>
-                Hosted by the <a href="https://godot.foundation/" target="_blank" rel="noopener">Godot Foundation</a>.<br>
-                Website <a href="https://github.com/godotengine/godot-website" target="_blank" rel="noopener">source code on  GitHub</a>.
+				{{ $date := time.Now.Year }}
+				{{ T "partials.footer.copyRightText"
+				(dict "year" $date "linkOpen" "<a href='https://github.com/godotengine/godot/blob/master/AUTHORS.md' target='_blank' rel='noopener'>" "linkClose" "</a>") | safeHTML
+				}}
+                <br>
+				{{ T "partials.footer.hostedByTheGodotFoundation"
+					(dict  "linkOpen" "<a href='https://godot.foundation/' target='_blank' rel='noopener'>" "linkClose" "</a>") | safeHTML
+				}}
+				<br>
+				{{ T "partials.footer.websiteSourceCodeOnGithub"
+				(dict  "linkOpen" "<a href='https://github.com/godotengine/godot-website' target='_blank' rel='noopener'>" "linkClose" "</a>") | safeHTML
+				}}
             </p>
         </div>
         <div id="sitemap">
             <ul class="sitemap-group">
-                <li><strong>Get Godot</strong></li>
-                <li><a href="/download/windows" class="set-os-download-url">Download</a></li>
-                <li><a href="https://editor.godotengine.org/releases/latest/">Web Editor</a></li>
+                <li><strong>{{ T "partials.footer.getGodot.titleText" }}</strong></li>
+                <li><a href="{{ relLangURL "download/windows" }}" class="set-os-download-url">{{ T "partials.footer.getGodot.download" }}</a></li>
+                <li><a href="https://editor.godotengine.org/releases/latest/">{{ T "partials.footer.getGodot.webEditor" }}</a></li>
                 <li>&nbsp;</li>
-                <li><strong>Public Relations</strong></li>
-                <li><a href="/blog">Blog</a></li>
-                <li><a href="/community">Communities and Events</a></li>
-                <li><a href="/press">Press Kit</a></li>
+                <li><strong>{{ T "partials.footer.publicRelations.titleText" }}</strong></li>
+                <li><a href="{{ relLangURL "blog" }}">{{ T "common.blog" }}</a></li>
+                <li><a href="{{ relLangURL "community" }}">{{ T "common.community" }}</a></li>
+                <li><a href="{{ relLangURL "press" }}">{{ T "partials.footer.publicRelations.pressKit" }}</a></li>
             </ul>
             <ul class="sitemap-group">
-                <li><strong>About Godot</strong></li>
-                <li><a href="/features">Features</a></li>
-                <li><a href="/showcase">Showcase</a></li>
-                <li><a href="/education">Education</a></li>
-                <li><a href="/license">License</a></li>
-                <li><a href="/code-of-conduct">Code of Conduct</a></li>
-                <li><a href="/privacy-policy">Privacy Policy</a></li>
-                <li><a href="https://fund.godotengine.org">Donate</a></li>
+                <li><strong>{{ T "partials.footer.aboutGodot.titleText" }}</strong></li>
+                <li><a href="{{ relLangURL "features" }}">{{ T "common.features" }}</a></li>
+                <li><a href="{{ relLangURL "showcase" }}">{{ T "common.showcase" }}</a></li>
+                <li><a href="{{ relLangURL "education" }}">{{ T "partials.footer.aboutGodot.education" }}</a></li>
+                <li><a href="{{ relLangURL "license" }}">{{ T "partials.footer.aboutGodot.license" }}</a></li>
+                <li><a href="{{ relLangURL "code-of-conduct" }}">{{ T "partials.footer.aboutGodot.codeOfConduct" }}</a></li>
+                <li><a href="{{ relLangURL "privacy-policy" }}">{{ T "partials.footer.aboutGodot.privacyPolicy" }}</a></li>
+                <li><a href="https://fund.godotengine.org">{{ T "common.donate" }}</a></li>
             </ul>
             <ul class="sitemap-group">
-                <li><strong>Project Team</strong></li>
-                <li><a href="/governance">Governance</a></li>
-                <li><a href="/teams">Teams</a></li>
+                <li><strong>{{ T "partials.footer.projectTeam.titleText" }}</strong></li>
+                <li><a href="{{ relLangURL "governance" }}">{{ T "partials.footer.projectTeam.governance" }}</a></li>
+                <li><a href="{{ relLangURL "teams" }}">{{ T "partials.footer.projectTeam.teams" }}</a></li>
                 <li>&nbsp;</li>
-                <li><strong>Extra Resources</strong></li>
-                <li><a href="https://godotengine.org/asset-library/asset">Asset Library</a></li>
-                <li><a href="https://docs.godotengine.org">Documentation</a></li>
-                <li><a href="https://github.com/godotengine">Code Repository</a></li>
+                <li><strong>{{ T "partials.footer.extraResources.titleText" }}</strong></li>
+                <li><a href="https://godotengine.org/asset-library/asset">{{ T "partials.footer.extraResources.assetLibrary" }}</a></li>
+                <li><a href="https://docs.godotengine.org">{{ T "partials.footer.extraResources.documentation" }}</a></li>
+                <li><a href="https://github.com/godotengine">{{ T "partials.footer.extraResources.codeRepository" }}</a></li>
             </ul>
         </div>
         <div id="social" class="dark-desaturate">
-            <h4 class="text-right"><a href="/contact">Contact us</a></h4>
+            <h4 class="text-right"><a href="{{ relLangURL "contact" }}">Contact us</a></h4>
             <div class="flex justify-space-between" style="gap: 3px;">
                 <a href="https://github.com/godotengine" target="_blank" rel="noopener">
                     <img src="/assets/footer/github_logo.svg" width="32" height="32" alt="GitHub" fetchpriority="low">
@@ -80,24 +87,30 @@
             }
         });
 
+		const godot3WindowsUrl = "{{ relLangURL "download/3.x/windows" }}";
+		const godot3MacosUrl = "{{ relLangURL "download/3.x/macos" }}";
+		const godot3LinuxUrl = "{{ relLangURL "download/3.x/linux" }}";
+
+		const godot4WindowsUrl = "{{ relLangURL "download/windows" }}";
+		const godot4MacosUrl = "{{ relLangURL "download/macos" }}";
+		const godot4LinuxUrl = "{{ relLangURL "download/linux" }}";
+
+
         // Update any download link to point to identified user's OS.
         const links = document.querySelectorAll('.set-os-download-url');
         for (let i = 0; i < links.length; i++) {
             const link = links[i];
-            let linkSlug = 'download';
-            if (link.dataset['version'] === '3') {
-                linkSlug = 'download/3.x';
-            }
+			const isVersion3 = link.dataset['version'] === '3';
 
             const platformName = (navigator?.userAgentData?.platform ?? navigator?.platform).toLowerCase();
-            let platformLink = 'windows';
+            let href = isVersion3 ? godot3WindowsUrl : godot4WindowsUrl;
             if (platformName.includes('mac')) {
-                platformLink = 'macos';
+				href = isVersion3 ? godot3MacosUrl : godot4MacosUrl;
             } else if (platformName.includes('linux')) {
-                platformLink = 'linux';
+				href = isVersion3 ? godot3LinuxUrl : godot4LinuxUrl;
             }
 
-            link.href = `/${linkSlug}/${platformLink}`;
+            link.href = href;
         }
     });
 </script>

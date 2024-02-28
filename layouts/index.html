@@ -1,7 +1,8 @@
+{{ define "header" }}
+	{{ partialCached "transparent-header.html" . }}
+{{ end }}
+
 {{ define "main" }}
-
-{{ partialCached "transparent-header.html" . }}
-
 <script>
 	// Used for removing img background after loading, this is necessary to avoid edge color bleeding
 	function removeFeatureImgBackground(el) {
@@ -175,29 +176,16 @@
 	<div id="hero-background-image" class="background-image" style="contain: content;"></div>
     <div class="wrapper">
         <div class="copy container">
-            <h1>The game engine you've been waiting&nbsp;for.</h1>
-            <p>The Godot Engine is a free, all-in-one, cross-platform game engine that makes it easy for you to create 2D and
-                3D games.</p>
+            <h1>{{ T "page.home.header.titleText" }}</h1>
+            <p>{{ T "page.home.header.subtitleText" }}</p>
 
             <div class="main-download">
-                {{ $stableVersion4 := partialCached "_funcs/stable-version-4.html" . }}
-                {{ $stableVersion3 := partialCached "_funcs/stable-version-3.html" . }}
-
                 <div class="main-download-links">
-                    <a href="/download/windows" class="btn btn-download set-os-download-url" data-version="4"
-                       title="Download the latest version of Godot 4">
-                        <div class="download-title">Download Latest</div>
-                        <div class="download-hint">{{ $stableVersion4.name }}</div>
-                    </a>
-
-                    <a href="/download/windows" class="btn btn-download set-os-download-url" data-version="3"
-                       title="Download the long-term support version of Godot 3">
-                        <div class="download-title">Download LTS</div>
-                        <div class="download-hint">{{ $stableVersion3.name }}</div>
-                    </a>
+					{{ partialCached "common/download-latest-button.html" . }}
+					{{ partialCached "common/download-lts-button.html" . }}
                 </div>
 
-                <a href="/features" class="btn btn-flat btn-flat-white btn-flat-frosted btn-hero-learn-more">Learn more</a>
+                <a href="/features" class="btn btn-flat btn-flat-white btn-flat-frosted btn-hero-learn-more">{{ T "common.button.learnMore" }}</a>
             </div>
         </div>
     </div>
@@ -239,22 +227,22 @@
 </section>
 
 <section class="container padded">
-    <h2>Latest news</h2>
+    <h2>{{ T "common.button.latestNews" }}</h2>
     <div class="flex eqsize responsive" style="gap: 30px;">
 
-        {{ $lastestArticles := (where .Site.RegularPages "Section" "article").ByDate.Reverse.Limit 4 }}
-        {{ $lastArticle := index $lastestArticles 0 }}
-
-        <a href="{{ $lastArticle.Permalink }}" style="text-decoration: none">
-            <article class="article-card">
-				<img src="{{ $lastArticle.Params.image }}" class="thumbnail" alt="" decoding="async" width="16" height="9">
-                <div class="content">
-                    <h3>{{ $lastArticle.Params.title }}</h3>
-                    <p class="excerpt">{{ $lastArticle.Params.excerpt }}</p>
-                    <span class="date" data-post-date="{{ $lastArticle.Params.date }}">{{ time.Format ":date_long" $lastArticle.Params.date }}</span>
-                </div>
-            </article>
-        </a>
+        {{ $lastestArticles := (where .Sites.First.RegularPages "Section" "article").ByDate.Reverse.Limit 4 }}
+		{{ range $lastestArticles | first 1}}
+			<a href="{{ .Permalink }}" style="text-decoration: none">
+				<article class="article-card">
+					<img src="{{ .Params.image }}" class="thumbnail" alt="" decoding="async" width="16" height="9">
+					<div class="content">
+						<h3>{{ .Params.title }}</h3>
+						<p class="excerpt">{{ .Params.excerpt }}</p>
+						<span class="date" data-post-date="{{ .Params.date }}">{{ time.Format ":date_long" .Params.date }}</span>
+					</div>
+				</article>
+			</a>
+		{{ end }}
 
         <div class="news-list">
             <div style="display: grid; gap: 18px;">
@@ -271,7 +259,7 @@
                 </a>
                 {{ end }}
                 <div class="button-container">
-                    <a href="/blog" class="btn no-margin">More News</a>
+                    <a href="/blog" class="btn no-margin">{{ T "common.button.moreNews" }}</a>
                 </div>
             </div>
         </div>
@@ -280,7 +268,7 @@
 
 
 <section id="features" class="container padded">
-    <h2>A different way to make games</h2>
+    <h2>{{ T "page.home.features.titleText" }}</h2>
 
     <div class="features-grid">
         <a class="feature-link" href="/features#design" data-barba-prevent>
@@ -288,11 +276,8 @@
 				<img src="/assets/home/features/innovative.webp" alt="" width="1" height="1"
 					 style="background: linear-gradient(90deg, #333747 11%, #2d3342 50%, #2d3342 68%, #272d3c 87%)" loading="lazy" onload="removeFeatureImgBackground(this)" decoding="async">
                 <div class="body">
-                    <h4>Innovative design</h4>
-                    <p>
-                        Godot's Node and Scene system gives you both power and flexibility
-                        to create anything.
-                    </p>
+                    <h4>{{ T "page.home.features.design.titleText" }}</h4>
+                    <p>{{ T "page.home.features.design.bodyText" }}</p>
                 </div>
             </div>
         </a>
@@ -302,14 +287,12 @@
 				<img src="/assets/home/features/language.webp" alt="" width="1" height="1"
 					 style="background: linear-gradient(90deg, #252a35 46%, #252a35 53%, #202630 76%, #202630 89%)" loading="lazy" onload="removeFeatureImgBackground(this)" decoding="async">
                 <div class="body">
-                    <h4>Use the right language for the job</h4>
+					<h4>{{ T "page.home.features.script.titleText" }}</h4>
                     <p>
-                        Keep your code modular with an object-oriented API using Godot's own
-                        GDScript, C#, C++, or bring your own using GDExtension.
-                    <div style="margin-top: 0.5rem; font-size: 0.875rem; line-height: 1.6; opacity: 0.8">
-                        C# support is currently only available for desktop and mobile platforms
-                        as of Godot 4.2.<br>Use Godot 3 to run C# on the Web platform.
-                    </div>
+						{{ T "page.home.features.script.bodyText" }}
+						<div style="margin-top: 0.5rem; font-size: 0.875rem; line-height: 1.6; opacity: 0.8">
+							{{ T "page.home.features.script.disclaimerText" | safeHTML }}
+						</div>
                     </p>
                 </div>
             </div>
@@ -319,11 +302,8 @@
 				<img src="/assets/home/features/2d.webp" alt="" width="1" height="1"
 					 style="background: linear-gradient(90deg, #196f36 7%, #28674e 29%, #2a4b46 65%, #3b6f4e 97%)" loading="lazy" onload="removeFeatureImgBackground(this)" decoding="async">
                 <div class="body">
-                    <h4>Dedicated 2D engine</h4>
-                    <p>
-                        Make crisp and performant 2D games with Godot's dedicated 2D
-                        rendering engine with real 2D pixel coordinates and 2D nodes.
-                    </p>
+					<h4>{{ T "page.home.features.2D.titleText" }}</h4>
+					<p>{{ T "page.home.features.2D.bodyText" }}</p>
                 </div>
             </div>
         </a>
@@ -333,11 +313,8 @@
 				<img src="/assets/home/features/3d.webp" alt="" width="1" height="1"
 					 style="background: linear-gradient(90deg, #196f36 7%, #28674e 29%, #2a4b46 65%, #3b6f4e 97%)" loading="lazy" onload="removeFeatureImgBackground(this)" decoding="async">
                 <div class="body">
-                    <h4>Simple and powerful 3D</h4>
-                    <p>
-                        Godot's 3D nodes give you everything you need to build, animate,
-                        and render your 3D worlds and characters.
-                    </p>
+					<h4>{{ T "page.home.features.3D.titleText" }}</h4>
+					<p>{{ T "page.home.features.3D.bodyText" }}</p>
                 </div>
             </div>
         </a>
@@ -347,11 +324,8 @@
 				<img src="/assets/home/features/cross-platform.svg" alt="" width="1" height="1"
 					 style="background-color: #333667" loading="lazy" onload="removeFeatureImgBackground(this)" decoding="async">
                 <div class="body">
-                    <h4>Release on all platforms</h4>
-                    <p>
-                        Deploy your game on desktop, mobile, and the web in seconds. Godot
-                        even supports consoles through third party publishers.
-                    </p>
+					<h4>{{ T "page.home.features.deploy.titleText" }}</h4>
+					<p>{{ T "page.home.features.deploy.bodyText" }}</p>
                 </div>
             </div>
         </a>
@@ -361,62 +335,49 @@
 				<img src="/assets/home/features/oss.svg" alt="" width="1" height="1" style="background-color: #333667"
 					 loading="lazy" onload="removeFeatureImgBackground(this)" decoding="async">
                 <div class="body">
-                    <h4>Open Source</h4>
-                    <p>
-                        Truly open development: anyone who contributes to Godot benefits
-                        equally from others’ contributions.
-                    </p>
+					<h4>{{ T "page.home.features.getInvolved.titleText" }}</h4>
+					<p>{{ T "page.home.features.getInvolved.bodyText" }}</p>
                 </div>
             </div>
         </a>
     </div>
 
     <div class="features-learn-more">
-        <a href="/features" class="btn btn-flat btn-flat-white btn-flat-frosted">Learn more about using Godot</a>
+        <a href="/features" class="btn btn-flat btn-flat-white btn-flat-frosted">{{ T "page.home.features.button.learnMoreAboutUsingGodot" }}</a>
     </div>
 </section>
 
 <section id="get_involved" class="container padded">
-    <h2>Get involved</h2>
-    <p>
-        Join the community and help create a game engine that belongs to everybody.
-    </p>
+    <h2>{{ T "page.home.getInvolved.titleText" }}</h2>
+    <p>{{ T "page.home.getInvolved.subtitleText" }}</p>
 
     <div class="flex eqsize responsive">
 
         <div class="text-center base-padding get-involved-item">
             <img src="/assets/home/code.svg" alt="" width="250" height="250" loading="lazy">
-            <h4>Code</h4>
-            <p>
-                If you know how to code, you can help by fixing bugs and working with engine contributors towards the
-                implementation of new features.
-            </p>
+			<h4>{{ T "page.home.getInvolved.code.titleText" }}</h4>
+			<p>{{ T "page.home.getInvolved.code.bodyText" }}</p>
 			<div class="grow"></div>
             <a href="https://docs.godotengine.org/en/stable/community/contributing/ways_to_contribute.html#contributing-code"
-               class="btn btn-flat btn-flat-frosted" target="_blank" rel="noopener">Learn more</a>
+               class="btn btn-flat btn-flat-frosted" target="_blank" rel="noopener">{{ T "common.button.learnMore" }}</a>
         </div>
 
         <div class="text-center base-padding get-involved-item">
             <img src="/assets/home/document.svg" alt="" width="250" height="250" loading="lazy">
-            <h4>Document</h4>
-            <p>
-                Documentation quality is essential in a game engine; help make it better by updating the API reference, writing
-                new guides or submitting corrections.
-            </p>
+			<h4>{{ T "page.home.getInvolved.document.titleText" }}</h4>
+			<p>{{ T "page.home.getInvolved.document.bodyText" }}</p>
 			<div class="grow"></div>
             <a href="https://docs.godotengine.org/en/stable/community/contributing/ways_to_contribute.html#contributing-to-the-documentation"
-               class="btn btn-flat btn-flat-frosted" target="_blank" rel="noopener">Learn more</a>
+               class="btn btn-flat btn-flat-frosted" target="_blank" rel="noopener">{{ T "common.button.learnMore" }}</a>
         </div>
 
         <div class="text-center base-padding get-involved-item">
             <img src="/assets/home/report.svg" alt="" width="250" height="250" loading="lazy">
-            <h4>Report</h4>
-            <p>
-                Found a problem with the engine? Don't forget to report it so that developers can track it down.
-            </p>
+			<h4>{{ T "page.home.getInvolved.report.titleText" }}</h4>
+			<p>{{ T "page.home.getInvolved.report.bodyText" }}</p>
 			<div class="grow"></div>
             <a href="https://docs.godotengine.org/en/stable/community/contributing/ways_to_contribute.html#testing-and-reporting-issues"
-               class="btn btn-flat btn-flat-frosted" target="_blank" rel="noopener">Learn more</a>
+               class="btn btn-flat btn-flat-frosted" target="_blank" rel="noopener">{{ T "common.button.learnMore" }}</a>
         </div>
 
     </div>
@@ -428,14 +389,11 @@
             <img id="foundation_graphic" src="/assets/home/foundation/godot-foundation-logo-dark.svg" alt="Godot Foundation logo" width="1" height="1"
                  class="img-auto-size" loading="lazy">
         </a>
-        <p class="small auto-margin">
-            You don't need to be an engine developer to help Godot. Join the <a href="https://fund.godotengine.org/">development fund</a> and help us make the Godot&nbsp;Engine even more awesome!
-        </p>
+        <p class="small auto-margin">{{ T "page.home.donate.donateText" (dict "developmentFundLinkBefore" "<a href='https://fund.godotengine.org/'>" "developmentFundLinkAfter" "</a>") | safeHTML }}</p>
 
-        <a href="https://fund.godotengine.org/" class="btn btn-flat btn-flat-white btn-flat-frosted">Donate</a>
+        <a href="https://fund.godotengine.org/" class="btn btn-flat btn-flat-white btn-flat-frosted">{{ T "common.button.donate" }}</a>
     </div>
 </section>
 
 {{ partialCached "sponsors.html" . }}
-{{ partialCached "footer.html" . }}
 {{ end }}

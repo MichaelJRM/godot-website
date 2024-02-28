@@ -1,6 +1,8 @@
-{{ define "main" }}
-
+{{ define "header" }}
 {{ partialCached "transparent-header.html" . }}
+{{ end }}
+
+{{ define "main" }}
 
 <style>
     body {
@@ -64,7 +66,7 @@
 <main>
     <div class="error">
         <div class="message">
-            <a href="/" style="display:block">
+            <a href="{{ relLangURL "" }}" style="display:block">
                 <img class="error-logo" src="/assets/error_logo.svg" alt="Godot Engine Error">
             </a>
             <h1>404 - Page not found</h1>
@@ -83,10 +85,10 @@
 
                 <p>Or visit:</p>
                 <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/download">Download</a></li>
-                    <li><a href="https://docs.godotengine.org/en/stable/">Documentation</a></li>
-                    <li><a href="/community">Community</a></li>
+                    <li><a href="{{ relLangURL "" }}">Home</a></li>
+                    <li><a href="{{ relLangURL "download" }}">{{ T "common.download" }}</a></li>
+                    <li><a href="https://docs.godotengine.org/en/stable/">{{ T "common.documentation" }}</a></li>
+                    <li><a href="{{ relLangURL "community" }}">{{ T "common.community" }}</a></li>
                 </ul>
             </div>
         </div>
@@ -97,5 +99,4 @@
     </div>
 </main>
 
-{{ partialCached "footer.html" . }}
 {{ end }}

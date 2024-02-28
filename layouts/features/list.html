@@ -1,0 +1,567 @@
+{{ define "header" }}
+{{ partialCached "transparent-header.html" . }}
+{{ end }}
+
+{{ define "main" }}
+<style>
+	.features-why {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		background: radial-gradient(ellipse closest-side at 50% 45%, #6469ac, #364b7c, #12122b);
+		padding-top: 60px;
+		margin-bottom: 24px;
+		overflow: hidden;
+	}
+
+	@media (max-width: 900px) {
+		.features-why {
+			padding-left: 16px;
+			padding-right: 16px;
+		}
+	}
+
+	.features-why h2 {
+		color: var(--dark-color-text-title);
+		font-size: 40px;
+		margin: 36px 54px 8px 54px;
+	}
+
+	.btn-see-showcase {
+		line-height: 26px;
+		text-align: center;
+	}
+
+	.feature-container {
+		display: grid;
+		justify-content: center;
+		column-gap: 28px;
+		row-gap: 24px;
+		grid-template-columns: 1fr;
+		margin: auto;
+		margin-bottom: 42px;
+		width: 1200px;
+		max-width: 1200px;
+	}
+	@media (max-width: 1250px) {
+		.feature-container {
+			width: auto;
+			padding-left: 16px;
+			padding-right: 16px;
+		}
+	}
+	@media (max-width: 900px) {
+		.feature-container {
+			width: auto;
+			overflow: auto;
+			flex-direction: column;
+		}
+	}
+
+	.feature-container h3 {
+		font-size: 22px;
+		margin-bottom: 4px;
+	}
+
+	.feature-container.feature-container-2x {
+		grid-template-columns: 1fr 1fr;
+	}
+	.feature-container.feature-container-2x h3 {
+		grid-column: span 2;
+	}
+	@media (max-width: 1020px) {
+		.feature-container.feature-container-2x {
+			grid-template-columns: 1fr;
+		}
+		.feature-container.feature-container-2x h3 {
+			grid-column: span 1;
+		}
+	}
+
+	.feature-container.feature-container-3x {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+	.feature-container.feature-container-3x h3 {
+		grid-column: span 3;
+	}
+	@media (max-width: 1020px) {
+		.feature-container.feature-container-3x {
+			grid-template-columns: 1fr 1fr;
+		}
+		.feature-container.feature-container-3x h3 {
+			grid-column: span 2;
+		}
+	}
+	@media (max-width: 800px) {
+		.feature-container.feature-container-3x {
+			grid-template-columns: 1fr;
+		}
+		.feature-container.feature-container-3x h3 {
+			grid-column: span 1;
+		}
+	}
+
+	.feature-card {
+		background-color: var(--card-background-color);
+		border-radius: 12px;
+		padding: 20px;
+		transition: 0.1s filter;
+	}
+	.feature-card:hover {
+		filter: brightness(112.5%);
+	}
+
+	.feature-card h4 {
+		color: var(--feature-heading-color);
+		font-family: var(--default-font-family);
+		font-size: 18px;
+		font-weight: 700;
+		margin: 0;
+	}
+
+	.feature-card p {
+		font-size: 95%;
+		margin-top: 24px;
+		margin-bottom: 12px;
+	}
+
+	.feature-card strong {
+		color: var(--feature-note-color);
+		font-weight: 600;
+	}
+
+	.feature-card code {
+		background-color: #0f172e36;
+		border-radius: 3px;
+		padding: 1px 4px;
+	}
+
+	.features-showreel {
+		background-color: var(--dark-color);
+		color: var(--dark-color-text-hl);
+		padding: 24px 32px 8px 32px;
+		margin-bottom: 36px;
+		width: auto;
+		max-width: 100%;
+	}
+
+	.features-showreel p {
+		margin-top: 0;
+		margin-bottom: 8px;
+	}
+
+	.features-complete-list {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 12px;
+	}
+
+	.features-complete-list .btn.btn-flat.btn-flat-white {
+		color: var(--base-color-text-title);
+	}
+
+	.features-download {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 16px;
+		background-color: var(--dark-color);
+		padding: 24px;
+		padding-bottom: 60px;
+		width: auto;
+		max-width: 100%;
+	}
+	@media (max-width: 900px) {
+		.features-download {
+			padding: 20px;
+		}
+	}
+
+	.features-download h2 {
+		color: var(--dark-color-text-title);
+		font-weight: 600;
+		margin: 0;
+		margin-bottom: 16px;
+	}
+
+	.features-download p {
+		color: var(--dark-color-text);
+		margin: 0;
+	}
+
+	.features-download-ready {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 26px;
+	}
+
+	.features-download-ready .btn-download {
+		min-width: 310px;
+	}
+
+	.features-download-ready .btn-download:nth-of-type(2n) {
+		background-color: rgb(132 151 174 / 68%);
+		-webkit-backdrop-filter: blur(4px);
+		backdrop-filter: blur(4px);
+	}
+	.features-download-ready .btn-download:nth-of-type(2n) .download-title {
+		color: #f7f7f7;
+	}
+	.features-download-ready .btn-download:nth-of-type(2n) .download-hint {
+		background-color: var(--primary-color-subdued);
+	}
+
+	.features-showcase {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		color: var(--dark-color-text-hl);
+		width: 100%;
+	}
+
+	.showcase-carousel {
+		position: relative;
+		width: 100%;
+		max-width: 720px;
+		aspect-ratio: 16/9;
+		margin: 100px 0 60px 0;
+	}
+	@media (max-width: 540px) {
+		.showcase-carousel {
+			margin-top: 60px;
+		}
+	}
+
+	.showcase-frame {
+		position: absolute;
+		max-width: 100%;
+		max-height: 100%;
+		aspect-ratio: 16/8;
+		transform: scale(1.7) translate(1.46%, 3.1%);
+		filter: brightness(0.85) saturate(0.75);
+	}
+
+	.showcase-flip-left,
+	.showcase-flip-right {
+		position: absolute;
+		top: 50%;
+		left: 12px;
+		width: 20px;
+		height: 36px;
+		transform: translateY(-50%);
+		background-image: url('/assets/icons/arrow-flip.svg');
+		background-size: cover;
+		background-repeat: no-repeat;
+		cursor: pointer;
+		filter: drop-shadow(var(--more-shadow));
+		z-index: 5;
+	}
+	.showcase-flip-left {
+		transform: translateY(-50%) scaleX(-1.0);
+	}
+	.showcase-flip-right {
+		left: auto;
+		right: 12px;
+	}
+
+	.showcase-items {
+		position: relative;
+		overflow: hidden;
+		aspect-ratio: 16/9;
+	}
+
+	.showcase-item {
+		position: absolute;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: var(--dark-color);
+		width: 100%;
+		height: 100%;
+	}
+	.showcase-item-transition {
+		transition: transform 0.4s ease-in-out, z-index 0.1s linear 0.4s;
+	}
+
+	.showcase-item img {
+		width: 100%;
+	}
+
+	.showcase-credits {
+		position: absolute;
+		bottom: 12px;
+		right: 16px;
+		background: var(--hero-text-background-color);
+		border-radius: 8px;
+		padding: 2px 10px;
+	}
+
+	.showcase-title {
+		color: white;
+		font-weight: 600;
+	}
+
+	.showcase-author {
+		color: #b3c1df;
+		font-size: 95%;
+		opacity: 0.9;
+	}
+
+	.showcase-credits a {
+		text-decoration: none;
+	}
+
+	footer {
+		margin-top: 0;
+	}
+</style>
+
+<div class="features-why">
+	<h2>{{ T "page.features.header.titleText" }}</h2>
+
+	<div class="features-showcase" id="showcase">
+		<p>{{ T "page.features.header.subtitleText" }}</p>
+
+		<div class="showcase-carousel">
+			<img src="/assets/features/editor-frame.webp?2" class="showcase-frame" />
+
+			<div class="showcase-items">
+				{{ range where (where .Sites.First.RegularPages "Section" "showcase") "Params.featured_in_home" "eq" true }}
+				<div class="showcase-item">
+					<img src="{{ index .Params.gallery 0 }}" loading="lazy" alt="{{ .Params.title }} - {{ .Params.author }}" />
+					<div class="showcase-credits">
+						<a href="{{ .Params.url }}">
+							<span class="showcase-title">{{.Params.title }}</span> <span class="showcase-author">- {{ .Params.author }}</span>
+						</a>
+					</div>
+				</div>
+				{{ end }}
+			</div>
+
+			<div class="showcase-flip-left"></div>
+			<div class="showcase-flip-right"></div>
+			<script>
+				document.addEventListener('DOMContentLoaded', () => {
+					// We assume that it can't be wrapped more than once.
+					const wrapIndex = (index) => {
+						if (index < 0) {
+							return showcaseItems.length + index;
+						}
+						if (index >= showcaseItems.length) {
+							return showcaseItems.length - index;
+						}
+						return index;
+					};
+
+					const showcaseItems = document.querySelectorAll('.showcase-item');
+					let currentIndex = Math.floor(Math.random() * showcaseItems.length);
+
+					const setItemByIndex = (itemIndex, firstTime = false) => {
+						const prevIndex = wrapIndex(currentIndex - 1);
+						const nextIndex = wrapIndex(currentIndex + 1);
+
+						showcaseItems.forEach((item, index) => {
+							if (index === itemIndex) {
+								if (!firstTime) {
+									item.classList.add('showcase-item-transition');
+								}
+								item.style.zIndex = '2';
+								item.style.transform = 'translateX(0)';
+							}
+							else if (index === prevIndex) {
+								if (!firstTime) {
+									item.classList.add('showcase-item-transition');
+								}
+								item.style.zIndex = '3';
+								item.style.transform = 'translateX(-100%)';
+							}
+							else if (index === nextIndex) {
+								if (!firstTime) {
+									item.classList.add('showcase-item-transition');
+								}
+								item.style.zIndex = '3';
+								item.style.transform = 'translateX(100%)';
+							}
+							else  {
+								item.classList.remove('showcase-item-transition');
+								item.style.zIndex = '1';
+								item.style.transform = 'translateX(0)';
+							}
+						});
+					}
+					setItemByIndex(currentIndex, true);
+
+					const prevItemButton = document.querySelector('.showcase-flip-left');
+					prevItemButton.addEventListener('click', () => {
+						currentIndex = wrapIndex(currentIndex - 1);
+						setItemByIndex(currentIndex);
+					});
+					const nextItemButton = document.querySelector('.showcase-flip-right');
+					nextItemButton.addEventListener('click', () => {
+						currentIndex = wrapIndex(currentIndex + 1);
+						setItemByIndex(currentIndex);
+					});
+				});
+			</script>
+
+		</div>
+		<a href="/showcase" class="btn btn-flat btn-flat-white btn-flat-frosted btn-see-showcase">
+			{{ T "page.features.header.button.seeMoreProjectsMadeWithGodot" }}
+		</a>
+	</div>
+</div>
+
+<div class="features-wrapper">
+
+	<div class="container" id="features">
+		<h2>{{ T "page.features.mainFeatures.titleText" }}</h2>
+	</div>
+
+	<div class="feature-container feature-container-3x" id="design">
+		<h3>{{ T "page.features.mainFeatures.intuitiveSceneDrivenDesign.titleText" }}</h3>
+
+		<div class="card feature-card">
+			<h4>{{ T "page.features.mainFeatures.intuitiveSceneDrivenDesign.buildYourGameFromSimpleBlocs.titleText" }}</h4>
+			<p>{{ T "page.features.mainFeatures.intuitiveSceneDrivenDesign.buildYourGameFromSimpleBlocs.bodyText" }}</p>
+		</div>
+
+		<div class="card feature-card">
+			<h4>{{ T "page.features.mainFeatures.intuitiveSceneDrivenDesign.extendBeyondFeaturesProvidedByTheEngine.titleText" }}</h4>
+			<p>{{ T "page.features.mainFeatures.intuitiveSceneDrivenDesign.extendBeyondFeaturesProvidedByTheEngine.bodyText" }}</p>
+		</div>
+
+		<div class="card feature-card">
+			<h4>{{ T "page.features.mainFeatures.intuitiveSceneDrivenDesign.createDataDrivenElementsWithCustomResources.titleText" }}</h4>
+			<p>{{ T "page.features.mainFeatures.intuitiveSceneDrivenDesign.createDataDrivenElementsWithCustomResources.bodyText" | safeHTML }}</p>
+		</div>
+	</div>
+
+	<div class="feature-container feature-container-2x" id="script">
+		<h3>{{ T "page.features.mainFeatures.codingToolsThatFitYourNeeds.titleText" }}</h3>
+
+		<div class="card feature-card">
+			<h4>{{ T "page.features.mainFeatures.codingToolsThatFitYourNeeds.writeCodeWithoutHurdlesWithAHighLevelScriptingLanguage.titleText" }}</h4>
+			<p>{{ T "page.features.mainFeatures.codingToolsThatFitYourNeeds.writeCodeWithoutHurdlesWithAHighLevelScriptingLanguage.bodyText" }}</p>
+		</div>
+
+		<div class="card feature-card">
+			<h4>{{ T "page.features.mainFeatures.codingToolsThatFitYourNeeds.leverageYourC#ExperienceToFeelRightAtHome.titleText" }}</h4>
+			<p>{{ T "page.features.mainFeatures.codingToolsThatFitYourNeeds.leverageYourC#ExperienceToFeelRightAtHome.bodyText" | safeHTML }}</p>
+		</div>
+
+		<div class="card feature-card">
+			<h4>{{ T "page.features.mainFeatures.codingToolsThatFitYourNeeds.pickFromAVarietyOfCommunitySupportedLanguages.titleText" }}</h4>
+			<p>{{ T "page.features.mainFeatures.codingToolsThatFitYourNeeds.pickFromAVarietyOfCommunitySupportedLanguages.bodyText" | safeHTML }}</p>
+		</div>
+
+		<div class="card feature-card">
+			<h4>{{ T "page.features.mainFeatures.codingToolsThatFitYourNeeds.modifyTheEngineItselfAndIntegrateWith3rdPartyLibraries.titleText" }}</h4>
+			<p>{{ T "page.features.mainFeatures.codingToolsThatFitYourNeeds.modifyTheEngineItselfAndIntegrateWith3rdPartyLibraries.bodyText" | safeHTML }}</p>
+		</div>
+	</div>
+
+	<div class="feature-container feature-container-3x" id="features_3d">
+		<h3>{{ T "page.features.mainFeatures.simpleYetPowerful3DEngine.titleText" }}</h3>
+
+		<div class="card feature-card">
+			<h4>{{ T "page.features.mainFeatures.simpleYetPowerful3DEngine.supportBothHighAndLowEndDevices.titleText" }}</h4>
+			<p>{{ T "page.features.mainFeatures.simpleYetPowerful3DEngine.supportBothHighAndLowEndDevices.bodyText" | safeHTML }}</p>
+		</div>
+
+		<div class="card feature-card">
+			<h4>{{ T "page.features.mainFeatures.simpleYetPowerful3DEngine.seamlesslyIntegrateWithYourAssetPipeline.titleText" }}</h4>
+			<p>{{ T "page.features.mainFeatures.simpleYetPowerful3DEngine.seamlesslyIntegrateWithYourAssetPipeline.bodyText" | safeHTML }}</p>
+		</div>
+
+		<div class="card feature-card">
+			<h4>{{ T "page.features.mainFeatures.simpleYetPowerful3DEngine.createAnimatedVideosAndPreRenderedCutscenesInEngine.titleText" }}</h4>
+			<p>{{ T "page.features.mainFeatures.simpleYetPowerful3DEngine.createAnimatedVideosAndPreRenderedCutscenesInEngine.bodyText" | safeHTML }}</p>
+		</div>
+	</div>
+
+	<div class="feature-container feature-container-3x" id="features_2d">
+		<h3>{{ T "page.features.mainFeatures.specialized2DWorkflowForGamesAndApps.titleText" }}</h3>
+
+		<div class="card feature-card">
+			<h4>{{ T "page.features.mainFeatures.specialized2DWorkflowForGamesAndApps.workWithReal2DAndPixelBasedUnitSystems.titleText" }}</h4>
+			<p>{{ T "page.features.mainFeatures.specialized2DWorkflowForGamesAndApps.workWithReal2DAndPixelBasedUnitSystems.bodyText" }}</p>
+		</div>
+
+		<div class="card feature-card">
+			<h4>{{ T "page.features.mainFeatures.specialized2DWorkflowForGamesAndApps.saveTimeCreating2DWorldsWithATileMapEditor.titleText" }}</h4>
+			<p>{{ T "page.features.mainFeatures.specialized2DWorkflowForGamesAndApps.saveTimeCreating2DWorldsWithATileMapEditor.bodyText" }}</p>
+		</div>
+
+		<div class="card feature-card">
+			<h4>{{ T "page.features.mainFeatures.specialized2DWorkflowForGamesAndApps.masterUsabilityWithAFlexibleGUISystem.titleText" }}</h4>
+			<p>{{ T "page.features.mainFeatures.specialized2DWorkflowForGamesAndApps.masterUsabilityWithAFlexibleGUISystem.bodyText" | safeHTML }}</p>
+		</div>
+	</div>
+
+	<div class="features-showreel">
+		<div class="feature-container">
+			<h3>{{ T "page.features.showreel.titleText" }}</h3>
+			<p>{{ T "page.features.showreel.bodyText" }}</p>
+
+			{{ partialCached "showcase/showreel-shelf.html" . }}
+		</div>
+	</div>
+
+	<div class="feature-container feature-container-3x" id="deploy">
+		<h3>{{ T "page.features.mainFeatures.crossPlatformSupport.titleText" }}</h3>
+
+		<div class="card feature-card">
+			<h4>{{ T "page.features.mainFeatures.crossPlatformSupport.deliverYourGameToDesktopAndMobile.titleText" }}</h4>
+			<p>{{ T "page.features.mainFeatures.crossPlatformSupport.deliverYourGameToDesktopAndMobile.bodyText" }}</p>
+		</div>
+
+		<div class="card feature-card">
+			<h4>{{ T "page.features.mainFeatures.crossPlatformSupport.testDirectlyOnYourTargetDevice.titleText" }}</h4>
+			<p>{{ T "page.features.mainFeatures.crossPlatformSupport.testDirectlyOnYourTargetDevice.bodyText" | safeHTML }}</p>
+		</div>
+
+		<div class="card feature-card">
+			<h4>{{ T "page.features.mainFeatures.crossPlatformSupport.partnerWithAPublisherToTargetConsoles.titleText" }}</h4>
+			<p>{{ T "page.features.mainFeatures.crossPlatformSupport.partnerWithAPublisherToTargetConsoles.bodyText" }}</p>
+		</div>
+	</div>
+
+	<div class="feature-container feature-container-2x" id="open_source">
+		<h3>{{ T "page.features.mainFeatures.completelyOpenAndFree.titleText" }}</h3>
+
+		<div class="card feature-card">
+			<h4>{{ T "page.features.mainFeatures.completelyOpenAndFree.downloadAndCreateWithNoContractsOrHiddenFees.titleText" }}</h4>
+			<p>{{ T "page.features.mainFeatures.completelyOpenAndFree.downloadAndCreateWithNoContractsOrHiddenFees.bodyText" }}</p>
+		</div>
+
+		<div class="card feature-card">
+			<h4>{{ T "page.features.mainFeatures.completelyOpenAndFree.findTheLogicBehindAnySystemInAnOpenSourceCodebase.titleText" }}</h4>
+			<p>{{ T "page.features.mainFeatures.completelyOpenAndFree.findTheLogicBehindAnySystemInAnOpenSourceCodebase.bodyText" | safeHTML}}</p>
+		</div>
+	</div>
+
+	<div class="features-complete-list">
+		<a href="https://docs.godotengine.org/en/stable/about/list_of_features.html" class="btn btn-flat btn-flat-white btn-flat-frosted">
+			{{ T "page.features.mainFeatures.button.viewACompleteListOfFeatures" }}
+		</a>
+	</div>
+
+</div>
+
+<div id="call-to-action" class="container card features-download">
+	<h2>{{ T "page.features.readyToStart.titleText" }}</h2>
+
+	<div class="features-download-ready">
+		<p> {{ T "page.features.readyToStart.downloadGodot4Text" | safeHTML }} </p>
+		{{ partialCached "common/download-latest-button.html" . }}
+		<p> {{ T "page.features.readyToStart.downloadGodot3Text" | safeHTML }} </p>
+		{{ partialCached "common/download-lts-button.html" . }}
+	</div>
+</div>
+{{ end }}
