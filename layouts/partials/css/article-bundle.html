@@ -1,0 +1,9 @@
+{{ $anchorLinksCSS := resources.Get "css/anchor-link.css" }}
+{{ $articleCardsCSS := resources.Get "css/article-cards.css" }}
+{{ $highlightCSS := resources.Get "css/highlight.css" }}
+{{ $tobiiCSS := resources.Get "css/tobii.min.css" }}
+
+{{ $allCSS := slice $anchorLinksCSS $articleCardsCSS $highlightCSS $tobiiCSS }}
+{{ $cssBundle := $allCSS | resources.Concat "css/article-bundle.css" | resources.Minify | resources.Fingerprint }}
+
+<link rel="stylesheet" href="{{ $cssBundle.RelPermalink }}" integrity="{{ $cssBundle.Data.Integrity }}">

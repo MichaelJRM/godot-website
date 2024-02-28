@@ -1,0 +1,142 @@
+body {
+  background-color: var(--background-color);
+}
+
+.article-page h1 {
+  margin-bottom: 8px;
+  margin-top: 32px;
+}
+
+.article-page :not(pre)>code {
+  background: var(--code-background-color);
+  padding: 1px 4px;
+  font-size: 0.95em;
+  border-radius: 3px;
+}
+
+.article-page pre {
+  background: var(--codeblock-background-color);
+  color: var(--codeblock-color);
+}
+
+.article-page pre code {
+  display: block;
+  overflow-x: auto;
+  padding: .5em;
+}
+
+.article-page .date-big {
+  line-height: 2;
+  margin-left: 32px;
+}
+
+.article-page article {
+  background-color: var(--base-color);
+  box-shadow: 0px 3px 2px 0px rgba(0, 0, 0, 0.15);
+}
+
+.article-page figure {
+  margin: 0;
+}
+
+.article-page figure img {
+  margin: 0;
+}
+
+.article-page article img,
+.article-page article video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 16px auto;
+}
+
+.article-page article h1 {
+  margin-top: 64px;
+}
+
+.article-page article h2,
+.article-page article h3,
+.article-page article h4 {
+  margin-top: 42px;
+}
+
+.article-page .article-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.article-page .article-metadata {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  font-family: var(--header-font-family);
+  margin-bottom: 12px;
+}
+
+@media (max-width: 900px) {
+  .article-page .article-metadata {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}
+
+.article-page .article-author {
+  color: var(--base-color-text-subtitle-date);
+  font-weight: 700;
+  font-size: 18px;
+  flex-grow: 1;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.article-page .article-author .avatar {
+  border-radius: 100%;
+  margin: 0;
+}
+
+.article-page .article-author .by {
+  color: var(--base-color-text-subtitle);
+}
+
+.article-page .article-metadata .date {
+  color: var(--base-color-text-subtitle-date);
+}
+
+.article-page .article-metadata .date.post-recent-highlight {
+  color: var(--post-recent-highlight-color);
+  opacity: 0.8;
+}
+
+.article-page .article-metadata .date.post-recent-highlight::after {
+  font-size: 80%;
+  content: "NEW";
+  border: 2px solid var(--post-recent-highlight-color);
+  padding: 2px 3px;
+  margin-left: 8px;
+}
+
+.article-page .tag.active {
+  filter: saturate(0.75);
+}
+
+@media screen and (min-width: 900px) {
+  .article-page article .content {
+    width: 70%;
+    margin: auto;
+  }
+}
+
+@media (max-width: 900px) {
+  body {
+    background-color: var(--base-color);
+  }
+
+  .article-page article {
+    background-color: transparent;
+    box-shadow: none;
+  }
+}

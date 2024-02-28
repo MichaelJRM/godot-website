@@ -13,6 +13,9 @@ serve-nocache:
 serve-profile:
 	hugo server --templateMetrics --templateMetricsHints
 
+serve-no-reload:
+	hugo server --disableLiveReload
+
 install-tools:
 	cd ./tools/generators && npm install
 

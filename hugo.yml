@@ -61,3 +61,11 @@ languages:
     languageCode: pt
     languageName: Portugal Portuguese
     weight: 10
+
+# Minify
+minify:
+  minifyOutput: true
+  tdewolff:
+    js:
+      version: 0
+
