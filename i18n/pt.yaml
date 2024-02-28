@@ -325,55 +325,54 @@ page:
 
   userGroups:
     header:
-      titleText: User Groups
+      titleText: Grupos de usuários
       subtitleText:
-        Some community members manage local Godot user groups.
-        Anyone is welcome to join or create a local community!
+        Alguns membros da comunidade gerem grupos locais de usuários do Godot.
+        Qualquer pessoa é bem-vinda para se juntar ou criar uma comunidade local!
     communityMap:
-      titleText: Community map
+      titleText: Mapa da comunidade
       subtitleText:
-        This map lists all physical venues and online community hosted by community members.
-        Scroll down to view a list of online communities.
-      physicalCommunity: Physical community
-      onlineCommunity: Online community
+        Este mapa apresenta uma lista de todos os locais físicos e comunidades online organizados por membros da comunidade.
+        Role para baixo para ver uma lista das comunidades online.
+      physicalCommunity: Comunidades físicas
+      onlineCommunity: Comunidades online
     submitYourCommunityText:
-      If you run a local community and would like to have it listed here,
-      please send an email to {{ .link }}.
+      Se dirige uma comunidade local e gostaria de a ter aqui listada, envie um email para {{ .link }}.
     country:
-      algeria: Algeria
+      algeria: Argélia
       argentina: Argentina
-      brazil: Brazil
-      belgium: Belgium
-      bulgaria: Bulgaria
-      canada: Canada
+      brazil: Brasil
+      belgium: Bélgica
+      bulgaria: Bulgária
+      canada: Canadá
       china: China
-      croatia: Croatia
-      czechRepublicAndSlovakia: Czech Republic and Slovakia
-      ecuador: Ecuador
-      egypt: Egypt
-      finland: Finland
-      franceOrFrenchSpeaking: France or French-speaking
-      germany: Germany
-      india: India
-      indonesia: Indonesia
-      italy: Italy
-      iran: Iran
-      iraq: Iraq
+      croatia: Croácia
+      czechRepublicAndSlovakia: República Checa e Eslováquia
+      ecuador: Equador
+      egypt: Egipto
+      finland: Finlândia
+      franceOrFrenchSpeaking: França ou língua francesa
+      germany: Alemanha
+      india: Índia
+      indonesia: Indonésia
+      italy: Itália
+      iran: Irão
+      iraq: Iraque
       israel: Israel
-      japan: Japan
-      latvia: Latvia
-      pakistan: Pakistan
-      philippines: Philippines
-      poland: Poland
+      japan: Japão
+      latvia: Letónia
+      pakistan: Paquistão
+      philippines: Filipinas
+      poland: Polónia
       portugal: Portugal
-      russia: Russia
-      saudiArabia: Saudi Arabia
-      southKorea: South Korea
-      spain: Spain
-      sweden: Sweden
-      taiwan: Taiwan
-      turkey: Turkey
-      unitedStates: United States
+      russia: Rússia
+      saudiArabia: Arábia Saudita
+      southKorea: Coreia do Sul
+      spain: Espanha
+      sweden: Suécia
+      taiwan: Tailândia
+      turkey: Turquia
+      unitedStates: Estados Unidos
 
   showcase:
     header:
