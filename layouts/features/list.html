@@ -1,4 +1,9 @@
 {{ define "head" }}
+<style>
+	footer {
+		margin-top: 0;
+	}
+</style>
 <link rel="preload" as="image" href="/assets/features/editor-frame.webp?2" fetchpriority="high">
 <script>
 	const featuredProjects = [{{ range partialCached "_funcs/featured-showcase-pages.html" .}}'{{ .Params.image }}',{{ end }}];
@@ -14,11 +19,6 @@
 {{ end }}
 
 {{ define "main" }}
-<style>
-	footer {
-		margin-top: 0;
-	}
-</style>
 <span class="features-page">
 <div class="features-why">
 	<h2>{{ T "page.features.header.titleText" }}</h2>

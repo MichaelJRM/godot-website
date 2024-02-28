@@ -236,10 +236,6 @@ body {
 	overflow-x: hidden;
 }
 
-main {
-  background-color: var(--base-color);
-}
-
 body a {
 	outline: none;
 	color: var(--link-color);

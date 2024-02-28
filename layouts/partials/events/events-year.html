@@ -1,23 +1,23 @@
 {{ $year := .year }}
 {{ $events := .events }}
 
-<div class="events-shortlist">
-    <div>
-        <h2 id="{{ $year }}">{{ $year }}</h2>
+<div class="events-shortlist__wrap">
+	<div class="events-shortlist__anchor">
+		<h2 id="{{ $year }}">{{ $year }}</h2>
 
-        <ul>
-            {{ range $event := $events }}
-            	{{ $params := $event.Params }}
-				<li>
-					<span>{{ $params.dates_short }}</span>
-					<a href="#{{ $params.name }}">
-						<em>{{ $params.name_short }}</em>
-					</a>
-					<span>{{ $params.location_short }}</span>
-				</li>
-            {{ end }}
-        </ul>
-    </div>
+		<ul class="events-shortlist">
+			{{ range $event := $events }}
+			{{ $params := $event.Params }}
+			<li>
+				<span class="events-shortlist__bulletpoint">{{ $params.dates_short }}</span>
+				<a href="#{{ $params.name }}">
+					<em>{{ $params.name_short }}</em>
+				</a>
+				<span>{{ $params.location_short }}</span>
+			</li>
+			{{ end }}
+		</ul>
+	</div>
 </div>
 
 <div class="events-fulllist">
@@ -28,24 +28,24 @@
 			<h3>{{ $params.name }}</h3>
 
 			{{ with $params.cover_image }}
-			<img src="{{ . }}" alt="{{ $params.name }} event banner">
+				<img src="{{ . }}" alt="{{ T "page.events.eventDetails.imgAlt" (dict "eventName" $params.name) }}">
 			{{ end }}
 
 			{{ $event.Content }}
 
-			<h4>Event details</h4>
+			<h4>{{ T "page.events.eventDetails.titleText" }}</h4>
 
 			<ul class="event-details">
-				<li><strong>Date:</strong> {{ $params.dates }}</li>
-				<li><strong>Location:</strong> {{ $params.location | markdownify }}{{ with $params.location_map }} (<a href="{{ . }}">Show on map</a>){{ end }}</li>
-				{{ if $params.entrance_fee }}
-					<li><strong>Entrance fee:</strong> {{ $params.entrance_fee | markdownify }}</li>
+				<li><strong>{{ T "page.events.eventDetails.date" }}</strong> {{ $params.dates }}</li>
+				<li><strong>{{ T "page.events.eventDetails.location" }}</strong> {{ $params.location | markdownify }}{{ with $params.location_map }} (<a href="{{ . }}">{{ T "page.events.eventDetails.showOnMap" }}</a>){{ end }}</li>
+				{{ with $params.entrance_fee }}
+					<li><strong>{{ T "page.events.eventDetails.entranceFee" }}</strong> {{ . | markdownify }}</li>
 				{{ end }}
-				{{ if $params.registration }}
-					<li><strong>Registration:</strong> {{ $params.registration | markdownify }}</li>
+				{{ with $params.registration }}
+					<li><strong>{{ T "page.events.eventDetails.registration" }}</strong> {{ . | markdownify }}</li>
 				{{ end }}
-				{{ if $params.website }}
-					<li><strong>Website:</strong> <a href="{{ $params.website }}">{{ $params.website }}</a></li>
+				{{ with $params.website }}
+					<li><strong>{{ T "page.events.eventDetails.website" }}</strong> <a href="{{ . }}">{{ . }}</a></li>
 				{{ end }}
 			</ul>
 		</div>

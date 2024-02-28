@@ -301,6 +301,28 @@ page:
         titleText: GitHub
         bodyText: Send bug reports here. To request features, use the {{ .link }} repository instead.
 
+  events:
+    header:
+      titleText: Eventos
+      subtitleText:
+        Pode encontrar-se com programadores Godot em vários eventos profissionais e casuais.<br/>
+        Por vezes, a nossa equipa também organiza encontros e conferências.
+    upcomingEvents:
+      titleText: Eventos futuros
+      subtitleText: Atualmente, não estão previstos eventos futuros.
+    pastEvents:
+      titleText: Eventos anteriores
+      subtitleText: Atualmente, não existem eventos anteriores.
+    eventDetails:
+      titleText: Detalhes to evento
+      imgAlt: Faixa do evento {{ .eventName }}
+      date: "Data:"
+      location: "Localização:"
+      entranceFee: "Taxa de entrada:"
+      registration: "Registo:"
+      website: "Website:"
+      showOnMap: Mostrar no mapa
+
   userGroups:
     header:
       titleText: User Groups
