@@ -47,7 +47,7 @@
     </div>
 </div>
 
-{{ partial "download/platforms.html" $stableVersion4}}
+{{ partial "download/platforms.html" (dict "version" $stableVersion4 "currentPlatform" .Params.platform) }}
 
 <div class="container">
     <div id="extras" class="padded" style="padding-top: 0">

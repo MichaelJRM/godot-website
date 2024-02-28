@@ -1,5 +1,6 @@
-{{ $version := . }}
+{{ $version := .version }}
 {{ $versionNumber := index (split $version.name ".") 0 }}
+{{ $currentPlatform := .currentPlatform }}
 
 <div class="platforms-wrapper">
 	<div id="platforms" class="container" style="overflow: hidden;">
@@ -10,24 +11,24 @@
 			{{ if eq $versionNumber "3" }}
 				{{ $middlePath = "3.x/" }}
 			{{ end }}
-			<a href="/download/{{ $middlePath }}android" class="tab title-font {{ if eq $.Params.platform "Android" }} active {{ end }}">
+			<a href="/download/{{ $middlePath }}android" class="tab title-font {{ if eq $currentPlatform "Android" }} active {{ end }}">
 			<img width="24" height="24" src="/assets/images/platforms/android.svg" alt="Android" />
 			<span>Android</span>
 			</a>
-			<a href="/download/{{ $middlePath }}linux" class="tab title-font {{ if eq $.Params.platform "Linux" }} active {{ end }}">
+			<a href="/download/{{ $middlePath }}linux" class="tab title-font {{ if eq $currentPlatform "Linux" }} active {{ end }}">
 			<img width="24" height="24" src="/assets/images/platforms/linux.svg" alt="Linux" />
 			<span>Linux</span>
 			</a>
-			<a href="/download/{{ $middlePath }}macos" class="tab title-font {{ if eq $.Params.platform "macOS" }} active {{ end }}">
+			<a href="/download/{{ $middlePath }}macos" class="tab title-font {{ if eq $currentPlatform "macOS" }} active {{ end }}">
 			<img width="24" height="24" src="/assets/images/platforms/macos.svg" alt="macOS" />
 			<span>macOS</span>
 			</a>
-			<a href="/download/{{ $middlePath }}windows" class="tab title-font {{ if eq $.Params.platform "Windows" }} active {{ end }}">
+			<a href="/download/{{ $middlePath }}windows" class="tab title-font {{ if eq $currentPlatform "Windows" }} active {{ end }}">
 			<img width="24" height="24" src="/assets/images/platforms/windows.svg" alt="Windows" />
 			<span>Windows</span>
 			</a>
 			{{ if eq $versionNumber "3" }}
-				<a href="/download/3.x/server" class="tab title-font {{ if eq $.Params.platform "Linux Server" }} active {{ end }}">
+				<a href="/download/3.x/server" class="tab title-font {{ if eq $currentPlatform "Linux Server" }} active {{ end }}">
 				<img width="24" height="24" src="/assets/images/platforms/linux-server.svg" alt="Linux Server" />
 				<span>Linux Server</span>
 				</a>
