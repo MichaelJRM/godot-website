@@ -228,5 +228,5 @@
 	</p>
 </div>
 {{ $leafletCSS := (resources.Get "leaflet/leaflet.css" | resources.Fingerprint).RelPermalink }}
-{{ partialCached "preload-async-css.html" (dict "href" $leafletCSS) }}
+{{ partial "preload-async-css.html" (dict "href" $leafletCSS) }}
 {{ end }}
