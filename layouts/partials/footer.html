@@ -4,17 +4,20 @@
     <div class="container flex footer-container">
         <div id="copyright">
             <p>
-				{{ $date := time.Now.Year }}
-				{{ T "partials.footer.copyRightText"
-				(dict "year" $date "linkOpen" "<a href='https://github.com/godotengine/godot/blob/master/AUTHORS.md' target='_blank' rel='noopener'>" "linkClose" "</a>") | safeHTML
+				{{ T "partials.footer.copyRightText" (dict
+					"year" time.Now.Year
+					"linkOpen" "<a href='https://github.com/godotengine/godot/blob/master/AUTHORS.md' target='_blank' rel='noopener'>"
+					"linkClose" "</a>") | safeHTML
 				}}
                 <br>
-				{{ T "partials.footer.hostedByTheGodotFoundation"
-					(dict  "linkOpen" "<a href='https://godot.foundation/' target='_blank' rel='noopener'>" "linkClose" "</a>") | safeHTML
+				{{ T "partials.footer.hostedByTheGodotFoundation" (dict
+					"linkOpen" "<a href='https://godot.foundation/' target='_blank' rel='noopener'>"
+					"linkClose" "</a>") | safeHTML
 				}}
 				<br>
-				{{ T "partials.footer.websiteSourceCodeOnGithub"
-				(dict  "linkOpen" "<a href='https://github.com/godotengine/godot-website' target='_blank' rel='noopener'>" "linkClose" "</a>") | safeHTML
+				{{ T "partials.footer.websiteSourceCodeOnGithub" (dict
+					"linkOpen" "<a href='https://github.com/godotengine/godot-website' target='_blank' rel='noopener'>"
+					"linkClose" "</a>") | safeHTML
 				}}
             </p>
         </div>
@@ -26,7 +29,7 @@
                 <li>&nbsp;</li>
                 <li><strong>{{ T "partials.footer.publicRelations.titleText" }}</strong></li>
                 <li><a href="{{ relLangURL "blog" }}">{{ T "common.blog" }}</a></li>
-                <li><a href="{{ relLangURL "community" }}">{{ T "common.community" }}</a></li>
+                <li><a href="{{ relLangURL "community" }}">{{ T "partials.footer.publicRelations.communitiesAndEvents" }}</a></li>
                 <li><a href="{{ relLangURL "press" }}">{{ T "partials.footer.publicRelations.pressKit" }}</a></li>
             </ul>
             <ul class="sitemap-group">
@@ -94,7 +97,6 @@
 		const godot4WindowsUrl = "{{ relLangURL "download/windows" }}";
 		const godot4MacosUrl = "{{ relLangURL "download/macos" }}";
 		const godot4LinuxUrl = "{{ relLangURL "download/linux" }}";
-
 
         // Update any download link to point to identified user's OS.
         const links = document.querySelectorAll('.set-os-download-url');
