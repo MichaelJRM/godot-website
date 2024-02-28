@@ -1,16 +1,7 @@
-{{ define "header" }}
-	{{ partialCached "transparent-header.html" . }}
-{{ end }}
-
-{{ define "main" }}
-<script>
-	// Used for removing img background after loading, this is necessary to avoid edge color bleeding
-	function removeFeatureImgBackground(el) {
-		el.style.background = 'unset';
-		el.style.backgroundColor = 'unset';
-	}
-</script>
+{{ define "head" }}
 <style>
+	{{/* ----------Hero Download----------*/}}
+
 	.main-download {
 		display: flex;
 		align-items: flex-start;
@@ -27,19 +18,26 @@
 	.main-download-links .btn-download {
 		width: 100%;
 	}
+
 	.main-download-links .btn-download:nth-of-type(2n) {
 		background-color: rgb(132 151 174 / 68%);
 		-webkit-backdrop-filter: blur(4px);
 		backdrop-filter: blur(4px);
 	}
+
 	.main-download-links .btn-download:nth-of-type(2n) .download-title {
 		color: #f7f7f7;
 	}
+
 	.main-download-links .btn-download:nth-of-type(2n) .download-hint {
 		background-color: var(--primary-color-subdued);
 	}
 
-	@media (max-width: 900px) {
+	.btn.btn-flat.btn-hero-learn-more {
+		margin: 0;
+	}
+
+	@media (max-width: 901px) {
 		.main-download {
 			align-items: center;
 			flex-direction: column;
@@ -47,26 +45,7 @@
 		}
 	}
 
-	#donations {
-		background-color: var(--dark-color);
-		color: var(--dark-color-text);
-		overflow: auto;
-		text-align: center;
-		content-visibility: auto;
-		contain-intrinsic-size: auto 100vw auto 376.844px;
-	}
-
-	@media (max-width: 901px) {
-		#donations {
-			contain-intrinsic-size: auto 100vw auto 349.844px;
-		}
-	}
-
-	#donations h1,
-	#donations h2,
-	#donations h3 {
-		color: var(--dark-color-text-title);
-	}
+	{{/* ----------Features----------*/}}
 
 	.feature-link {
 		text-decoration: none;
@@ -99,6 +78,7 @@
 		object-position: top center;
 		border-top-left-radius: 8px;
 		border-top-right-radius: 8px;
+		background: linear-gradient(90deg, #333747 11%, #2d3342 50%, #2d3342 68%, #272d3c 87%);
 	}
 
 	.feature {
@@ -129,6 +109,13 @@
 		color: var(--dark-color-text-title);
 	}
 
+	.feature__disclaimer {
+		margin-top: 0.5rem;
+		font-size: 0.875rem;
+		line-height: 1.6;
+		opacity: 0.8;
+	}
+
 	.features-learn-more {
 		display: flex;
 		align-items: center;
@@ -136,30 +123,34 @@
 		margin-top: 16px;
 	}
 
-	.img-auto-size {
-		width: 100%;
-		height: auto;
-	}
-
-	.btn.btn-flat.btn-hero-learn-more {
-		margin: 0;
-	}
-
-	@media (max-width: 900px) {
+	@media (max-width: 901px) {
 		.features-grid {
 			grid-template-columns: 1fr;
 		}
 	}
 
-	.news-list .button-container {
+	{{/* ----------News----------*/}}
+
+	.news a {
+		text-decoration: none;
+	}
+
+	.news__list {
+		display: grid;
+		gap: 18px;
+	}
+
+	.news__list > .button-container {
 		text-align: right;
 	}
 
-	@media (max-width: 768px) {
-		.news-list .button-container {
+	@media (max-width: 901px) {
+		.news__list .button-container {
 			text-align: left;
 		}
 	}
+
+	{{/* ----------Get Involved----------*/}}
 
 	.get-involved-item {
 		display: flex;
@@ -170,13 +161,77 @@
 	.get-involved-item > h4 {
 		margin: 5px 0 11px;
 	}
-</style>
 
+	@media (max-width: 901px) {
+		#get_involved > h2, #get_involved > p {
+			text-align: center;
+		}
+	}
+
+	{{/* ----------Donations----------*/}}
+
+	#donations {
+		background-color: var(--dark-color);
+		color: var(--dark-color-text);
+		overflow: auto;
+		text-align: center;
+		content-visibility: auto;
+		contain-intrinsic-size: auto 100vw auto 376.844px;
+	}
+
+	@media (max-width: 901px) {
+		#donations {
+			contain-intrinsic-size: auto 100vw auto 349.844px;
+		}
+	}
+</style>
+<script>
+	/**
+	 * @typedef Author
+	 * @type {object}
+	 * @property {string} game
+	 * @property {string} by
+	 * @property {string} url
+	 * @property {string} image
+	 */
+
+	/** Author[] */
+	const authors = [
+		{{ range partialCached "_funcs/featured-showcase-pages.html" $ }}
+		{
+			game: '{{ .Params.title }}',
+			by: '{{ .Params.author }}',
+			url: '{{ .Params.url }}',
+			image: '{{ index .Params.gallery 0 }}',
+		},
+		{{ end }}
+	];
+	const author = authors[Math.floor(Math.random() * authors.length)];
+
+	(function preloadHeroImage() {
+		const template = document.createElement('template');
+		template.innerHTML = `<link rel="preload" as="image" href="${author.image}" fetchpriority="high"/>`
+		document.head.appendChild(template.content.firstChild);
+	})();
+
+	// Used for removing img background after loading, this is necessary to avoid edge color bleeding
+	function removeImgBackground(el) {
+		el.style.background = 'initial';
+	}
+</script>
+{{ end }}
+
+{{ define "header" }}
+	{{ partialCached "transparent-header.html" . }}
+{{ end }}
+
+{{ define "main" }}
+{{/* ----------Hero Download----------*/}}
 <section class="hero">
 	<div id="hero-background-image" class="background-image" style="contain: content;"></div>
     <div class="wrapper">
         <div class="copy container">
-            <h1>{{ T "page.home.header.titleText" }}</h1>
+            <h1>{{ T "page.home.header.titleText" | safeHTML }}</h1>
             <p>{{ T "page.home.header.subtitleText" }}</p>
 
             <div class="main-download">
@@ -185,7 +240,7 @@
 					{{ partialCached "common/download-lts-button.html" . }}
                 </div>
 
-                <a href="/features" class="btn btn-flat btn-flat-white btn-flat-frosted btn-hero-learn-more">{{ T "common.button.learnMore" }}</a>
+                <a href="{{ relLangURL "features" }}" class="btn btn-flat btn-flat-white btn-flat-frosted btn-hero-learn-more">{{ T "common.button.learnMore" }}</a>
             </div>
         </div>
     </div>
@@ -226,17 +281,18 @@
 	</script>
 </section>
 
+{{/* ----------News----------*/}}
 <section class="container padded">
     <h2>{{ T "common.button.latestNews" }}</h2>
-    <div class="flex eqsize responsive" style="gap: 30px;">
+    <div class="news flex eqsize responsive" style="gap: 30px;">
 
         {{ $lastestArticles := (where .Sites.First.RegularPages "Section" "article").ByDate.Reverse.Limit 4 }}
 		{{ range $lastestArticles | first 1}}
-			<a href="{{ .Permalink }}" style="text-decoration: none">
+			<a href="{{ .Permalink }}">
 				<article class="article-card">
 					<img src="{{ .Params.image }}" class="thumbnail" alt="" decoding="async" width="16" height="9">
 					<div class="content">
-						<h3>{{ .Params.title }}</h3>
+						<h2>{{ .Params.title }}</h2>
 						<p class="excerpt">{{ .Params.excerpt }}</p>
 						<span class="date" data-post-date="{{ .Params.date }}">{{ time.Format ":date_long" .Params.date }}</span>
 					</div>
@@ -244,150 +300,138 @@
 			</a>
 		{{ end }}
 
-        <div class="news-list">
-            <div style="display: grid; gap: 18px;">
-                {{ range after 1 $lastestArticles }}
-                <a href="{{ .Permalink }}" style="text-decoration: none;">
-                    <article class="article-card row">
-						<img src="{{ .Params.image }}" class="thumbnail" alt="" href="{{ .Params.url }}" fetchpriority="low" decoding="async" width="16" height="9">
-                        <div>
-                            <h3>{{ .Params.title }}</h3>
-                            <p class="excerpt">{{ .Params.excerpt | truncate 103 }}</p>
-                            <span class="date" data-post-date="{{ .Params.date }}">{{ time.Format ":date_long" .Params.date }}</span>
-                        </div>
-                    </article>
-                </a>
-                {{ end }}
-                <div class="button-container">
-                    <a href="/blog" class="btn no-margin">{{ T "common.button.moreNews" }}</a>
-                </div>
-            </div>
+        <div class="news__list">
+			{{ range after 1 $lastestArticles }}
+			<a href="{{ .Permalink }}">
+				<article class="article-card row">
+					<img src="{{ .Params.image }}" class="thumbnail" alt="" href="{{ .Params.url }}" fetchpriority="low" decoding="async" width="16" height="9">
+					<div>
+						<h2>{{ .Params.title }}</h2>
+						<p class="excerpt">{{ .Params.excerpt | truncate 103 }}</p>
+						<span class="date" data-post-date="{{ .Params.date }}">{{ time.Format ":date_long" .Params.date }}</span>
+					</div>
+				</article>
+			</a>
+			{{ end }}
+			<div class="button-container">
+				<a href="{{ relLangURL "blog" }}" class="btn no-margin">{{ T "common.button.moreNews" }}</a>
+			</div>
         </div>
     </div>
 </section>
 
-
+{{/* ----------Features----------*/}}
 <section id="features" class="container padded">
     <h2>{{ T "page.home.features.titleText" }}</h2>
 
     <div class="features-grid">
-        <a class="feature-link" href="/features#design" data-barba-prevent>
-            <div class="feature dark">
-				<img src="/assets/home/features/innovative.webp" alt="" width="1" height="1"
-					 style="background: linear-gradient(90deg, #333747 11%, #2d3342 50%, #2d3342 68%, #272d3c 87%)" loading="lazy" onload="removeFeatureImgBackground(this)" decoding="async">
-                <div class="body">
-                    <h4>{{ T "page.home.features.design.titleText" }}</h4>
-                    <p>{{ T "page.home.features.design.bodyText" }}</p>
-                </div>
-            </div>
-        </a>
-
-        <a class="feature-link" href="/features#script" data-barba-prevent>
-            <div class="feature dark">
-				<img src="/assets/home/features/language.webp" alt="" width="1" height="1"
-					 style="background: linear-gradient(90deg, #252a35 46%, #252a35 53%, #202630 76%, #202630 89%)" loading="lazy" onload="removeFeatureImgBackground(this)" decoding="async">
-                <div class="body">
-					<h4>{{ T "page.home.features.script.titleText" }}</h4>
-                    <p>
-						{{ T "page.home.features.script.bodyText" }}
-						<div style="margin-top: 0.5rem; font-size: 0.875rem; line-height: 1.6; opacity: 0.8">
-							{{ T "page.home.features.script.disclaimerText" | safeHTML }}
-						</div>
-                    </p>
-                </div>
-            </div>
-        </a>
-        <a class="feature-link" href="/features#features_2d" data-barba-prevent>
-            <div class="feature dark">
-				<img src="/assets/home/features/2d.webp" alt="" width="1" height="1"
-					 style="background: linear-gradient(90deg, #196f36 7%, #28674e 29%, #2a4b46 65%, #3b6f4e 97%)" loading="lazy" onload="removeFeatureImgBackground(this)" decoding="async">
-                <div class="body">
-					<h4>{{ T "page.home.features.2D.titleText" }}</h4>
-					<p>{{ T "page.home.features.2D.bodyText" }}</p>
-                </div>
-            </div>
-        </a>
-
-        <a class="feature-link" href="/features#features_3d" data-barba-prevent>
-            <div class="feature dark">
-				<img src="/assets/home/features/3d.webp" alt="" width="1" height="1"
-					 style="background: linear-gradient(90deg, #196f36 7%, #28674e 29%, #2a4b46 65%, #3b6f4e 97%)" loading="lazy" onload="removeFeatureImgBackground(this)" decoding="async">
-                <div class="body">
-					<h4>{{ T "page.home.features.3D.titleText" }}</h4>
-					<p>{{ T "page.home.features.3D.bodyText" }}</p>
-                </div>
-            </div>
-        </a>
-
-        <a class="feature-link" href="/features#deploy" data-barba-prevent>
-            <div class="feature dark">
-				<img src="/assets/home/features/cross-platform.svg" alt="" width="1" height="1"
-					 style="background-color: #333667" loading="lazy" onload="removeFeatureImgBackground(this)" decoding="async">
-                <div class="body">
-					<h4>{{ T "page.home.features.deploy.titleText" }}</h4>
-					<p>{{ T "page.home.features.deploy.bodyText" }}</p>
-                </div>
-            </div>
-        </a>
-
-        <a class="feature-link" href="#get_involved" data-barba-prevent>
-            <div class="feature dark">
-				<img src="/assets/home/features/oss.svg" alt="" width="1" height="1" style="background-color: #333667"
-					 loading="lazy" onload="removeFeatureImgBackground(this)" decoding="async">
-                <div class="body">
-					<h4>{{ T "page.home.features.getInvolved.titleText" }}</h4>
-					<p>{{ T "page.home.features.getInvolved.bodyText" }}</p>
-                </div>
-            </div>
-        </a>
+		{{ $design := dict
+			"link" "features#design"
+			"image" "/assets/home/features/innovative.webp"
+			"title" "page.home.features.design.titleText"
+			"body" "page.home.features.design.bodyText"
+		}}
+		{{ $script := dict
+			"link" "features#script"
+			"image" "/assets/home/features/language.webp"
+			"title" "page.home.features.script.titleText"
+			"body" "page.home.features.script.bodyText"
+			"disclaimer" "page.home.features.script.disclaimerText"
+		}}
+		{{ $features2D := dict
+			"link" "features#features_2d"
+			"image" "/assets/home/features/2d.webp"
+			"title" "page.home.features.2D.titleText"
+			"body" "page.home.features.2D.bodyText"
+		}}
+		{{ $features3D := dict
+			"link" "features#features_3d"
+			"image" "/assets/home/features/3d.webp"
+			"title" "page.home.features.3D.titleText"
+			"body" "page.home.features.3D.bodyText"
+		}}
+		{{ $deploy := dict
+			"link" "features#deploy"
+			"image" "/assets/home/features/cross-platform.svg"
+			"title" "page.home.features.deploy.titleText"
+			"body" "page.home.features.deploy.bodyText"
+		}}
+		{{ $getInvolved := dict
+			"link" "#get_involved"
+			"image" "/assets/home/features/oss.svg"
+			"title" "page.home.features.getInvolved.titleText"
+			"body" "page.home.features.getInvolved.bodyText"
+		}}
+		{{ $features := slice $design $script $features2D $features3D $deploy $getInvolved }}
+		{{ range $features }}
+			<a class="feature-link" href="{{ relLangURL .link }}">
+			<div class="feature dark">
+				<img src="{{ .image }}" alt="" width="1" height="1" loading="lazy" onload="removeImgBackground(this)" decoding="async">
+				<div class="body">
+					<h3 class="text-s">{{ T .title }}</h3>
+					<p>
+						{{ T .body }}
+						{{ with .disclaimer }}
+							<div class="feature__disclaimer">
+								{{ T . | safeHTML }}
+							</div>
+						{{ end }}
+					</p>
+				</div>
+			</div>
+			</a>
+		{{ end }}
     </div>
 
     <div class="features-learn-more">
-        <a href="/features" class="btn btn-flat btn-flat-white btn-flat-frosted">{{ T "page.home.features.button.learnMoreAboutUsingGodot" }}</a>
+        <a href="{{ relLangURL "features" }}" class="btn btn-flat btn-flat-white btn-flat-frosted">
+			{{- T "page.home.features.button.learnMoreAboutUsingGodot" -}}
+		</a>
     </div>
 </section>
 
+{{/* ----------Get Involved----------*/}}
 <section id="get_involved" class="container padded">
     <h2>{{ T "page.home.getInvolved.titleText" }}</h2>
     <p>{{ T "page.home.getInvolved.subtitleText" }}</p>
 
     <div class="flex eqsize responsive">
-
-        <div class="text-center base-padding get-involved-item">
-            <img src="/assets/home/code.svg" alt="" width="250" height="250" loading="lazy">
-			<h4>{{ T "page.home.getInvolved.code.titleText" }}</h4>
-			<p>{{ T "page.home.getInvolved.code.bodyText" }}</p>
-			<div class="grow"></div>
-            <a href="https://docs.godotengine.org/en/stable/community/contributing/ways_to_contribute.html#contributing-code"
-               class="btn btn-flat btn-flat-frosted" target="_blank" rel="noopener">{{ T "common.button.learnMore" }}</a>
-        </div>
-
-        <div class="text-center base-padding get-involved-item">
-            <img src="/assets/home/document.svg" alt="" width="250" height="250" loading="lazy">
-			<h4>{{ T "page.home.getInvolved.document.titleText" }}</h4>
-			<p>{{ T "page.home.getInvolved.document.bodyText" }}</p>
-			<div class="grow"></div>
-            <a href="https://docs.godotengine.org/en/stable/community/contributing/ways_to_contribute.html#contributing-to-the-documentation"
-               class="btn btn-flat btn-flat-frosted" target="_blank" rel="noopener">{{ T "common.button.learnMore" }}</a>
-        </div>
-
-        <div class="text-center base-padding get-involved-item">
-            <img src="/assets/home/report.svg" alt="" width="250" height="250" loading="lazy">
-			<h4>{{ T "page.home.getInvolved.report.titleText" }}</h4>
-			<p>{{ T "page.home.getInvolved.report.bodyText" }}</p>
-			<div class="grow"></div>
-            <a href="https://docs.godotengine.org/en/stable/community/contributing/ways_to_contribute.html#testing-and-reporting-issues"
-               class="btn btn-flat btn-flat-frosted" target="_blank" rel="noopener">{{ T "common.button.learnMore" }}</a>
-        </div>
-
+		{{ $code := dict
+			"link" "https://docs.godotengine.org/en/stable/community/contributing/ways_to_contribute.html#contributing-code"
+			"image" "/assets/home/code.svg"
+			"title" "page.home.getInvolved.code.titleText"
+			"body" "page.home.getInvolved.code.bodyText"
+		}}
+		{{ $document := dict
+			"link" "https://docs.godotengine.org/en/stable/community/contributing/ways_to_contribute.html#contributing-to-the-documentation"
+			"image" "/assets/home/document.svg"
+			"title" "page.home.getInvolved.document.titleText"
+			"body" "page.home.getInvolved.document.bodyText"
+		}}
+		{{ $report := dict
+			"link" "https://docs.godotengine.org/en/stable/community/contributing/ways_to_contribute.html#testing-and-reporting-issues"
+			"image" "/assets/home/report.svg"
+			"title" "page.home.getInvolved.report.titleText"
+			"body" "page.home.getInvolved.report.bodyText"
+		}}
+		{{ $envolvementActions := slice $code $document $report }}
+		{{ range $envolvementActions }}
+			<div class="text-center base-padding get-involved-item">
+				<img src="{{ .image }}" alt="" width="250" height="250" loading="lazy">
+				<h3 class="text-s">{{ T .title }}</h3>
+				<p>{{ T .body }}</p>
+				<div class="grow"></div>
+				<a href="{{ .link }}" class="btn btn-flat btn-flat-frosted" target="_blank" rel="noopener">{{ T "common.button.learnMore" }}</a>
+			</div>
+		{{ end }}
     </div>
 </section>
 
+{{/* ----------Donations----------*/}}
 <section id="donations" class="padded">
     <div class="container sm-full">
         <a href="https://godot.foundation" target="_blank" style="display: inline-block;">
-            <img id="foundation_graphic" src="/assets/home/foundation/godot-foundation-logo-dark.svg" alt="Godot Foundation logo" width="1" height="1"
-                 class="img-auto-size" loading="lazy">
+            <img id="foundation_graphic" src="/assets/home/foundation/godot-foundation-logo-dark.svg" alt="Godot Foundation logo" width="1" height="1" loading="lazy">
         </a>
         <p class="small auto-margin">{{ T "page.home.donate.donateText" (dict "developmentFundLinkBefore" "<a href='https://fund.godotengine.org/'>" "developmentFundLinkAfter" "</a>") | safeHTML }}</p>
 

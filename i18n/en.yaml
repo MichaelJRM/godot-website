@@ -1,7 +1,7 @@
 page:
   home:
     header:
-      titleText: The game engine you've been waiting for.
+      titleText: The game engine you've been waiting&nbsp;for.
       subtitleText: The Godot Engine is a free, all-in-one, cross-platform game engine that makes it easy for you to create 2D and 3D games.
 
     features:
