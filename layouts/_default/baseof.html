@@ -17,12 +17,12 @@
     <meta name="description" content="{{ $description }}">
     <meta name="theme-color" content="#3d8fcc">
     <meta property="og:site_name" content="Godot Engine">
-    <meta property="og:url" content="{{ absLangURL "./" }}">
+    <meta property="og:url" content="{{ absLangURL "" }}">
     <meta name="twitter:site" content="@godotengine">
 
     <meta property="og:title" content="{{ .Title }}">
     <meta property="og:description" content="{{ $description }}">
-    <meta property="og:image" content="{{ absURL (default "/assets/share-image.webp" .Params.image) }}">
+    <meta property="og:image" content="{{ absURL (default "assets/share-image.webp" .Params.image) }}">
     <meta property="og:type" content="{{ default "website" .Params.og_type }}">
     <meta name="twitter:card" content="summary_large_image">
     <title>{{ .Title }}</title>

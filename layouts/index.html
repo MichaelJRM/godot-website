@@ -187,7 +187,7 @@
 </style>
 <script>
 	/**
-	 * @typedef Author
+	 * @typedef Project
 	 * @type {object}
 	 * @property {string} game
 	 * @property {string} by
@@ -195,8 +195,8 @@
 	 * @property {string} image
 	 */
 
-	/** Author[] */
-	const authors = [
+	/** Project[] */
+	const featuredProjects = [
 		{{ range partialCached "_funcs/featured-showcase-pages.html" $ }}
 		{
 			game: '{{ .Params.title }}',
@@ -206,11 +206,11 @@
 		},
 		{{ end }}
 	];
-	const author = authors[Math.floor(Math.random() * authors.length)];
+	const featuredProject = featuredProjects[Math.floor(Math.random() * featuredProjects.length)];
 
 	(function preloadHeroImage() {
 		const template = document.createElement('template');
-		template.innerHTML = `<link rel="preload" as="image" href="${author.image}" fetchpriority="high"/>`
+		template.innerHTML = `<link rel="preload" as="image" href="${featuredProject.image}" fetchpriority="high"/>`
 		document.head.appendChild(template.content.firstChild);
 	})();
 
@@ -248,12 +248,12 @@
         <a href=""><span class="game"></span> <span class="by" style="opacity: 0.6;"></span></a>
     </div>
 	<script>
-		(function loadHero() {
-			// author is declared inside _layouts/default.html
-			document.getElementById('hero-background-image').style.backgroundImage = `url(${author.image})`;
-			document.querySelector('.hero .credits a').href = author.url;
-			document.querySelector('.hero .credits a span.game').innerText = author.game;
-			document.querySelector('.hero .credits a span.by').innerText = ' - ' + author.by;
+		(function loadHeroFeaturedProject() {
+			// featuredProject is declared at the top of the file
+			document.getElementById('hero-background-image').style.backgroundImage = `url(${featuredProject.image})`;
+			document.querySelector('.hero .credits a').href = featuredProject.url;
+			document.querySelector('.hero .credits a span.game').innerText = featuredProject.game;
+			document.querySelector('.hero .credits a span.by').innerText = ' - ' + featuredProject.by;
 		})();
 
 		(function setupHeroParallaxEffect() {
