@@ -407,32 +407,33 @@ page:
 
   download:
     header:
-      downloadGodotFor: Download Godot {{ .version }} for {{ .platform }}
-      forTheLTSVersionDownloadGodot: For the LTS version, {{ .linkOpen }}Download Godot {{ .version }}{{ .linkClose }}.
-      forTheLatestVersionDownloadGodot: For the latest version, {{ .linkOpen }}Download Godot {{ .version }}{{ .linkClose }}.
-      youCanFindPreviousReleasesInTheDownloadArchive: You can find previous releases in the {{ .linkOpen }}download archive{{ .linkClose }}.
-      lookingForOtherPlatformsSeeBellow: Looking for other platforms? {{ .linkOpen }}See below!{{ .linkClose }}
-    c#Support: C# support
+      downloadGodotFor: Download Godot {{ .version }} para {{ .platform }}
+      forTheLTSVersionDownloadGodot: Para a versão LTS, {{ .linkOpen }}Download Godot {{ .version }}{{ .linkClose }}.
+      forTheLatestVersionDownloadGodot: Para obter a versão mais recente, {{ .linkOpen }}Download Godot {{ .version }}{{ .linkClose }}.
+      youCanFindPreviousReleasesInTheDownloadArchive: Pode encontrar versões anteriores no {{ .linkOpen }}arquivo de transferências{{ .linkClose }}.
+      lookingForOtherPlatformsSeeBellow: Está à procura de outras plataformas? {{ .linkOpen }}Veja abaixo!{{ .linkClose }}
+    c#Support: Suporte para C#
     requirements:
-      titleText: Requirements
+      titleText: Requisitos
       v4:
-        recommendedText: <strong>Recommended:</strong> Vulkan 1.0 compatible hardware
-        minimalText: <strong>Minimal:</strong> OpenGL 3.3 / OpenGL ES 3.0 compatible hardware
+        recommendedText: <strong>Recomendado:</strong> Hardware compatível com Vulkan 1.0
+        minimalText: <strong>Mínimo:</strong> Hardware compatível com OpenGL 3.3 / OpenGL ES 3.0
       v3:
-        minimalText: OpenGL 2.1 / OpenGL ES 2.0 compatible hardware
-        netSDKOrTheMonoSDK: "{{ .netLinkOpen }}.NET SDK{{ .netLinkClose }} or the {{ .monoLinkOpen }}Mono SDK{{ .monoLinkClose }}"
-      additionRequirementsText: "Additional requirements for the .NET version:"
+        minimalText: Hardware compatível com OpenGL 2.1 / OpenGL ES 2.0
+        netSDKOrTheMonoSDK: "{{ .netLinkOpen }}.NET SDK{{ .netLinkClose }} ou o {{ .monoLinkOpen }}Mono SDK{{ .monoLinkClose }}"
+      additionRequirementsText: "Requisitos adicionais para a versão .NET:"
     allDownloads:
-      titleText: All downloads
+      titleText: Todos os downloads
     instructions:
-      titleText: Instructions
+      titleText: Instruções
     digitalPlatforms:
-      titleText: "Godot Engine is also available on digital distribution platforms:"
+      titleText: "O Godot Engine também está disponível em plataformas de distribuição digital:"
       c#SupportDisclaimerText: Digital store versions <strong>do not</strong> include .NET/C# support.
       steamStableBranchContextText: <strong>Steam</strong> version is available as a <code>stable-3.5</code> beta branch.
       steamTemplatesContextText: <strong>Steam</strong> version includes full set of export templates and demo projects.
     supportedPlatforms:
       titleText: Supported platforms
+      linuxServer: Servidor Linux
     otherGodotDownloads:
       titleText: Other Godot downloads
       godotDemoProjects:
@@ -518,6 +519,18 @@ partials:
       This article is from <strong>{{ .date }}</strong>, some of its contents might be outdated and no longer accurate.<br>
       You can find up-to-date information about the engine in the {{ .linkOpen }}official documentation{{ .linkClose }}.
 
+  archiveListItem:
+    link:
+      download:
+        titleText: Abrir a página de downloads
+        contentText: Download
+      changelog:
+        titleText: Ver registo de alterações completo
+        contentText: Registo de alterações
+      news:
+        titleText: Ler o anúncio de lançamento
+        contentText: Notícias
+
   footer:
     copyRightText: © 2007-{{ .year }} Juan Linietsky, Ariel Manzur and {{ .linkOpen }}contributors{{ .linkClose }}.
     hostedByTheGodotFoundation: Hosted by the {{ .linkOpen }}Godot Foundation{{ .linkClose }}.
@@ -559,7 +572,7 @@ common:
     latestNews: Últimas notícias
     moreNews: Mais notícias
     donate: Doar
-    makeADonation: Make a Donation
+    makeADonation: Fazer uma doação
 
   webEditor: Editor Web
   features: Funcionalidades

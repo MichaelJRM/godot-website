@@ -1,12 +1,5 @@
-{{ define "main" }}
-<div style="padding: 16px 32px">
-	<h3>Redirecting...</h3>
-	<p>
-		If you are not being redirected automatically, <a href="/download/3.x/windows" class="set-os-download-url" data-version="3">click here</a>.
-	</p>
-</div>
-
-<script type="text/javascript">
+{{ define "head" }}
+<script>
 	const platformName = (navigator?.userAgentData?.platform ?? navigator?.platform).toLowerCase();
 	if (platformName.includes('mac')) {
 		window.location = "{{ relLangURL "download/3.x/macos" }}";
@@ -16,4 +9,12 @@
 		window.location = "{{ relLangURL "download/3.x/windows" }}";
 	}
 </script>
+{{ end }}
+{{ define "main" }}
+<div style="padding: 16px 32px">
+	<h3>Redirecting...</h3>
+	<p>
+		If you are not being redirected automatically, <a href="/download/3.x/windows" class="set-os-download-url" data-version="3">click here</a>.
+	</p>
+</div>
 {{ end }}

@@ -1,10 +1,10 @@
-<div class="thankyou-wrapper" id="thank-you" style="display:none">
+<div class="thankyou-wrapper" id="thankyou-wrapper" style="display:none">
 	<div class="thankyou">
 		<h2>{{ T "page.download.modal.thankYou.godotIsDownloading" }}</h2>
 
 		<p class="thankyou-donate">{{ T "page.download.modal.thankYou.considerDonatingText" }}</p>
 
-		<a href="/donate" class="btn btn-donate">{{ T "common.button.makeADonation" }}</a>
+		<a href="{{ relLangURL "donate" }}" class="btn btn-donate">{{ T "common.button.makeADonation" }}</a>
 
 		<h3>{{ T "page.download.modal.thankYou.thankYou" }}</h3>
 
@@ -31,34 +31,29 @@
 </div>
 <script>
 	document.addEventListener('DOMContentLoaded', () => {
-		const thankYouWrapper = document.getElementById('thank-you');
-		// Close itself, when clicked outside of the popup area.
+		const thankYouWrapper = document.getElementById('thankyou-wrapper');
+
+		function openModal() {
+			thankYouWrapper.style.display = '';
+		}
+
+		function closeModal() {
+			thankYouWrapper.style.display = 'none';
+		}
+
+		// Close itself, when clicked outside the popup area.
 		thankYouWrapper.addEventListener('click', (e) => {
 			if (e.target === thankYouWrapper) {
-				thankYouWrapper.style.display = 'none';
+				closeModal();
 			}
 		});
 
 		// Close with a close button.
 		const thankYouBackButton = document.querySelector('.btn-back-to-downloads');
-		thankYouBackButton.addEventListener('click', () => {
-			thankYouWrapper.style.display = 'none';
-		});
+		thankYouBackButton.addEventListener('click', closeModal);
 
-		// Open from the main download buttons.
-		const downloadButtons = document.querySelectorAll('.btn-download');
-		downloadButtons.forEach((it) => {
-			it.addEventListener('click', () => {
-				thankYouWrapper.style.display = '';
-			});
-		});
-
-		// Open from the all downloads list.
-		const downloadLinks = document.querySelectorAll('.download-link');
-		downloadLinks.forEach((it) => {
-			it.addEventListener('click', () => {
-				thankYouWrapper.style.display = '';
-			});
-		});
+		// Open from the main download buttons and all downloads list.
+		const downloadButtons = document.querySelectorAll('.btn-download, .download-link');
+		downloadButtons.forEach((it) => it.addEventListener('click', openModal));
 	});
 </script>

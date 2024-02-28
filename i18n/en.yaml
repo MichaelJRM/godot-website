@@ -423,6 +423,7 @@ page:
       steamTemplatesContextText: <strong>Steam</strong> version includes full set of export templates and demo projects.
     supportedPlatforms:
       titleText: Supported platforms
+      linuxServer: Linux Server
     otherGodotDownloads:
       titleText: Other Godot downloads
       godotDemoProjects:
@@ -508,6 +509,18 @@ partials:
       This article is from <strong>{{ .date }}</strong>, some of its contents might be outdated and no longer accurate.<br>
       You can find up-to-date information about the engine in the {{ .linkOpen }}official documentation{{ .linkClose }}.
 
+  archiveListItem:
+    link:
+      download:
+        titleText: Open downloads page
+        contentText: Download
+      changelog:
+        titleText: View complete changelog
+        contentText: Changelog
+      news:
+        titleText: Read release announcement
+        contentText: News
+
   footer:
     copyRightText: © 2007-{{ .year }} Juan Linietsky, Ariel Manzur and {{ .linkOpen }}contributors{{ .linkClose }}.
     hostedByTheGodotFoundation: Hosted by the {{ .linkOpen }}Godot Foundation{{ .linkClose }}.
@@ -548,7 +561,7 @@ common:
     latestNews: Latest news
     moreNews: More news
     donate: Donate
-    makeADonation: Make a Donation]
+    makeADonation: Make a Donation
 
   webEditor: Web Editor
   features: Features

@@ -4,17 +4,16 @@
 {{ $platform := .platform }}
 {{ $versionNumber := index (split $version.name ".") 0 }}
 
-<style>
-	.hero {
-		{{ if eq $versionNumber "4" }}
-		background-image: url('/assets/download/download-background-4.x.webp');
-		{{ else }}
-		background-image: url('/assets/download/download-background.webp');
-		{{ end}}
-	}
-</style>
+{{ $currentVersionImage := "" }}
+{{ if eq $versionNumber "4" }}
+	{{ $currentVersionImage = "/assets/download/download-background-4.x.webp" }}
+{{ else }}
+	{{ $currentVersionImage = "/assets/download/download-background.webp" }}
+{{ end }}
 
-<div class="hero">
+<link rel="preload" as="image" href="{{ $currentVersionImage }}" fetchpriority="high" type="image/webp">
+
+<div class="hero" style="background-image: url('{{ $currentVersionImage }}');">
 	<div class="hero-wrapper">
 		<h1>{{ T "page.download.header.downloadGodotFor" (dict "version" $versionNumber "platform" $platform) }}</h1>
 

@@ -3,9 +3,6 @@
 {{ end }}
 
 {{ define "main" }}
-
-<link rel="stylesheet" href="{{ (resources.Get "css/download.css" | resources.Minify | resources.Fingerprint).RelPermalink }}">
-
 <style>
     .digital-stores .digital-store-list {
         grid-template-columns: 1fr 1fr;
@@ -18,27 +15,27 @@
 </style>
 
 {{ $stableVersion3 := partialCached "_funcs/stable-version-3.html" . }}
+<span class="download-page">
 {{ partial "download/hero.html" (dict "gCtx" $ "version" $stableVersion3 "downloads" $.Params.downloads "platform" $.Params.platform) }}
-
 <div class="container">
     <div id="links" class="platform-details">
         <div class="card base-padding">
-            <h3>Requirements</h3>
+            <h3>{{ T "page.download.requirements.titleText" }}</h3>
 
             <ul>
                 <li>{{ T "page.download.requirements.v3.minimalText" }}</li>
             </ul>
 
             {{ if not $.Params.ignore_mono }}
-            <p>{{ T "page.download.requirements.additionRequirementsText" }}</p>
-            <ul>
-                <li>
-					{{ T "page.download.requirements.v3.netSDKOrTheMonoSDK" (dict
-						"netLinkOpen" "<a href='https://dotnet.microsoft.com/download'>" "netLinkClose" "</a>"
-						"monoLinkOpen" "<a href='https://www.mono-project.com/download/stable/'>" "monoLinkClose" "</a>") | safeHTML
-					}}
-                </li>
-            </ul>
+				<p>{{ T "page.download.requirements.additionRequirementsText" }}</p>
+				<ul>
+					<li>
+						{{ T "page.download.requirements.v3.netSDKOrTheMonoSDK" (dict
+							"netLinkOpen" "<a href='https://dotnet.microsoft.com/download'>" "netLinkClose" "</a>"
+							"monoLinkOpen" "<a href='https://www.mono-project.com/download/stable/'>" "monoLinkClose" "</a>") | safeHTML
+						}}
+					</li>
+				</ul>
             {{ end }}
         </div>
 
@@ -47,13 +44,13 @@
 				"gCtx" $
 				"version" $stableVersion3
 				"ignoreExport" .Params.ignore_export
+				"ignoreMono" .Params.ignore_mono
 				"downloads" .Params.downloads
 				"contentNote" .Params.content_note)
 			}}
 
             <div class="card base-padding">
-                <h3>Instructions</h3>
-
+                <h3>{{ T "page.download.instructions.titleText" }}</h3>
                 {{ $.Params.content_instructions | safeHTML }}
             </div>
         </div>
@@ -72,4 +69,5 @@
 </div>
 
 {{ partial "download/download-tankyou.html" . }}
+</span>
 {{ end }}
