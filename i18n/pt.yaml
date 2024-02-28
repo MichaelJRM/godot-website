@@ -373,6 +373,8 @@ page:
       searchInput:
         placeholderText: Search articles
         altText: Search
+    categories: Categorias
+    showAllCategories: Mostrar todas as categorias
     category:
       all: All
       events: Events

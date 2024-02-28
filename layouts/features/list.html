@@ -19,8 +19,8 @@
 		margin-top: 0;
 	}
 </style>
-
-<div class="features-page features-why">
+<span class="features-page">
+<div class="features-why">
 	<h2>{{ T "page.features.header.titleText" }}</h2>
 
 	<div class="features-showcase" id="showcase">
@@ -117,7 +117,7 @@
 	</div>
 </div>
 
-<div class="features-page">
+<div>
 
 	<div class="container" id="features">
 		<h2>{{ T "page.features.mainFeatures.titleText" }}</h2>
@@ -254,7 +254,7 @@
 
 </div>
 
-<div id="call-to-action" class="container card features-page features-download">
+<div id="call-to-action" class="container card features-download">
 	<h2>{{ T "page.features.readyToStart.titleText" }}</h2>
 
 	<div class="features-download-ready">
@@ -264,4 +264,6 @@
 		{{ partialCached "common/download-lts-button.html" . }}
 	</div>
 </div>
+</span>
+
 {{ end }}

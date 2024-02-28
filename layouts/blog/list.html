@@ -1,95 +1,35 @@
 {{ define "main" }}
-
-<style>
-    .posts {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-
-    @media (min-width: 768px) {
-        .posts {
-            grid-template-columns: 1fr 1fr;
-        }
-    }
-
-    @media (min-width: 1024px) {
-        .posts {
-            grid-template-columns: 1fr 1fr 1fr;
-        }
-    }
-
-    .head .main {
-        display: grid;
-        gap: 30px;
-        padding: 20px 0 39px;
-    }
-    .head .main > :last-child,
-    .head .main > :first-child {
-        margin: 0;
-    }
-    @media (min-width: 902px) {
-        .head .main {
-            height: 120px;
-            grid-template-columns: 1fr 1fr;
-            align-content: center;
-            padding: 0;
-        }
-        .head .main .search-bar {
-            margin-top: 6px;
-            justify-self: end;
-        }
-    }
-
-    .tags {
-        display: flex;
-        align-items: baseline;
-        gap: 10px;
-        flex-wrap: wrap;
-    }
-
-    .tags h3 {
-        display: inline-block;
-        margin: 0;
-        font-size: 19px;
-    }
-</style>
-
+<span class="blog-page">
 <div class="head">
-    <div class="container flex eqsize responsive">
-        <div class="main">
-            <h1 class="intro-title">{{ T "page.blog.header.titleText" }}</h1>
-            <form class="search-bar" method="get" action="https://duckduckgo.com/">
-                <input type="hidden" name="sites" value="godotengine.org/article" />
-                <input type="text" name="q" maxlength="300" placeholder="{{ T "page.blog.header.searchInput.placeholderText" }}" />
-                <button class="btn search-bar-btn" type="submit">
-                    <img width="24" height="24" src="/assets/icons/search.svg" alt="{{ T "page.blog.header.searchInput.altText" }}" />
-                </button>
-            </form>
-        </div>
-    </div>
+	<div class="container flex eqsize responsive">
+		<div class="main">
+			<h1 class="intro-title">{{ T "page.blog.header.titleText" }}</h1>
+			<form class="search-bar" method="get" action="https://duckduckgo.com/">
+				<input type="hidden" name="sites" value="godotengine.org/article" />
+				<input type="text" name="q" maxlength="300" placeholder="{{ T "page.blog.header.searchInput.placeholderText" }}" />
+				<button class="btn search-bar-btn" type="submit">
+					<img width="24" height="24" src="/assets/icons/search.svg" alt="{{ T "page.blog.header.searchInput.altText" }}" fetchpriority="low" decoding="async" />
+				</button>
+			</form>
+		</div>
+	</div>
 </div>
 
 <div class="container">
-    <!-- Search -->
-
-
-    <!-- Categories -->
-
     <div class="tags">
-        <h3>Categories </h3>
-        <a href="{{ relLangURL "blog" }}" title="Show all categories">
+        <h2 class="tags__title">{{ T "page.blog.categories" }}</h2>
+        <a href="{{ relLangURL "blog" }}" title="{{ T "page.blog.showAllCategories" }}">
             <div class="tag tag--default {{ if eq .Params.category "all" }}active{{ end }}">{{ T "page.blog.category.all" }}</div>
-        </a>
+	</a>
 
-        {{ range $category := $.Site.Data.categories }}
-            {{ range $data := index $category }}
-                <a href="{{ relLangURL "blog" }}/{{ $data.slug }}" title="{{ $data.description }}">
-                    <div class="tag tag--{{ $data.slug }} {{ if eq .slug $.Params.category }} active {{ end }}">
-                        {{ T (printf "%s.%s" "page.blog.category" $data.name) }}
+	{{ range $category := $.Site.Data.categories }}
+            {{ range $tag := index $category }}
+                <a href="{{ relLangURL "blog" }}/{{ $tag.slug }}" title="{{ $tag.description }}">
+                    <div class="tag tag--{{ $tag.slug }} {{ if eq .slug $.Params.category }} active {{ end }}">
+                        {{ T (printf "%s.%s" "page.blog.category" $tag.name) }}
 					</div>
-                </a>
-            {{ end }}
+	</a>
+	{{ end }}
         {{ end }}
     </div>
     {{ if ne .Params.category "all" }}
@@ -108,19 +48,41 @@
     {{ partial "paginator.html" $paginator }}
 
     <div class="posts">
-        {{ range $post := $paginator.Pages }}
+        {{ range $index, $post := $paginator.Pages }}
         <a href="{{ $post.Permalink }}" style="text-decoration: none">
             <article class="article-card">
-                <div class="thumbnail" style="background-image: url('{{ $post.Params.image }}');" href="{{ $post.Permalink }}"></div>
+				<img
+					class="thumbnail"
+					src="{{ $post.Params.image }}"
+					alt=""
+					href="{{ $post.Permalink }}"
+					width="16"
+					height="9"
+					decoding="async"
+					{{ if ge $index 9 }}
+					loading="lazy"
+					{{ end }}
+				>
                 <div class="content">
                     <div class="info">
                         {{ $postAuthor := index (where .Site.Data.authors "name" $post.Params.author | first 1) 0 }}
-                        {{ if $postAuthor }}
-                        	<img class="avatar" width="25" height="25" src="{{ $postAuthor.image }}" alt="{{ $post.Params.author }}" loading="lazy">
+                        {{ with $postAuthor }}
+							<img
+								class="avatar"
+								src="{{ .image }}"
+								width="25"
+								height="25"
+								alt="{{ $post.Params.author }}"
+								fetchpriority="low"
+								decoding="async"
+								{{ if ge $index 9 }}
+								loading="lazy"
+								{{ end }}
+							>
                         {{ else }}
-                        	<img class="avatar" width="25" height="25" src="/assets/images/authors/default_avatar.svg" alt="{{ $post.Params.author }}" loading="lazy">
+                        	<img class="avatar" width="25" height="25" src="/assets/images/authors/default_avatar.svg" alt="{{ $post.Params.author }}" decoding="async">
                         {{ end }}
-                        <span class="by">{{ $post.Params.author }} </span>
+                        <span>{{ $post.Params.author }} </span>
                         <span class="date">&nbsp;-&nbsp;{{ time.Format ":date_long" $post.Params.date }}</span>
                     </div>
                     <h3>{{ $post.Params.title }}</h3>
@@ -133,5 +95,5 @@
 
     {{ partial "paginator.html" $paginator }}
 </div>
-
+</span>
 {{ end }}

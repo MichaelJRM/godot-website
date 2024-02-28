@@ -362,6 +362,8 @@ page:
       searchInput:
         placeholderText: Search articles
         altText: Search
+    categories: Categories
+    showAllCategories: Show all categories
     category:
       all: All
       events: Events

@@ -1,7 +1,12 @@
 {{ $mainCSS := resources.Get "css/main.css" }}
-{{ $featuresCSS := resources.Get "css/layouts/features.css" }}
+
 {{ $sponsorsCSS := resources.Get "css/partials/sponsors.css" }}
-{{ $allCSS := slice $mainCSS $featuresCSS $sponsorsCSS }}
+
+{{ $indexCSS := resources.Get "css/layouts/index.css" }}
+{{ $featuresCSS := resources.Get "css/layouts/features.css" }}
+{{ $blogCSS := resources.Get "css/layouts/blog.css" }}
+
+{{ $allCSS := slice $mainCSS $sponsorsCSS $indexCSS $featuresCSS $blogCSS }}
 {{ $cssBundle := $allCSS | resources.Concat "css/bundle.css" | resources.Minify | resources.Fingerprint }}
 
 <link rel="stylesheet" href="{{ $cssBundle.RelPermalink }}" integrity="{{ $cssBundle.Data.Integrity }}">

@@ -1,0 +1,184 @@
+/* ----------Hero Download----------*/
+
+.index-page .main-download {
+  display: flex;
+  align-items: flex-start;
+  gap: 48px;
+  margin-top: 48px;
+}
+
+.index-page .main-download-links {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.index-page .main-download-links .btn-download {
+  width: 100%;
+}
+
+.index-page .main-download-links .btn-download:nth-of-type(2n) {
+  background-color: rgb(132 151 174 / 68%);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+.index-page .main-download-links .btn-download:nth-of-type(2n) .download-title {
+  color: #f7f7f7;
+}
+
+.index-page .main-download-links .btn-download:nth-of-type(2n) .download-hint {
+  background-color: var(--primary-color-subdued);
+}
+
+.index-page .btn.btn-flat.btn-hero-learn-more {
+  margin: 0;
+}
+
+@media (max-width: 901px) {
+  .index-page .main-download {
+    align-items: center;
+    flex-direction: column;
+    gap: 36px;
+  }
+}
+
+/* ----------Features----------*/
+
+.index-page .feature-link {
+  text-decoration: none;
+}
+
+.index-page .features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.index-page .feature:hover {
+  transform: translateY(-2px);
+}
+
+.index-page .features-row> :first-child,
+.index-page .split-row> :first-child {
+  margin-right: 8px;
+}
+
+.index-page .features-row> :last-child,
+.index-page .split-row> :last-child {
+  margin-left: 8px;
+}
+
+.index-page .feature img {
+  width: 100%;
+  aspect-ratio: 3/2;
+  object-fit: cover;
+  object-position: top center;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  background: linear-gradient(90deg, #333747 11%, #2d3342 50%, #2d3342 68%, #272d3c 87%);
+}
+
+.index-page .feature {
+  transition: transform 200ms ease-in-out;
+  height: 100%;
+  background-color: unset;
+  display: flex;
+  flex-direction: column;
+}
+
+.index-page .feature h4 {
+  margin-bottom: 10px;
+}
+
+.index-page .feature p {
+  margin: 0;
+}
+
+.index-page .feature .body {
+  padding: 24px;
+  flex: 1;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  background-color: var(--transparent-cover-darker);
+}
+
+.index-page .feature .dark h4 {
+  color: var(--dark-color-text-title);
+}
+
+.index-page .feature__disclaimer {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+.index-page .features-learn-more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+@media (max-width: 901px) {
+  .index-page .features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ----------News----------*/
+
+.index-page .news a {
+  text-decoration: none;
+}
+
+.index-page .news__list {
+  display: grid;
+  gap: 18px;
+}
+
+.index-page .news__list > .button-container {
+  text-align: right;
+}
+
+@media (max-width: 901px) {
+  .index-page .news__list .button-container {
+    text-align: left;
+  }
+}
+
+/* ----------Get Involved----------*/
+
+.index-page .get-involved-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.index-page .get-involved-item > h4 {
+  margin: 5px 0 11px;
+}
+
+@media (max-width: 901px) {
+  .index-page #get_involved > h2, #get_involved > p {
+    text-align: center;
+  }
+}
+
+/* ----------Donations----------*/
+
+.index-page #donations {
+  background-color: var(--dark-color);
+  color: var(--dark-color-text);
+  overflow: auto;
+  text-align: center;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 100vw auto 376.844px;
+}
+
+@media (max-width: 901px) {
+  .index-page #donations {
+    contain-intrinsic-size: auto 100vw auto 349.844px;
+  }
+}
