@@ -1,0 +1,7 @@
+{{ $mainCSS := resources.Get "css/main.css" }}
+{{ $featuresCSS := resources.Get "css/layouts/features.css" }}
+{{ $sponsorsCSS := resources.Get "css/partials/sponsors.css" }}
+{{ $allCSS := slice $mainCSS $featuresCSS $sponsorsCSS }}
+{{ $cssBundle := $allCSS | resources.Concat "css/bundle.css" | resources.Minify | resources.Fingerprint }}
+
+<link rel="stylesheet" href="{{ $cssBundle.RelPermalink }}" integrity="{{ $cssBundle.Data.Integrity }}">

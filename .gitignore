@@ -1,6 +1,7 @@
 # Build artifacts and cache
 public
 tools/generators/node_modules
+resources
 
 # Code editors
 .vscode/

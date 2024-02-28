@@ -1,412 +1,112 @@
+{{ define "head" }}
+<link rel="preload" as="image" href="/assets/features/editor-frame.webp?2" fetchpriority="high">
+<script>
+	const featuredProjects = [{{ range partialCached "_funcs/featured-showcase-pages.html" .}}'{{ .Params.image }}',{{ end }}];
+	let currentIndex = Math.floor(Math.random() * featuredProjects.length);
+	const template = document.createElement('template');
+	template.innerHTML = `<link rel="preload" as="image" href="${featuredProjects[currentIndex]}" fetchpriority="high"/>`
+	document.head.appendChild(template.content.firstChild);
+</script>
+{{ end }}
+
 {{ define "header" }}
 {{ partialCached "transparent-header.html" . }}
 {{ end }}
 
 {{ define "main" }}
 <style>
-	.features-why {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		background: radial-gradient(ellipse closest-side at 50% 45%, #6469ac, #364b7c, #12122b);
-		padding-top: 60px;
-		margin-bottom: 24px;
-		overflow: hidden;
-	}
-
-	@media (max-width: 900px) {
-		.features-why {
-			padding-left: 16px;
-			padding-right: 16px;
-		}
-	}
-
-	.features-why h2 {
-		color: var(--dark-color-text-title);
-		font-size: 40px;
-		margin: 36px 54px 8px 54px;
-	}
-
-	.btn-see-showcase {
-		line-height: 26px;
-		text-align: center;
-	}
-
-	.feature-container {
-		display: grid;
-		justify-content: center;
-		column-gap: 28px;
-		row-gap: 24px;
-		grid-template-columns: 1fr;
-		margin: auto;
-		margin-bottom: 42px;
-		width: 1200px;
-		max-width: 1200px;
-	}
-	@media (max-width: 1250px) {
-		.feature-container {
-			width: auto;
-			padding-left: 16px;
-			padding-right: 16px;
-		}
-	}
-	@media (max-width: 900px) {
-		.feature-container {
-			width: auto;
-			overflow: auto;
-			flex-direction: column;
-		}
-	}
-
-	.feature-container h3 {
-		font-size: 22px;
-		margin-bottom: 4px;
-	}
-
-	.feature-container.feature-container-2x {
-		grid-template-columns: 1fr 1fr;
-	}
-	.feature-container.feature-container-2x h3 {
-		grid-column: span 2;
-	}
-	@media (max-width: 1020px) {
-		.feature-container.feature-container-2x {
-			grid-template-columns: 1fr;
-		}
-		.feature-container.feature-container-2x h3 {
-			grid-column: span 1;
-		}
-	}
-
-	.feature-container.feature-container-3x {
-		grid-template-columns: 1fr 1fr 1fr;
-	}
-	.feature-container.feature-container-3x h3 {
-		grid-column: span 3;
-	}
-	@media (max-width: 1020px) {
-		.feature-container.feature-container-3x {
-			grid-template-columns: 1fr 1fr;
-		}
-		.feature-container.feature-container-3x h3 {
-			grid-column: span 2;
-		}
-	}
-	@media (max-width: 800px) {
-		.feature-container.feature-container-3x {
-			grid-template-columns: 1fr;
-		}
-		.feature-container.feature-container-3x h3 {
-			grid-column: span 1;
-		}
-	}
-
-	.feature-card {
-		background-color: var(--card-background-color);
-		border-radius: 12px;
-		padding: 20px;
-		transition: 0.1s filter;
-	}
-	.feature-card:hover {
-		filter: brightness(112.5%);
-	}
-
-	.feature-card h4 {
-		color: var(--feature-heading-color);
-		font-family: var(--default-font-family);
-		font-size: 18px;
-		font-weight: 700;
-		margin: 0;
-	}
-
-	.feature-card p {
-		font-size: 95%;
-		margin-top: 24px;
-		margin-bottom: 12px;
-	}
-
-	.feature-card strong {
-		color: var(--feature-note-color);
-		font-weight: 600;
-	}
-
-	.feature-card code {
-		background-color: #0f172e36;
-		border-radius: 3px;
-		padding: 1px 4px;
-	}
-
-	.features-showreel {
-		background-color: var(--dark-color);
-		color: var(--dark-color-text-hl);
-		padding: 24px 32px 8px 32px;
-		margin-bottom: 36px;
-		width: auto;
-		max-width: 100%;
-	}
-
-	.features-showreel p {
-		margin-top: 0;
-		margin-bottom: 8px;
-	}
-
-	.features-complete-list {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		margin-bottom: 12px;
-	}
-
-	.features-complete-list .btn.btn-flat.btn-flat-white {
-		color: var(--base-color-text-title);
-	}
-
-	.features-download {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		gap: 16px;
-		background-color: var(--dark-color);
-		padding: 24px;
-		padding-bottom: 60px;
-		width: auto;
-		max-width: 100%;
-	}
-	@media (max-width: 900px) {
-		.features-download {
-			padding: 20px;
-		}
-	}
-
-	.features-download h2 {
-		color: var(--dark-color-text-title);
-		font-weight: 600;
-		margin: 0;
-		margin-bottom: 16px;
-	}
-
-	.features-download p {
-		color: var(--dark-color-text);
-		margin: 0;
-	}
-
-	.features-download-ready {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		gap: 26px;
-	}
-
-	.features-download-ready .btn-download {
-		min-width: 310px;
-	}
-
-	.features-download-ready .btn-download:nth-of-type(2n) {
-		background-color: rgb(132 151 174 / 68%);
-		-webkit-backdrop-filter: blur(4px);
-		backdrop-filter: blur(4px);
-	}
-	.features-download-ready .btn-download:nth-of-type(2n) .download-title {
-		color: #f7f7f7;
-	}
-	.features-download-ready .btn-download:nth-of-type(2n) .download-hint {
-		background-color: var(--primary-color-subdued);
-	}
-
-	.features-showcase {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		color: var(--dark-color-text-hl);
-		width: 100%;
-	}
-
-	.showcase-carousel {
-		position: relative;
-		width: 100%;
-		max-width: 720px;
-		aspect-ratio: 16/9;
-		margin: 100px 0 60px 0;
-	}
-	@media (max-width: 540px) {
-		.showcase-carousel {
-			margin-top: 60px;
-		}
-	}
-
-	.showcase-frame {
-		position: absolute;
-		max-width: 100%;
-		max-height: 100%;
-		aspect-ratio: 16/8;
-		transform: scale(1.7) translate(1.46%, 3.1%);
-		filter: brightness(0.85) saturate(0.75);
-	}
-
-	.showcase-flip-left,
-	.showcase-flip-right {
-		position: absolute;
-		top: 50%;
-		left: 12px;
-		width: 20px;
-		height: 36px;
-		transform: translateY(-50%);
-		background-image: url('/assets/icons/arrow-flip.svg');
-		background-size: cover;
-		background-repeat: no-repeat;
-		cursor: pointer;
-		filter: drop-shadow(var(--more-shadow));
-		z-index: 5;
-	}
-	.showcase-flip-left {
-		transform: translateY(-50%) scaleX(-1.0);
-	}
-	.showcase-flip-right {
-		left: auto;
-		right: 12px;
-	}
-
-	.showcase-items {
-		position: relative;
-		overflow: hidden;
-		aspect-ratio: 16/9;
-	}
-
-	.showcase-item {
-		position: absolute;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		background-color: var(--dark-color);
-		width: 100%;
-		height: 100%;
-	}
-	.showcase-item-transition {
-		transition: transform 0.4s ease-in-out, z-index 0.1s linear 0.4s;
-	}
-
-	.showcase-item img {
-		width: 100%;
-	}
-
-	.showcase-credits {
-		position: absolute;
-		bottom: 12px;
-		right: 16px;
-		background: var(--hero-text-background-color);
-		border-radius: 8px;
-		padding: 2px 10px;
-	}
-
-	.showcase-title {
-		color: white;
-		font-weight: 600;
-	}
-
-	.showcase-author {
-		color: #b3c1df;
-		font-size: 95%;
-		opacity: 0.9;
-	}
-
-	.showcase-credits a {
-		text-decoration: none;
-	}
-
 	footer {
 		margin-top: 0;
 	}
 </style>
 
-<div class="features-why">
+<div class="features-page features-why">
 	<h2>{{ T "page.features.header.titleText" }}</h2>
 
 	<div class="features-showcase" id="showcase">
 		<p>{{ T "page.features.header.subtitleText" }}</p>
 
 		<div class="showcase-carousel">
-			<img src="/assets/features/editor-frame.webp?2" class="showcase-frame" />
+			<img src="/assets/features/editor-frame.webp?2" class="showcase-frame" width="1655" height="843"/>
 
-			<div class="showcase-items">
-				{{ range where (where .Sites.First.RegularPages "Section" "showcase") "Params.featured_in_home" "eq" true }}
+			<div id="showcase-items">
+				{{ range partialCached "_funcs/featured-showcase-pages.html" . }}
 				<div class="showcase-item">
-					<img src="{{ index .Params.gallery 0 }}" loading="lazy" alt="{{ .Params.title }} - {{ .Params.author }}" />
+					<img src="{{ index .Params.gallery 0 }}" alt="{{ .Params.title }} - {{ .Params.author }}" width="720" height="405" fetchpriority="low"/>
 					<div class="showcase-credits">
 						<a href="{{ .Params.url }}">
-							<span class="showcase-title">{{.Params.title }}</span> <span class="showcase-author">- {{ .Params.author }}</span>
+							<span class="showcase-title">{{.Params.title }}</span><span class="showcase-author">- {{ .Params.author }}</span>
 						</a>
 					</div>
 				</div>
 				{{ end }}
+				<svg id="showcase-flip-left" height="24" viewBox="0 0 16 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m12.327 12.002-4.695-8.132c-.554-.96-.227-2.178.732-2.732.96-.554 2.178-.228 2.732.732l5.272 9.13c.182.316.269.661.269 1 .001.341-.086.686-.269 1.003l-5.272 9.131c-.554.959-1.772 1.286-2.732.732-.959-.554-1.286-1.773-.732-2.732z" fill="#fff" fill-rule="nonzero" transform="translate(-4 -.001735)"/></svg>
+				<svg id="showcase-flip-right" height="24" viewBox="0 0 16 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m12.327 12.002-4.695-8.132c-.554-.96-.227-2.178.732-2.732.96-.554 2.178-.228 2.732.732l5.272 9.13c.182.316.269.661.269 1 .001.341-.086.686-.269 1.003l-5.272 9.131c-.554.959-1.772 1.286-2.732.732-.959-.554-1.286-1.773-.732-2.732z" fill="#fff" fill-rule="nonzero" transform="translate(-4 -.001735)"/></svg>
 			</div>
-
-			<div class="showcase-flip-left"></div>
-			<div class="showcase-flip-right"></div>
 			<script>
-				document.addEventListener('DOMContentLoaded', () => {
-					// We assume that it can't be wrapped more than once.
-					const wrapIndex = (index) => {
-						if (index < 0) {
-							return showcaseItems.length + index;
-						}
-						if (index >= showcaseItems.length) {
-							return showcaseItems.length - index;
-						}
-						return index;
-					};
+				const showcaseItems = document.querySelectorAll('.showcase-item');
 
-					const showcaseItems = document.querySelectorAll('.showcase-item');
-					let currentIndex = Math.floor(Math.random() * showcaseItems.length);
+				// We assume that it can't be wrapped more than once.
+				const wrapIndex = (index) => {
+					if (index < 0) {
+						return showcaseItems.length + index;
+					}
+					if (index >= showcaseItems.length) {
+						return showcaseItems.length - index;
+					}
+					return index;
+				};
 
-					const setItemByIndex = (itemIndex, firstTime = false) => {
-						const prevIndex = wrapIndex(currentIndex - 1);
-						const nextIndex = wrapIndex(currentIndex + 1);
+				const setItemByIndex = (itemIndex, isFirstTime = false) => {
+					const prevIndex = wrapIndex(currentIndex - 1);
+					const nextIndex = wrapIndex(currentIndex + 1);
 
-						showcaseItems.forEach((item, index) => {
-							if (index === itemIndex) {
-								if (!firstTime) {
+					showcaseItems.forEach((item, index) => {
+						switch (index) {
+							case itemIndex:
+								if (!isFirstTime) {
 									item.classList.add('showcase-item-transition');
 								}
 								item.style.zIndex = '2';
 								item.style.transform = 'translateX(0)';
-							}
-							else if (index === prevIndex) {
-								if (!firstTime) {
+								break;
+							case prevIndex:
+								if (!isFirstTime) {
 									item.classList.add('showcase-item-transition');
 								}
 								item.style.zIndex = '3';
 								item.style.transform = 'translateX(-100%)';
-							}
-							else if (index === nextIndex) {
-								if (!firstTime) {
+								break;
+							case nextIndex:
+								if (!isFirstTime) {
 									item.classList.add('showcase-item-transition');
 								}
 								item.style.zIndex = '3';
 								item.style.transform = 'translateX(100%)';
-							}
-							else  {
+								break;
+							default:
 								item.classList.remove('showcase-item-transition');
 								item.style.zIndex = '1';
-								item.style.transform = 'translateX(0)';
-							}
-						});
-					}
-					setItemByIndex(currentIndex, true);
+								/*By moving the images offscreen we prevent them from being decoded all at once thus saving cpu performance*/
+								item.style.transform = 'translateX(200vw)';
+								break;
+						}
+					});
+				}
 
-					const prevItemButton = document.querySelector('.showcase-flip-left');
-					prevItemButton.addEventListener('click', () => {
-						currentIndex = wrapIndex(currentIndex - 1);
-						setItemByIndex(currentIndex);
-					});
-					const nextItemButton = document.querySelector('.showcase-flip-right');
-					nextItemButton.addEventListener('click', () => {
-						currentIndex = wrapIndex(currentIndex + 1);
-						setItemByIndex(currentIndex);
-					});
+				// currentIndex is declared inside _layouts/default.html
+				setItemByIndex(currentIndex, true);
+
+				const prevItemButton = document.getElementById('showcase-flip-left');
+				prevItemButton.addEventListener('click', () => {
+					currentIndex = wrapIndex(currentIndex - 1);
+					setItemByIndex(currentIndex);
+				});
+
+				const nextItemButton = document.getElementById('showcase-flip-right');
+				nextItemButton.addEventListener('click', () => {
+					currentIndex = wrapIndex(currentIndex + 1);
+					setItemByIndex(currentIndex);
 				});
 			</script>
 
@@ -417,7 +117,7 @@
 	</div>
 </div>
 
-<div class="features-wrapper">
+<div class="features-page">
 
 	<div class="container" id="features">
 		<h2>{{ T "page.features.mainFeatures.titleText" }}</h2>
@@ -554,7 +254,7 @@
 
 </div>
 
-<div id="call-to-action" class="container card features-download">
+<div id="call-to-action" class="container card features-page features-download">
 	<h2>{{ T "page.features.readyToStart.titleText" }}</h2>
 
 	<div class="features-download-ready">
