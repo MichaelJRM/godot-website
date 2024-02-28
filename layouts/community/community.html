@@ -1,92 +1,5 @@
 {{ define "main" }}
-
-<style>
-	.card {
-		height: 100%;
-	}
-
-	.card img {
-		width: 100%;
-		height: auto;
-	}
-
-	.community-list {
-		display: flex;
-		flex-direction: column;
-		gap: 24px;
-	}
-
-	.community-list h2 {
-		margin-top: 12px;
-		margin-bottom: 0;
-	}
-
-	.community-list .community-short-block {
-		grid-column-end: span 2;
-		display: flex;
-		flex-direction: column;
-	}
-
-	.community-list .community-short-block .card {
-		height: auto;
-		flex: 1;
-		margin-bottom: 16px;
-	}
-
-	.community-list .community-short-block .card:last-child {
-		margin-bottom: 0;
-	}
-
-	.community-list .community-block .card h3 {
-		margin-bottom: 16px;
-	}
-
-	.community-list .community-block .card h3 a {
-		text-decoration: none;
-	}
-
-	.community-list .community-block .card p {
-		margin: 0;
-	}
-
-	#user-groups {
-		background-color: var(--dark-color);
-		color: var(--dark-color-text);
-	}
-
-	#user-groups h3 {
-		color: var(--dark-color-text-title);
-		margin-bottom: 0;
-	}
-
-	#events {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		padding: 0;
-	}
-
-	#events>div {
-		padding: 16px;
-	}
-
-	#events .events-upcoming {
-		background-color: var(--transparent-cover-darker);
-		color: var(--dark-color-text-title);
-		display: flex;
-		flex-direction: column;
-		font-size: 90%;
-		text-align: right;
-	}
-
-	#events .events-upcoming span:nth-child(2) {
-		font-family: var(--header-font-family);
-		font-weight: 700;
-		font-size: 120%;
-		margin-top: 24px;
-	}
-</style>
-
+<span class="community-page">
 <div class="head">
 	<div class="container flex eqsize">
 		<div class="main">
@@ -213,4 +126,5 @@
 		</div>
 	</div>
 </div>
+</span>
 {{ end }}
