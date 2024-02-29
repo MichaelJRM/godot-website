@@ -84,7 +84,7 @@
   }
 }
 
-@container body (width < 900px) {
+@container (width < 900px) {
   .events-page .events {
 		display: grid;
 		grid-template-columns: 1fr;

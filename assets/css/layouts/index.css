@@ -213,7 +213,7 @@
   }
 }
 
-@container body (width < 901px) {
+@container (width < 901px) {
   .index-page {
     & .main-download {
       align-items: center;
@@ -258,13 +258,13 @@
   }
 }
 
-@container body (width < 650px) {
+@container (width < 650px) {
   .index-page .hero .wrapper {
     padding: 150px 10px 120px;
   }
 }
 
-@container body (width < 500px) {
+@container (width < 500px) {
   .index-page #foundation_graphic {
     width: 100%;
   }

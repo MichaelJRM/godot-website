@@ -59,13 +59,13 @@
   }
 }
 
-@container body (width >= 768px) {
+@container (width >= 768px) {
   .blog-page .posts {
     grid-template-columns: 1fr 1fr;
   }
 }
 
-@container body (width >= 902px) {
+@container (width >= 902px) {
   .blog-page .head {
     & .main {
       height: 120px;
@@ -81,7 +81,7 @@
   }
 }
 
-@container body (width >= 1024px) {
+@container (width >= 1024px) {
   .blog-page .posts {
     grid-template-columns: 1fr 1fr 1fr;
   }

@@ -54,7 +54,6 @@
             <div class="primaries">
                 {{ $platforms := partial "_funcs/get-primary-download-platforms.html" (dict "gCtx" $gCtx "version" $version "host" "github_builds") }}
 
-                {{ $platforms = $platforms }}
                 {{ $hasMono := false }}
 
                 {{ range $platform := $platforms }}

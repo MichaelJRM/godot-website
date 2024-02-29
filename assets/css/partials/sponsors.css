@@ -21,7 +21,7 @@
   }
 }
 
-@container body (width >= 768px) {
+@container (width >= 768px) {
   .sponsors .grid {
     grid-template-columns: repeat(2, 1fr);
 

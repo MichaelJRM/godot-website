@@ -8,6 +8,7 @@ header {
   background-color: var(--navbar-background-color);
   contain: strict;
   contain-intrinsic-size: auto 100vw auto 64px;
+  container-type: inline-size;
 
   & > div {
     max-width: 1200px;
@@ -95,18 +96,18 @@ header {
       color: var(--fund-color-hl);
     }
   }
+
+  & #nav_toggle_cb,
+  & #nav_toggle_btn {
+    display: none;
+    line-height: 0;
+    cursor: pointer;
+    /* Prevent double-clicking the button from highlighting the icon as selected text on desktop. */
+    user-select: none;
+  }
 }
 
-#nav_toggle_cb,
-#nav_toggle_btn {
-  display: none;
-  line-height: 0;
-  cursor: pointer;
-  /* Prevent double-clicking the button from highlighting the icon as selected text on desktop. */
-  user-select: none;
-}
-
-@container body (max-width: calc(1200px + 2rem)) {
+@container (max-width: calc(1200px + 2rem)) {
   header {
     height: auto;
     contain: content;
@@ -158,10 +159,10 @@ header {
         background-color: hsla(0, 0%, 50%, 0.25);
       }
     }
-  }
 
-  #nav_toggle_cb:checked ~ header nav {
-    display: block;
+    & #nav_toggle_cb:checked ~ header nav {
+      display: block;
+    }
   }
 }
 

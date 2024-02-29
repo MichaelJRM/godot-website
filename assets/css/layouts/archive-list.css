@@ -110,7 +110,7 @@
   }
 }
 
-@container body (width < 1024px) {
+@container (width < 1024px) {
   .archive-page-list {
     & .archive-list {
       display: grid;
@@ -130,7 +130,7 @@
   }
 }
 
-@container body (width < 800px) {
+@container (width < 800px) {
   .archive-page-list {
     & .archive-list-item {
       display: grid;

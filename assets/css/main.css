@@ -1,6 +1,5 @@
-body {
+main {
   container-type: inline-size;
-  container-name: body;
 }
 
 hr {
@@ -23,13 +22,13 @@ ul li {
   margin-inline: auto;
 }
 
-@container body (width < 1200px) {
+@container (width < 1200px) {
   .container {
     --page-padding: 2rem;
   }
 }
 
-@container body (width < 900px) {
+@container (width < 900px) {
   .container {
     padding: 0 1rem 0 1rem;
 
@@ -146,13 +145,13 @@ a.card {
 }
 
 
-@container body (width < 1250px) {
+@container (width < 1250px) {
   body {
     width: auto;
   }
 }
 
-@container body (width < 1200px) {
+@container (width < 1200px) {
   .hide-on-mobile {
     display: none;
   }
@@ -166,7 +165,7 @@ a.card {
   }
 }
 
-@container body (width < 900px) {
+@container (width < 900px) {
   p.small {
     width: auto;
   }
@@ -273,13 +272,13 @@ a.card {
   }
 }
 
-@container body (width >= 768px) {
+@container (width >= 768px) {
   .article-card.row {
     grid-template-columns: 160px 1fr;
   }
 }
 
-@container body (width < 768px) {
+@container (width < 768px) {
   article.article-card.row .excerpt {
     display: none;
   }

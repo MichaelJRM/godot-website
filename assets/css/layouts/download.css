@@ -5,9 +5,9 @@
   & .hero {
     & .main-downloads {
       max-width: 600px;
-      margin: 54px auto;
+      margin: 2.5rem auto 4.1rem auto;
       display: grid;
-      gap: 18px;
+      gap: 1.125rem;
       text-align: center;
 
       & .btn-download {
@@ -17,7 +17,7 @@
 
     & .main-download-details {
       color: var(--download-main-details-color);
-      font-size: 14px;
+      font-size: 0.875rem;
       margin-top: 0;
       opacity: 0.6;
     }
@@ -296,7 +296,7 @@
 
 /*----------@media min-width: 768px----------*/
 
-@container body (width >= 768px) {
+@container (width >= 768px) {
   .download-page {
     & .other-download {
       grid-template-columns: 1fr 1fr 1fr;
@@ -306,7 +306,7 @@
 
 /*----------@media max-width: 1200px----------*/
 
-@container body (width < 1200px) {
+@container (width < 1200px) {
   .download-page {
     & .digital-stores {
       grid-template-columns: 1fr;
@@ -332,7 +332,7 @@
 
 /*----------@media max-width: 768px----------*/
 
-@container body (width < 768px) {
+@container (width < 768px) {
   .download-page {
     & .unstable-download-source {
       flex-direction: column;

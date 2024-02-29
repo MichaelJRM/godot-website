@@ -228,14 +228,14 @@
   }
 }
 
-@container body (width >= 900px) {
+@container (width >= 900px) {
   .article-page article .content {
     width: 70%;
     margin: auto;
   }
 }
 
-@container body (width < 900px) {
+@container (width < 900px) {
   body {
     background-color: var(--base-color);
   }
@@ -259,7 +259,7 @@
   }
 }
 
-@container body (width < 768px) {
+@container (width < 768px) {
   .article-page .card-download {
     & .card-download-details {
       flex-direction: column;

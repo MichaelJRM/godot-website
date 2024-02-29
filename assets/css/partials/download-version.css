@@ -70,7 +70,7 @@
   }
 }
 
-@container body (width < 900px) {
+@container (width < 900px) {
   .primaries .btn.btn-download-primary .download-title {
     line-height: 28px;
     padding: 12px 20px;
@@ -187,7 +187,7 @@
 	display: block;
 }
 
-@container body (width < 900px) {
+@container (width < 900px) {
   .preview-download-primary {
     grid-template-columns: 1fr;
     gap: 36px;
@@ -209,7 +209,7 @@
   }
 }
 
-@container body (width < 768px) {
+@container (width < 768px) {
   .preview-notes {
     & .notes-buttons {
       flex-direction: column;

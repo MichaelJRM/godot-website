@@ -33,12 +33,12 @@ defaults:
     editor:
       primary:
         android.apk: android_editor.apk
+        linux.64: x11.64.zip
         macos.universal: osx.universal.zip
         windows.64: win64.exe.zip
         linux_server.headless.64: linux_headless.64.zip
         web: web_editor.zip
       secondary:
-        linux.64: x11.64.zip
         linux.32: x11.32.zip
         windows.32: win32.exe.zip
         linux_server.64: linux_server.64.zip

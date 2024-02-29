@@ -39,7 +39,7 @@
   padding-right: 1.2rem;
 }
 
-@container body (width < 900px) {
+@container (width < 900px) {
   .pagination {
     display: block;
     justify-content: initial;

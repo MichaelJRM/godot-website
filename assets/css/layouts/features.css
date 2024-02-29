@@ -262,7 +262,7 @@
   }
 }
 
-@container body (width < 1250px) {
+@container (width < 1250px) {
   .features-page {
     & .feature-container {
       width: auto;
@@ -272,7 +272,7 @@
   }
 }
 
-@container body (width < 1020px) {
+@container (width < 1020px) {
   .features-page {
     & .feature-container {
       &.feature-container-2x {
@@ -294,7 +294,7 @@
   }
 }
 
-@container body (width < 900px) {
+@container (width < 900px) {
   .features-page {
     & .features-why {
       padding-left: 16px;
@@ -313,7 +313,7 @@
   }
 }
 
-@container body (width < 800px) {
+@container (width < 800px) {
   .features-page {
     & .feature-container {
       &.feature-container-3x {
@@ -327,7 +327,7 @@
   }
 }
 
-@container body (width < 540px) {
+@container (width < 540px) {
   .features-page {
     & .showcase-carousel {
       margin-top: 60px;
