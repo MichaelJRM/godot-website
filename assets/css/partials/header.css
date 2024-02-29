@@ -106,7 +106,7 @@ header {
   }
 }
 
-@container (max-width: calc(1200px + 2rem)) {
+@container (max-width: calc(1200px)) {
   header {
     & > div {
       flex-direction: column;

@@ -31,6 +31,17 @@
 			</ul>
 		</nav>
 	</div>
+	<script>
+		const header = document.getElementsByTagName('header')[0];
+		const navToggle = document.getElementById('nav_toggle_cb');
+
+		// Close navigation dropdown when the user clicks outside of it.
+		document.addEventListener('click', (e) => {
+			if (!header.contains(e.target)) {
+				navToggle.checked = false;
+			}
+		})
+	</script>
 </header>
 
 <main>
