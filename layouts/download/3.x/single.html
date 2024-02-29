@@ -7,7 +7,7 @@
     .digital-stores .digital-store-list {
         grid-template-columns: 1fr 1fr;
     }
-    @media (max-width: 768px) {
+    @container body (width < 768px) {
         .digital-stores .digital-store-list {
             grid-template-columns: 1fr;
         }
@@ -61,7 +61,7 @@
 {{ partial "download/platforms.html" (dict "version" $stableVersion3 "currentPlatform" .Params.platform) }}
 
 <div class="container">
-    <div id="extras" class="padded" style="padding-top: 0">
+    <div id="extras">
 		<h2>{{ T "page.download.otherGodotDownloads.titleText" }}</h2>
 		{{ partial "download/other-downloads.html" (dict "gCtx" $ "version" $stableVersion3) }}
     </div>

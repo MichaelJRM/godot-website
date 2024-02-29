@@ -7,65 +7,71 @@
         background-color: rgb(134 144 154 / 15%);
         -webkit-backdrop-filter: blur(4px);
         backdrop-filter: blur(4px);
+
+		& nav {
+			& a {
+				color: white;
+			}
+		}
+
+		& .fund {
+			height: initial;
+			margin-right: 0;
+
+			& > a {
+				padding-right: 1rem
+			}
+		}
+
+		& .nav-logo {
+			display: none;
+
+			&.dark-logo {
+				display: inline;
+			}
+		}
+
+		& #nav_toggle_btn {
+			filter: invert(100%) saturate(0%) brightness(120%);
+		}
     }
 
-    nav#nav a {
-        color: white;
-    }
+	@container body (width >= 1200px) {
+		header nav .fund a {
+			color: var(--fund-color);
+			background-color: var(--base-color);
+			border-radius: 9px;
+			box-shadow: inset 0 0 0 2px var(--fund-color);
+			padding: 10px;
+		}
+	}
 
-    nav#nav .fund {
-        height: initial;
-        margin-right: 0;
-    }
+	@container body (width < 1200px) {
+		header nav .fund a {
+			background-color: transparent;
+		}
 
-    .nav-logo {
-        display: none;
-    }
+		input#nav_toggle_cb:checked~header {
+			background-color: var(--navbar-background-color);
+		}
 
-    .nav-logo.dark-logo {
-        display: inline;
-    }
+		@media (prefers-color-scheme: light) {
+			header nav a {
+				color: var(--navbar-link-color);
+			}
 
-    #nav_toggle_btn {
-        filter: invert(100%) saturate(0%) brightness(120%);
-    }
+			input#nav_toggle_cb:checked~header #nav_head #nav_toggle_btn {
+				filter: none;
+			}
 
-    @media (max-width: 1200px) {
-        nav#nav .fund a {
-            background-color: transparent;
-        }
+			input#nav_toggle_cb:checked~header #nav_head .nav-logo {
+				display: inline;
+			}
 
-        input#nav_toggle_cb:checked~header {
-            background-color: var(--navbar-background-color);
-        }
-    }
-
-    @media (max-width: 1200px) and (prefers-color-scheme: light) {
-        nav#nav a {
-            color: var(--navbar-link-color);
-        }
-
-        input#nav_toggle_cb:checked~header #nav_head #nav_toggle_btn {
-            filter: none;
-        }
-
-        input#nav_toggle_cb:checked~header #nav_head .nav-logo {
-            display: inline;
-        }
-
-        input#nav_toggle_cb:checked~header #nav_head .nav-logo.dark-logo {
-            display: none;
-        }
-    }
-
-    @media (min-width: 1200px) {
-        nav#nav .fund a {
-            color: var(--fund-color);
-            background-color: var(--base-color);
-            border-radius: 9px;
-            box-shadow: inset 0 0 0 2px var(--fund-color);
-            padding: 10px;
-        }
+			input#nav_toggle_cb:checked~header #nav_head .nav-logo.dark-logo {
+				display: none;
+			}
+		}
     }
 </style>
 

@@ -253,4 +253,6 @@
     {{ end }}
 </div>
 
+{{ $tobiiCSS := (resources.Get "css/third-party/tobii.min.css" | resources.Fingerprint).RelPermalink }}
+{{ partial "preload-async-css.html" (dict "href" $tobiiCSS) }}
 {{ end }}

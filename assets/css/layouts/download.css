@@ -169,6 +169,10 @@
 
   /*----------Other Downloads----------*/
 
+  & #extras {
+    padding-bottom: 4rem;
+  }
+
   & .other-download {
     display: grid;
     grid-template-columns: 1fr;
@@ -290,9 +294,19 @@
   }
 }
 
+/*----------@media min-width: 768px----------*/
+
+@container body (width >= 768px) {
+  .download-page {
+    & .other-download {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+}
+
 /*----------@media max-width: 1200px----------*/
 
-@media (max-width: 1200px) {
+@container body (width < 1200px) {
   .download-page {
     & .digital-stores {
       grid-template-columns: 1fr;
@@ -316,19 +330,9 @@
   }
 }
 
-/*----------@media min-width: 768px----------*/
-
-@media (min-width: 768px) {
-  .download-page {
-    & .other-download {
-      grid-template-columns: 1fr 1fr 1fr;
-    }
-  }
-}
-
 /*----------@media max-width: 768px----------*/
 
-@media (max-width: 768px) {
+@container body (width < 768px) {
   .download-page {
     & .unstable-download-source {
       flex-direction: column;

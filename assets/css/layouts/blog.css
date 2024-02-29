@@ -1,61 +1,87 @@
-/*----------Head----------*/
-.blog-page .head .main {
-  display: grid;
-  gap: 30px;
-  padding: 20px 0 39px;
-}
+.blog-page {
+  /*----------Head----------*/
 
-.blog-page .head .main > h1,
-.blog-page .head .main > form {
-  margin: 0;
-}
+  & .head {
+    & .main {
+      display: grid;
+      gap: 30px;
+      padding: 20px 0 39px;
+    }
 
-@media (min-width: 902px) {
-  .blog-page .head .main {
-    height: 120px;
-    grid-template-columns: 1fr 1fr;
-    align-content: center;
-    padding: 0;
+    & > h1, & > form {
+      margin: 0;
+    }
   }
-  .blog-page .head .search-bar {
-    margin-top: 6px;
-    justify-self: end;
+
+  /*----------Tags----------*/
+
+  & .tags {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  & .tags__title {
+    display: inline-block;
+    margin: 0;
+    font-size: 19px;
+  }
+
+  & .tag {
+    display: inline-block;
+    background-color: var(--card-background-color);
+    border-radius: 1000px;
+    box-shadow: var(--base-shadow);
+    filter: saturate(0.35);
+    font-family: var(--header-font-family);
+    font-size: 16px;
+    padding: 0.25rem 0.75rem;
+    margin: 0.1rem;
+    opacity: 0.8;
+
+    &.active {
+      filter: saturate(1);
+      opacity: 1;
+    }
+  }
+
+  /*----------Posts----------*/
+
+  & .posts {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+
+    & > a {
+      text-decoration: none;
+    }
   }
 }
 
-/*----------Tags----------*/
-
-.blog-page .tags {
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.blog-page .tags__title {
-  display: inline-block;
-  margin: 0;
-  font-size: 19px;
-}
-
-/*----------Posts----------*/
-.blog-page .posts {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 30px;
-}
-
-.blog-page .posts > a {
-  text-decoration: none;
-}
-
-@media (min-width: 768px) {
+@container body (width >= 768px) {
   .blog-page .posts {
     grid-template-columns: 1fr 1fr;
   }
 }
 
-@media (min-width: 1024px) {
+@container body (width >= 902px) {
+  .blog-page .head {
+    & .main {
+      height: 120px;
+      grid-template-columns: 1fr 1fr;
+      align-content: center;
+      padding: 0;
+    }
+
+    & .search-bar {
+      margin-top: 6px;
+      justify-self: end;
+    }
+  }
+}
+
+@container body (width >= 1024px) {
   .blog-page .posts {
     grid-template-columns: 1fr 1fr 1fr;
   }

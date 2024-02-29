@@ -1,0 +1,100 @@
+h1,
+h2,
+h3,
+h4,
+nav a,
+.btn,
+.title-font {
+  font-family: var(--header-font-family);
+  font-weight: 800;
+  color: var(--base-color-text-title);
+  margin-top: 0;
+}
+
+h1 {
+  font-size: var(--text-xl);
+}
+
+h2 {
+  font-size: var(--text-l);
+}
+
+h3 {
+  font-size: var(--text-m);
+}
+
+h4 {
+  font-size: var(--text-s);
+}
+
+.text-xl {
+  font-size: var(--text-xl);
+}
+
+.text-l {
+  font-size: var(--text-l);
+}
+
+.text-m {
+  font-size: var(--text-m);
+}
+
+.text-s {
+  font-size: var(--text-s);
+}
+
+.title {
+  margin-top: 48px;
+}
+
+p,
+ul,
+ol {
+  text-rendering: optimizeLegibility;
+  line-height: 1.5;
+}
+
+code {
+  font-family: monospace;
+}
+
+pre {
+  font-family: monospace;
+  white-space: pre-wrap;
+  background-color: var(--code-background-color);
+  padding: 8px;
+  border-radius: 2px;
+  overflow-y: auto;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+pre > code {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4 {
+  color: var(--dark-color-text-title);
+}
+
+.date-big {
+  font-size: 64px;
+  color: #b6bfd1;
+}
+
+.date-small {
+  font-size: 14px;
+  font-weight: bold;
+  color: #8f9db9;
+}
+
+.head h1,
+.head h2,
+.head h3 {
+  color: var(--primary-color-text-title);
+  margin: 0;
+}

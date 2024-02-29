@@ -68,7 +68,7 @@ footer {
 
 /*----------@media 1021----------*/
 
-@media (max-width: 1021px) {
+@container body (width < 1021px) {
   footer {
     contain-intrinsic-size: auto 100vw auto 449.37px;
     text-align: center;
@@ -97,7 +97,7 @@ footer {
 
 /*----------@media 721----------*/
 
-@media (max-width: 721px) {
+@container body (width < 721px) {
   footer {
     contain-intrinsic-size: auto 100vw auto 953.37px;
   }

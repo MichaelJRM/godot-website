@@ -1,11 +1,18 @@
 {{ $mainCSS := resources.Get "css/main.css" }}
 
+{{ $resetCSS := resources.Get "css/reset.css" }}
+{{ $stylesCSS := resources.Get "css/styles.css" }}
+{{ $fontsCSS := resources.Get "css/fonts.css" }}
+{{ $calligraphyCSS := resources.Get "css/calligraphy.css" }}
+{{ $utilCSS := resources.Get "css/util.css" }}
 {{ $commonCSS := resources.Get "css/common.css" }}
 {{ $buttonsCSS := resources.Get "css/buttons.css" }}
 
 {{ $sponsorsCSS := resources.Get "css/partials/sponsors.css" }}
 {{ $footerCSS := resources.Get "css/partials/footer.css" }}
 {{ $outdatedNoticeCSS := resources.Get "css/partials/article/outdated-notice.css" }}
+{{ $paginatorCSS := resources.Get "css/partials/paginator.css" }}
+{{ $headerCSS := resources.Get "css/partials/header.css" }}
 
 {{ $indexCSS := resources.Get "css/layouts/index.css" }}
 {{ $featuresCSS := resources.Get "css/layouts/features.css" }}
@@ -19,7 +26,7 @@
 {{ $archiveCSS := resources.Get "css/layouts/archive.css" }}
 {{ $downloadPreviewCSS := resources.Get "css/layouts/download-preview.css" }}
 
-{{ $allCSS := slice $mainCSS $commonCSS $buttonsCSS $sponsorsCSS $footerCSS $outdatedNoticeCSS $indexCSS $featuresCSS $blogCSS $articleCSS $communityCSS $eventsCSS $aboutCSS $downloadCSS $archiveListCSS $archiveCSS $downloadPreviewCSS }}
+{{ $allCSS := slice $mainCSS $resetCSS $stylesCSS $fontsCSS $calligraphyCSS $utilCSS $commonCSS $buttonsCSS $sponsorsCSS $footerCSS $outdatedNoticeCSS $paginatorCSS $headerCSS $indexCSS $featuresCSS $blogCSS $articleCSS $communityCSS $eventsCSS $aboutCSS $downloadCSS $archiveListCSS $archiveCSS $downloadPreviewCSS }}
 {{ $cssBundle := $allCSS | resources.Concat "css/bundle.css" | resources.Minify | resources.Fingerprint }}
 
 <link rel="stylesheet" href="{{ $cssBundle.RelPermalink }}" integrity="{{ $cssBundle.Data.Integrity }}">

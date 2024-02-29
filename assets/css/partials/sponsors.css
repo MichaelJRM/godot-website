@@ -1,4 +1,6 @@
 .sponsors {
+  padding: 2rem 0;
+
   & .grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -19,7 +21,7 @@
   }
 }
 
-@media (min-width: 768px) {
+@container body (width >= 768px) {
   .sponsors .grid {
     grid-template-columns: repeat(2, 1fr);
 

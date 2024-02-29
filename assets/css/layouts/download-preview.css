@@ -65,7 +65,7 @@
   }
 }
 
-@media (max-width: 900px) {
+@container body (width < 900px) {
   .download-preview-page {
     & .stable-download {
       padding: 20px;

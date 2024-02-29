@@ -20,7 +20,7 @@
         box-sizing: border-box;
     }
 
-    @media (min-width: 768px) {
+    @container body (width >= 768px) {
         main {
             height: 100vh;
         }
@@ -63,7 +63,7 @@
 </style>
 
 
-<main>
+<main class="not-found-page">
     <div class="error">
         <div class="message">
             <a href="{{ relLangURL "" }}" style="display:block">

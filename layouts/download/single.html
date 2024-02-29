@@ -47,7 +47,7 @@
 {{ partial "download/platforms.html" (dict "version" $stableVersion4 "currentPlatform" .Params.platform) }}
 
 <div class="container">
-    <div id="extras" class="padded" style="padding-top: 0">
+    <div id="extras">
         <h2>{{ T "page.download.otherGodotDownloads.titleText" }}</h2>
 		{{ partial "download/other-downloads.html" (dict "gCtx" $ "version" $stableVersion4) }}
     </div>

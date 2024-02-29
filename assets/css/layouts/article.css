@@ -228,14 +228,14 @@
   }
 }
 
-@media screen and (min-width: 900px) {
+@container body (width >= 900px) {
   .article-page article .content {
     width: 70%;
     margin: auto;
   }
 }
 
-@media (max-width: 900px) {
+@container body (width < 900px) {
   body {
     background-color: var(--base-color);
   }
@@ -259,7 +259,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@container body (width < 768px) {
   .article-page .card-download {
     & .card-download-details {
       flex-direction: column;
