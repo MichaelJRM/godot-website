@@ -51,7 +51,7 @@
   & .btn.btn-download-primary .download-title {
     font-size: 18px;
     line-height: 24px;
-    padding: 10px 16px;
+    padding: 10px 1rem;
     white-space: nowrap;
   }
 
@@ -81,7 +81,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 16px;
+  gap: 1rem;
 
   & .notes-summary {
     display: grid;
@@ -133,7 +133,7 @@
   gap: 60px;
 
   & h4 {
-    margin-bottom: 16px;
+    margin-bottom: 1rem;
   }
 }
 
@@ -145,7 +145,7 @@
   & h4 {
     color: var(--link-color);
     cursor: pointer;
-    margin-top: 32px;
+    margin-top: 2rem;
     text-align: right;
     /* Prevent color transitions from being too fast (for epilepsy). */
     transition: 0.1s filter;
@@ -164,14 +164,14 @@
 .preview-download-links {
 	background-color: var(--download-table-color);
 	border-left: 6px solid var(--accent-color);
-	padding: 4px 16px;
+	padding: 4px 1rem;
 	display: none;
 
   & .download {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: flex-end;
-    gap: 16px;
+    gap: 1rem;
     border-bottom: 1px dashed var(--table-divider-color);
     margin-bottom: 8px;
     padding: 2px 0;

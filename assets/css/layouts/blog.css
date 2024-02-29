@@ -13,39 +13,6 @@
     }
   }
 
-  /*----------Tags----------*/
-
-  & .tags {
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-
-  & .tags__title {
-    display: inline-block;
-    margin: 0;
-    font-size: 19px;
-  }
-
-  & .tag {
-    display: inline-block;
-    background-color: var(--card-background-color);
-    border-radius: 1000px;
-    box-shadow: var(--base-shadow);
-    filter: saturate(0.35);
-    font-family: var(--header-font-family);
-    font-size: 16px;
-    padding: 0.25rem 0.75rem;
-    margin: 0.1rem;
-    opacity: 0.8;
-
-    &.active {
-      filter: saturate(1);
-      opacity: 1;
-    }
-  }
-
   /*----------Posts----------*/
 
   & .posts {

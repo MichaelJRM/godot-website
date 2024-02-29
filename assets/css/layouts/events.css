@@ -6,7 +6,7 @@
   }
 
   & .events-shortlist__wrap {
-    padding-right: 16px;
+    padding-right: 1rem;
     width: 320px;
   }
 
@@ -46,7 +46,7 @@
 
   & .events-fulllist {
     & .card {
-      margin-bottom: 16px;
+      margin-bottom: 1rem;
 
       &:last-child {
         margin-bottom: 0;

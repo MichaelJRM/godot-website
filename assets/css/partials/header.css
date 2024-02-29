@@ -3,17 +3,16 @@ header {
   position: relative;
   z-index: 2;
   width: 100%;
-  height: 64px;
   box-shadow: var(--base-shadow);
   background-color: var(--navbar-background-color);
-  contain: strict;
-  contain-intrinsic-size: auto 100vw auto 64px;
   container-type: inline-size;
 
   & > div {
     max-width: 1200px;
-    height: 100%;
+    height: 4rem;
     margin-inline: auto;
+    contain: strict;
+    contain-intrinsic-size: auto 100vw auto 4rem;
   }
 
   & #nav_head {
@@ -40,7 +39,7 @@ header {
 
     & a {
       text-decoration: none;
-      font-size: 16px;
+      font-size: 1rem;
       font-weight: bold;
       color: var(--navbar-link-color);
       padding: 0 1rem;
@@ -109,11 +108,10 @@ header {
 
 @container (max-width: calc(1200px + 2rem)) {
   header {
-    height: auto;
-    contain: content;
-
     & > div {
       flex-direction: column;
+      height: auto;
+      contain: content;
     }
 
     & #nav_head {
@@ -160,7 +158,7 @@ header {
       }
     }
 
-    & #nav_toggle_cb:checked ~ header nav {
+    & #nav_toggle_cb:checked ~ div #nav {
       display: block;
     }
   }

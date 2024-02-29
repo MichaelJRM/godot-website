@@ -12,10 +12,10 @@ ul {
 }
 
 ul li {
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
 }
 
-.container {
+.wrapper {
   --page-padding: 4rem;
   --max-width: 1200px;
   width: min(var(--max-width), 100% - var(--page-padding));
@@ -23,17 +23,17 @@ ul li {
 }
 
 @container (width < 1200px) {
-  .container {
+  .wrapper {
     --page-padding: 2rem;
   }
 }
 
 @container (width < 900px) {
-  .container {
+  .wrapper {
     padding: 0 1rem 0 1rem;
 
     & .padded {
-      padding: 32px 0 32px 0;
+      padding: 2rem 0 2rem 0;
     }
   }
 
@@ -43,6 +43,10 @@ ul li {
   }
 }
 
+.container {
+  container-type: inline-size;
+}
+
 p.small {
   width: 500px;
 }
@@ -50,15 +54,15 @@ p.small {
 .head {
   background-color: var(--head-background-color);
   color: var(--primary-color-text);
-  margin-bottom: 32px;
+  margin-bottom: 2rem;
 
   & .main {
     &  > :first-child {
-      margin-top: 32px;
+      margin-top: 2rem;
     }
 
     &  > :last-child {
-      margin-bottom: 32px;
+      margin-bottom: 2rem;
     }
   }
 
@@ -94,7 +98,7 @@ a.card {
   justify-content: flex-end;
 
   & > * {
-    padding: 16px 24px 16px 24px;
+    padding: 1rem 24px 1rem 24px;
     text-decoration: none;
     text-align: center;
   }
@@ -212,7 +216,7 @@ a.card {
 
   & p.excerpt {
     color: var(--base-color-text);
-    font-size: 16px;
+    font-size: 1rem;
     opacity: 0.8;
     margin-top: 0;
     margin-bottom: 6px;
@@ -254,7 +258,7 @@ a.card {
     display: flex;
     margin-bottom: 15px;
     position: relative;
-    padding-left: 32px;
+    padding-left: 2rem;
 
     & .avatar {
       border-radius: 100%;
@@ -285,14 +289,5 @@ a.card {
 
   .article-card.row h3 {
     font-size: 19px;
-  }
-}
-
-figure.article-cover figcaption {
-  opacity: 0.8;
-  line-height: 1.5;
-
-  &  a {
-    color: inherit;
   }
 }

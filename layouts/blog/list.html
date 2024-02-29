@@ -1,7 +1,7 @@
 {{ define "main" }}
 <span class="blog-page">
 <div class="head">
-	<div class="container flex eqsize responsive">
+	<div class="wrapper flex eqsize responsive">
 		<div class="main">
 			<h1 class="intro-title">{{ T "page.blog.header.titleText" }}</h1>
 			<form class="search-bar" method="get" action="https://duckduckgo.com/">
@@ -15,7 +15,7 @@
 	</div>
 </div>
 
-<div class="container">
+<div class="wrapper">
     <div class="tags">
         <h2 class="tags__title">{{ T "page.blog.categories" }}</h2>
         <a href="{{ relLangURL "blog" }}" title="{{ T "page.blog.showAllCategories" }}">

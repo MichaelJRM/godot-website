@@ -92,7 +92,7 @@
   & .features-showreel {
     background-color: var(--dark-color);
     color: var(--dark-color-text-hl);
-    padding: 24px 32px 8px 32px;
+    padding: 24px 2rem 8px 2rem;
     margin-bottom: 36px;
     width: auto;
     max-width: 100%;
@@ -120,7 +120,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 16px;
+    gap: 1rem;
     background-color: var(--dark-color);
     padding: 24px 24px 60px;
     width: auto;
@@ -129,7 +129,7 @@
     & h2 {
       color: var(--dark-color-text-title);
       font-weight: 600;
-      margin: 0 0 16px;
+      margin: 0 0 1rem;
     }
 
     & p {
@@ -240,7 +240,7 @@
   & .showcase-credits {
     position: absolute;
     bottom: 12px;
-    right: 16px;
+    right: 1rem;
     background: var(--hero-text-background-color);
     border-radius: 8px;
     padding: 2px 10px;
@@ -266,8 +266,8 @@
   .features-page {
     & .feature-container {
       width: auto;
-      padding-left: 16px;
-      padding-right: 16px;
+      padding-left: 1rem;
+      padding-right: 1rem;
     }
   }
 }
@@ -297,8 +297,8 @@
 @container (width < 900px) {
   .features-page {
     & .features-why {
-      padding-left: 16px;
-      padding-right: 16px;
+      padding-left: 1rem;
+      padding-right: 1rem;
     }
 
     & .feature-container {

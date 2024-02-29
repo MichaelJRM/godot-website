@@ -37,7 +37,7 @@
 
   & .platform-details {
     & .card {
-      margin-top: 32px;
+      margin-top: 2rem;
     }
 
     & pre {
@@ -55,11 +55,11 @@
     & .download-details {
       color: var(--secondary-color-text);
       font-size: 14px;
-      padding: 0 12px;
+      padding: 0 0.75rem;
     }
 
     & .download-note {
-      padding: 16px 12px;
+      padding: 1rem 0.75rem;
       font-size: 92%;
       background-color: var(--platform-note-background-color);
       margin-top: 28px;
@@ -91,7 +91,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       justify-content: center;
-      gap: 16px;
+      gap: 1rem;
     }
   }
 
@@ -101,8 +101,8 @@
     display: inline-flex;
     flex-direction: row;
     align-items: center;
-    gap: 16px;
-    padding: 12px 24px;
+    gap: 1rem;
+    padding: 0.75rem 24px;
   }
 
   & .digital-store-name {
@@ -196,7 +196,7 @@
     max-width: 768px;
 
     & .btn {
-      margin-top: 16px;
+      margin-top: 1rem;
     }
   }
 
@@ -242,15 +242,15 @@
     & .btn-back-to-downloads {
       cursor: pointer;
       position: absolute;
-      top: 12px;
-      right: 12px;
+      top: 0.75rem;
+      right: 0.75rem;
     }
 
     & h2 {
       text-shadow: var(--base-shadow);
       font-size: 36px;
       font-weight: 600;
-      margin-bottom: 12px;
+      margin-bottom: 0.75rem;
     }
 
     & h3 {
@@ -268,11 +268,11 @@
   }
 
   & .thankyou-reading {
-    font-size: 16px;
+    font-size: 1rem;
   }
 
   & .thankyou-reading-list {
-    font-size: 16px;
+    font-size: 1rem;
     margin: 0 0 0 48px;
     padding-left: 0;
   }
@@ -313,13 +313,13 @@
 
       & .digital-store-list {
         justify-content: center;
-        gap: 12px;
+        gap: 0.75rem;
       }
     }
 
     & .btn.btn-digital-store {
       justify-content: center;
-      gap: 12px;
+      gap: 0.75rem;
       min-width: 50%;
     }
 

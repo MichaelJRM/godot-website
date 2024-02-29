@@ -40,6 +40,6 @@
   & .preview-cards {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 1rem;
   }
 }

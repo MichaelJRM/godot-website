@@ -135,7 +135,7 @@
       background: linear-gradient(90deg, #333747 11%, #2d3342 50%, #2d3342 68%, #272d3c 87%);
     }
 
-    &  h4 {
+    & h3 {
       margin-bottom: 10px;
     }
 
@@ -150,10 +150,6 @@
       border-bottom-right-radius: 8px;
       background-color: var(--transparent-cover-darker);
     }
-
-    & .dark h4 {
-      color: var(--dark-color-text-title);
-    }
   }
 
   & .feature__disclaimer {
@@ -167,7 +163,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 16px;
+    margin-top: 1rem;
   }
 
   /* ----------News----------*/
@@ -250,11 +246,6 @@
     & #donations {
       contain-intrinsic-size: auto 100vw auto 349.844px;
     }
-  }
-
-  & .dark {
-    background-color: var(--dark-color);
-    color: var(--dark-color-text);
   }
 }
 

@@ -52,15 +52,15 @@
     & .download-hint {
       background-color: var(--primary-color-text-title);
       color: var(--dark-color);
-      line-height: 32px;
-      padding: 12px 16px;
+      line-height: 2rem;
+      padding: 0.75rem 1rem;
     }
 
     & .download-title {
       color: var(--primary-color-text-title);
       font-size: 20px;
-      line-height: 32px;
-      padding: 12px 32px 12px 24px;
+      line-height: 2rem;
+      padding: 0.75rem 2rem 0.75rem 24px;
     }
   }
 
@@ -73,9 +73,42 @@
 
 
 .blog-page, .article-page {
-  & .tags > a {
-    border-radius: 1000px;
+  /*----------Tags----------*/
+
+  & .tags {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+
+    & > a {
+      border-radius: 1000px;
+      display: inline-block;
+    }
+  }
+
+  & .tags__title {
     display: inline-block;
+    margin: 0;
+    font-size: 19px;
+  }
+
+  & .tag {
+    display: inline-block;
+    background-color: var(--card-background-color);
+    border-radius: 1000px;
+    box-shadow: var(--base-shadow);
+    filter: saturate(0.35);
+    font-family: var(--header-font-family);
+    font-size: 1rem;
+    padding: 0.25rem 0.75rem;
+    margin: 0.1rem;
+    opacity: 0.8;
+
+    &.active {
+      filter: saturate(1);
+      opacity: 1;
+    }
   }
 }
 

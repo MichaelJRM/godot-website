@@ -74,6 +74,11 @@ pre > code {
   padding-right: 0;
 }
 
+.dark {
+  background-color: var(--dark-color);
+  color: var(--dark-color-text);
+}
+
 .dark h1,
 .dark h2,
 .dark h3,
@@ -82,7 +87,7 @@ pre > code {
 }
 
 .date-big {
-  font-size: 64px;
+  font-size: 4rem;
   color: #b6bfd1;
 }
 

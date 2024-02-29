@@ -80,8 +80,8 @@
 }
 
 .padded {
-  padding-top: 64px;
-  padding-bottom: 64px;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 .only-on-mobile {
@@ -96,7 +96,7 @@
 
 @container (width < 900px) {
   .padded {
-    padding: 32px 8px 32px 8px;
+    padding: 2rem 8px 2rem 8px;
   }
 
   .flex.responsive {

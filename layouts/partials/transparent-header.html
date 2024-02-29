@@ -42,7 +42,7 @@
 			background-color: var(--base-color);
 			border-radius: 9px;
 			box-shadow: inset 0 0 0 2px var(--fund-color);
-			padding: 10px;
+			padding: 0.75rem;
 		}
 	}
 
@@ -51,7 +51,7 @@
 			background-color: transparent;
 		}
 
-		input#nav_toggle_cb:checked~header {
+		input#nav_toggle_cb:checked~div {
 			background-color: var(--navbar-background-color);
 		}
 
@@ -60,15 +60,15 @@
 				color: var(--navbar-link-color);
 			}
 
-			input#nav_toggle_cb:checked~header #nav_head #nav_toggle_btn {
+			input#nav_toggle_cb:checked~div #nav_head #nav_toggle_btn {
 				filter: none;
 			}
 
-			input#nav_toggle_cb:checked~header #nav_head .nav-logo {
+			input#nav_toggle_cb:checked~div #nav_head .nav-logo {
 				display: inline;
 			}
 
-			input#nav_toggle_cb:checked~header #nav_head .nav-logo.dark-logo {
+			input#nav_toggle_cb:checked~div #nav_head .nav-logo.dark-logo {
 				display: none;
 			}
 		}

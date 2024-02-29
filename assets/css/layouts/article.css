@@ -1,7 +1,20 @@
 .article-page {
+  .article-cover {
+    padding: 1rem 0;
+
+    & figcaption {
+      opacity: 0.8;
+      line-height: 1.5;
+
+      &  a {
+        color: inherit;
+      }
+    }
+  }
+
   & h1 {
     margin-bottom: 8px;
-    margin-top: 32px;
+    margin-top: 2rem;
   }
 
   & :not(pre)>code {
@@ -24,7 +37,7 @@
 
   & .date-big {
     line-height: 2;
-    margin-left: 32px;
+    margin-left: 2rem;
   }
 
   & article {
@@ -35,17 +48,17 @@
       max-width: 100%;
       height: auto;
       display: block;
-      margin: 16px auto;
+      margin: 1rem auto;
     }
 
     & h1 {
-      margin-top: 64px;
+      margin-top: 4rem;
     }
 
     & h2,
     & h3,
     & h4 {
-      margin-top: 42px;
+      margin-top: 2.625rem;
     }
   }
 
@@ -64,15 +77,15 @@
   & .article-info {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 0.5rem;
   }
 
   & .article-metadata {
     display: flex;
-    gap: 24px;
+    gap: 1.5rem;
     align-items: center;
     font-family: var(--header-font-family);
-    margin-bottom: 12px;
+    margin-bottom: 0.75rem;
 
     & .date {
       color: var(--base-color-text-subtitle-date);
@@ -95,10 +108,10 @@
   & .article-author {
     color: var(--base-color-text-subtitle-date);
     font-weight: 700;
-    font-size: 18px;
+    font-size: 1.125rem;
     flex-grow: 1;
     display: flex;
-    gap: 12px;
+    gap: 0.75rem;
     align-items: center;
 
     & .avatar {
@@ -120,10 +133,10 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 16px;
+    gap: 1rem;
     background: var(--head-background-color);
     border-radius: 4px 4px;
-    padding: 10px 16px;
+    padding: 10px 1rem;
 
     & .card-download-link {
       color: var(--dark-color-text-title);
@@ -137,7 +150,7 @@
       flex-direction: row;
       justify-content: space-between;
       align-items: flex-start;
-      gap: 12px;
+      gap: 0.75rem;
       width: 100%;
 
       & > img {
@@ -159,7 +172,7 @@
       color: var(--primary-color-text-title);
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 0.75rem;
       font-weight: 700;
       min-width: 120px;
 
@@ -180,7 +193,7 @@
       & .download-title {
         font-size: 18px;
         line-height: 24px;
-        padding: 10px 16px;
+        padding: 10px 1rem;
         white-space: nowrap;
       }
     }
@@ -205,10 +218,10 @@
       flex-direction: row;
       justify-content: space-between;
       align-items: flex-start;
-      gap: 12px;
+      gap: 0.75rem;
       background: var(--download-table-color);
-      margin: 0 -16px -10px -16px;
-      padding: 10px 16px;
+      margin: 0 -1rem -10px -1rem;
+      padding: 10px 1rem;
       width: 100%;
 
       & .card-download-other,
@@ -244,7 +257,7 @@
     & .article-metadata {
       flex-direction: column;
       align-items: flex-start;
-      gap: 16px;
+      gap: 1rem;
     }
 
     article {
@@ -254,7 +267,7 @@
 
     .card-download .card-download-platforms .btn-download-primary .download-title {
       line-height: 28px;
-      padding: 12px 14px;
+      padding: 0.75rem 0.875rem;
     }
   }
 }

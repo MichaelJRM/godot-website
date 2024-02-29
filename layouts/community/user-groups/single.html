@@ -43,14 +43,14 @@
 {{ define "main" }}
 <span class="user-groups-page">
 <div class="head">
-	<div class="container flex eqsize">
+	<div class="wrapper flex eqsize">
 		<div class="main">
 			<h1 class="intro-title">{{ T "page.userGroups.header.titleText" }}</h1>
 			<p class="small">{{ T "page.userGroups.header.subtitleText" }}</p>
 		</div>
 	</div>
 </div>
-<div class="container">
+<div class="wrapper">
 	<h2 class="title">{{ T "page.userGroups.communityMap.titleText" }}</h2>
 	<p>{{ T "page.userGroups.communityMap.subtitleText" }}</p>
 	<div id="community-map"></div>
@@ -276,7 +276,7 @@
 	</ul>
 	{{ end }}
 
-	<p style="margin-top: 4rem">
+	<p style="margin-top: 4rem; margin-bottom: 0;">
 		{{ T "page.userGroups.submitYourCommunityText" (dict "link" "<em>webmaster at godotengine · org</em>" ) | safeHTML }}
 	</p>
 </div>

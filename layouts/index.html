@@ -45,7 +45,7 @@
 <section class="hero">
 	<div id="hero-background-image" class="background-image" style="contain: content;"></div>
     <div class="wrapper">
-        <div class="copy container">
+        <div class="copy wrapper">
             <h1>{{ T "page.home.header.titleText" | safeHTML }}</h1>
             <p>{{ T "page.home.header.subtitleText" }}</p>
 
@@ -97,9 +97,9 @@
 </section>
 
 {{/* ----------News----------*/}}
-<section class="container padded">
+<section class="wrapper padded">
     <h2>{{ T "common.button.latestNews" }}</h2>
-    <div class="news flex eqsize responsive" style="gap: 30px;">
+    <div class="news flex eqsize responsive" style="gap: 1.875rem;">
 
         {{ $lastestArticles := (where .Sites.First.RegularPages "Section" "article").ByDate.Reverse.Limit 4 }}
 		{{ range $lastestArticles | first 1}}
@@ -136,7 +136,7 @@
 </section>
 
 {{/* ----------Features----------*/}}
-<section id="features" class="container padded">
+<section id="features" class="wrapper padded">
     <h2>{{ T "page.home.features.titleText" }}</h2>
 
     <div class="features-grid">
@@ -206,7 +206,7 @@
 </section>
 
 {{/* ----------Get Involved----------*/}}
-<section id="get_involved" class="container padded">
+<section id="get_involved" class="wrapper padded">
     <h2>{{ T "page.home.getInvolved.titleText" }}</h2>
     <p>{{ T "page.home.getInvolved.subtitleText" }}</p>
 
@@ -244,7 +244,7 @@
 
 {{/* ----------Donations----------*/}}
 <section id="donations" class="padded">
-    <div class="container">
+    <div class="wrapper">
         <a href="https://godot.foundation" target="_blank" style="display: inline-block;">
             <img id="foundation_graphic" src="/assets/home/foundation/godot-foundation-logo-dark.svg" alt="Godot Foundation logo" width="1" height="1" loading="lazy">
         </a>

@@ -24,7 +24,7 @@
   }
 
   & .archive-group {
-    padding-right: 16px;
+    padding-right: 1rem;
     width: 240px;
 
     & > div {

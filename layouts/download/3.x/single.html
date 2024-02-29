@@ -17,7 +17,7 @@
 {{ $stableVersion3 := partialCached "_funcs/stable-version-3.html" . }}
 <span class="download-page">
 {{ partial "download/hero.html" (dict "gCtx" $ "version" $stableVersion3 "downloads" $.Params.downloads "platform" $.Params.platform) }}
-<div class="container">
+<div class="wrapper">
     <div id="links" class="platform-details">
         <div class="card base-padding">
             <h3>{{ T "page.download.requirements.titleText" }}</h3>
@@ -60,7 +60,7 @@
 
 {{ partial "download/platforms.html" (dict "version" $stableVersion3 "currentPlatform" .Params.platform) }}
 
-<div class="container">
+<div class="wrapper">
     <div id="extras">
 		<h2>{{ T "page.download.otherGodotDownloads.titleText" }}</h2>
 		{{ partial "download/other-downloads.html" (dict "gCtx" $ "version" $stableVersion3) }}
