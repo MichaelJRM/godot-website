@@ -64,7 +64,6 @@ languages:
 
 # Minify
 minify:
-  minifyOutput: true
   tdewolff:
     js:
       version: 0

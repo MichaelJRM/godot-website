@@ -1,122 +1,231 @@
-.article-page h1 {
-  margin-bottom: 8px;
-  margin-top: 32px;
-}
+.article-page {
+  & h1 {
+    margin-bottom: 8px;
+    margin-top: 32px;
+  }
 
-.article-page :not(pre)>code {
-  background: var(--code-background-color);
-  padding: 1px 4px;
-  font-size: 0.95em;
-  border-radius: 3px;
-}
+  & :not(pre)>code {
+    background: var(--code-background-color);
+    padding: 1px 4px;
+    font-size: 0.95em;
+    border-radius: 3px;
+  }
 
-.article-page pre {
-  background: var(--codeblock-background-color);
-  color: var(--codeblock-color);
-}
+  & pre {
+    background: var(--codeblock-background-color);
+    color: var(--codeblock-color);
+  }
 
-.article-page pre code {
-  display: block;
-  overflow-x: auto;
-  padding: .5em;
-}
+  & pre code {
+    display: block;
+    overflow-x: auto;
+    padding: .5em;
+  }
 
-.article-page .date-big {
-  line-height: 2;
-  margin-left: 32px;
-}
+  & .date-big {
+    line-height: 2;
+    margin-left: 32px;
+  }
 
-.article-page article {
-  background-color: var(--base-color);
-  box-shadow: 0px 3px 2px 0px rgba(0, 0, 0, 0.15);
-}
+  & article {
+    background-color: var(--base-color);
+    box-shadow: 0px 3px 2px 0px rgba(0, 0, 0, 0.15);
 
-.article-page figure {
-  margin: 0;
-}
+    & img, & video {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 16px auto;
+    }
 
-.article-page figure img {
-  margin: 0;
-}
+    & h1 {
+      margin-top: 64px;
+    }
 
-.article-page article img,
-.article-page article video {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 16px auto;
-}
+    & h2,
+    & h3,
+    & h4 {
+      margin-top: 42px;
+    }
+  }
 
-.article-page article h1 {
-  margin-top: 64px;
-}
+  & figure {
+    margin: 0;
 
-.article-page article h2,
-.article-page article h3,
-.article-page article h4 {
-  margin-top: 42px;
-}
+    & figcaption {
+      margin-bottom: 1rem;
+    }
 
-.article-page .article-info {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
+    & img {
+      margin: 0;
+    }
+  }
 
-.article-page .article-metadata {
-  display: flex;
-  gap: 24px;
-  align-items: center;
-  font-family: var(--header-font-family);
-  margin-bottom: 12px;
-}
+  & .article-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
 
-@media (max-width: 900px) {
-  .article-page .article-metadata {
+  & .article-metadata {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    font-family: var(--header-font-family);
+    margin-bottom: 12px;
+
+    & .date {
+      color: var(--base-color-text-subtitle-date);
+
+      &.post-recent-highlight {
+        color: var(--post-recent-highlight-color);
+        opacity: 0.8;
+
+        &::after {
+          font-size: 80%;
+          content: "NEW";
+          border: 2px solid var(--post-recent-highlight-color);
+          padding: 2px 3px;
+          margin-left: 8px;
+        }
+      }
+    }
+  }
+
+  & .article-author {
+    color: var(--base-color-text-subtitle-date);
+    font-weight: 700;
+    font-size: 18px;
+    flex-grow: 1;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+
+    & .avatar {
+      border-radius: 100%;
+      margin: 0;
+    }
+
+    & .by {
+      color: var(--base-color-text-subtitle);
+    }
+  }
+
+  & .tag.active {
+    filter: saturate(0.75);
+  }
+
+  /*CARDS */
+  & .card-download {
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
+    background: var(--head-background-color);
+    border-radius: 4px 4px;
+    padding: 10px 16px;
+
+    & .card-download-link {
+      color: var(--dark-color-text-title);
+      font-size: 135%;
+      font-weight: 700;
+      text-decoration-color: var(--dark-color-text);
+    }
+
+    & .card-download-details {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      width: 100%;
+
+      & > img {
+        background-color: transparent;
+        display: inline-block;
+        margin: 0;
+        min-width: 0;
+        max-height: 150px;
+      }
+    }
+
+    & .card-download-platforms {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+    }
+
+    & .download-platform {
+      color: var(--primary-color-text-title);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      min-width: 120px;
+
+      & img {
+        filter: invert(100%);
+        width: 24px;
+        height: 24px;
+        background-color: transparent;
+        display: inline-block;
+        margin: 0;
+      }
+    }
+
+    & .btn-download-primary {
+      margin-bottom: 0;
+      text-align: left;
+
+      & .download-title {
+        font-size: 18px;
+        line-height: 24px;
+        padding: 10px 16px;
+        white-space: nowrap;
+      }
+    }
+
+    & .btn-download-primary--mono {
+      background-color: var(--download-mono-background-color);
+      -webkit-backdrop-filter: blur(4px);
+      backdrop-filter: blur(4px);
+
+      & .download-title {
+        color: #f7f7f7;
+      }
+
+      & .download-hint {
+        background-color: var(--primary-color-subdued);
+        color: var(--text-color);
+      }
+    }
+
+    & .card-download-sublinks {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      background: var(--download-table-color);
+      margin: 0 -16px -10px -16px;
+      padding: 10px 16px;
+      width: 100%;
+
+      & .card-download-other,
+      & .card-download-donate {
+        color: var(--dark-color-text-hl);
+        font-size: 95%;
+        text-decoration-color: var(--dark-color-text);
+        text-decoration-thickness: 1px;
+      }
+
+      & .card-download-donate {
+        color: var(--fund-color-faint);
+        font-weight: 600;
+        text-decoration-color: var(--fund-color-faint);
+      }
+    }
   }
-}
-
-.article-page .article-author {
-  color: var(--base-color-text-subtitle-date);
-  font-weight: 700;
-  font-size: 18px;
-  flex-grow: 1;
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
-
-.article-page .article-author .avatar {
-  border-radius: 100%;
-  margin: 0;
-}
-
-.article-page .article-author .by {
-  color: var(--base-color-text-subtitle);
-}
-
-.article-page .article-metadata .date {
-  color: var(--base-color-text-subtitle-date);
-}
-
-.article-page .article-metadata .date.post-recent-highlight {
-  color: var(--post-recent-highlight-color);
-  opacity: 0.8;
-}
-
-.article-page .article-metadata .date.post-recent-highlight::after {
-  font-size: 80%;
-  content: "NEW";
-  border: 2px solid var(--post-recent-highlight-color);
-  padding: 2px 3px;
-  margin-left: 8px;
-}
-
-.article-page .tag.active {
-  filter: saturate(0.75);
 }
 
 @media screen and (min-width: 900px) {
@@ -131,8 +240,40 @@
     background-color: var(--base-color);
   }
 
-  .article-page article {
-    background-color: transparent;
-    box-shadow: none;
+  .article-page {
+    & .article-metadata {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    article {
+      background-color: transparent;
+      box-shadow: none;
+    }
+
+    .card-download .card-download-platforms .btn-download-primary .download-title {
+      line-height: 28px;
+      padding: 12px 14px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .article-page .card-download {
+    & .card-download-details {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+
+      & img {
+        max-height: 220px;
+        max-width: 95%;
+      }
+    }
+
+    & .card-download-sublinks {
+      flex-direction: column;
+    }
   }
 }

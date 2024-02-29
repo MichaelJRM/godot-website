@@ -29,10 +29,10 @@
 
 				{{ $platformInfo := index (where (index ($gCtx.Site.Data) $gCtx.Site.Language.Lang).download_platforms "name" $download.platform | first 1) 0 }}
 
-				<div class="main-download">
+				<div>
 					<a href="{{ $downloadUrl }}" class="btn btn-download btn-download-main{{ if gt $index 0 }}2{{ end }}">
 						<div class="download-title">
-							<img src="/assets/images/platforms/{{ $platform | urlize }}.svg" alt="({{ $platform }})">
+							<img src="/assets/images/platforms/{{ replace $platform "_" "-" }}.svg" alt="({{ $platform }})">
 							Godot Engine{{ with $download.featured_flavor }} - {{ . }}{{ end }}
 						</div>
 						<div class="download-hint">{{ $version.name }}</div>
@@ -67,10 +67,8 @@
 	</div>
 
 	<div class="other-platforms">
-		<div class="other-platforms-wrapper">
-			{{- T "page.download.header.lookingForOtherPlatformsSeeBellow"
-				(dict "linkOpen" "<a href='#platforms'>" "linkClose" "</a>") | safeHTML
-			-}}
-		</div>
+		{{- T "page.download.header.lookingForOtherPlatformsSeeBellow"
+			(dict "linkOpen" "<a href='#platforms'>" "linkClose" "</a>") | safeHTML
+		-}}
 	</div>
 </div>

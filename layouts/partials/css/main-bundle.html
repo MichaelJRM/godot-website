@@ -1,7 +1,11 @@
 {{ $mainCSS := resources.Get "css/main.css" }}
 
+{{ $commonCSS := resources.Get "css/common.css" }}
+{{ $buttonsCSS := resources.Get "css/buttons.css" }}
+
 {{ $sponsorsCSS := resources.Get "css/partials/sponsors.css" }}
 {{ $footerCSS := resources.Get "css/partials/footer.css" }}
+{{ $outdatedNoticeCSS := resources.Get "css/partials/article/outdated-notice.css" }}
 
 {{ $indexCSS := resources.Get "css/layouts/index.css" }}
 {{ $featuresCSS := resources.Get "css/layouts/features.css" }}
@@ -13,8 +17,9 @@
 {{ $downloadCSS := resources.Get "css/layouts/download.css" }}
 {{ $archiveListCSS := resources.Get "css/layouts/archive-list.css" }}
 {{ $archiveCSS := resources.Get "css/layouts/archive.css" }}
+{{ $downloadPreviewCSS := resources.Get "css/layouts/download-preview.css" }}
 
-{{ $allCSS := slice $mainCSS $sponsorsCSS $footerCSS $indexCSS $featuresCSS $blogCSS $articleCSS $communityCSS $eventsCSS $aboutCSS $downloadCSS $archiveListCSS $archiveCSS }}
+{{ $allCSS := slice $mainCSS $commonCSS $buttonsCSS $sponsorsCSS $footerCSS $outdatedNoticeCSS $indexCSS $featuresCSS $blogCSS $articleCSS $communityCSS $eventsCSS $aboutCSS $downloadCSS $archiveListCSS $archiveCSS $downloadPreviewCSS }}
 {{ $cssBundle := $allCSS | resources.Concat "css/bundle.css" | resources.Minify | resources.Fingerprint }}
 
 <link rel="stylesheet" href="{{ $cssBundle.RelPermalink }}" integrity="{{ $cssBundle.Data.Integrity }}">

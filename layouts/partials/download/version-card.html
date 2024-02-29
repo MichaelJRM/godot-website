@@ -1,8 +1,10 @@
 {{ $version := .version }}
 {{ $gCtx := .gCtx }}
 
+{{ if not ($gCtx.Page.Scratch.Get "hasVersionCardLoaded") }}
 {{ $css := resources.Get "css/partials/download-version.css" | resources.Minify | resources.Fingerprint }}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+{{ end }}
 
 <div class="card base-padding preview-download">
     <h3 id="{{ $version.name }}-{{ $version.flavor }}">
@@ -59,7 +61,7 @@
                     {{ if eq $platform.name "templates" }}<hr>{{ end }}
 
                     <div class="download-platform">
-                        <img width="24" height="24" src="/assets/images/platforms/{{ $platform.name | urlize }}.svg" alt="{{ $platform.title }}" class="dark-invert" />
+                        <img width="24" height="24" src="/assets/images/platforms/{{ replace $platform.name "_" "-" }}.svg" alt="{{ $platform.title }}" class="dark-invert" />
                         {{ $platform.title }}
                     </div>
 
@@ -129,6 +131,11 @@
         {{ end }}
     </div>
 </div>
-{{ $downloadVersionJS := resources.Get "js/download-version.js" | resources.Minify | resources.Fingerprint }}
-<script defer src="{{ $downloadVersionJS.RelPermalink }}" integrity="{{ $downloadVersionJS.Data.Integrity }}"></script>
 
+{{ if not ($gCtx.Page.Scratch.Get "hasVersionCardLoaded") }}
+	{{ $downloadVersionJS := resources.Get "js/download-version.js" | resources.Minify | resources.Fingerprint }}
+	<script defer src="{{ $downloadVersionJS.RelPermalink }}" integrity="{{ $downloadVersionJS.Data.Integrity }}"></script>
+{{ end }}
+
+{{/* Prevent resources from being imported multiple times if the component appears multiple times in the same page*/}}
+{{ $gCtx.Page.Scratch.Set "hasVersionCardLoaded" true }}

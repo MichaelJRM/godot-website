@@ -4,7 +4,7 @@
 {{ $releaseArticle := $gCtx.Site.GetPage $version.release_notes }}
 
 <div class="card card-download">
-    <a class="card-download-link" href="/download/archive/{{ $version.name }}-{{ $version.flavor }}">
+    <a class="card-download-link" href="{{ relLangURL "download/archive" }}/{{ $version.name }}-{{ $version.flavor }}">
         Download Godot {{ $version.name }} {{ $version.flavor }}
     </a>
 
@@ -44,10 +44,10 @@
     </div>
 
     <div class="card-download-sublinks">
-        <a class="card-download-other" href="/download/archive/{{ $version.name }}-{{ $version.flavor }}">
+        <a class="card-download-other" href="{{ relLangURL "download/archive" }}/{{ $version.name }}-{{ $version.flavor }}">
             Export templates and other downloads
         </a>
-        <a class="card-download-donate" href="/donate">
+        <a class="card-download-donate" href="{{ relLangURL "donate" }}">
             Make a Donation
         </a>
     </div>

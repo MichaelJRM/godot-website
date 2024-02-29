@@ -478,6 +478,16 @@ page:
     officialReleases: Official releases
     currentState: "Current state:"
 
+  downloadPreview:
+    header:
+      titleText: Download Godot preview builds
+      subtitleText:
+        Help test the upcoming release of the engine,<br/>
+        and be the first to benefit from new features.
+      lookingForOtherPlatformsText: Looking for the stable version? {{ .linkOpen }}See below!{{ .linkClose }}
+    latestPreviewBuilds: Latest preview builds
+    needAStableVersion: Need a stable version?
+
   donate:
     paypal:
       titleText: Paypal

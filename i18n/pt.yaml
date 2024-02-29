@@ -488,6 +488,16 @@ page:
     officialReleases: Lançamentos oficiais
     currentState: "Estado atual:"
 
+  downloadPreview:
+    header:
+      titleText: Faça download de compilações de pré-visualização do Godot
+      subtitleText:
+        Ajude a testar a próxima versão do motor,<br/>
+        e seja o primeiro a beneficiar das novas funcionalidades.
+      lookingForOtherPlatformsText: Procurando a versão estável? {{ .linkOpen }}Veja abaixo!{{ .linkClose }}
+    latestPreviewBuilds: Últimas versões de pré-visualização
+    needAStableVersion: Precisa de uma versão estável?
+
   donate:
     paypal:
       titleText: Paypal

@@ -1,0 +1,57 @@
+.btn {
+  background-color: var(--button-background-color);
+  box-shadow: var(--base-shadow);
+  font-size: 18px;
+  padding: 16px 32px 16px 32px;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: bold;
+
+  &:hover {
+    box-shadow: var(--more-shadow);
+  }
+}
+
+.btn-flat {
+  box-shadow: none;
+  background-color: transparent;
+  color: var(--link-color);
+  margin: 16px 32px 16px 32px;
+
+  &:hover {
+    background-color: hsla(0, 0%, 50%, 0.1);
+  }
+}
+
+.btn-flat-white {
+  color: hsla(0, 0%, 100%, 0.95);
+}
+
+.btn-flat-frosted {
+  background-color: rgb(111 111 111 / 27%);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+.btn-download {
+  display: flex;
+  flex-wrap: nowrap;
+  background-color: white;
+  padding: 0;
+  text-align: center;
+
+  & > .download-title {
+    color: var(--dark-color);
+    display: inline-block;
+    padding: 16px 32px 16px 32px;
+    flex-grow: 1;
+  }
+
+  & > .download-hint {
+    background-color: var(--primary-color);
+    color: var(--primary-color-text-title);
+    display: inline-block;
+    padding: 16px 16px 16px 16px;
+    min-width: 48px;
+  }
+}
