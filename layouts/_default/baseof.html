@@ -41,12 +41,14 @@
 
 <body>
 {{ block "header" . }}
-{{ partialCached "header.html" . }}
+{{ partialCached "solid-header.html" . }}
 {{ end }}
 
-{{ block "main" . }}
-{{ .Content }}
-{{ end }}
+<main>
+	{{ block "main" . }}
+	{{ .Content }}
+	{{ end }}
+</main>
 
 {{ block "footer" . }}
 {{ partialCached "footer.html" . }}

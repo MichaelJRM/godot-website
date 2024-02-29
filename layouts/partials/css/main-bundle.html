@@ -27,6 +27,6 @@
 {{ $downloadPreviewCSS := resources.Get "css/layouts/download-preview.css" }}
 
 {{ $allCSS := slice $mainCSS $resetCSS $stylesCSS $fontsCSS $calligraphyCSS $utilCSS $commonCSS $buttonsCSS $sponsorsCSS $footerCSS $outdatedNoticeCSS $paginatorCSS $headerCSS $indexCSS $featuresCSS $blogCSS $articleCSS $communityCSS $eventsCSS $aboutCSS $downloadCSS $archiveListCSS $archiveCSS $downloadPreviewCSS }}
-{{ $cssBundle := $allCSS | resources.Concat "css/bundle.css" | resources.Minify | resources.Fingerprint }}
+{{ $cssBundle := $allCSS | resources.Concat "css/bundle.css" | resources.Minify }}
 
-<link rel="stylesheet" href="{{ $cssBundle.RelPermalink }}" integrity="{{ $cssBundle.Data.Integrity }}">
+<link rel="stylesheet" href="{{ $cssBundle.RelPermalink }}">
