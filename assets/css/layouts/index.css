@@ -59,16 +59,6 @@
   transform: translateY(-2px);
 }
 
-.index-page .features-row> :first-child,
-.index-page .split-row> :first-child {
-  margin-right: 8px;
-}
-
-.index-page .features-row> :last-child,
-.index-page .split-row> :last-child {
-  margin-left: 8px;
-}
-
 .index-page .feature img {
   width: 100%;
   aspect-ratio: 3/2;

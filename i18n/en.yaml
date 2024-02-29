@@ -466,6 +466,18 @@ page:
           comprehensiveTutorialText: A comprehensive {{ .linkOpen }}Step by Step tutorial{{ .linkClose }} for 2D and 3D.
           demoProjectsCollectionText: A collection of {{ .linkOpen }}official demo projects{{ .linkClose }} showcasing some of the engine features.
 
+  downloadArchive:
+    header:
+      titleText: Download<br>Godot {{ .version }} {{ .flavor }}
+      subtitleText: Looking for another version? {{ .linkOpen }}Open the archive index!{{ .linkClose }}
+
+  downloadArchiveList:
+    hero:
+      titleText: Godot archive
+      subtitleText: Download any officially published release of the engine.
+    officialReleases: Official releases
+    currentState: "Current state:"
+
   donate:
     paypal:
       titleText: Paypal

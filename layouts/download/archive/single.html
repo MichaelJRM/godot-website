@@ -1,54 +1,26 @@
 {{ define "main" }}
-
-<link rel="stylesheet" href="{{ (resources.Get "css/download-version.css" | resources.Minify | resources.Fingerprint).RelPermalink }}">
-
 <style>
-    .hero {
-        background-image: none;
-        padding-top: 54px;
-    }
-    .hero h1 {
-        text-shadow: none;
-        color: var(--base-color-text-title);
-    }
-
-    .hero-blurb {
-        color: var(--base-color-text);
-    }
-
-    .hero-version-flavor {
-        background-color: var(--primary-color);
-        border-radius: 1000px;
-        color: var(--dark-color-text-title);
-        font-size: 90%;
-        font-weight: 600;
-        padding: 0.35rem 1.25rem;
-    }
-
-    .other-platforms-wrapper {
-        color: var(--base-color-text);
-    }
-
-    .preview-cards {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-
     footer {
         margin-top: 0;
     }
 </style>
 
+<span class="archive-page">
 <div class="hero">
     <div class="hero-wrapper">
-        <h1>Download<br>Godot {{ .Params.name }} <span class="hero-version-flavor">{{ .Params.flavor }}</span></h1>
+		<h1>
+			{{- T "page.downloadArchive.header.titleText" (dict
+				"version" .Params.name
+				"flavor" (printf "<span class='hero-version-flavor'>%s</span>" .Params.flavor)) | safeHTML
+			-}}
+		</h1>
     </div>
 
     <div class="other-platforms">
-        <div class="other-platforms-wrapper">
-            Looking for another version? <a href="{{ relLangURL "download/archive" }}">Open the archive index!</a>
-        </div>
+		{{- T "page.downloadArchive.header.subtitleText" (dict
+			"linkOpen" (printf "<a href='%s'>" (relLangURL "download/archive"))
+			"linkClose" "</a>") | safeHTML
+		-}}
     </div>
 </div>
 
@@ -60,7 +32,5 @@
     </div>
 </div>
 
-{{ $downloadVersionJS := resources.Get "js/download-version.js" | resources.Minify | resources.Fingerprint }}
-<script defer src="{{ $downloadVersionJS.RelPermalink }}" integrity="{{ $downloadVersionJS.Data.Integrity }}"></script>
-
+</span>
 {{ end }}

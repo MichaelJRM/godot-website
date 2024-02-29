@@ -60,53 +60,6 @@
   margin: auto;
 }
 
-/*----------Buttons----------*/
-
-.download-page .btn.btn-download-main,
-.download-page .btn.btn-download-main2,
-.download-page .btn.btn-download-primary {
-  background-color: var(--primary-color);
-  color: white;
-  display: inline-flex;
-  flex-basis: content;
-  padding: 0;
-  margin-bottom: 8px;
-}
-
-.download-page .btn.btn-download-main2 {
-  background-color: rgb(111 111 111 / 27%);
-  -webkit-backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px);
-}
-
-.download-page .btn.btn-download-main img,
-.download-page .btn.btn-download-main2 img,
-.download-page .btn.btn-download-primary img {
-  display: inline-block;
-  filter: invert();
-  margin-right: 10px;
-  width: 22px;
-  vertical-align: text-bottom;
-}
-
-.download-page .btn.btn-download-main .download-hint,
-.download-page .btn.btn-download-main2 .download-hint,
-.download-page .btn.btn-download-primary .download-hint {
-  background-color: var(--primary-color-text-title);
-  color: var(--dark-color);
-  line-height: 32px;
-  padding: 12px 16px;
-}
-
-.download-page .btn.btn-download-main .download-title,
-.download-page .btn.btn-download-main2 .download-title,
-.download-page .btn.btn-download-primary .download-title {
-  color: var(--primary-color-text-title);
-  font-size: 20px;
-  line-height: 32px;
-  padding: 12px 32px 12px 24px;
-}
-
 /*----------Platform Details----------*/
 
 .download-page .platform-details .card {

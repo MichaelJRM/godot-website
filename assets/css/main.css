@@ -1185,3 +1185,50 @@ figure.article-cover figcaption {
 figure.article-cover figcaption a {
 	color: inherit;
 }
+
+/*----------Buttons----------*/
+
+.btn.btn-download-main,
+.btn.btn-download-main2,
+.btn.btn-download-primary {
+  background-color: var(--primary-color);
+  color: white;
+  display: inline-flex;
+  flex-basis: content;
+  padding: 0;
+  margin-bottom: 8px;
+}
+
+.btn.btn-download-main2 {
+  background-color: rgb(111 111 111 / 27%);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+.btn.btn-download-main img,
+.btn.btn-download-main2 img,
+.btn.btn-download-primary img {
+  display: inline-block;
+  filter: invert();
+  margin-right: 10px;
+  width: 22px;
+  vertical-align: text-bottom;
+}
+
+.btn.btn-download-main .download-hint,
+.btn.btn-download-main2 .download-hint,
+.btn.btn-download-primary .download-hint {
+  background-color: var(--primary-color-text-title);
+  color: var(--dark-color);
+  line-height: 32px;
+  padding: 12px 16px;
+}
+
+.btn.btn-download-main .download-title,
+.btn.btn-download-main2 .download-title,
+.btn.btn-download-primary .download-title {
+  color: var(--primary-color-text-title);
+  font-size: 20px;
+  line-height: 32px;
+  padding: 12px 32px 12px 24px;
+}

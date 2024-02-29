@@ -1,20 +1,18 @@
 {{ define "main" }}
-
-<link rel="stylesheet" href="{{ (resources.Get "css/download-archive.css" | resources.Minify | resources.Fingerprint).RelPermalink }}">
-
+<span class="archive-page-list">
 <div class="hero">
-    <h1>Godot archive</h1>
+    <h1>{{ T "page.downloadArchiveList.hero.titleText" }}</h1>
 
     <div class="hero-blurb">
         <p>
-            Download any officially published release of the engine.
+            {{ T "page.downloadArchiveList.hero.subtitleText" }}
         </p>
     </div>
 </div>
 
 <div class="container">
     <div class="padded" style="padding-top:0;margin-top:32px">
-        <h2>Official releases</h2>
+        <h2>{{ T "page.downloadArchiveList.officialReleases" }}</h2>
 
         <div class="archive-list">
             {{ $versions := where .Site.RegularPages "Type" "download/archive" }}
@@ -29,7 +27,7 @@
                             Godot {{ .Key }}
                         </h3>
 
-                        <span>Current state:</span> <span class="archive-version-flavor">{{ $version.flavor }}</span>
+                        <span>{{ T "page.downloadArchiveList.currentState" }}</span> <span class="archive-version-flavor">{{ $version.flavor }}</span>
                     </div>
                 </div>
 
@@ -54,5 +52,5 @@
         </div>
     </div>
 </div>
-
+</span>
 {{ end }}

@@ -3,9 +3,6 @@
 {{ end }}
 
 {{ define "main" }}
-
-<link rel="stylesheet" href="{{ (resources.Get "css/download-version.css" | resources.Minify | resources.Fingerprint).RelPermalink }}">
-
 <style>
     .hero {
         background-image: url('/assets/download/download-background-preview.webp');
@@ -133,8 +130,5 @@
 		{{ partialCached "common/download-lts-button.html" . }}
     </div>
 </div>
-
-{{ $downloadVersionJS := resources.Get "js/download-version.js" | resources.Minify | resources.Fingerprint }}
-<script defer src="{{ $downloadVersionJS.RelPermalink }}" integrity="{{ $downloadVersionJS.Data.Integrity }}"></script>
 
 {{ end }}

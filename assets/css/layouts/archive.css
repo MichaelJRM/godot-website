@@ -1,0 +1,50 @@
+/*----------Hero----------*/
+.archive-page {
+  & .hero-wrapper {
+    text-align: center;
+    max-width: 620px;
+    margin: 0 auto;
+  }
+
+  & .hero {
+    padding: 54px 1rem 12px;
+    max-width: 1200px;
+    margin: auto;
+
+    & h1 {
+      font-size: 60px;
+      margin-bottom: 20px;
+      color: var(--base-color-text-title);
+    }
+
+    & .other-platforms {
+      color: var(--download-hero-color);
+      font-weight: 600;
+      margin-top: 3rem;
+
+      & > a {
+        user-select: none;
+      }
+    }
+  }
+
+  & .hero-blurb {
+    color: var(--base-color-text);
+  }
+
+  & .hero-version-flavor {
+    background-color: var(--primary-color);
+    border-radius: 1000px;
+    color: var(--dark-color-text-title);
+    font-size: 90%;
+    font-weight: 600;
+    padding: 0.35rem 1.25rem;
+  }
+
+  /*----------Preview Cards----------*/
+  & .preview-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}

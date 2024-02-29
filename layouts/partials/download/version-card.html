@@ -1,6 +1,9 @@
 {{ $version := .version }}
 {{ $gCtx := .gCtx }}
 
+{{ $css := resources.Get "css/partials/download-version.css" | resources.Minify | resources.Fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+
 <div class="card base-padding preview-download">
     <h3 id="{{ $version.name }}-{{ $version.flavor }}">
         Godot {{ $version.name }}-{{ $version.flavor }}
@@ -46,7 +49,7 @@
             <h4>Supported platforms</h4>
             {{ $hasMono := false }}
 
-            <div class="download-primaries">
+            <div class="primaries">
                 {{ $platforms := partial "_funcs/get-primary-download-platforms.html" (dict "gCtx" $gCtx "version" $version "host" "github_builds") }}
 
                 {{ $platforms = $platforms }}
@@ -126,3 +129,6 @@
         {{ end }}
     </div>
 </div>
+{{ $downloadVersionJS := resources.Get "js/download-version.js" | resources.Minify | resources.Fingerprint }}
+<script defer src="{{ $downloadVersionJS.RelPermalink }}" integrity="{{ $downloadVersionJS.Data.Integrity }}"></script>
+

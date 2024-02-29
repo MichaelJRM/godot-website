@@ -11,8 +11,10 @@
 {{ $eventsCSS := resources.Get "css/layouts/events.css" }}
 {{ $aboutCSS := resources.Get "css/layouts/about.css" }}
 {{ $downloadCSS := resources.Get "css/layouts/download.css" }}
+{{ $archiveListCSS := resources.Get "css/layouts/archive-list.css" }}
+{{ $archiveCSS := resources.Get "css/layouts/archive.css" }}
 
-{{ $allCSS := slice $mainCSS $sponsorsCSS $footerCSS $indexCSS $featuresCSS $blogCSS $articleCSS $communityCSS $eventsCSS $aboutCSS $downloadCSS }}
+{{ $allCSS := slice $mainCSS $sponsorsCSS $footerCSS $indexCSS $featuresCSS $blogCSS $articleCSS $communityCSS $eventsCSS $aboutCSS $downloadCSS $archiveListCSS $archiveCSS }}
 {{ $cssBundle := $allCSS | resources.Concat "css/bundle.css" | resources.Minify | resources.Fingerprint }}
 
 <link rel="stylesheet" href="{{ $cssBundle.RelPermalink }}" integrity="{{ $cssBundle.Data.Integrity }}">
