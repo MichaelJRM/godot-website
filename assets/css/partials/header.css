@@ -230,8 +230,10 @@ header[data-transparent="true"] {
 }
 
 @container (width < 1200px) {
-  header[data-transparent="true"] nav .fund a {
-    background-color: transparent;
+  header[data-transparent="true"] {
+    & nav .fund a {
+      background-color: transparent;
+    }
 
     & input#nav_toggle_cb:checked~div {
       background-color: var(--navbar-background-color);
@@ -239,8 +241,10 @@ header[data-transparent="true"] {
   }
 
   @media (prefers-color-scheme: light) {
-    header[data-transparent="true"] nav a {
-      color: var(--navbar-link-color);
+    header[data-transparent="true"] {
+      & nav a {
+        color: var(--navbar-link-color);
+      }
 
       & input#nav_toggle_cb:checked~div #nav_head #nav_toggle_btn {
         filter: none;
