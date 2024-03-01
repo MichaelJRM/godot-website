@@ -44,11 +44,9 @@
 {{ partialCached "solid-header.html" . }}
 {{ end }}
 
-<main>
-	{{ block "main" . }}
-	{{ .Content }}
-	{{ end }}
-</main>
+{{ block "main" . }}
+{{ .Content }}
+{{ end }}
 
 {{ block "footer" . }}
 {{ partialCached "footer.html" . }}

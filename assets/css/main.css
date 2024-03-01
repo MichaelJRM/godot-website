@@ -30,10 +30,10 @@ ul li {
 
 @container (width < 900px) {
   .wrapper {
-    padding: 0 1rem 0 1rem;
+    --page-padding: 1rem;
 
     & .padded {
-      padding: 2rem 0 2rem 0;
+      padding: 2rem 0;
     }
   }
 

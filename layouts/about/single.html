@@ -1,39 +1,39 @@
 {{ define "main" }}
 
-<span class="about-page">
-<div class="head">
-	<div class="wrapper flex eqsize" style="flex-direction: column">
-		<div class="main">
-			<h1 class="intro-title">{{ .Params.header_text }}</h1>
-		</div>
+<main class="about-page">
+	<div class="head">
+		<div class="wrapper flex eqsize" style="flex-direction: column">
+			<div class="main">
+				<h1 class="intro-title">{{ .Params.header_text }}</h1>
+			</div>
 
-		<div id="tabs" class="tabs">
-			<a id="tabs-contact" href="{{ relLangURL "contact" }}" class="title-font {{ if eq .Params.current_tab "contact" }} active {{ end }}">
-			Contact
-			</a>
-			<a id="tabs-code-of-conduct" href="{{ relLangURL "code-of-conduct" }}" class="title-font {{ if eq .Params.current_tab "code-of-conduct" }} active {{ end }}">
-			Code of Conduct
-			</a>
-			<a id="tabs-privacy-policy" href="{{ relLangURL "privacy-policy" }}" class="title-font {{ if eq .Params.current_tab "privacy-policy" }} active {{ end }}">
-			Privacy
-			</a>
-			<a id="tabs-governance" href="{{ relLangURL "governance" }}" class="title-font {{ if eq .Params.current_tab "governance" }} active {{ end }}">
-			Governance
-			</a>
-			<a id="tabs-teams" href="{{ relLangURL "teams" }}" class="title-font {{ if eq .Params.current_tab "teams" }} active {{ end }}">
-			Teams
-			</a>
-			<a id="tabs-license" href="{{ relLangURL "license" }}" class="title-font {{ if eq .Params.current_tab "license" }} active {{ end }}">
-			License
-			</a>
+			<div id="tabs" class="tabs">
+				<a id="tabs-contact" href="{{ relLangURL "contact" }}" class="title-font {{ if eq .Params.current_tab "contact" }} active {{ end }}">
+				Contact
+				</a>
+				<a id="tabs-code-of-conduct" href="{{ relLangURL "code-of-conduct" }}" class="title-font {{ if eq .Params.current_tab "code-of-conduct" }} active {{ end }}">
+				Code of Conduct
+				</a>
+				<a id="tabs-privacy-policy" href="{{ relLangURL "privacy-policy" }}" class="title-font {{ if eq .Params.current_tab "privacy-policy" }} active {{ end }}">
+				Privacy
+				</a>
+				<a id="tabs-governance" href="{{ relLangURL "governance" }}" class="title-font {{ if eq .Params.current_tab "governance" }} active {{ end }}">
+				Governance
+				</a>
+				<a id="tabs-teams" href="{{ relLangURL "teams" }}" class="title-font {{ if eq .Params.current_tab "teams" }} active {{ end }}">
+				Teams
+				</a>
+				<a id="tabs-license" href="{{ relLangURL "license" }}" class="title-font {{ if eq .Params.current_tab "license" }} active {{ end }}">
+				License
+				</a>
+			</div>
 		</div>
 	</div>
-</div>
 
-<div class="wrapper">
-	{{ .Content }}
-</div>
-</span>
+	<div class="wrapper">
+		{{ .Content }}
+	</div>
+</main>
 
 <script>
 	document.addEventListener('DOMContentLoaded', () => {

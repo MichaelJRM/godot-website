@@ -1,0 +1,67 @@
+.showcase-list-page {
+  & .showcase-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 0.7rem;
+
+    & h3 {
+      font-size: 2.063rem;
+      margin-bottom: 0;
+      position: absolute;
+      text-align: center;
+      width: 100%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-shadow: 0 4px 5px black;
+    }
+
+    & p {
+      font-size: 0.875rem;
+      margin: 0;
+      color: var(--secondary-color-text);
+    }
+
+    & img.thumbnail {
+      width: 100%;
+      aspect-ratio: 92/43;
+      background-color: var(--card-background-color);
+      border-radius: 7px;
+      box-shadow: 0 5px 10px -3px #00000078;
+    }
+  }
+
+  & .showcase-card-caption {
+    display: flex;
+    column-gap: 0.75rem;
+    justify-content: space-between;
+    padding: 0 0.9rem;
+  }
+
+  & .showcase-card-authors {
+    display: grid;
+    align-content: center;
+  }
+
+  & .showcase-card-icons {
+    filter: none;
+    opacity: 0.5;
+    display: flex;
+    gap: 0.5rem;
+
+    & img {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+}
+
+
+@media (prefers-color-scheme: dark) {
+  .showcase-list-page {
+    & .showcase-card-icons {
+      filter: invert();
+    }
+  }
+}

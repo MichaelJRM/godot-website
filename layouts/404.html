@@ -1,67 +1,68 @@
+{{ define "head" }}
+<style>
+	body {
+		background-color: var(--base-color);
+		color: var(--base-color-text);
+		font-family: var(--default-font-family);
+	}
+
+	main {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 1.875rem;
+		box-sizing: border-box;
+	}
+
+	@container (width >= 768px) {
+		main {
+			height: 100vh;
+		}
+	}
+
+	.message {
+		text-align: center;
+	}
+
+	.error {
+		max-width: 900px;
+	}
+
+	.error-logo {
+		height: 138px;
+	}
+
+	.alternatives {
+		display: grid;
+		/* grid-template-columns: 1fr 1fr; */
+		gap: 1.875rem;
+	}
+
+	.alternatives div {
+		background-color: var(--card-background-color);
+		padding: 1.25rem;
+		box-sizing: border-box;
+		box-shadow: 0 5px 30px -9px #1c1c1c9e;
+		border-radius: 1rem;
+	}
+
+	.alternatives .help {
+		/* use two columns */
+		grid-column: span 2;
+	}
+
+	.search-bar input {
+		background-color: var(--base-color);
+	}
+</style>
+{{ end }}
+
 {{ define "header" }}
 {{ partialCached "transparent-header.html" . }}
 {{ end }}
 
 {{ define "main" }}
-
-<style>
-    body {
-        background-color: var(--base-color);
-        color: var(--base-color-text);
-        font-family: var(--default-font-family);
-    }
-
-    main {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 1.875rem;
-        box-sizing: border-box;
-    }
-
-    @container (width >= 768px) {
-        main {
-            height: 100vh;
-        }
-    }
-
-    .message {
-        text-align: center;
-    }
-
-    .error {
-        max-width: 900px;
-    }
-
-    .error-logo {
-        height: 138px;
-    }
-
-    .alternatives {
-        display: grid;
-        /* grid-template-columns: 1fr 1fr; */
-        gap: 1.875rem;
-    }
-
-    .alternatives div {
-        background-color: var(--card-background-color);
-        padding: 1.25rem;
-        box-sizing: border-box;
-        box-shadow: 0 5px 30px -9px #1c1c1c9e;
-        border-radius: 1rem;
-    }
-
-    .alternatives .help {
-        /* use two columns */
-        grid-column: span 2;
-    }
-
-    .search-bar input {
-        background-color: var(--base-color);
-    }
-</style>
-
 
 <main class="not-found-page">
     <div class="error">

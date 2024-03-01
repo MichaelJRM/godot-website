@@ -40,11 +40,11 @@
 {{ end }}
 
 {{ define "main" }}
-<span class="index-page">
+<main class="index-page">
 {{/* ----------Hero Download----------*/}}
 <section class="hero">
 	<div id="hero-background-image" class="background-image" style="contain: content;"></div>
-    <div class="wrapper">
+    <div class="hero-wrapper">
         <div class="copy wrapper">
             <h1>{{ T "page.home.header.titleText" | safeHTML }}</h1>
             <p>{{ T "page.home.header.subtitleText" }}</p>
@@ -255,5 +255,5 @@
 </section>
 
 {{ partialCached "sponsors.html" . }}
-</span>
+</main>
 {{ end }}

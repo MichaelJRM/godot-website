@@ -25,8 +25,39 @@
 {{ $archiveListCSS := resources.Get "css/layouts/archive-list.css" }}
 {{ $archiveCSS := resources.Get "css/layouts/archive.css" }}
 {{ $downloadPreviewCSS := resources.Get "css/layouts/download-preview.css" }}
+{{ $donateCSS := resources.Get "css/layouts/donate.css" }}
+{{ $showcaseListCSS := resources.Get "css/layouts/showcase-list.css" }}
+{{ $showcaseCSS := resources.Get "css/layouts/showcase.css" }}
 
-{{ $allCSS := slice $mainCSS $resetCSS $stylesCSS $fontsCSS $calligraphyCSS $utilCSS $commonCSS $buttonsCSS $sponsorsCSS $footerCSS $outdatedNoticeCSS $paginatorCSS $headerCSS $indexCSS $featuresCSS $blogCSS $articleCSS $communityCSS $eventsCSS $aboutCSS $downloadCSS $archiveListCSS $archiveCSS $downloadPreviewCSS }}
+{{ $allCSS := slice
+	$mainCSS
+	$resetCSS
+	$stylesCSS
+	$fontsCSS
+	$calligraphyCSS
+	$utilCSS
+	$commonCSS
+	$buttonsCSS
+	$sponsorsCSS
+	$footerCSS
+	$outdatedNoticeCSS
+	$paginatorCSS
+	$headerCSS
+	$indexCSS
+	$featuresCSS
+	$blogCSS
+	$articleCSS
+	$communityCSS
+	$eventsCSS
+	$aboutCSS
+	$downloadCSS
+	$archiveListCSS
+	$archiveCSS
+	$downloadPreviewCSS
+	$donateCSS
+	$showcaseListCSS
+	$showcaseCSS
+}}
 {{ $cssBundle := $allCSS | resources.Concat "css/bundle.css" | resources.Minify }}
 
 <link rel="stylesheet" href="{{ $cssBundle.RelPermalink }}">
