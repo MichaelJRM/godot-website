@@ -1,63 +1,31 @@
-{{ $mainCSS := resources.Get "css/main.css" }}
-
-{{ $resetCSS := resources.Get "css/reset.css" }}
-{{ $stylesCSS := resources.Get "css/styles.css" }}
-{{ $fontsCSS := resources.Get "css/fonts.css" }}
-{{ $calligraphyCSS := resources.Get "css/calligraphy.css" }}
-{{ $utilCSS := resources.Get "css/util.css" }}
-{{ $commonCSS := resources.Get "css/common.css" }}
-{{ $buttonsCSS := resources.Get "css/buttons.css" }}
-
-{{ $sponsorsCSS := resources.Get "css/partials/sponsors.css" }}
-{{ $footerCSS := resources.Get "css/partials/footer.css" }}
-{{ $outdatedNoticeCSS := resources.Get "css/partials/article/outdated-notice.css" }}
-{{ $paginatorCSS := resources.Get "css/partials/paginator.css" }}
-{{ $headerCSS := resources.Get "css/partials/header.css" }}
-
-{{ $indexCSS := resources.Get "css/layouts/index.css" }}
-{{ $featuresCSS := resources.Get "css/layouts/features.css" }}
-{{ $blogCSS := resources.Get "css/layouts/blog.css" }}
-{{ $articleCSS := resources.Get "css/layouts/article.css" }}
-{{ $communityCSS := resources.Get "css/layouts/community.css" }}
-{{ $eventsCSS := resources.Get "css/layouts/events.css" }}
-{{ $aboutCSS := resources.Get "css/layouts/about.css" }}
-{{ $downloadCSS := resources.Get "css/layouts/download.css" }}
-{{ $archiveListCSS := resources.Get "css/layouts/archive-list.css" }}
-{{ $archiveCSS := resources.Get "css/layouts/archive.css" }}
-{{ $downloadPreviewCSS := resources.Get "css/layouts/download-preview.css" }}
-{{ $donateCSS := resources.Get "css/layouts/donate.css" }}
-{{ $showcaseListCSS := resources.Get "css/layouts/showcase-list.css" }}
-{{ $showcaseCSS := resources.Get "css/layouts/showcase.css" }}
-
 {{ $allCSS := slice
-	$mainCSS
-	$resetCSS
-	$stylesCSS
-	$fontsCSS
-	$calligraphyCSS
-	$utilCSS
-	$commonCSS
-	$buttonsCSS
-	$sponsorsCSS
-	$footerCSS
-	$outdatedNoticeCSS
-	$paginatorCSS
-	$headerCSS
-	$indexCSS
-	$featuresCSS
-	$blogCSS
-	$articleCSS
-	$communityCSS
-	$eventsCSS
-	$aboutCSS
-	$downloadCSS
-	$archiveListCSS
-	$archiveCSS
-	$downloadPreviewCSS
-	$donateCSS
-	$showcaseListCSS
-	$showcaseCSS
+	(resources.Get "css/main.css")
+	(resources.Get "css/reset.css")
+	(resources.Get "css/styles.css")
+	(resources.Get "css/fonts.css")
+	(resources.Get "css/calligraphy.css")
+	(resources.Get "css/util.css")
+	(resources.Get "css/common.css")
+	(resources.Get "css/buttons.css")
+	(resources.Get "css/partials/sponsors.css")
+	(resources.Get "css/partials/footer.css")
+	(resources.Get "css/partials/article/outdated-notice.css")
+	(resources.Get "css/partials/paginator.css")
+	(resources.Get "css/partials/header.css")
+	(resources.Get "css/layouts/index.css")
+	(resources.Get "css/layouts/features.css")
+	(resources.Get "css/layouts/blog.css")
+	(resources.Get "css/layouts/article.css")
+	(resources.Get "css/layouts/community.css")
+	(resources.Get "css/layouts/events.css")
+	(resources.Get "css/layouts/about.css")
+	(resources.Get "css/layouts/download.css")
+	(resources.Get "css/layouts/archive-list.css")
+	(resources.Get "css/layouts/archive.css")
+	(resources.Get "css/layouts/download-preview.css")
+	(resources.Get "css/layouts/donate.css")
+	(resources.Get "css/layouts/showcase-list.css")
+	(resources.Get "css/layouts/showcase.css")
 }}
-{{ $cssBundle := $allCSS | resources.Concat "css/bundle.css" | resources.Minify }}
-
-<link rel="stylesheet" href="{{ $cssBundle.RelPermalink }}">
+{{ $cssBundle := $allCSS | resources.Concat "css/bundle.css" | resources.Minify | resources.Fingerprint }}
+<link rel="stylesheet" href="{{ $cssBundle.RelPermalink }}" integrity="{{ $cssBundle.Data.Integrity }}">
