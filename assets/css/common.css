@@ -1,30 +1,30 @@
 /*----------Download pages----------*/
 .download-page, .download-preview-page, .archive-page {
   & .hero {
-    padding: 124px 1rem 12px;
-    background-size: cover;
     background-position: center;
+    background-size: cover;
+    padding: 124px var(--page-padding) 12px;
     position: relative;
 
     & .hero-wrapper {
-      text-align: center;
-      max-width: 620px;
       margin: 0 auto;
+      max-width: 620px;
+      text-align: center;
     }
 
     & h1 {
-      font-size: 60px;
-      text-shadow: 0 0 28px #00000080;
-      margin-bottom: 20px;
       color: white;
+      font-size: 3.75rem;
+      margin-bottom: 20px;
+      text-shadow: 0 0 28px #00000080;
     }
 
     & .other-platforms {
       color: var(--download-hero-color);
       font-weight: 600;
+      margin-inline: auto;
       margin-top: 3rem;
       max-width: 1200px;
-      margin-inline: auto;
 
       & > a {
         user-select: none;
@@ -45,8 +45,8 @@
       display: inline-block;
       filter: invert();
       margin-right: 10px;
-      width: 22px;
       vertical-align: text-bottom;
+      width: 22px;
     }
 
     & .download-hint {
@@ -58,16 +58,16 @@
 
     & .download-title {
       color: var(--primary-color-text-title);
-      font-size: 20px;
+      font-size: 1.25rem;
       line-height: 2rem;
       padding: 0.75rem 2rem 0.75rem 24px;
     }
   }
 
   & .btn-download-main2 {
-    background-color: rgb(111 111 111 / 27%);
     -webkit-backdrop-filter: blur(4px);
     backdrop-filter: blur(4px);
+    background-color: rgb(111 111 111 / 27%);
   }
 }
 
@@ -76,10 +76,10 @@
   /*----------Tags----------*/
 
   & .tags {
-    display: flex;
     align-items: baseline;
-    gap: 10px;
+    display: flex;
     flex-wrap: wrap;
+    gap: 10px;
 
     & > a {
       border-radius: 1000px;
@@ -89,21 +89,20 @@
 
   & .tags__title {
     display: inline-block;
-    margin: 0;
-    font-size: 19px;
+    font-size: 1.188rem;
   }
 
   & .tag {
-    display: inline-block;
     background-color: var(--card-background-color);
     border-radius: 1000px;
     box-shadow: var(--base-shadow);
+    display: inline-block;
     filter: saturate(0.35);
     font-family: var(--header-font-family);
     font-size: 1rem;
-    padding: 0.25rem 0.75rem;
     margin: 0.1rem;
     opacity: 0.8;
+    padding: 0.25rem 0.75rem;
 
     &.active {
       filter: saturate(1);
@@ -114,23 +113,22 @@
 
 .not-found-page, .blog-page {
   & .search-bar {
-    display: flex;
-    height: 40px;
-    margin-bottom: 2rem;
     border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 18px;
-    overflow: hidden;
+    display: flex;
+    height: 40px;
     min-width: 65%;
+    overflow: hidden;
 
     & input {
-      flex-grow: 1;
-      padding: 0.5rem 1rem;
-      line-height: 2;
-      font-size: 18px;
+      background-color: var(--card-footer-color);
       border: none;
       border-right: 1px solid var(--transparent-cover);
-      background-color: var(--card-footer-color);
       color: var(--base-color-text);
+      flex-grow: 1;
+      font-size: 1.125rem;
+      line-height: 2;
+      padding: 0.5rem 1rem;
 
       &::placeholder {
         color: var(--placeholder-text-color);
@@ -138,19 +136,131 @@
     }
 
     & .search-bar-btn {
-      cursor: pointer;
-      border: none;
-      width: 3rem;
-      padding: 0;
-      margin: 0;
       background-color: var(--pagination-active-color);
+      border: none;
       color: var(--primary-color-text-title);
+      cursor: pointer;
+      margin: 0;
+      padding: 0;
+      width: 3rem;
 
       & img {
-        margin: 0.5rem;
-        filter: invert(100%);
         display: inline;
+        filter: invert(100%);
+        margin: 0.5rem;
       }
     }
   }
 }
+
+.blog-page, .index-page {
+  /*----------Article Cards----------*/
+
+  .article-card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%;
+
+    & .content {
+      & img {
+        /* Make blog article images readable on a dark background. */
+        background-color: white;
+      }
+    }
+
+    & p.excerpt {
+      color: var(--base-color-text);
+      font-size: 1rem;
+      margin-bottom: 6px;
+      margin-top: 0;
+      opacity: 0.8;
+    }
+
+    & span.date {
+      color: var(--base-color-text);
+      font-size: 0.938rem;
+      opacity: 0.65;
+
+      &.post-recent-highlight {
+        color: var(--post-recent-highlight-color);
+        opacity: 1.0;
+
+        &::after {
+          border: 1px solid var(--post-recent-highlight-color);
+          content: "NEW";
+          font-size: 80%;
+          margin-left: 8px;
+          padding: 2px 3px;
+        }
+      }
+    }
+
+    & h3 {
+      font-size: 1.375rem;
+      margin-bottom: 10px;
+    }
+
+    & .thumbnail {
+      aspect-ratio: 16 / 9;
+      background-color: var(--card-background-color);
+      border-radius: 7px;
+      box-shadow: 0 5px 10px -3px #00000078;
+      width: 100%;
+    }
+
+    & .info {
+      display: flex;
+      margin-bottom: 15px;
+      padding-left: 2rem;
+      position: relative;
+
+      & .avatar {
+        border-radius: 100%;
+        height: 25px;
+        left: 0;
+        position: absolute;
+        top: -3px;
+        width: 25px;
+      }
+
+      & span {
+        color: var(--secondary-color-text);
+        font-size: 0.875rem;
+      }
+    }
+  }
+}
+
+.head {
+  background-color: var(--head-background-color);
+  color: var(--primary-color-text);
+  margin-bottom: 2rem;
+
+  & .main {
+    display: grid;
+    gap: 1rem;
+    padding: 2rem 0;
+  }
+
+  & h1 {
+    margin: 0;
+  }
+
+  & p {
+    margin: 0;
+  }
+
+  & a {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :has(.download-preview-page, .archive-page) {
+    scroll-behavior: smooth;
+    scroll-padding-top: 10rem;
+  }
+}
+

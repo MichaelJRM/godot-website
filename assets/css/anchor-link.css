@@ -19,7 +19,7 @@
 
 @media (prefers-color-scheme: light) {
   .anchored-link {
-      filter: invert(1);
+    filter: invert(1);
 
     &:hover {
       filter: invert(1);
@@ -28,20 +28,20 @@
 }
 
 .anchored:hover .anchored-link {
-    display: inline-block;
+  display: inline-block;
 }
 
 .anchored-toast {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: var(--dark-color);
-    border-radius: 24px;
-    color: var(--dark-color-text-hl);
-    font-size: 14px;
-    font-weight: 600;
-    padding: 12px 18px;
-    text-align: center;
-    z-index: 100;
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--dark-color);
+  border-radius: 24px;
+  color: var(--dark-color-text-hl);
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 12px 18px;
+  text-align: center;
+  z-index: 100;
 }

@@ -3,9 +3,8 @@
 
   & .head {
     & .main {
-      display: grid;
       gap: 30px;
-      padding: 20px 0 39px;
+      grid-template-columns: 1fr;
     }
 
     & > h1, & > form {
@@ -26,29 +25,32 @@
   }
 }
 
-@container (width >= 768px) {
-  .blog-page .posts {
-    grid-template-columns: 1fr 1fr;
+@container main (width >= 768px) {
+  .blog-page {
+    & .head {
+      & .main {
+        grid-template-columns: 1fr 400px;
+        align-items: center;
+      }
+    }
+
+    .posts {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 }
 
-@container (width >= 902px) {
+@container main (width >= 902px) {
   .blog-page .head {
     & .main {
-      height: 120px;
-      grid-template-columns: 1fr 1fr;
-      align-content: center;
-      padding: 0;
     }
 
     & .search-bar {
-      margin-top: 6px;
-      justify-self: end;
     }
   }
 }
 
-@container (width >= 1024px) {
+@container main (width >= 1024px) {
   .blog-page .posts {
     grid-template-columns: 1fr 1fr 1fr;
   }

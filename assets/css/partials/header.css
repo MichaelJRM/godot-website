@@ -1,25 +1,30 @@
 header {
   /* Show on top of GodotCon banner (if any). */
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  box-shadow: var(--base-shadow);
   background-color: var(--navbar-background-color);
+  box-shadow: var(--base-shadow);
+  container-name: main;
   container-type: inline-size;
+  position: relative;
+  width: 100%;
+  z-index: 2;
+
+  & a {
+    outline-offset: -2px;
+  }
 
   & > div {
-    max-width: 1200px;
-    height: 4rem;
-    margin-inline: auto;
     contain: strict;
     contain-intrinsic-size: auto 100vw auto 4rem;
+    height: 4rem;
+    margin-inline: auto;
+    max-width: 1200px;
   }
 
   & #nav_head {
+    align-items: stretch;
     display: flex;
     justify-content: space-between;
-    align-items: stretch;
-    padding-right: 1rem;
+    margin-right: 2rem;
 
     & #logo-link {
       display: flex;
@@ -32,27 +37,26 @@ header {
   }
 
   & nav {
-    flex: 1;
-    display: flex;
-    justify-content: space-between;
     align-items: center;
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
 
     & a {
-      text-decoration: none;
-      font-size: 1rem;
-      font-weight: bold;
       color: var(--navbar-link-color);
-      padding: 0 1rem;
       display: flex;
       flex-direction: column;
-      place-content: center;
+      font-size: 1rem;
+      font-weight: bold;
       height: 100%;
-      line-height: normal;
+      padding: 0 1rem;
+      place-content: center;
+      text-decoration: none;
     }
 
     & li {
-      margin: 0;
       height: 100%;
+      margin: 0;
 
       &:hover, #logo-link {
         background-color: hsla(0, 0%, 50%, 0.1);
@@ -64,12 +68,12 @@ header {
     }
 
     & ul {
-      margin: 0;
-      height: 100%;
-      display: flex;
-      padding-left: 0;
-      list-style: none;
       align-items: center;
+      display: flex;
+      height: 100%;
+      list-style: none;
+      margin: 0;
+      padding-left: 0;
 
       & > :first-child {
         padding-left: 0;
@@ -98,15 +102,15 @@ header {
 
   & #nav_toggle_cb,
   & #nav_toggle_btn {
+    cursor: pointer;
     display: none;
     line-height: 0;
-    cursor: pointer;
     /* Prevent double-clicking the button from highlighting the icon as selected text on desktop. */
     user-select: none;
   }
 }
 
-@container (max-width: calc(1200px)) {
+@container main (max-width: calc(1200px)) {
   header {
     & > div {
       flex-direction: column;
@@ -167,6 +171,7 @@ header {
 @media (prefers-color-scheme: dark) {
   header {
     /* Use logo with white text for dark navbar. */
+
     & .nav-logo {
       display: none;
 
@@ -176,6 +181,7 @@ header {
     }
 
     /* Invert hamburger menu button on mobile to be visible on dark navbar. */
+
     & #nav_toggle_btn {
       filter: invert(100%) saturate(0%) brightness(120%);
     }
@@ -185,11 +191,11 @@ header {
 
 /*-------Transparent Header-------*/
 header[data-transparent="true"] {
-  box-shadow: none;
-  margin-bottom: -70px;
-  background-color: rgb(134 144 154 / 15%);
   -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
+  background-color: rgb(134 144 154 / 15%);
+  box-shadow: none;
+  margin-bottom: -70px;
 
   & nav {
     & a {
@@ -219,45 +225,45 @@ header[data-transparent="true"] {
   }
 }
 
-@container (width >= 1200px) {
+@container main (width >= 1200px) {
   header[data-transparent="true"] nav .fund a {
     color: var(--fund-color);
     background-color: var(--base-color);
     border-radius: 9px;
     box-shadow: inset 0 0 0 2px var(--fund-color);
-    padding: 0.75rem;
+    padding: 0.7rem;
   }
 }
 
-@container (width < 1200px) {
+@container main (width < 1200px) {
   header[data-transparent="true"] {
     & nav .fund a {
       background-color: transparent;
     }
 
-    & input#nav_toggle_cb:checked~div {
+    & input#nav_toggle_cb:checked ~ div {
       background-color: var(--navbar-background-color);
     }
   }
 
-  @media (prefers-color-scheme: light) {
-    header[data-transparent="true"] {
-      & nav a {
-        color: var(--navbar-link-color);
-      }
+  @media header (prefers-color-scheme: light) {
+  header[data-transparent="true"] {
+    & nav a {
+      color: var(--navbar-link-color);
+    }
 
-      & input#nav_toggle_cb:checked~div #nav_head #nav_toggle_btn {
-        filter: none;
-      }
+    & input#nav_toggle_cb:checked ~ div #nav_head #nav_toggle_btn {
+      filter: none;
+    }
 
-      & input#nav_toggle_cb:checked~div #nav_head .nav-logo {
-        display: inline;
-      }
+    & input#nav_toggle_cb:checked ~ div #nav_head .nav-logo {
+      display: inline;
+    }
 
-      & input#nav_toggle_cb:checked~div #nav_head .nav-logo.dark-logo {
-        display: none;
-      }
+    & input#nav_toggle_cb:checked ~ div #nav_head .nav-logo.dark-logo {
+      display: none;
     }
   }
+}
 }
 

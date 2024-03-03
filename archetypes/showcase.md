@@ -8,11 +8,11 @@ website: <project website>
 # You can use TBD as a special value.
 release_date: January 1970
 
-image: "/assets/showcase/<image filename>.webp"
+image: "images/showcase/<image filename>.webp"
 # Can be any number of images.
 gallery: [
-	"/assets/showcase/<image filename>1.webp",
-	"/assets/showcase/<image filename>2.webp"
+	"images/showcase/<image filename>1.webp",
+	"images/showcase/<image filename>2.webp"
 ]
 youtube_id: ""
 

@@ -7,9 +7,9 @@ author: Raffaele Picca
 website: https://www.raffaelepicca.com
 release_date: March 2022
 
-image: "/assets/showcase/beat-invaders-header.webp"
+image: "images/showcase/beat-invaders-header.webp"
 gallery: [
-	"/assets/showcase/beat-invaders.webp"
+	"images/showcase/beat-invaders.webp"
 ]
 youtube_id: "aiVMhCEgGLY"
 

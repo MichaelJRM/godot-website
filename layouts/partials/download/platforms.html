@@ -11,30 +11,36 @@
 			{{ if eq $versionNumber "3" }}
 				{{ $middlePath = "3.x/" }}
 			{{ end }}
-			<a href="{{ relLangURL "download" }}/{{ $middlePath }}android" class="tab title-font {{ if eq $currentPlatform "Android" }} active {{ end }}">
-			<img width="24" height="24" src="/assets/images/platforms/android.svg" alt="" />
-			<span>Android</span>
+			<a href="{{ relLangURL "download" }}/{{ $middlePath }}android/"
+			   class="tab title-font {{ if eq $currentPlatform "Android" }} active {{ end }}">
+				<img width="24" height="24" src="/assets/images/platforms/android.svg" alt=""/>
+				<span>Android</span>
 			</a>
-			<a href="{{ relLangURL "download" }}/{{ $middlePath }}linux" class="tab title-font {{ if eq $currentPlatform "Linux" }} active {{ end }}">
-			<img width="24" height="24" src="/assets/images/platforms/linux.svg" alt="" />
-			<span>Linux</span>
+			<a href="{{ relLangURL "download" }}/{{ $middlePath }}linux/"
+			   class="tab title-font {{ if eq $currentPlatform "Linux" }} active {{ end }}">
+				<img width="24" height="24" src="/assets/images/platforms/linux.svg" alt=""/>
+				<span>Linux</span>
 			</a>
-			<a href="{{ relLangURL "download" }}/{{ $middlePath }}macos" class="tab title-font {{ if eq $currentPlatform "macOS" }} active {{ end }}">
-			<img width="24" height="24" src="/assets/images/platforms/macos.svg" alt="" />
-			<span>macOS</span>
+			<a href="{{ relLangURL "download" }}/{{ $middlePath }}macos/"
+			   class="tab title-font {{ if eq $currentPlatform "macOS" }} active {{ end }}">
+				<img width="24" height="24" src="/assets/images/platforms/macos.svg" alt=""/>
+				<span>macOS</span>
 			</a>
-			<a href="{{ relLangURL "download" }}/{{ $middlePath }}windows" class="tab title-font {{ if eq $currentPlatform "Windows" }} active {{ end }}">
-			<img width="24" height="24" src="/assets/images/platforms/windows.svg" alt="" />
-			<span>Windows</span>
+			<a href="{{ relLangURL "download" }}/{{ $middlePath }}windows/"
+			   class="tab title-font {{ if eq $currentPlatform "Windows" }} active {{ end }}">
+				<img width="24" height="24" src="/assets/images/platforms/windows.svg" alt=""/>
+				<span>Windows</span>
 			</a>
 			{{ if eq $versionNumber "3" }}
-				<a href="{{ relLangURL "download" }}/3.x/server" class="tab title-font {{ if eq $currentPlatform "Linux Server" }} active {{ end }}">
-				<img width="24" height="24" src="/assets/images/platforms/linux-server.svg" alt="" />
-				<span>{{ T "page.download.supportedPlatforms.linuxServer" }}</span>
+				<a href="{{ relLangURL "download" }}/3.x/server/"
+				   class="tab title-font {{ if eq $currentPlatform "Linux Server" }} active {{ end }}">
+					<img width="24" height="24" src="/assets/images/platforms/linux-server.svg" alt=""/>
+					<span>{{ T "page.download.supportedPlatforms.linuxServer" }}</span>
 				</a>
 			{{ end }}
-			<a href="https://editor.godotengine.org/releases/{{ $version.name }}.stable/" target="_blank" class="tab title-font">
-				<img width="24" height="24" src="/assets/images/platforms/web.svg" alt="" />
+			<a href="https://editor.godotengine.org/releases/{{ $version.name }}.stable/" target="_blank"
+			   class="tab title-font">
+				<img width="24" height="24" src="/assets/images/platforms/web.svg" alt=""/>
 				<span>{{ T "common.webEditor" }}</span>
 			</a>
 		</div>

@@ -1,11 +1,10 @@
 .btn {
   background-color: var(--button-background-color);
   box-shadow: var(--base-shadow);
+  display: inline-block;
   font-size: 1.125rem;
   padding: 1rem 2rem;
-  display: inline-block;
   text-decoration: none;
-  font-weight: bold;
 
   &:hover {
     box-shadow: var(--more-shadow);
@@ -13,8 +12,8 @@
 }
 
 .btn-flat {
-  box-shadow: none;
   background-color: transparent;
+  box-shadow: none;
   color: var(--link-color);
   margin: 1rem 2rem;
 
@@ -28,30 +27,30 @@
 }
 
 .btn-flat-frosted {
-  background-color: rgb(111 111 111 / 27%);
   -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
+  background-color: rgb(111 111 111 / 27%);
 }
 
 .btn-download {
+  background-color: white;
   display: flex;
   flex-wrap: nowrap;
-  background-color: white;
   padding: 0;
   text-align: center;
 
   & > .download-title {
     color: var(--dark-color);
     display: inline-block;
-    padding: 1rem 2rem;
     flex-grow: 1;
+    padding: 1rem 2rem;
   }
 
   & > .download-hint {
     background-color: var(--primary-color);
     color: var(--primary-color-text-title);
     display: inline-block;
-    padding: 1rem;
     min-width: 48px;
+    padding: 1rem;
   }
 }

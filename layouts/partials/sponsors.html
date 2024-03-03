@@ -4,35 +4,36 @@
 		<h3>{{ i18n "partials.sponsors.patron" }}</h3>
 		<div class="grid patron">
 			{{ range $sponsor := .Site.Data.sponsors.patron }}
-			<a class="sponsor-card patron" href="{{ $sponsor.link }}" target="_blank" rel="noopener">
-				<img src="{{ $sponsor.image }}" alt="{{ $sponsor.name }}" fetchpriority="low" height="1" width="1">
-			</a>
+				<a class="sponsor-card patron" href="{{ $sponsor.link }}" target="_blank" rel="noopener">
+					<img src="{{ $sponsor.image }}" alt="{{ $sponsor.name }}" fetchpriority="low" height="1" width="1">
+				</a>
 			{{ end }}
 		</div>
 		<h3>{{ i18n "partials.sponsors.sponsorPlatinum" }}</h3>
 		<div class="grid platinum">
 			{{ range $sponsor := .Site.Data.sponsors.platinum }}
-			<a class="sponsor-card platinum" href="{{ $sponsor.link }}" target="_blank" rel="noopener">
-				<img src="{{ $sponsor.image }}" alt="{{ $sponsor.name }}" fetchpriority="low" height="1" width="1">
-			</a>
+				<a class="sponsor-card platinum" href="{{ $sponsor.link }}" target="_blank" rel="noopener">
+					<img src="{{ $sponsor.image }}" alt="{{ $sponsor.name }}" fetchpriority="low" height="1" width="1">
+				</a>
 			{{ end }}
 		</div>
 		<h3>{{ i18n "partials.sponsors.sponsorGold" }}</h3>
 		<div class="grid gold">
 			{{ range $sponsor := .Site.Data.sponsors.gold }}
-			<a class="sponsor-card gold" href="{{ $sponsor.link }}" target="_blank" rel="noopener">
-				<img src="{{ $sponsor.image }}" alt="{{ $sponsor.name }}" fetchpriority="low" height="1" width="1">
-			</a>
+				<a class="sponsor-card gold" href="{{ $sponsor.link }}" target="_blank" rel="noopener">
+					<img src="{{ $sponsor.image }}" alt="{{ $sponsor.name }}" fetchpriority="low" height="1" width="1">
+				</a>
 			{{ end }}
 		</div>
 		<h3>{{ i18n "partials.sponsors.sponsorSilver" }}</h3>
 		<div class="grid silver">
 			{{ range $sponsor := .Site.Data.sponsors.silver }}
-			<a class="sponsor-card silver" href="{{ $sponsor.link }}" target="_blank" rel="noopener">
-				<img src="{{ $sponsor.image }}" alt="{{ $sponsor.name }}" loading="lazy" height="1" width="1">
-			</a>
+				<a class="sponsor-card silver" href="{{ $sponsor.link }}" target="_blank" rel="noopener">
+					<img src="{{ $sponsor.image }}" alt="{{ $sponsor.name }}" loading="lazy" height="1" width="1">
+				</a>
 			{{ end }}
 		</div>
-		<p class="range-more" style="margin-top: 3.125rem; text-align: left; opacity: 0.8;">{{ i18n "partials.sponsors.sponsorProjectText" (dict "email" "<a href='mailto:contact@godot.foundation'>contact@godot.foundation</a>") | safeHTML }}</p>
+		<p class="range-more"
+		   style="margin-top: 3.125rem; text-align: left; opacity: 0.8;">{{ i18n "partials.sponsors.sponsorProjectText" (dict "email" "<a href='mailto:contact@godot.foundation'>contact@godot.foundation</a>") | safeHTML }}</p>
 	</div>
 </section>

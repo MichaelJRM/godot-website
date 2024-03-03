@@ -4,11 +4,11 @@ date: 2021-05-01 00:00:00 +0000
 
 title: "Gourdlets"
 author: "AuntyGames"
-image: "/assets/showcase/gourdlets-header.webp"
+image: "images/showcase/gourdlets-header.webp"
 gallery: [
-	"/assets/showcase/gourdlets-1.webp",
-	"/assets/showcase/gourdlets-2.webp",
-	"/assets/showcase/gourdlets-3.webp"
+	"images/showcase/gourdlets-1.webp",
+	"images/showcase/gourdlets-2.webp",
+	"images/showcase/gourdlets-3.webp"
 ]
 website: https://twitter.com/AuntyGames
 release_date: "TBD"

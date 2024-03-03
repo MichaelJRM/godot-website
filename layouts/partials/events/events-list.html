@@ -1,30 +1,24 @@
 <section class="events">
-    {{ $events := . }}
-    {{ $year := "" }}
-    {{ $currentEvents := slice }}
+	{{ $events := . }}
+	{{ $currentEventGroupYear := time.Format "2006" (index $events 0).Params.date }}
+	{{ $currentEvents := slice }}
+	{{ $groupStartIndex := 0 }}
 
-    {{ range $event := $events }}
-        {{ $params := $event.Params }}
+	{{ range $index, $event := $events }}
+		{{ $eventYear := time.Format "2006" $event.Params.date }}
 
-        {{ if eq $year "" }}
-            {{ $year = time.Format "2006" $params.date }}
-        {{ end }}
+		{{ if ne $eventYear $currentEventGroupYear }}
+			{{ partial "events/events-year.html" (dict "groupStartIndex" $groupStartIndex "year" $currentEventGroupYear "events" $currentEvents) }}
+			{{ $currentEventGroupYear = $eventYear }}
+			{{ $currentEvents = slice }}
+			{{ $groupStartIndex = $index }}
+		{{ end }}
 
-        {{/* Check if we have reached another year, this means we must print out and reset. */}}
+		{{ $currentEvents = $currentEvents | append $event }}
 
-        {{ $currentYear := time.Format "2006" $params.date }}
-        {{ if ne $year $currentYear }}
-            {{ partial "events/events-year.html" (dict "year" $year "events" $currentEvents) }}
-            {{ $year = $currentYear }}
-            {{ $currentEvents = slice }}
-        {{ end }}
-
-        {{ $currentEvents = $currentEvents | append $event }}
-    {{ end }}
-
-    {{/* Print the final year. There is always one after the loop, if there is any at all. */}}
-
-    {{ if ne $year "" }}
-        {{ partial "events/events-year.html" (dict "year" $year "events" $currentEvents) }}
-    {{ end }}
+		{{ if ge (add $index 1) ($events | len) }}
+			{{/* Final year group */}}
+			{{ partial "events/events-year.html" (dict "groupStartIndex" $groupStartIndex "year" $currentEventGroupYear "events" $currentEvents) }}
+		{{ end }}
+{{ end }}
 </section>

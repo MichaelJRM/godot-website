@@ -1,36 +1,45 @@
 .about-page {
+  & .main {
+    padding: 0;
+  }
+
   & .intro-title {
-    margin-top: 48px;
-    margin-bottom: 48px;
+    margin: 32px 0;
   }
 
   & .container-text {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 0 24px;
-    max-width: 800px;
-    margin: auto;
+    --padding: 24px;
+    margin-inline: auto;
+    margin-top: 4rem;
     overflow: visible;
-  }
 
-  & .container-text h2 {
-    margin-top: 80px;
-  }
+    --max-width: 800px;
+    width: min(var(--max-width), 100% - (var(--padding) * 2));
 
-  & .container-text h3 {
-    margin-top: 60px;
-  }
+    & h2 {
+      margin-top: 80px;
+    }
 
-  & .container-text h4 {
-    margin-top: 40px;
-    margin-bottom: 20px;
+    & h3 {
+      margin-top: 60px;
+    }
+
+    & > :first-child {
+      margin-top: 0 !important;
+    }
+
+    & h4 {
+      margin-bottom: 20px;
+      margin-top: 40px;
+    }
   }
 
   /*----------Teams subpage----------*/
+
   & .teams-team-section {
     background-color: var(--teams-odd-color);
-    padding: 1.25rem 1rem;
     margin: 2.5rem 0;
+    padding: 1.25rem 1rem;
 
     &:nth-of-type(2n) {
       background-color: var(--teams-even-color);
@@ -48,14 +57,14 @@
   & .teams-subteams {
     background-color: var(--teams-subteams-color);
     border-left: 0.375rem solid var(--accent-color);
-    padding: 0.25rem 0.625rem;
     margin-top: 30px;
-    width: 100%;
+    padding: 0.25rem 0.625rem;
     table-layout: fixed;
+    width: 100%;
 
     & th {
-      padding: 1rem;
       border-right: 1px dashed var(--table-divider-color);
+      padding: 1rem;
     }
 
     & td {

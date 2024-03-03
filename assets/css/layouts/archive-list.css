@@ -8,7 +8,7 @@
     & > h1 {
       text-shadow: none;
       color: var(--base-color-text-title);
-      font-size: 60px;
+      font-size: 3.75rem;
       margin-bottom: 20px;
     }
   }
@@ -64,6 +64,7 @@
   }
 
   /* Archive version item */
+
   & .archive-list-item {
     display: grid;
     grid-template-columns: 1fr 200px 140px 160px;
@@ -110,7 +111,7 @@
   }
 }
 
-@container (width < 1024px) {
+@container main (width < 1024px) {
   .archive-page-list {
     & .archive-list {
       display: grid;
@@ -130,7 +131,7 @@
   }
 }
 
-@container (width < 800px) {
+@container main (width < 800px) {
   .archive-page-list {
     & .archive-list-item {
       display: grid;
@@ -153,7 +154,7 @@
       width: 100%;
 
       & > h4 {
-        font-size: 26px;
+        font-size: 1.625rem;
       }
     }
 

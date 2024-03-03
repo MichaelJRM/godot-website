@@ -7,9 +7,9 @@ author: "Justin Arnold"
 website: https://www.rpginabox.com/
 release_date: "May 2022"
 
-image: "/assets/showcase/rpg-in-a-box-header.webp"
+image: "images/showcase/rpg-in-a-box-header.webp"
 gallery: [
-	"/assets/showcase/rpg-in-a-box.webp"
+	"images/showcase/rpg-in-a-box.webp"
 ]
 youtube_id: "Ea8OfjVqNz0"
 

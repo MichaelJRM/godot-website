@@ -30,9 +30,11 @@
 				{{ $platformInfo := index (where (index ($gCtx.Site.Data) $gCtx.Site.Language.Lang).download_platforms "name" $download.platform | first 1) 0 }}
 
 				<div>
-					<a href="{{ $downloadUrl }}" class="btn btn-download btn-download-main{{ if gt $index 0 }}2{{ end }}">
+					<a href="{{ $downloadUrl }}"
+					   class="btn btn-download btn-download-main{{ if gt $index 0 }}2{{ end }}">
 						<div class="download-title">
-							<img src="/assets/images/platforms/{{ replace $platform "_" "-" }}.svg" alt="({{ $platform }})">
+							<img src="/assets/images/platforms/{{ replace $platform "_" "-" }}.svg"
+								 alt="({{ $platform }})">
 							Godot Engine{{ with $download.featured_flavor }} - {{ . }}{{ end }}
 						</div>
 						<div class="download-hint">{{ $version.name }}</div>
@@ -49,18 +51,24 @@
 			<p class="previous-releases">
 				<strong class="previous-releases-featured">
 					{{ if eq $versionNumber "4" }}
-						{{- T "page.download.header.forTheLTSVersionDownloadGodot"
-						(dict "version" "3" "linkOpen" (printf "<a href='%s' class='set-os-download-url' data-version='3'>" (relLangURL "download/3.x/windows")) "linkClose" "</a>") | safeHTML
+						{{ $pageLink := relLangURL (printf "download/3.x/%s/" $platform) }}
+						{{- T "page.download.header.forTheLTSVersionDownloadGodot" (dict
+						"version" "3"
+						"linkOpen" (printf "<a href='%s' class='set-os-download-url' data-version='3'>" $pageLink)
+						"linkClose" "</a>") | safeHTML
 						-}}
 					{{ else }}
-						{{- T "page.download.header.forTheLatestVersionDownloadGodot"
-						(dict "version" "4" "linkOpen" (printf "<a href='%s' class='set-os-download-url' data-version='4'>" (relLangURL "download/windows")) "linkClose" "</a>") | safeHTML
+						{{ $pageLink := relLangURL (printf "download/%s/" $platform) }}
+						{{- T "page.download.header.forTheLatestVersionDownloadGodot" (dict
+						"version" "4"
+						"linkOpen" (printf "<a href='%s' class='set-os-download-url' data-version='4'>" $pageLink)
+						"linkClose" "</a>") | safeHTML
 						-}}
 					{{ end }}
 				</strong>
 				<br>
 				{{- T "page.download.header.youCanFindPreviousReleasesInTheDownloadArchive"
-					(dict "linkOpen" (printf "<a href='%s'>" (relLangURL "download/archive")) "linkClose" "</a>") | safeHTML
+				(dict "linkOpen" (printf "<a href='%s'>" (relLangURL "download/archive/")) "linkClose" "</a>") | safeHTML
 				-}}
 			</p>
 		</div>
@@ -68,7 +76,7 @@
 
 	<div class="other-platforms">
 		{{- T "page.download.header.lookingForOtherPlatformsSeeBellow"
-			(dict "linkOpen" "<a href='#platforms'>" "linkClose" "</a>") | safeHTML
+		(dict "linkOpen" "<a href='#platforms'>" "linkClose" "</a>") | safeHTML
 		-}}
 	</div>
 </div>

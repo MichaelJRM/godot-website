@@ -7,9 +7,9 @@ author: Consumer Softproducts
 website: https://twitter.com/CSoftproducts
 release_date: June 2021
 
-image: "/assets/showcase/cruelty-squad-header.webp"
+image: "images/showcase/cruelty-squad-header.webp"
 gallery: [
-	"/assets/showcase/cruelty-squad.jpg"
+	"images/showcase/cruelty-squad.jpg"
 ]
 youtube_id: "PvKEKD3eo2Y"
 

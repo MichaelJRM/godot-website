@@ -2,12 +2,13 @@
 
 .download-page {
   /*----------Hero----------*/
+
   & .hero {
     & .main-downloads {
-      max-width: 600px;
-      margin: 2.5rem auto 4.1rem auto;
       display: grid;
       gap: 1.125rem;
+      margin: 2.5rem auto 4.1rem auto;
+      max-width: 600px;
       text-align: center;
 
       & .btn-download {
@@ -45,24 +46,24 @@
     }
 
     & .download {
+      align-items: flex-start;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
       gap: 6px;
       margin-bottom: 8px;
     }
 
     & .download-details {
       color: var(--secondary-color-text);
-      font-size: 14px;
+      font-size: 0.875rem;
       padding: 0 0.75rem;
     }
 
     & .download-note {
-      padding: 1rem 0.75rem;
-      font-size: 92%;
       background-color: var(--platform-note-background-color);
+      font-size: 92%;
       margin-top: 28px;
+      padding: 1rem 0.75rem;
 
       & p {
         margin: 0;
@@ -71,8 +72,8 @@
 
     & .platform-split {
       display: grid;
-      grid-template-columns: 1fr 1fr;
       gap: 24px;
+      grid-template-columns: 1fr 1fr;
     }
   }
 
@@ -80,8 +81,8 @@
 
   & .digital-stores {
     display: grid;
-    grid-template-columns: 1fr 1fr;
     gap: 24px;
+    grid-template-columns: 1fr 1fr;
 
     & p {
       margin-top: 0;
@@ -89,25 +90,30 @@
 
     & .digital-store-list {
       display: grid;
+      gap: 1rem;
       grid-template-columns: 1fr 1fr 1fr;
       justify-content: center;
-      gap: 1rem;
+
+      & img {
+        height: 28px;
+        width: 28px;
+      }
     }
   }
 
   & .btn.btn-digital-store {
+    align-items: center;
     background-color: var(--primary-color);
     color: var(--dark-color-text-title);
     display: inline-flex;
     flex-direction: row;
-    align-items: center;
     gap: 1rem;
     padding: 0.75rem 24px;
   }
 
   & .digital-store-name {
-    font-weight: 600;
     font-size: 105%;
+    font-weight: 600;
   }
 
   & .digital-store-logo img {
@@ -132,10 +138,10 @@
 
   & .platforms-wrapper {
     background-color: var(--dark-color);
-    width: auto;
-    max-width: 100%;
     margin: 40px 0;
+    max-width: 100%;
     padding: 24px 24px;
+    width: auto;
 
     & h2 {
       color: var(--dark-color-text-title);
@@ -143,9 +149,9 @@
   }
 
   & .platform-tabs {
-    margin-bottom: -1px;
-    justify-content: center;
     flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: -1px;
 
     & .tab {
       color: var(--dark-color-text);
@@ -175,8 +181,8 @@
 
   & .other-download {
     display: grid;
-    grid-template-columns: 1fr;
     gap: 30px;
+    grid-template-columns: 1fr;
     max-width: 100%;
   }
 
@@ -201,40 +207,40 @@
   }
 
   & .unstable-download-source {
-    display: flex;
     align-items: center;
+    display: flex;
     gap: 28px;
   }
 
   /*----------Thank you Modal----------*/
 
   & .thankyou-wrapper {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    align-items: center;
     background: rgba(0, 0, 0, 0.45);
+    bottom: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
     z-index: 10;
   }
 
   & .thankyou {
+    align-items: center;
     background: var(--base-color);
     box-shadow: var(--more-shadow);
-    padding: 40px 60px 26px 60px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    padding: 40px 60px 26px 60px;
     position: relative;
 
     & .btn.btn-donate {
       background-color: var(--primary-color);
       color: hsla(0, 0%, 100%, 0.9);
-      font-size: 22px;
+      font-size: 1.375rem;
       font-weight: 600;
       margin-bottom: 26px;
     }
@@ -242,19 +248,19 @@
     & .btn-back-to-downloads {
       cursor: pointer;
       position: absolute;
-      top: 0.75rem;
       right: 0.75rem;
+      top: 0.75rem;
     }
 
     & h2 {
-      text-shadow: var(--base-shadow);
-      font-size: 36px;
+      font-size: 2.25rem;
       font-weight: 600;
       margin-bottom: 0.75rem;
+      text-shadow: var(--base-shadow);
     }
 
     & h3 {
-      font-size: 24px;
+      font-size: 1.5rem;
       margin-bottom: 0;
     }
 
@@ -296,7 +302,7 @@
 
 /*----------@media min-width: 768px----------*/
 
-@container (width >= 768px) {
+@container main (width >= 768px) {
   .download-page {
     & .other-download {
       grid-template-columns: 1fr 1fr 1fr;
@@ -306,7 +312,7 @@
 
 /*----------@media max-width: 1200px----------*/
 
-@container (width < 1200px) {
+@container main (width < 1200px) {
   .download-page {
     & .digital-stores {
       grid-template-columns: 1fr;
@@ -332,8 +338,17 @@
 
 /*----------@media max-width: 768px----------*/
 
-@container (width < 768px) {
+@container main (width < 768px) {
   .download-page {
+    & .platform-tabs {
+      flex-direction: column;
+      justify-content: stretch;
+
+      & > .tab {
+        width: 100%;
+      }
+    }
+
     & .unstable-download-source {
       flex-direction: column;
       gap: 8px;
@@ -367,7 +382,13 @@
 
     & .digital-stores .digital-store-list {
       grid-template-columns: 1fr;
-      justify-items: center;
+      justify-content: stretch;
     }
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :has(.download-page) {
+    scroll-behavior: smooth;
   }
 }

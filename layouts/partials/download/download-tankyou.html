@@ -4,7 +4,7 @@
 
 		<p class="thankyou-donate">{{ T "page.download.modal.thankYou.considerDonatingText" }}</p>
 
-		<a href="{{ relLangURL "donate" }}" class="btn btn-donate">{{ T "common.button.makeADonation" }}</a>
+		<a href="{{ relLangURL "donate/" }}" class="btn btn-donate">{{ T "common.button.makeADonation" }}</a>
 
 		<h3>{{ T "page.download.modal.thankYou.thankYou" }}</h3>
 
@@ -14,12 +14,12 @@
 		<ul class="thankyou-reading-list">
 			<li>
 				{{- T "page.download.modal.thankYou.reading.comprehensiveTutorialText"
-					(dict "linkOpen" "<a href='https://docs.godotengine.org/en/stable/getting_started/step_by_step/'>" "linkClose" "</a>") | safeHTML
+				(dict "linkOpen" "<a href='https://docs.godotengine.org/en/stable/getting_started/step_by_step/'>" "linkClose" "</a>") | safeHTML
 				-}}
 			</li>
 			<li>
 				{{- T "page.download.modal.thankYou.reading.demoProjectsCollectionText"
-					(dict "linkOpen" "<a href='https://godotengine.org/asset-library/asset?category=10&support[official]=1'>" "linkClose" "</a>") | safeHTML
+				(dict "linkOpen" "<a href='https://godotengine.org/asset-library/asset?category=10&support[official]=1'>" "linkClose" "</a>") | safeHTML
 				-}}
 			</li>
 		</ul>

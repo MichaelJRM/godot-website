@@ -547,7 +547,7 @@ Thanks to the work of our [XR contributors](https://github.com/GodotVR/godot_ope
 
 
 
-Contributor [Teddybear082](https://github.com/teddybear082/) has used Godot XR Tools to implement VR ports of various open-source projects. This shows how easy it is to use. [Check out his port](https://twitter.com/Flat2VR/status/1617699586155638784) of the highly successful [Cruelty Squad](/showcase/cruelty-squad/)!
+Contributor [Teddybear082](https://github.com/teddybear082/) has used Godot XR Tools to implement VR ports of various open-source projects. This shows how easy it is to use. [Check out his port](https://twitter.com/Flat2VR/status/1617699586155638784) of the highly successful [Cruelty Squad]( /images/showcase/cruelty-squad/)!
 
 In upcoming Godot 4 releases, you can look forward to a new player controller that makes it easier to drop XR support into an existing first-person game.
 

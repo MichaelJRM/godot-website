@@ -7,11 +7,11 @@ author: Blobfish
 website: https://www.blobfish.dev/
 release_date: September 2022
 
-image: "/assets/showcase/brotato-header.webp"
+image: "images/showcase/brotato-header.webp"
 gallery: [
-  "/assets/showcase/brotato-2.webp",
-	"/assets/showcase/brotato-1.webp",
-  "/assets/showcase/brotato-3.webp",
+  "images/showcase/brotato-2.webp",
+	"images/showcase/brotato-1.webp",
+  "images/showcase/brotato-3.webp",
 ]
 youtube_id: "bXEhKX41WRk"
 

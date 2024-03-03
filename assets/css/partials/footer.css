@@ -1,5 +1,6 @@
 footer {
   container-type: inline-size;
+  container-name: main;
   background-color: var(--footer-background-color);
   color: var(--footer-color);
   font-size: 0.9em;
@@ -58,19 +59,29 @@ footer {
     }
 
     & > h1 {
-      font-size: 22px;
+      font-size: 1.375rem;
       margin-bottom: 29px;
+    }
+
+    & > div {
+      margin-top: 1rem;
     }
   }
 }
 
 /*----------@media 1021----------*/
 
-@container (width < 1021px) {
+@container main (width < 1021px) {
   footer {
     & .footer-container {
       flex-direction: column;
       text-align: center;
+    }
+
+    /*----------Sitemap----------*/
+
+    & #sitemap {
+      margin-top: 2rem;
     }
 
     /*----------Social----------*/
@@ -93,12 +104,13 @@ footer {
 
 /*----------@media 721----------*/
 
-@container (width < 721px) {
+@container main (width < 721px) {
   footer {
     /*----------Sitemap----------*/
+
     & #sitemap {
       grid-template-columns: 1fr;
-      gap: 12px;
+      gap: 2rem;
       margin-left: 0;
     }
   }

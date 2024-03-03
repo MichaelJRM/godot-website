@@ -3,23 +3,11 @@
 /*----------Hero----------*/
 .archive-page {
   & .hero {
-    padding: 54px 1rem 12px;
-    max-width: 1200px;
-    margin: auto;
+    padding: 3.375rem var(--page-padding) 0.3rem;
 
     & h1 {
-      text-shadow: none;
       color: var(--base-color-text-title);
-    }
-
-    & .other-platforms {
-      color: var(--download-hero-color);
-      font-weight: 600;
-      margin-top: 3rem;
-
-      & > a {
-        user-select: none;
-      }
+      text-shadow: none;
     }
   }
 
@@ -37,9 +25,10 @@
   }
 
   /*----------Preview Cards----------*/
+
   & .preview-cards {
     display: grid;
-    grid-template-columns: 1fr;
     gap: 1rem;
+    grid-template-columns: 1fr;
   }
 }

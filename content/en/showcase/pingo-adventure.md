@@ -7,9 +7,9 @@ author: Orb Square Studio
 website: https://orb-square.com
 release_date: TBD
 
-image: "/assets/showcase/pingo-adventure-header.webp"
+image: "images/showcase/pingo-adventure-header.webp"
 gallery: [
-	"/assets/showcase/pingo-adventure.webp"
+	"images/showcase/pingo-adventure.webp"
 ]
 youtube_id: "H8x_SR623fw"
 

@@ -7,9 +7,9 @@ author: Roach Games
 website: https://kingdomsofthedump.com/
 release_date: TBD
 
-image: "/assets/showcase/kingdoms-of-the-dump-header.webp"
+image: "images/showcase/kingdoms-of-the-dump-header.webp"
 gallery: [
-	"/assets/showcase/kingdoms-of-the-dump.png"
+	"images/showcase/kingdoms-of-the-dump.png"
 ]
 youtube_id: "swcFuuwHKFE"
 

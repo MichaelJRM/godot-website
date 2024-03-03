@@ -1,48 +1,41 @@
-*:focus {
-  /* More visible outline for better keyboard navigation. */
-  outline: 0.125rem solid hsl(220, 100%, 62.5%);
-  /* Make the outline always appear above other elements. */
-  /* Otherwise, one of its sides can be hidden by tabs in the Download and More layouts. */
-  position: relative;
+*,
+::before,
+::after {
+  box-sizing: border-box;
 }
 
-body {
-  font-family: var(--default-font-family);
-  font-size: 18px;
-  background-color: var(--base-color);
-  color: var(--base-color-text);
+* {
   margin: 0;
-  overflow-x: hidden;
+  padding: 0;
 }
 
-body a {
-  outline: none;
-  color: var(--link-color);
-  text-decoration: underline;
-  text-decoration-color: var(--link-underline-color);
-  text-decoration-thickness: 0.125rem;
-  /* Prevent color transitions from being too fast (for epilepsy). */
-  transition: 0.1s filter;
+html {
+  color-scheme: dark light;
 }
 
-body a,
-.btn.flat,
-.search-bar-btn:hover {
-  /* Use `filter` on all states to prevent the clickable area from changing */
-  /* when an image is hovered (see GH-369). */
-  filter: brightness(100%);
+textarea {
+  resize: vertical;
 }
 
-body a:hover,
-.btn.flat:hover,
-.search-bar-btn:hover {
-  filter: brightness(117.5%);
+p,
+h2,
+h3 {
+  orphans: 3;
+  widows: 3;
 }
 
-body a:active,
-.btn.flat:active,
-.search-bar-btn:active {
-  filter: brightness(82.5%);
+h2,
+h3 {
+  page-break-after: avoid;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: revert;
+}
+
+/* Make elements with the HTML hidden attribute stay hidden by default */
+[hidden] {
+  display: none;
 }
 
 /*
@@ -67,25 +60,15 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 */
 img,
 video {
-  max-width: 100%;
+  block-size: auto;
   height: auto;
+  max-inline-size: 100%;
 }
 
-.youtube {
-  position: relative;
-  overflow: hidden;
-  border-radius: 0.5rem;
-  aspect-ratio: 16 / 9;
+p {
+  text-wrap: pretty;
 }
 
-.youtube iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border: 0;
-  width: 100%;
-  height: 100%;
-  background-color: black;
+:has(:target) {
+  scroll-padding-top: 2rem;
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ .Site.Language.Lang }}">
 
 <head>
     {{ $description := "" }}
@@ -26,30 +26,44 @@
     <meta property="og:type" content="{{ default "website" .Params.og_type }}">
     <meta name="twitter:card" content="summary_large_image">
     <title>{{ .Title }}</title>
-
     <link rel="icon" href="/assets/favicon.png" sizes="any">
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-	{{ partialCached "css/main-bundle.html" . }}
-    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/Montserrat-Bold.woff2" crossorigin>
-    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/Montserrat-ExtraBold.woff2" crossorigin>
     <link rel="me" href="https://mastodon.gamedev.place/@godotengine">
 
-	{{ block "head" . }}
+    {{ block "head" . }}
+    {{ end }}
 
-	{{ end }}
+    {{ partialCached "css/main-bundle.html" . }}
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/Montserrat-Bold.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/Montserrat-ExtraBold.woff2" crossorigin>
 </head>
 
 <body>
 {{ block "header" . }}
-{{ partialCached "solid-header.html" . }}
+    {{ partialCached "solid-header.html" . }}
 {{ end }}
 
 {{ block "main" . }}
-{{ .Content }}
+    {{ .Content }}
 {{ end }}
 
 {{ block "footer" . }}
-{{ partialCached "footer.html" . }}
+    {{ partialCached "footer.html" . }}
 {{ end }}
+
+{{/* Prefetch and prerender relevant pages https://github.com/GoogleChromeLabs/quicklink */}}
+{{ $quicklinkJS := resources.Get "quicklink/quicklink.js" | resources.Fingerprint }}
+<script defer src="{{ $quicklinkJS.RelPermalink }}" integrity="{{ $quicklinkJS.Data.Integrity }}"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const regex = RegExp(/(archive)|(rss)|(#)/);
+        quicklink.listen({
+            prerenderAndPrefetch: true,
+            ignores: [
+                uri => regex.test(uri),
+            ],
+        });
+    });
+</script>
 </body>
 </html>

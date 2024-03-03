@@ -7,9 +7,9 @@ author: Lone Wulf Studio
 website: https://lonewulfstudio.com/
 release_date: TBD
 
-image: "/assets/showcase/fist-of-the-forgotten-header.webp"
+image: "images/showcase/fist-of-the-forgotten-header.webp"
 gallery: [
-	"/assets/showcase/fist-of-the-forgotten.webp"
+	"images/showcase/fist-of-the-forgotten.webp"
 ]
 youtube_id: "j9sjKfFwfaM"
 

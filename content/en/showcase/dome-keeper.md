@@ -7,9 +7,9 @@ author: Bippinbits
 website: https://bippinbits.com/
 release_date: September 2022
 
-image: "/assets/showcase/dome-keeper-header.webp"
+image: "images/showcase/dome-keeper-header.webp"
 gallery: [
-	"/assets/showcase/dome-keeper.webp"
+	"images/showcase/dome-keeper.webp"
 ]
 youtube_id: "qTnGtmh8eTE"
 

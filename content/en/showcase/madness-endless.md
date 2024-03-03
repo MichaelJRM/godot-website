@@ -7,10 +7,10 @@ author: Poke the Ant
 website: https://linktr.ee/poketheant
 release_date: January 2023
 
-image: "/assets/showcase/madness-endless-header.webp"
+image: "images/showcase/madness-endless-header.webp"
 gallery: [
-  "/assets/showcase/madness-endless-1.jpg",
-	"/assets/showcase/madness-endless-2.jpg",
+  "images/showcase/madness-endless-1.jpg",
+	"images/showcase/madness-endless-2.jpg",
 ]
 youtube_id: "nywlneIwCNg"
 

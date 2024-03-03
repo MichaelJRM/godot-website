@@ -41,7 +41,7 @@ I first started making games in my bedroom as a kid, using Delphi (I don't know 
 
 Engine code is often optimised to be fast enough in the most common cases, at the expense of poor performance in highly specific cases. Cassette Beasts actually hit several of those poor-performance cases in Godot, and I had to patch engine code in a few places to claw back a few frames. However, I think that this is a strength of Godot. No code can be perfectly optimised for every case. Optimising for better general performance in the most common cases, while allowing game developers to customise the engine for weird cases, is exactly what engine developers should be doing.
 
-![](/assets/showcase/cassette-beasts-1.webp)
+![](/assets/images /images/showcase/cassette-beasts-1.webp)
 
 ### How did you discover Godot? What made you pick it for your project?
 
@@ -63,17 +63,17 @@ But a massively undersold advantage Godot has over other engines, in my opinion,
 
 Obviously, I'll submit pull requests for whatever I can when I get time, because that's how open source software works - and I expect the situation will naturally improve over time as larger and larger projects are built in Godot. But I'd still like to see a bigger effort by the project's leadership to bring down the number of serious bugs.
 
-![](/assets/showcase/cassette-beasts-2.webp)
+![](/assets/images /images/showcase/cassette-beasts-2.webp)
 
 ### What advice would you give to aspiring game developers who are just starting out in the field?
 
-<strong class="jay">Jay:</strong> Just make stuff! A lot of online discussion around “getting started in game dev” focuses so much on “what engine to use” or “what genres are popular” when I think the best approach is to simply start making things and not worry about the other stuff. You don’t have to come out of the gate with a professional commercial project (and, in fact, this rarely happens) but the only real way to learn how to make stuff is to start doing it. It’s easier than ever to jump into game development as a hobby - 
+<strong class="jay">Jay:</strong> Just make stuff! A lot of online discussion around “getting started in game dev” focuses so much on “what engine to use” or “what genres are popular” when I think the best approach is to simply start making things and not worry about the other stuff. You don’t have to come out of the gate with a professional commercial project (and, in fact, this rarely happens) but the only real way to learn how to make stuff is to start doing it. It’s easier than ever to jump into game development as a hobby -
 
 <strong class="tom">Tom:</strong> I'll give some different advice! It's an unavoidable truth about the games industry that who you know matters just as much as what you can do. If what you want to do is work on your own indie projects full-time, my advice would be to first spend a few years at other companies building connections, or to partner with someone who is already connected. Good connections can provide opportunities you wouldn't otherwise get, as well as keep you from making mistakes they've already made!
 
 ### Did you find any issues when looking for a publisher? How is it like working with Raw Fury?
 
-<strong class="jay">Jay:</strong> We revealed our game before we had a publisher in order to try and attract one, which was a risky move but ultimately ended up working! One challenge we faced was, I think, the perception that turn-based RPGs are “outdated” games and not in line with the genres that are more commonly seen in the indie game space (such as rogue-likes, town sims, deck building games etc.) but we were pretty insistent that the “monster-collecting RPG” genre was a popular one with fans that would support games in it. We were super happy to get to partner with Raw Fury, and they’ve understood our goals and aspirations with the game from the very start. Considering that they also published [Dome Keeper](/showcase/dome-keeper/), I’d say they’ve already developed a good track record of publishing and supporting Godot games!
+<strong class="jay">Jay:</strong> We revealed our game before we had a publisher in order to try and attract one, which was a risky move but ultimately ended up working! One challenge we faced was, I think, the perception that turn-based RPGs are “outdated” games and not in line with the genres that are more commonly seen in the indie game space (such as rogue-likes, town sims, deck building games etc.) but we were pretty insistent that the “monster-collecting RPG” genre was a popular one with fans that would support games in it. We were super happy to get to partner with Raw Fury, and they’ve understood our goals and aspirations with the game from the very start. Considering that they also published [Dome Keeper]( /images/showcase/dome-keeper/), I’d say they’ve already developed a good track record of publishing and supporting Godot games!
 
 <strong class="tom">Tom:</strong> We love working with Raw Fury!
 
@@ -93,6 +93,6 @@ I can't go into the details of what it's like to port to consoles unfortunately.
 
 <strong class="tom">Tom:</strong> Hopefully developers who see our game will see that Godot is ready for more than just small projects! I also hope developers see that you can mix fantasy, comedy, horror, and genuine heartwarming moments, AND wrap it all up in whimsy and mystery, without it coming across as indecision. Because I'm bored of playing monotone games. And because if I'm wrong then Cassette Beasts probably won't do very well. 🙂
 
-![](/assets/showcase/cassette-beasts-3.webp)
+![](/assets/images /images/showcase/cassette-beasts-3.webp)
 
 *[Cassette Beast](https://www.cassettebeasts.com/) is available on [Steam](https://store.steampowered.com/app/1321440/Cassette_Beasts/) for Windows, Linux and Steam Deck. You can join their Discord server [here](https://discord.gg/byttenstudio).*

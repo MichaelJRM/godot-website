@@ -22,7 +22,7 @@ While the stable release of XR Tools remains a Godot 3.x plugin, work is nearly 
 For the near future, we're working on [a template project for Godot](https://github.com/GodotVR/godot-xr-template) that has a whole XR setup ready to go.
 We're also working on a new player controller that should make it easier to drop XR support into an existing first-person game.
 
-Contributor [Teddybear082](https://github.com/teddybear082/) has used Godot XR Tools to implement VR ports of various open source projects. This shows how easy it is to apply our toolkit. The latest project he is working on is a port of the highly successful [Cruelty Squad](https://godotengine.org/showcase/cruelty-squad/) — [see it in action!](https://twitter.com/Flat2VR/status/1617699586155638784)
+Contributor [Teddybear082](https://github.com/teddybear082/) has used Godot XR Tools to implement VR ports of various open source projects. This shows how easy it is to apply our toolkit. The latest project he is working on is a port of the highly successful [Cruelty Squad](https://godotengine.org /images/showcase/cruelty-squad/) — [see it in action!](https://twitter.com/Flat2VR/status/1617699586155638784)
 
 Godot XR Tools can be found on the [asset library](https://godotengine.org/asset-library/asset/214).
 

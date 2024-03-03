@@ -7,7 +7,7 @@ image: /storage/app/uploads/public/61d/f21/37d/61df2137db710511123151.png
 date: 2022-01-12 17:30:00
 ---
 
-Welcome to a new [Godot showcase](https://godotengine.org/showcase/) developer interview to start off the new year! This time, we asked Justin Arnold about his experience developing and releasing his project [*RPG in a Box*](https://godotengine.org/showcase/rpg-in-a-box). This "engine within an engine" demonstrates that Godot is not only capable for game development, but also for creating applications with complex user interfaces.
+Welcome to a new [Godot showcase](https://godotengine.org /images/showcase/) developer interview to start off the new year! This time, we asked Justin Arnold about his experience developing and releasing his project [*RPG in a Box*](https://godotengine.org /images/showcase/rpg-in-a-box). This "engine within an engine" demonstrates that Godot is not only capable for game development, but also for creating applications with complex user interfaces.
 
 ___
 

@@ -49,7 +49,7 @@
   }
 
   & .btn.btn-download-primary .download-title {
-    font-size: 18px;
+    font-size: 1.125rem;
     line-height: 24px;
     padding: 10px 1rem;
     white-space: nowrap;
@@ -70,7 +70,7 @@
   }
 }
 
-@container (width < 900px) {
+@container main (width < 900px) {
   .primaries .btn.btn-download-primary .download-title {
     line-height: 28px;
     padding: 12px 20px;
@@ -103,6 +103,7 @@
   & .notes-excerpt {
     color: var(--base-color-text);
     opacity: 0.8;
+    margin: 0;
   }
 
   & .notes-buttons {
@@ -123,7 +124,7 @@
 
 .preview-download-meta {
   color: var(--secondary-color-text);
-  font-size: 17px;
+  font-size: 1.063rem;
   margin: 0;
 }
 
@@ -162,10 +163,10 @@
 }
 
 .preview-download-links {
-	background-color: var(--download-table-color);
-	border-left: 6px solid var(--accent-color);
-	padding: 4px 1rem;
-	display: none;
+  background-color: var(--download-table-color);
+  border-left: 6px solid var(--accent-color);
+  padding: 4px 1rem;
+  display: none;
 
   & .download {
     display: grid;
@@ -179,12 +180,12 @@
 
   & .download-details {
     color: var(--secondary-color-text);
-    font-size: 14px;
+    font-size: 0.875rem;
   }
 }
 
 .preview-download-toggle.active + .preview-download-links {
-	display: block;
+  display: block;
 }
 
 @container (width < 900px) {
@@ -209,7 +210,7 @@
   }
 }
 
-@container (width < 768px) {
+@container main (width < 768px) {
   .preview-notes {
     & .notes-buttons {
       flex-direction: column;

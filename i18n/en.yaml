@@ -546,7 +546,7 @@ partials:
   footer:
     copyRightText: © 2007-{{ .year }} Juan Linietsky, Ariel Manzur and {{ .linkOpen }}contributors{{ .linkClose }}.
     hostedByTheGodotFoundation: Hosted by the {{ .linkOpen }}Godot Foundation{{ .linkClose }}.
-    websiteSourceCodeOnGithub:  Website {{ .linkOpen }}source code on GitHub{{ .linkClose }}.
+    websiteSourceCodeOnGithub: Website {{ .linkOpen }}source code on GitHub{{ .linkClose }}.
     getGodot:
       titleText: Get Godot
       download: Download
@@ -570,6 +570,10 @@ partials:
       documentation: Documentation
       codeRepository: Code Repository
     contactUs: Contact us
+
+    downloadVersion:
+      showAllDownloads: Show all downloads
+      hideAllDownloads: Hide all downloads
 
 common:
   button:

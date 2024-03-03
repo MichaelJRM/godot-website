@@ -11,20 +11,21 @@
 
   & .preview-cards {
     display: grid;
-    grid-template-columns: 1fr;
     gap: 1rem;
+    grid-template-columns: 1fr;
+    margin-top: 2rem;
   }
 
   & .stable-download {
+    align-items: center;
+    background-color: var(--dark-color);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     gap: 1rem;
-    background-color: var(--dark-color);
+    justify-content: center;
+    max-width: 100%;
     padding: 24px 24px 60px;
     width: auto;
-    max-width: 100%;
 
     & h2 {
       color: var(--dark-color-text-title);
@@ -34,38 +35,17 @@
 
     & p {
       color: var(--dark-color-text);
-      margin: 0;
     }
   }
 
-  & .stable-download-ready {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 26px;
-
-    & .btn-download {
-      min-width: 310px;
-
-      &:nth-of-type(2n) {
-        background-color: rgb(132 151 174 / 68%);
-        -webkit-backdrop-filter: blur(4px);
-        backdrop-filter: blur(4px);
-
-        & .download-title {
-          color: #f7f7f7;
-        }
-
-        & .download-hint {
-          background-color: var(--primary-color-subdued);
-        }
-      }
+  & .preview-download-toggle {
+    & h4 {
+      margin: 2rem 0;
     }
   }
 }
 
-@container (width < 900px) {
+@container main (width < 900px) {
   .download-preview-page {
     & .stable-download {
       padding: 20px;

@@ -4,10 +4,10 @@ date: 2021-12-01 00:00:00 +0000
 
 title: "Circle of Kerzoven"
 author: "Kerzoven"
-image: "/assets/showcase/kerzoven-header.webp"
+image: "images/showcase/kerzoven-header.webp"
 gallery: [
-	"/assets/showcase/kerzoven-1.webp",
-	"/assets/showcase/kerzoven-2.webp"
+	"images/showcase/kerzoven-1.webp",
+	"images/showcase/kerzoven-2.webp"
 ]
 website: https://www.kerzoven.com/
 release_date: TBD

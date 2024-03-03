@@ -79,13 +79,16 @@
   --warning-background-color: #ffedcc;
   --warning-color: #404040;
 
-  --default-font-family: system-ui, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  --default-font-family: system-ui, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", ui-sans-serif, sans-serif;
   --header-font-family: "Montserrat", "Montserrat-fallback";
 
-  --text-xl: 42px;
-  --text-l: 36px;
-  --text-m: 28px;
-  --text-s: 22px;
+  --text-xl: 2.625rem;
+  --text-l: 2.25rem;
+  --text-m: 1.75rem;
+  --text-s: 1.375rem;
+
+  --page-padding: 1rem;
+  --max-page-wrap-width: 1200px;
 }
 
 

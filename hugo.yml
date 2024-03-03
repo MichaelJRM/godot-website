@@ -1,7 +1,7 @@
 # Base
-baseURL:  'https://godotengine.org/'
-languageCode:  'en'
-title:  'Godot Engine'
+baseURL: 'https://godotengine.org/'
+languageCode: 'en'
+title: 'Godot Engine'
 
 # Ignored when building
 ignorefiles: [
@@ -26,6 +26,8 @@ security:
 # Markup
 markup:
   goldmark:
+    attribute:
+      block: true # https://gohugo.io/getting-started/configuration-markup/#parserattributeblock
     renderer:
       unsafe: true # https://gohugo.io/getting-started/configuration-markup/#rendererunsafe
   highlight:
@@ -37,7 +39,7 @@ markup:
 params:
   articleOutdatedWarning:
     thresholdInMonths: 18 # Any relevant article older than 18 months will have a warning in it
-    relevantCategories: ['progress-report', 'news', 'events']
+    relevantCategories: [ 'progress-report', 'news', 'events' ]
 
 # Formats
 outputFormats:

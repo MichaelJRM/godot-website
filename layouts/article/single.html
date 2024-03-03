@@ -1,95 +1,94 @@
 {{ define "head" }}
-{{ partialCached "css/article-bundle.html" . }}
-<style>
-	body {
-		background-color: var(--background-color);
-
-		@container (width < 900px) {
-			background-color: var(--base-color);
-		}
-	}
-</style>
+    {{ partialCached "css/article-bundle.html" . }}
 {{ end }}
 
 {{ define "main" }}
 
-<main class="article-page">
-	<div class="wrapper">
-    <article class="padded">
-        <div class="content article-container">
-            <figure class="article-cover">
-                {{ if or .Params.image_caption_title .Params.image_caption_description }}
-                <figcaption>
-                    <strong>{{ .Params.image_caption_title | safeHTML }}</strong>
-                    <span style="margin-left: 0.75rem; font-size: 90%">{{ .Params.image_caption_description | safeHTML }}</span>
-                </figcaption>
-                {{ end }}
-
-                <img
-					src="{{ .Params.image }}" title="{{ .Params.image_caption_title }}"
-				 	alt="{{ .Params.image_caption_title }} {{ .Params.image_caption_description }}" class="rounded-lg"
-				 />
-            </figure>
-
-            <div class="article-info">
-                <h1>
-                    {{ .Params.title }}
-                </h1>
-                <div class="article-metadata">
-                    <div class="article-author">
-                        <span>By: </span>
-						{{ $postAuthor := index (where .Site.Data.authors "name" .Params.author | first 1) 0 }}
-						{{ if $postAuthor }}
-                        <img class="avatar" width="25" height="25" src="{{ $postAuthor.image }}" alt="{{ .Params.author }}" loading="lazy">
-                        {{ else }}
-                        <img class="avatar" width="25" height="25" src="/assets/images/authors/default_avatar.svg" alt="{{ .Params.author }}" loading="lazy">
+    <main class="article-page">
+        <div class="wrapper">
+            <article class="padded">
+                <div class="content article-container">
+                    <figure class="article-cover">
+                        {{ if or .Params.image_caption_title .Params.image_caption_description }}
+                            <figcaption>
+                                <strong>{{ .Params.image_caption_title | safeHTML }}</strong>
+                                <span
+                                        style="margin-left: 0.75rem; font-size: 90%">{{ .Params.image_caption_description | safeHTML }}</span>
+                            </figcaption>
                         {{ end }}
-                        <span class="by">{{ .Params.author }}</span>
+
+                        <img
+                                src="{{ .Params.image }}"
+                                title="{{ .Params.image_caption_title }}"
+                                alt="{{ .Params.image_caption_title }} {{ .Params.image_caption_description }}"
+                                class="rounded-lg"
+                        />
+                    </figure>
+
+                    <div class="article-info">
+                        <h1>
+                            {{ .Params.title }}
+                        </h1>
+                        <div class="article-metadata">
+                            <div class="article-author">
+                                <span>By: </span>
+                                {{ $postAuthor := index (where .Site.Data.authors "name" .Params.author | first 1) 0 }}
+                                {{ if $postAuthor }}
+                                    <img class="avatar" width="25" height="25" src="{{ $postAuthor.image }}"
+                                         alt="{{ .Params.author }}" loading="lazy">
+                                {{ else }}
+                                    <img class="avatar" width="25" height="25"
+                                         src="/assets/images/authors/default_avatar.svg"
+                                         alt="{{ .Params.author }}" loading="lazy">
+                                {{ end }}
+                                <span class="by">{{ .Params.author }}</span>
+                            </div>
+                            <span class="date"
+                                  data-post-date="{{ .Params.date }}"> {{ time.Format ":date_long" .Params.date }}</span>
+                        </div>
+
+                        <div class="tags">
+                            {{ range $category := .Params.categories }}
+                                <a href="{{ relLangURL "blog/" }}{{ $category }}/">
+                                    {{ $categoryName := (index (index ($.Site.Data.categories) $category) 0).name}}
+                                    <div
+                                            class="tag active">{{ T (printf "%s.%s" "page.blog.category" $categoryName) }}</div>
+                                </a>
+                            {{ end }}
+                        </div>
                     </div>
-                    <span class="date" data-post-date="{{ .Params.date }}"> {{ time.Format ":date_long" .Params.date }}</span>
+
+                    <div style="margin-top: 1rem;">
+                        {{ partial "articles/outdated-notice.html" . }}
+                    </div>
+
+                    <div class="article-body">
+                        {{ .Content }}
+                    </div>
                 </div>
-
-                <div class="tags">
-                    {{ range $category := .Params.categories }}
-                    <a href="/blog/{{ $category }}">
-						{{ $categoryName := (index (index ($.Site.Data.categories) $category) 0).name}}
-                        <div class="tag active">{{ T (printf "%s.%s" "page.blog.category" $categoryName) }}</div>
-                    </a>
-                    {{ end }}
-                </div>
-            </div>
-
-            <div style="margin-top: 1rem;">
-                {{ partial "articles/outdated-notice.html" . }}
-            </div>
-
-            <div class="article-body">
-                {{ .Content }}
-            </div>
+            </article>
         </div>
-    </article>
-</div>
 
-	<script>
-		document.addEventListener('DOMContentLoaded', () => {
-			// Add icons to easily copy section links.
-			applyAnchorLinks('.article-body');
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                // Add icons to easily copy section links.
+                applyAnchorLinks('.article-body');
 
-			// Add lightbox elements in blog articles for Tobii.
-			document.querySelectorAll('.article-cover img:not(.lightbox-ignore), .article-body img:not(.lightbox-ignore)').forEach((articleImg) => {
-				const template = document.createElement('template');
-				template.innerHTML = `<a href="${articleImg.src}" class="lightbox" data-group="article"/>`
-				const a = template.content.firstChild
-				articleImg.parentNode.appendChild(a);
-				a.appendChild(articleImg);
-			});
+                // Add lightbox elements in blog articles for Tobii.
+                document.querySelectorAll('.article-cover img:not(.lightbox-ignore), .article-body img:not(.lightbox-ignore)').forEach((articleImg) => {
+                    const template = document.createElement('template');
+                    template.innerHTML = `<a href="${articleImg.src}" class="lightbox" data-group="article"/>`
+                    const a = template.content.firstChild
+                    articleImg.parentNode.appendChild(a);
+                    a.appendChild(articleImg);
+                });
 
-			// Initialize lightbox.
-			new Tobii({
-				zoom: false,
-			})
-		});
-	</script>
-	{{ partialCached "js/article-bundle.html" . }}
-</main>
+                // Initialize lightbox.
+                new Tobii({
+                    zoom: false,
+                })
+            });
+        </script>
+        {{ partialCached "js/article-bundle.html" . }}
+    </main>
 {{ end }}
