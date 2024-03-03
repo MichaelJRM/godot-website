@@ -116,7 +116,7 @@
 
 				{{ $lastestArticles := (where .Sites.First.RegularPages "Section" "article").ByDate.Reverse.Limit 4 }}
 				{{ range $lastestArticles | first 1}}
-					<a href="{{ .Permalink }}">
+					<a href="{{ .RelPermalink }}">
 						<article class="article-card">
 							<img src="{{ .Params.image }}" class="thumbnail" alt="" decoding="async" width="16"
 								 height="9">
@@ -133,7 +133,7 @@
 				<div class="news__list__container">
 					<div class="news__list">
 						{{ range after 1 $lastestArticles }}
-							<a href="{{ .Permalink }}">
+							<a href="{{ .RelPermalink }}">
 								<article class="article-card row">
 									<img src="{{ .Params.image }}" class="thumbnail" alt="" href="{{ .Params.url }}"
 										 fetchpriority="low" decoding="async" width="16" height="9">
@@ -216,7 +216,6 @@
 									{{ T . | safeHTML }}
 								</div>
 								{{ end }}
-								</p>
 							</div>
 						</div>
 					</a>

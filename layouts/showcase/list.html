@@ -10,7 +10,7 @@
 						{{- T "page.showcase.header.tab.features" -}}
 					</a>
 					<a
-						href="{{ relLangURL " showcase/" }}" class="title-font active ">
+						href="{{ relLangURL "showcase/" }}" class="title-font active ">
 						{{- T "page.showcase.header.tab.showcase" -}}
 					</a>
 				</div>
@@ -36,7 +36,7 @@
 				{{ $releasedGameProjects := where (where $projects "Params.release_date" "!=" "TBD") "Params.tool" "!=" true}}
 				{{ range $index, $project := $releasedGameProjects }}
 					{{ $params := $project.Params }}
-					<a href="{{ $project.Permalink }}" style="text-decoration: none;">
+					<a href="{{ $project.RelPermalink }}">
 						<article class="showcase-card">
 							{{ if $params.image }}
 								<img
@@ -53,7 +53,8 @@
 									"class" "thumbnail"
 									"sizes" "(min-width: 964px) calc((min(1200px, 100vw - 4rem) / 3), (min-width: 648px) calc((100vw - 3rem) / 2), 100vw"
 									"alt" $params.title
-									"loading" "lazy"
+									"loading" (cond (gt $index 9) "lazy" "eager")
+									"fetchpriority" (cond (le $index 9) "high" "")
 									)}}
 								</div>
 							{{ end }}
@@ -115,9 +116,7 @@
 											 height="24">
 									{{ end }}
 								</div>
-								<div class="showcase-card-authors">
-									<p>{{ $params.author }}</p>
-								</div>
+								<p>{{ $params.author }}</p>
 							</div>
 						</article>
 					</a>
@@ -128,9 +127,9 @@
 
 			<section class="showcase-cards">
 				{{ $toolProjects := where $projects "Params.tool" true }}
-				{{ range $project := $toolProjects }}
+				{{ range $index, $project := $toolProjects }}
 					{{ $params := $project.Params }}
-					<a href="{{ $project.Permalink }}" style="text-decoration: none;">
+					<a href="{{ $project.RelPermalink }}">
 						<article class="showcase-card">
 							{{ if $params.image }}
 								<img
@@ -146,7 +145,8 @@
 									"class" "thumbnail"
 									"sizes" "(min-width: 964px) calc((min(1200px, 100vw - 4rem) / 3), (min-width: 648px) calc((100vw - 3rem) / 2), 100vw"
 									"alt" $params.title
-									"loading" "lazy"
+									"loading" (cond (gt $index 9) "lazy" "eager")
+									"fetchpriority" (cond (le $index 9) "high" "")
 									)}}
 								</div>
 							{{ end }}
@@ -201,9 +201,7 @@
 											 height="24">
 									{{ end }}
 								</div>
-								<div class="showcase-card-authors">
-									<p>{{ $params.author }}</p>
-								</div>
+								<p>{{ $params.author }}</p>
 							</div>
 						</article>
 					</a>
@@ -215,7 +213,7 @@
 				{{ $TBDProjects := where $projects "Params.release_date" "TBD" }}
 				{{ range $project := $TBDProjects }}
 					{{ $params := $project.Params }}
-					<a href="{{ $project.Permalink }}">
+					<a href="{{ $project.RelPermalink }}">
 						<article class="showcase-card">
 							{{ if $params.image }}
 								<img
@@ -237,9 +235,7 @@
 							{{ end }}
 							<div class="showcase-card-caption">
 								<div></div>
-								<div class="showcase-card-authors">
-									<p>{{ $params.author }}</p>
-								</div>
+								<p>{{ $params.author }}</p>
 							</div>
 						</article>
 					</a>

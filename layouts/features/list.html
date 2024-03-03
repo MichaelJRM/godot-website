@@ -4,13 +4,16 @@
 			margin-top: 0 !important;
 		}
 	</style>
-	<link rel="preload" as="image" href="/assets/images/features/editor-frame.webp" fetchpriority="high">
+	<link rel="preload" as="image" href="/assets/features/editor-frame.webp" fetchpriority="high">
 	<script>
-		const featuredProjects = [{{ range partialCached "_funcs/featured-showcase-pages.html" .}}'{{ .Params.image }}',{{ end }}];
+		const featuredProjects = [{{ range partialCached "_funcs/featured-showcase-pages.html" .}}'{{ (resources.Get .Params.image).RelPermalink }}',{{ end }}];
 		let currentIndex = Math.floor(Math.random() * featuredProjects.length);
-		const template = document.createElement('template');
-		template.innerHTML = `<link rel="preload" as="image" href="${featuredProjects[currentIndex]}" fetchpriority="high"/>`
-		document.head.appendChild(template.content.firstChild);
+
+		(function preloadFirstCarouselImage() {
+			const template = document.createElement('template');
+			template.innerHTML = `<link rel="preload" as="image" href="${featuredProjects[currentIndex]}" fetchpriority="high"/>`
+			document.head.appendChild(template.content.firstChild);
+		})();
 	</script>
 {{ end }}
 
@@ -52,7 +55,7 @@
 					<script>
 						const showcaseItems = document.querySelectorAll('.showcase-item');
 
-						function debounce(func, timeout) {
+						function debounceCarouselImageSwitch(func, timeout) {
 							let timer;
 							return () => {
 								if (!timer) {
@@ -106,13 +109,13 @@
 						const debounceCooldownMs = 300;
 
 						const prevItemButton = document.getElementById('showcase-flip-left');
-						prevItemButton.addEventListener('click', debounce(() => {
+						prevItemButton.addEventListener('click', debounceCarouselImageSwitch(() => {
 							currentIndex = wrapIndex(currentIndex - 1);
 							setItemByIndex(currentIndex);
 						}, debounceCooldownMs));
 
 						const nextItemButton = document.getElementById('showcase-flip-right');
-						nextItemButton.addEventListener('click', debounce(() => {
+						nextItemButton.addEventListener('click', debounceCarouselImageSwitch(() => {
 							currentIndex = wrapIndex(currentIndex + 1);
 							setItemByIndex(currentIndex);
 						}, debounceCooldownMs));

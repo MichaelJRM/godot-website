@@ -17,8 +17,9 @@
   }
 
   & .showcase-cards {
+    --showcase-cards-h-gap: 1rem;
     display: grid;
-    grid-gap: 1.2rem 1rem;
+    grid-gap: 1.2rem var(--showcase-cards-h-gap);
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     margin-top: 2rem;
 
@@ -47,11 +48,13 @@
 
     & p {
       color: var(--secondary-color-text);
+      display: grid;
       font-size: 0.875rem;
       margin: 0;
+      place-items: center;
     }
 
-    & img.thumbnail {
+    & .thumbnail {
       aspect-ratio: 92/43;
       background-color: var(--card-background-color);
       border-radius: 7px;
@@ -65,11 +68,7 @@
     display: flex;
     justify-content: space-between;
     padding: 0 0.9rem;
-  }
-
-  & .showcase-card-authors {
-    align-content: center;
-    display: grid;
+    width: 100%;
   }
 
   & .showcase-card-icons {

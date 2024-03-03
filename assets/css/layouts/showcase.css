@@ -75,7 +75,7 @@
 
   & .info-buttons {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 1rem;
     margin-top: 2rem;
     max-width: max-content;

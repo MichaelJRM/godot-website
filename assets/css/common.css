@@ -76,20 +76,20 @@
   /*----------Tags----------*/
 
   & .tags {
-    align-items: baseline;
+    align-items: center;
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 0.625rem;
 
     & > a {
-      border-radius: 1000px;
-      display: inline-block;
+      border-radius: 50%;
     }
   }
 
   & .tags__title {
     display: inline-block;
     font-size: 1.188rem;
+    margin: 0;
   }
 
   & .tag {
