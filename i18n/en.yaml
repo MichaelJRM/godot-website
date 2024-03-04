@@ -571,9 +571,9 @@ partials:
       codeRepository: Code Repository
     contactUs: Contact us
 
-    downloadVersion:
-      showAllDownloads: Show all downloads
-      hideAllDownloads: Hide all downloads
+  downloadVersion:
+    showAllDownloads: Show all downloads
+    hideAllDownloads: Hide all downloads
 
 common:
   button:

@@ -16,8 +16,8 @@
 
   & .posts {
     display: grid;
-    grid-template-columns: 1fr;
     gap: 30px;
+    grid-template-columns: 1fr;
 
     & > a {
       text-decoration: none;
