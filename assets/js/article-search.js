@@ -78,6 +78,7 @@ import {debouncedSearch, preload} from "/pagefind/pagefind.js";
             state.currentSearchResults = search.results;
             state.currentSearchResultIndex = 0;
             await loadPostsIntoDOM();
+            setIsLoading(false);
         }
     }
 
@@ -85,11 +86,9 @@ import {debouncedSearch, preload} from "/pagefind/pagefind.js";
         const newQueryParams = new URLSearchParams();
         newQueryParams.set('search', searchQuery);
         window.history.replaceState(null, null, `?${newQueryParams.toString()}`);
-
     }
 
     async function loadPostsIntoDOM() {
-        if (state.currentSearchResults.length === 0) setIsLoading(false);
         if (state.currentSearchResultIndex >= state.currentSearchResults.length) return;
 
         const maxResults = state.currentSearchResultIndex + maxInitialResults;
@@ -100,7 +99,6 @@ import {debouncedSearch, preload} from "/pagefind/pagefind.js";
             postsContainer.append(posts);
         }
 
-        setIsLoading(false);
         state.currentSearchResultIndex += maxResults;
     }
 
@@ -162,7 +160,7 @@ import {debouncedSearch, preload} from "/pagefind/pagefind.js";
 
     function updatePaginators() {
         const paginators = document.querySelectorAll('.pagination');
-        for (let paginator of paginators) {
+        for (const paginator of paginators) {
             paginator.remove();
         }
         postsContainer.style.marginTop = '2rem';
