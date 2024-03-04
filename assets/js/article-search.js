@@ -6,6 +6,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
 });
 import {debouncedSearch, preload} from "/pagefind/pagefind.js";
 
+const articleCategoriesBySlug = {
+    {{ range $category := $.Site.Data.categories }}
+        {{ range $tag := index $category }}
+            '{{$tag.slug}}':'{{ T (printf "%s.%s" "page.blog.category" $tag.name) }}',
+        {{ end }}
+    {{ end }}
+};
 
 // How many posts are loaded at once after a search query
 const searchResultsPerChunk = 6;
@@ -100,7 +107,6 @@ function createPosts(results) {
                     width="16"
                     height="9"
                     decoding="async"
-                    ${i >= 9 ? 'loading="lazy"' : ''}
                 >
                     <div class="content">
                         <div class="info">
@@ -112,7 +118,6 @@ function createPosts(results) {
                                 alt="${data.meta.authorAvatarImageAlt}"
                                 fetchpriority="low"
                                 decoding="async"
-                                ${i >= 9 ? 'loading="lazy"' : ''}
                             >
                                 <span>${data.meta.author}</span>
                                 <span
@@ -145,17 +150,20 @@ function updatePaginators() {
 }
 
 function updateCategoryTags() {
+    const currentActiveCategory = document.querySelector('.tag.active');
+    if (currentActiveCategory) {
+        const categorySlug = currentActiveCategory.parentNode.getAttribute('data-category-slug');
+        updateCurrentCategory(categorySlug);
+    }
+
     const tagLinks = document.querySelectorAll('.tag-link');
     for (let tagLink of tagLinks) {
         tagLink.removeAttribute('href');
         const categorySlug = tagLink.getAttribute('data-category-slug');
         tagLink.addEventListener('click', (e) => {
             if (categorySlug === state.filters.category) return;
+            updateCurrentCategory(categorySlug);
 
-            delete state.filters.category;
-            if (categorySlug !== 'all') {
-                state.filters.category = categorySlug;
-            }
             const activeTag = document.querySelector('.tag.active');
             if (activeTag) {
                 activeTag.classList.remove('active');
@@ -218,5 +226,18 @@ function initLoadMoreResultsObserver() {
 function clearCurrentPosts() {
     if (postsContainer) {
         postsContainer.replaceChildren();
+    }
+}
+
+function updateCurrentCategory(category) {
+    delete state.filters.category;
+    const filteredByNode = document.getElementById('filtered-by');
+
+    if (category === 'all') {
+        filteredByNode.style.display = 'none';
+    } else {
+        filteredByNode.style.display = 'block';
+        filteredByNode.querySelector('span').textContent = articleCategoriesBySlug[category];
+        state.filters.category = category;
     }
 }

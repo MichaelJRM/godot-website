@@ -1,5 +1,5 @@
 {{ define "head" }}
-    {{ $articleSerach := resources.Get "js/article-search.js" | resources.Minify | resources.Fingerprint }}
+    {{ $articleSerach := resources.Get "js/article-search.js" | resources.ExecuteAsTemplate (printf "%s/js/article-search.js" .Site.Language.Lang ) . | resources.Minify | resources.Fingerprint }}
     <script type="module" defer src="{{ $articleSerach.RelPermalink }}"
             integrity="{{ $articleSerach.Data.Integrity }}"></script>
 {{ end }}
@@ -49,11 +49,12 @@
                     {{ end }}
                 {{ end }}
             </div>
-            {{ if ne .Params.category "all" }}
-                {{ $currentCategoryName := (index (index .Site.Data.categories .Params.category) 0).name }}
-                <h3 style="margin-top: 1rem;">Filtered
-                    by: {{ T (printf "%s.%s" "page.blog.category" $currentCategoryName)  }}</h3>
-            {{ end }}
+
+            {{ $currentCategoryName := (index (index .Site.Data.categories .Params.category) 0).name }}
+            <h3 id="filtered-by" style="margin-top: 1rem; {{ if eq .Params.category "all" }}display: none;{{ end }}">
+                Filtered
+                by: <span>{{ T (printf "%s.%s" "page.blog.category" $currentCategoryName) }}</span>
+            </h3>
 
             <div id="search"></div>
 
