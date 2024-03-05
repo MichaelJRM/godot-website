@@ -24,7 +24,7 @@
       font-weight: 600;
       margin-inline: auto;
       margin-top: 3rem;
-      max-width: 1200px;
+      max-width: var(--max-page-wrap-width);
 
       & > a {
         user-select: none;

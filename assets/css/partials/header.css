@@ -8,16 +8,16 @@ header {
   width: 100%;
   z-index: 2;
 
+  /*Fix focus border*/
+
   & a {
     outline-offset: -2px;
   }
 
   & > div {
-    contain: strict;
-    contain-intrinsic-size: auto 100vw auto var(--header-height);
     height: var(--header-height);
     margin-inline: auto;
-    max-width: 1200px;
+    max-width: var(--max-page-wrap-width);
   }
 
   & #nav_head {
@@ -58,7 +58,7 @@ header {
       height: 100%;
       margin: 0;
 
-      &:hover, #logo-link {
+      &:hover, & #logo-link {
         background-color: hsla(0, 0%, 50%, 0.1);
       }
 
@@ -78,17 +78,14 @@ header {
       & > :first-child {
         padding-left: 0;
       }
-
-      & > :last-child {
-        padding-right: 0;
-      }
     }
   }
 
   & .fund {
+    margin-right: -1rem;
+
     & > a {
       color: var(--fund-color) !important;
-      padding-right: 0;
 
       &:hover {
         color: var(--fund-color-hl) !important;
@@ -110,7 +107,7 @@ header {
   }
 }
 
-@container main (max-width: calc(1200px)) {
+@container main (width < 1200px) {
   header {
     & > div {
       flex-direction: column;

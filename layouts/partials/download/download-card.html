@@ -10,7 +10,7 @@
 
     <div class="card-download-details">
         {{ with $releaseArticle }}
-            <img class="lightbox-ignore" src="{{ .Params.image }}" />
+            <img class="lightbox-ignore" src="{{ .Params.image }}"/>
         {{ end }}
 
         <div class="card-download-platforms">
@@ -20,23 +20,25 @@
 
             {{ range $platform := $primaryPlatforms }}
                 <div class="download-platform">
-                    <img width="24" height="24" src="/assets/images/platforms/{{ replace $platform.name "_" "-" }}.svg" alt="{{ $platform.title }}" class="lightbox-ignore" />
+                    <img width="24" height="24" src="/assets/images/platforms/{{ replace $platform.name "_" "-" }}.svg"
+                         alt="{{ $platform.title }}" class="lightbox-ignore"/>
                     {{ $platform.title }}
                 </div>
 
                 <a href="{{ $platform.regularLink }}" class="btn btn-download btn-download-primary">
-                <div class="download-title">
-                    Standard
-                </div>
+                    <div class="download-title">
+                        Standard
+                    </div>
                 </a>
 
                 {{ if eq $platform.monoLink "#" }}
                     <div></div>
                 {{ else }}
-                    <a href="{{ $platform.monoLink }}" class="btn btn-download btn-download-primary btn-download-primary--mono">
-                    <div class="download-title">
-                        .NET
-                    </div>
+                    <a href="{{ $platform.monoLink }}"
+                       class="btn btn-download btn-download-primary btn-download-primary--mono">
+                        <div class="download-title">
+                            .NET
+                        </div>
                     </a>
                 {{ end }}
             {{ end }}
@@ -44,7 +46,8 @@
     </div>
 
     <div class="card-download-sublinks">
-        <a class="card-download-other" href="{{ relLangURL "download/archive/" }}/{{ $version.name }}-{{ $version.flavor }}">
+        <a class="card-download-other"
+           href="{{ relLangURL "download/archive/" }}{{ $version.name }}-{{ $version.flavor }}">
             Export templates and other downloads
         </a>
         <a class="card-download-donate" href="{{ relLangURL "donate/" }}">
