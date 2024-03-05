@@ -7,9 +7,15 @@
   }
 
   & .map-color-legends {
+    column-gap: 1.5rem;
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem;
+    margin-top: 1rem;
+    row-gap: 0.5rem;
+
+    & p {
+      margin: 0;
+    }
 
     & span {
       border-radius: 50%;
