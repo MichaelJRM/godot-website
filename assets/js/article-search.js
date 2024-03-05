@@ -69,7 +69,10 @@ import {debouncedSearch, preload} from "/pagefind/pagefind.js";
         }
 
         const search = await debouncedSearch(searchQuery, {
-            filters: state.filters
+            filters: state.filters,
+            sort: {
+                date: "desc"
+            }
         }, 500);
 
         updateURLSearchParams(searchQuery);
@@ -97,9 +100,8 @@ import {debouncedSearch, preload} from "/pagefind/pagefind.js";
             const paginatedResults = await Promise.all(state.currentSearchResults.slice(i, i + searchResultsPerChunk).map(r => r.data()));
             const posts = createPostsElements(paginatedResults);
             postsContainer.append(posts);
+            state.currentSearchResultIndex += searchResultsPerChunk;
         }
-
-        state.currentSearchResultIndex += maxResults;
     }
 
     function createPostsElements(results) {

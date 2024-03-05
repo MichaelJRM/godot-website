@@ -46,7 +46,7 @@
                                 {{ end }}
                                 <span class="by" data-pagefind-meta="author">{{ .Params.author }}</span>
                             </div>
-                            <span class="date" data-pagefind-meta="date"
+                            <span class="date" data-pagefind-meta="date" data-pagefind-sort="date:{{.Params.date}}"
                                   data-post-date="{{ .Params.date }}"> {{ time.Format ":date_long" .Params.date }}</span>
                             <span style="display: none;" aria-hidden="true"
                                   data-pagefind-meta="excerpt:{{ .Params.excerpt }}"></span>
