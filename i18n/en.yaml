@@ -466,6 +466,10 @@ page:
           comprehensiveTutorialText: A comprehensive {{ .linkOpen }}Step by Step tutorial{{ .linkClose }} for 2D and 3D.
           demoProjectsCollectionText: A collection of {{ .linkOpen }}official demo projects{{ .linkClose }} showcasing some of the engine features.
 
+    redirect:
+      titleText: Redirecting...
+      bodyText: If you are not being redirected automatically, {{ .linkOpen }}click here{{ .linkClose }}.
+
   downloadArchive:
     header:
       titleText: Download<br>Godot {{ .version }} {{ .flavor }}
@@ -512,6 +516,18 @@ page:
         Your donations will be received by the {{ .godotFoundation }}, a non-profit organization that manages the funds
         for the Godot project. Whichever method you choose, the funds will be used to support Godot development.
 
+  about:
+    head:
+      contact: Contact
+      codeOfConduct: Code of Conduct
+      privacy: Privacy
+      governance: Governance
+      teams: Teams
+      license: License
+
+  maintenance:
+    head:
+      titleText: Website under maintenance
 
 partials:
   sponsors:
@@ -574,6 +590,30 @@ partials:
   downloadVersion:
     showAllDownloads: Show all downloads
     hideAllDownloads: Hide all downloads
+
+  prereleaseNotice:
+    contentText:
+      While engine maintainers try their best to ensure that each preview snapshot and release candidate is stable,
+      this is by definition <strong>a pre-release piece of software</strong>. Be sure to make frequent backups, or use a
+      version control system such as Git, to preserve your projects in a case of corruption or data loss.
+
+  downloadCard:
+    downloadGodot: Download Godot {{ .name }} {{ .flavor }}
+    standard: Standard
+    exportTemplatesAndOtherDownloads: Export templates and other downloads
+    makeADonation: Make a Donation
+
+  platforms:
+    supportedPlatforms: Supported platforms
+
+  versionCard:
+    releaseNotesAreNotReadyText:
+      Release notes are not ready yet. You can check the complete list of changes using our interactive changelog.
+    link:
+      readMore: Read more
+      viewChangelog: View changelog
+    standard: Standard
+    monoSupportNoteText: .NET builds offer support for C# as a scripting language.
 
 common:
   button:

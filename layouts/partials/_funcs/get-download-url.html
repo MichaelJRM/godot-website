@@ -5,7 +5,7 @@
 {{ $type := "regular" }}
 
 {{ if .mono }}
-    {{ $type = "mono" }}
+  {{ $type = "mono" }}
 {{ end }}
 
 {{ return index (index (index ($gCtx.Site.GetPage (printf "/download/archive/%s-%s" $version.name $version.flavor)).Params.links $platform).hosts $host) $type }}

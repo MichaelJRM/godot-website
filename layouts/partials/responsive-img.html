@@ -18,30 +18,30 @@
 {{ $csrcset := "" }}
 
 {{ range $srcset }}
-	{{/*Skip if the image is already smaller than the desired size*/}}
-	{{ if lt (int $width) (int .) }}
-		{{ continue }}
-	{{ end }}
+  {{/*Skip if the image is already smaller than the desired size*/}}
+  {{ if lt (int $width) (int .) }}
+    {{ continue }}
+  {{ end }}
 
-	{{ $link := ($image.Process (printf "resize %sx Lanczos" . )).RelPermalink }}
-	{{ $images = $images | append $link }}
-	{{ if $csrcset }}
-		{{ $csrcset = (printf "%s, %s %sw" $csrcset $link .) }}
-	{{ else }}
-		{{ $csrcset = (printf "%s %sw" $link .) }}
-	{{ end }}
+  {{ $link := ($image.Process (printf "resize %sx Lanczos" . )).RelPermalink }}
+  {{ $images = $images | append $link }}
+  {{ if $csrcset }}
+    {{ $csrcset = (printf "%s, %s %sw" $csrcset $link .) }}
+  {{ else }}
+    {{ $csrcset = (printf "%s %sw" $link .) }}
+  {{ end }}
 {{ end }}
 
 <img
-	{{ with $id }}id="{{ . }}"{{ end }}
-	{{ with $class }}class="{{ . }}"{{ end }}
-	src="{{ index $images 0 }}"
-	width="{{ $width }}"
-	height="{{ $height }}"
-	alt="{{ $alt }}"
-	{{ with $loading }}loading="{{ . }}"{{ end }}
-	{{ with $decoding }}decoding="{{ . }}"{{ end }}
-	{{ with $fetchpriority }}fetchpriority="{{ . }}"{{ end }}
-	srcset="{{ $csrcset }}"
-	sizes="{{ $sizes }}"
+  {{ with $id }}id="{{ . }}"{{ end }}
+  {{ with $class }}class="{{ . }}"{{ end }}
+  src="{{ index $images 0 }}"
+  width="{{ $width }}"
+  height="{{ $height }}"
+  alt="{{ $alt }}"
+  {{ with $loading }}loading="{{ . }}"{{ end }}
+  {{ with $decoding }}decoding="{{ . }}"{{ end }}
+  {{ with $fetchpriority }}fetchpriority="{{ . }}"{{ end }}
+  srcset="{{ $csrcset }}"
+  sizes="{{ $sizes }}"
 >

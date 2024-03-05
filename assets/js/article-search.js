@@ -24,14 +24,14 @@ import {debouncedSearch, preload} from "/pagefind/pagefind.js";
     const dataCategorySlugAttribute = 'data-category-slug';
     const activeCategoryClassName = 'active';
     const loadingIndicatorId = 'loading-indicator';
-    const loadMoreResultsId = 'load-more-results';
+    const loadMoreResultsTriggerId = 'load-more-results-trigger';
     const searchFormId = 'search-form';
     const filterById = 'filtered-by';
 
     let loadingIndicator;
     let postsContainer;
     let bodyNode;
-    let loadMoreResultsIntersectionObserverTarget;
+    let loadMoreResultsTrigger;
     let searchInput;
     let currentArticlesUrls = {};
     let state = {
@@ -219,9 +219,9 @@ import {debouncedSearch, preload} from "/pagefind/pagefind.js";
     }
 
     function initLoadMoreResultsIntersectionObserver() {
-        loadMoreResultsIntersectionObserverTarget = document.getElementById(loadMoreResultsId);
+        loadMoreResultsTrigger = document.getElementById(loadMoreResultsTriggerId);
         const observer = initLoadMoreResultsObserver();
-        observer.observe(loadMoreResultsIntersectionObserverTarget);
+        observer.observe(loadMoreResultsTrigger);
         initSearchInput();
     }
 

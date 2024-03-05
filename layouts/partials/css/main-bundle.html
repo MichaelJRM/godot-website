@@ -13,6 +13,7 @@
 (resources.Get "css/partials/paginator.css")
 (resources.Get "css/partials/header.css")
 (resources.Get "css/partials/call-to-action.css")
+(resources.Get "css/partials/showreel-shelf.css")
 (resources.Get "css/layouts/index.css")
 (resources.Get "css/layouts/features.css")
 (resources.Get "css/layouts/blog.css")
@@ -27,6 +28,7 @@
 (resources.Get "css/layouts/donate.css")
 (resources.Get "css/layouts/showcase-list.css")
 (resources.Get "css/layouts/showcase.css")
+(resources.Get "css/layouts/user-groups.css")
 }}
 {{ $cssBundle := $allCSS | resources.Concat "css/bundle.css" | resources.Minify | resources.Fingerprint }}
 <link rel="stylesheet" href="{{ $cssBundle.RelPermalink }}" integrity="{{ $cssBundle.Data.Integrity }}">
