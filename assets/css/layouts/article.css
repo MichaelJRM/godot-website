@@ -1,7 +1,5 @@
 .article-page {
   .article-cover {
-    padding: 1rem 0;
-
     & figcaption {
       line-height: 1.5;
       opacity: 0.8;
@@ -37,14 +35,6 @@
 
   & figure {
     margin: 0;
-
-    & figcaption {
-      margin-bottom: 1rem;
-    }
-
-    & img {
-      margin: 0;
-    }
   }
 
   & .article-info {
