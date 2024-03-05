@@ -14,12 +14,13 @@
                         <h1 class="intro-title">{{ .Params.title }}</h1>
                         <h3 style="opacity: 0.75; margin-top: 0.5rem;">
                             by <a href="{{ .Params.website }}" target="_blank"
-                                  style="text-decoration: underline; text-decoration-thickness: 0.125rem; text-decoration-color: hsla(0, 0%, 100%, 0.5)">{{
-                                .Params.author }}</a>
-                            | {{ if eq .Params.release_date "TBD" }}Release date: <abbr
-                                    title="To Be Determined">TBD</abbr>{{
-                            else }}{{
-                                .Params.release_date }}{{ end }}
+                                  style="text-decoration: underline; text-decoration-thickness: 0.125rem; text-decoration-color: hsla(0, 0%, 100%, 0.5)">
+                                {{- .Params.author -}}</a><span> | </span>
+                            {{- if eq .Params.release_date "TBD" -}}
+                                Release date: <abbr title="To Be Determined">TBD</abbr>
+                            {{- else -}}
+                                {{- .Params.release_date -}}
+                            {{ end }}
                         </h3>
                     </div>
                     <div class="showcase-intro-icons">

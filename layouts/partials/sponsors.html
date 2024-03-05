@@ -8,7 +8,7 @@
                 {{ with resources.GetRemote $sponsor.image }}
                     <a class="sponsor-card patron" href="{{ $sponsor.link }}" target="_blank" rel="noopener">
                         {{ if ne .MediaType.SubType "svg" }}
-                            {{ $image := .Process "resize x200 Lanczos" }}
+                            {{ $image := .Process "resize x150 Lanczos" }}
                             <img src="{{ $image.RelPermalink }}" alt="{{ $sponsor.name }}" fetchpriority="low"
                                  height="{{ $image.Height }}" width="{{ $image.Width }}">
                         {{ else }}
@@ -25,7 +25,7 @@
                 {{ with resources.GetRemote $sponsor.image }}
                     <a class="sponsor-card platinum" href="{{ $sponsor.link }}" target="_blank" rel="noopener">
                         {{ if ne .MediaType.SubType "svg" }}
-                            {{ $image := .Process "resize x160 Lanczos" }}
+                            {{ $image := .Process "resize x120 Lanczos" }}
                             <img src="{{ $image.RelPermalink }}" alt="{{ $sponsor.name }}" fetchpriority="low"
                                  height="{{ $image.Height }}" width="{{ $image.Width }}">
                         {{ else }}
@@ -42,7 +42,7 @@
                 {{ with resources.GetRemote $sponsor.image }}
                     <a class="sponsor-card gold" href="{{ $sponsor.link }}" target="_blank" rel="noopener">
                         {{ if ne .MediaType.SubType "svg" }}
-                            {{ $image := .Process "resize x120 Lanczos" }}
+                            {{ $image := .Process "resize x90 Lanczos" }}
                             <img src="{{ $image.RelPermalink }}" alt="{{ $sponsor.name }}" fetchpriority="low"
                                  height="{{ $image.Height }}" width="{{ $image.Width }}">
                         {{ else }}
@@ -60,7 +60,7 @@
                 {{ with resources.GetRemote $sponsor.image }}
                     <a class="sponsor-card silver" href="{{ $sponsor.link }}" target="_blank" rel="noopener">
                         {{ if ne .MediaType.SubType "svg" }}
-                            {{ $image := .Process "resize x80 Lanczos" }}
+                            {{ $image := .Process "resize x60 Lanczos" }}
                             <img src="{{ $image.RelPermalink }}" alt="{{ $sponsor.name }}" fetchpriority="low"
                                  height="{{ $image.Height }}" width="{{ $image.Width }}">
                         {{ else }}

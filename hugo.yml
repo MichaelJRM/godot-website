@@ -3,6 +3,8 @@ baseURL: 'https://godotengine.org/'
 languageCode: 'en'
 title: 'Godot Engine'
 
+disableKinds: [ 'taxonomy','term' ]
+
 # Ignored when building
 ignorefiles: [
   'static/storage',
@@ -69,4 +71,3 @@ minify:
   tdewolff:
     js:
       version: 0
-

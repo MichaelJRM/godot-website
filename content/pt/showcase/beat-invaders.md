@@ -7,20 +7,21 @@ author: Raffaele Picca
 website: https://www.raffaelepicca.com
 release_date: March 2022
 
-image: "images/showcase/beat-invaders-header.webp"
-gallery: [
-    "images/showcase/beat-invaders.webp"
-]
-youtube_id: "aiVMhCEgGLY"
+cascade:
+    image: "images/showcase/beat-invaders-header.webp"
+    gallery: [
+        "images/showcase/beat-invaders.webp"
+    ]
+    youtube_id: "aiVMhCEgGLY"
 
-windows: true
-linux: true
-
-
-steam: https://store.steampowered.com/app/1863080/Beat_Invaders/
+    windows: true
+    linux: true
 
 
-featured_in_home: false
+    steam: https://store.steampowered.com/app/1863080/Beat_Invaders/
+
+
+    featured_in_home: false
 ---
 
 <p>

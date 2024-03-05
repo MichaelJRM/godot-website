@@ -1,6 +1,6 @@
 ---
-title: Godot Engine - Download para Android
-description: Descarregar a versão estável mais recente do Godot Engine para Android
+title: Download for Android - Godot Engine
+description: Download the latest stable version of the Godot Engine for Android
 platform: Android
 aliases:
   - /download/4.x/android
