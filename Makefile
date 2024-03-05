@@ -1,21 +1,21 @@
-build: build-hugo index-pages
+build: build-hugo index-articles
 
 build-hugo: install-tools update-mirrorList update-download-archive
 	hugo --gc --minify
 
-serve: index-pages
+serve: index-articles
 	hugo server -D
 
-serve-minify: index-pages
+serve-minify: index-articles
 	hugo server -D --minify
 
-serve-nocache: index-pages
+serve-nocache: index-articles
 	hugo server -D --ignoreCache --disableFastRender
 
-serve-profile: index-pages
+serve-profile: index-articles
 	hugo server --templateMetrics --templateMetricsHints
 
-serve-no-reload: index-pages
+serve-no-reload: index-articles
 	hugo server --disableLiveReload
 
 install-tools:
@@ -27,5 +27,5 @@ update-mirrorList:
 update-download-archive:
 	node ./tools/generators/src/download_archive_generator.js
 
-index-pages:
-	npx --yes pagefind --site "public"
+index-articles:
+	npx --yes pagefind --site "public" --glob "**/article/*/*.{html}"
