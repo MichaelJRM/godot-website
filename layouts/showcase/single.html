@@ -177,16 +177,16 @@
             </section>
             {{ if .Params.developer_interview }}
                 <section style="margin-top: 3rem">
-                    <h3>{{ .Params.developer_interview.title }}</h3>
+                    <h3>{{ .Params.developer_interview.title | safeHTML }}</h3>
 
                     <blockquote class="showcase-developer-quote">
-                        {{ .Params.developer_interview.text }}
+                        {{ .Params.developer_interview.text | safeHTML }}
                     </blockquote>
 
                     {{ if .Params.developer_interview.url }}
-                        <a href="{{ .Params.developer_interview.url }}">{{ .Params.developer_interview.context }}</a>
+                        <a href="{{ .Params.developer_interview.url }}">{{ .Params.developer_interview.context | safeHTML }}</a>
                     {{ else }}
-                        <p>{{ .Params.developer_interview.context }}</p>
+                        <p>{{ .Params.developer_interview.context | safeHTML }}</p>
                     {{ end }}
                 </section>
             {{ end }}

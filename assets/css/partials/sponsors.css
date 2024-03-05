@@ -1,9 +1,56 @@
 .sponsors {
+  --card-padding: 17px;
+
   & .grid {
     display: grid;
     gap: 20px;
     grid-template-columns: 1fr;
     margin-top: 2rem;
+
+    & .sponsor-card {
+      background-color: white;
+      border-radius: 7px;
+      display: grid;
+      padding: var(--card-padding);
+      place-items: center;
+
+      & img {
+        mix-blend-mode: multiply;
+        width: auto;
+      }
+    }
+
+    &.patron {
+      grid-auto-rows: calc(100px + (var(--card-padding) * 2));
+
+      & img {
+        max-height: 100px;
+      }
+    }
+
+    &.platinum {
+      grid-auto-rows: calc(80px + (var(--card-padding) * 2));
+
+      & img {
+        max-height: 80px;
+      }
+    }
+
+    &.gold {
+      grid-auto-rows: calc(60px + (var(--card-padding) * 2));
+
+      & img {
+        max-height: 60px;
+      }
+    }
+
+    &.silver {
+      grid-auto-rows: calc(40px + (var(--card-padding) * 2));
+
+      & img {
+        max-height: 40px;
+      }
+    }
   }
 
   & h3 {
@@ -36,39 +83,6 @@
       grid-template-columns: repeat(5, 1fr);
     }
   }
-}
-
-.sponsor-card {
-  align-items: center;
-  background-color: white;
-  border-radius: 7px;
-  box-sizing: border-box;
-  display: grid;
-  padding: 17px;
-  width: 100%;
-
-  & img {
-    margin: 0 auto;
-    max-height: 100px;
-    mix-blend-mode: multiply;
-    width: auto;
-  }
-}
-
-.patron img {
-  width: 100%;
-}
-
-.platinum img {
-  height: 80px;
-}
-
-.gold img {
-  height: 60px;
-}
-
-.silver img {
-  height: 40px;
 }
 
 .sponsor-empty {
