@@ -3,19 +3,19 @@ build: build-hugo index-articles
 build-hugo: install-tools update-mirrorList update-download-archive
 	hugo --gc --minify
 
-serve: index-articles
+serve:
 	hugo server -D
 
-serve-minify: index-articles
+serve-minify:
 	hugo server -D --minify
 
-serve-nocache: index-articles
+serve-nocache:
 	hugo server -D --ignoreCache --disableFastRender
 
-serve-profile: index-articles
+serve-profile:
 	hugo server --templateMetrics --templateMetricsHints
 
-serve-no-reload: index-articles
+serve-no-reload:
 	hugo server --disableLiveReload
 
 install-tools:
