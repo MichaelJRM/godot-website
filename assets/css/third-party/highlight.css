@@ -12,14 +12,14 @@
   --text-color: #bfbfbf;
   --control-flow-color: #ff8ccc;
   --global-function-color: #a3a3f5;
+  padding-right: 8px;
   --node-reference-color: #63c259;
+
   --member-variable-color: #bce0ff;
 
-  padding-right: 8px;
-
   & .lntable {
-    overflow-x: auto;
     display: block;
+    overflow-x: auto;
   }
 }
 
@@ -56,7 +56,7 @@ pre.chroma {
 
 /* LineLink */
 .chroma .lnlinks {
-  color: inherit
+  color: inherit;
   outline: none;
   text-decoration: none;
 }
@@ -84,7 +84,7 @@ pre.chroma {
 
 /* LineNumbersTable */
 .chroma .lnt {
-  color: #727272
+  color: #727272;
   margin-right: 0.4em;
   padding: 0 0.4em 0 0.4em;
   -webkit-user-select: none;
@@ -94,7 +94,7 @@ pre.chroma {
 
 /* LineNumbers */
 .chroma .ln {
-  color: #727272
+  color: #727272;
   margin-right: 0.4em;
   padding: 0 0.4em 0 0.4em;
   -webkit-user-select: none;
@@ -448,7 +448,7 @@ pre.chroma {
 
 /* GenericDeleted */
 .chroma .gd {
-  background-color: #490202
+  background-color: #490202;
   color: #ffa198;
 }
 
@@ -470,7 +470,7 @@ pre.chroma {
 
 /* GenericInserted */
 .chroma .gi {
-  background-color: #0f5323
+  background-color: #0f5323;
   color: #56d364;
 }
 
