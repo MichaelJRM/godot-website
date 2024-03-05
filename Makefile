@@ -27,5 +27,5 @@ update-mirrorList:
 update-download-archive:
 	node ./tools/generators/src/download_archive_generator.js
 
-index-pages:
-	npx --yes pagefind --site "public"
+index-articles:
+	npx --yes pagefind --site "public" --glob "**/article/*/*.{html}"
