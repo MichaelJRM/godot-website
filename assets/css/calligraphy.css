@@ -73,11 +73,6 @@ pre {
   white-space: pre-wrap;
 }
 
-pre > code {
-  padding-left: 0;
-  padding-right: 0;
-}
-
 .dark {
   background-color: var(--dark-color);
   color: var(--dark-color-text);

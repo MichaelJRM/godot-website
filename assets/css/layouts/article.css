@@ -21,24 +21,6 @@
     margin-top: 2.625rem;
   }
 
-  & :not(pre) > code {
-    background: var(--code-background-color);
-    border-radius: 3px;
-    font-size: 0.95em;
-    padding: 1px 4px;
-  }
-
-  & pre {
-    background: var(--codeblock-background-color);
-    color: var(--codeblock-color);
-  }
-
-  & pre code {
-    display: block;
-    overflow-x: auto;
-    padding: .5em;
-  }
-
   & .date-big {
     line-height: 2;
     margin-left: 2rem;
